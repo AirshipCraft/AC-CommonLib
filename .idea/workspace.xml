@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="PluginDependency interface&#10;&#10;Interface for defining plugin dependencies, completes #863gc2erg">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/plugin/Plugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/plugin/PluginProcessor.java" afterDir="false" />
-    </list>
+    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="processor for handling annotations&#10;&#10;completes #863gc2ey6" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +124,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680151371334</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="automate plugin.yml annotation&#10;&#10;completes #863gc2ekx">
+      <created>1680151573961</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680151573961</updated>
+    </task>
+    <task id="LOCAL-00003" summary="processor for handling annotations&#10;&#10;completes #863gc2ey6">
+      <created>1680151767216</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680151767216</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +154,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="PluginDependency interface&#10;&#10;Interface for defining plugin dependencies, completes #863gc2erg" />
-    <option name="LAST_COMMIT_MESSAGE" value="PluginDependency interface&#10;&#10;Interface for defining plugin dependencies, completes #863gc2erg" />
+    <MESSAGE value="automate plugin.yml annotation&#10;&#10;completes #863gc2ekx" />
+    <MESSAGE value="processor for handling annotations&#10;&#10;completes #863gc2ey6" />
+    <option name="LAST_COMMIT_MESSAGE" value="processor for handling annotations&#10;&#10;completes #863gc2ey6" />
   </component>
 </project>
