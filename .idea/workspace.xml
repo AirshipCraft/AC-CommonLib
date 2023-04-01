@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="add javadoc to GlobalYLimitedArea.java">
-      <change afterPath="$PROJECT_DIR$/commonlib.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/world/EllipseArea.java" afterDir="false" />
+    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="add RectangleArea.java&#10;&#10;checks for a Y-limited rectangular area.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +202,49 @@
       <option name="project" value="LOCAL" />
       <updated>1680378920814</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="create EllipseArea.java&#10;&#10;Addresses #863gcrxh8 and closes #21">
+      <created>1680378985232</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680378985232</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update workspace.xml">
+      <created>1680379033871</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680379033871</updated>
+    </task>
+    <task id="LOCAL-00013" summary="create commonlib.iml">
+      <created>1680379053776</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680379053776</updated>
+    </task>
+    <task id="LOCAL-00014" summary="delete old .iml file">
+      <created>1680379172367</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680379172367</updated>
+    </task>
+    <task id="LOCAL-00015" summary="update commonlib.iml">
+      <created>1680379179509</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680379179509</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add RectangleArea.java&#10;&#10;checks for a Y-limited rectangular area.">
+      <created>1680379198608</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680379198608</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,6 +269,12 @@
     <MESSAGE value="create AbstractYLimitedArea.java&#10;&#10;implements IArea and is used to check if a region is within a certain Y-Level&#10;&#10;Addresses #20 and #863gcrxd0" />
     <MESSAGE value="create GlobalYLimitedArea.java&#10;&#10;extension of AbstractYLimitedArea that checks the area agnostic of X and Z, purely Y level&#10;&#10;Addresses #20 and #863gcrxd0" />
     <MESSAGE value="add javadoc to GlobalYLimitedArea.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="add javadoc to GlobalYLimitedArea.java" />
+    <MESSAGE value="create EllipseArea.java&#10;&#10;Addresses #863gcrxh8 and closes #21" />
+    <MESSAGE value="update workspace.xml" />
+    <MESSAGE value="create commonlib.iml" />
+    <MESSAGE value="delete old .iml file" />
+    <MESSAGE value="update commonlib.iml" />
+    <MESSAGE value="add RectangleArea.java&#10;&#10;checks for a Y-limited rectangular area." />
+    <option name="LAST_COMMIT_MESSAGE" value="add RectangleArea.java&#10;&#10;checks for a Y-limited rectangular area." />
   </component>
 </project>
