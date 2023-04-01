@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="processor for handling annotations&#10;&#10;completes #863gc2ey6" />
+    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="add javadoc to GlobalYLimitedArea.java">
+      <change afterPath="$PROJECT_DIR$/commonlib.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/world/EllipseArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +17,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -24,11 +29,10 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="downloadDocsAutomatically" value="true" />
-        <option name="downloadSourcesAutomatically" value="true" />
-      </MavenImportingSettings>
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectId" id="2MHdVdvP8VOnmgzTpkCXNkmscoG" />
@@ -39,15 +43,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/zeyad/Documents/GitHub/AC-CommonLib",
-    "settings.editor.selected.configurable": "editor.preferences.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zeyad/Documents/GitHub/AC-CommonLib&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="AC-CommonLib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="AC-CommonLib" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AC-CommonLib build" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings">
@@ -138,7 +155,56 @@
       <option name="project" value="LOCAL" />
       <updated>1680151767216</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="particle effect class&#10;&#10;closes #7 and #863gc6egg">
+      <created>1680183185434</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680183185434</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add trie (insert and search)&#10;&#10;#863gc6rkz and closes #11">
+      <created>1680184723462</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680184723462</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add IArea&#10;&#10;interface for checking area and creating classes related to such &#10;&#10;closes #863gc6wf2 and #17">
+      <created>1680185499603</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680185499603</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Create PseudoChunk.java&#10;&#10;closes #16 and #863gc6vye">
+      <created>1680185549301</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680185549301</updated>
+    </task>
+    <task id="LOCAL-00008" summary="create AbstractYLimitedArea.java&#10;&#10;implements IArea and is used to check if a region is within a certain Y-Level&#10;&#10;Addresses #20 and #863gcrxd0">
+      <created>1680378815756</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680378815756</updated>
+    </task>
+    <task id="LOCAL-00009" summary="create GlobalYLimitedArea.java&#10;&#10;extension of AbstractYLimitedArea that checks the area agnostic of X and Z, purely Y level&#10;&#10;Addresses #20 and #863gcrxd0">
+      <created>1680378865651</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680378865651</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add javadoc to GlobalYLimitedArea.java">
+      <created>1680378920814</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680378920814</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,6 +222,13 @@
     <MESSAGE value="PluginDependency interface&#10;&#10;Interface for defining plugin dependencies, completes #863gc2erg" />
     <MESSAGE value="automate plugin.yml annotation&#10;&#10;completes #863gc2ekx" />
     <MESSAGE value="processor for handling annotations&#10;&#10;completes #863gc2ey6" />
-    <option name="LAST_COMMIT_MESSAGE" value="processor for handling annotations&#10;&#10;completes #863gc2ey6" />
+    <MESSAGE value="particle effect class&#10;&#10;closes #7 and #863gc6egg" />
+    <MESSAGE value="add trie (insert and search)&#10;&#10;#863gc6rkz and closes #11" />
+    <MESSAGE value="add IArea&#10;&#10;interface for checking area and creating classes related to such &#10;&#10;closes #863gc6wf2 and #17" />
+    <MESSAGE value="Create PseudoChunk.java&#10;&#10;closes #16 and #863gc6vye" />
+    <MESSAGE value="create AbstractYLimitedArea.java&#10;&#10;implements IArea and is used to check if a region is within a certain Y-Level&#10;&#10;Addresses #20 and #863gcrxd0" />
+    <MESSAGE value="create GlobalYLimitedArea.java&#10;&#10;extension of AbstractYLimitedArea that checks the area agnostic of X and Z, purely Y level&#10;&#10;Addresses #20 and #863gcrxd0" />
+    <MESSAGE value="add javadoc to GlobalYLimitedArea.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="add javadoc to GlobalYLimitedArea.java" />
   </component>
 </project>
