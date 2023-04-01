@@ -6,6 +6,9 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 
+/**
+ * Agnostic of X and Z, purely checks for Y-level.
+ */
 public class GlobalYLimitedArea extends AbstractYLimitedArea {
 
     private World world;
