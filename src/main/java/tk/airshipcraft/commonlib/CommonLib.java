@@ -1,5 +1,6 @@
 package tk.airshipcraft.commonlib;
 
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -9,47 +10,46 @@ import java.util.List;
  * Main class file, plugins should extend this.
  */
 public abstract class CommonLib extends JavaPlugin {
-    private static final List<CommonLib> registeredPlugins = new ArrayList<>();
+    private static final List<CommonLib> plugins = new ArrayList<>();
     public static CommonLib mainInstance;
 
-    public static void registerPlugin(CommonLib plugin) {
-        registeredPlugins.add(plugin);
+    static {
+        for (Plugin plugin : JavaPlugin.getProvidingPlugin(CommonLib.class).getServer().getPluginManager().getPlugins()) {
+            if (plugin instanceof CommonLib) {
+                plugins.add((CommonLib) plugin);
+            }
+        }
     }
 
-    public static void unregisterPlugin(CommonLib plugin) {
-        registeredPlugins.remove(plugin);
+    public static List<CommonLib> getPlugins() {
+        return plugins;
     }
 
     @Override
     public final void onEnable() {
         mainInstance = this;
-        // Register this plugin
-        registerPlugin(this);
+        onPluginEnable();
 
-        // Call onPluginEnable() for all registered plugins
-        for (CommonLib plugin : registeredPlugins) {
-            plugin.onPluginEnable();
+        for (CommonLib plugin : plugins) {
+            if (plugin.isEnabled() && !plugin.equals(this)) {
+                plugin.onPluginEnable();
+            }
         }
     }
 
     @Override
     public final void onDisable() {
-        // Call onPluginDisable() for all registered plugins
-        for (CommonLib plugin : registeredPlugins) {
-            plugin.onPluginDisable();
-        }
+        onPluginDisable();
 
-        // Unregister this plugin
-        unregisterPlugin(this);
+        for (CommonLib plugin : plugins) {
+            if (plugin.isEnabled() && !plugin.equals(this)) {
+                plugin.onPluginDisable();
+            }
+        }
     }
 
-    /**
-     * Called when a plugin extending CommonLib is enabled.
-     */
     public abstract void onPluginEnable();
 
-    /**
-     * Called when a plugin extending CommonLib is disabled.
-     */
     public abstract void onPluginDisable();
 }
+
