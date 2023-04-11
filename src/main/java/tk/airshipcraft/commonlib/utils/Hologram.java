@@ -140,8 +140,12 @@ public abstract class Hologram implements Listener {
      * An abstract method used to add functions to a hologram when they are clicked on
      * @param hologram
      */
-    public abstract void addClickAction(Hologram hologram);
+    protected abstract void addClickAction(Hologram hologram);
 
+    /**
+     * calls the addClickAction abstract methods for all the subclasses
+     * @param hologram the hologram with the click action
+     */
     public static void callClickAction(Hologram hologram) {
         List<Class<? extends Hologram>> subclasses = getSubclassesOf(Hologram.class);
         for (Class<? extends Hologram> subclass : subclasses) {

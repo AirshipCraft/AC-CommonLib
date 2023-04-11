@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Javadoc comment">
+    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Optimize">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/Hologram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/Hologram.java" afterDir="false" />
     </list>
@@ -321,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681195865029</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Optimize">
+      <created>1681197372974</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1681197372974</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -360,6 +367,7 @@
     <MESSAGE value="Extendable CommonLib" />
     <MESSAGE value="A lot more utility" />
     <MESSAGE value="Javadoc comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Javadoc comment" />
+    <MESSAGE value="Optimize" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimize" />
   </component>
 </project>
