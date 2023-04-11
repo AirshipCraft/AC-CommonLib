@@ -15,6 +15,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import tk.airshipcraft.commonlib.Events.GuiClickEvent;
+import tk.airshipcraft.commonlib.utils.UiDesigner;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
@@ -26,13 +27,13 @@ public class Ui implements Listener {
     private InventoryType type;
     private InventoryHolder owner;
     private int rows;
-    private String inventoryName;
+    private static String inventoryName;
 
     /**
      *
      * @param inventoryName sets the name of the inventory
      * @param owner who owns the inventory
-     * @param type the type of inventory to open
+     * @param type the type of inventory to open. This is preferred to be a chest.
      */
     public Ui(String inventoryName, @Nullable InventoryHolder owner, InventoryType type) {
         this.inventory = Bukkit.createInventory(owner, type, inventoryName);
@@ -50,7 +51,7 @@ public class Ui implements Listener {
      * @return the Ui name
      */
     public String getName() {
-        return this.inventoryName;
+        return inventoryName;
     }
 
     /**
@@ -58,8 +59,8 @@ public class Ui implements Listener {
      * @param inventoryName the name of the inventory you want to check
      * @return a boolean if the inventoryName is equal to a Ui name
      */
-    public Boolean isUi(String inventoryName) {
-        return Objects.equals(this.inventoryName, inventoryName);
+    public static Boolean isUi(String inventoryName) {
+        return Objects.equals(Ui.inventoryName, inventoryName);
     }
 
     /**
@@ -96,20 +97,17 @@ public class Ui implements Listener {
     }
 
     /**
-     *
-     * @param event Event listener to call the GuiClickEvent
+     * Sets the name to the current UI
+     * @param name the name to set the UI to.
+     * @return the new inventory, which contains the old items
      */
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
-        if (Ui.isUi(event.getClickedInventory())) {
-            Bukkit.getServer().getPluginManager().callEvent(new GuiClickEvent((Player) event.getWhoClicked(), event.getSlot(), event.getCurrentItem(), event.getClickedInventory()));
-        }
-    }
     public Inventory setName(String name) {
         Inventory oldInventory = this.inventory;
         ItemStack[] items = oldInventory.getContents();
         Inventory newInventory = Bukkit.createInventory(this.owner, this.type, name);
+        newInventory.setContents(items);
         return newInventory;
     }
+
 
 }

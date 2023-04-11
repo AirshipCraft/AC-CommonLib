@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Extendable CommonLib">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Events/HologramClickEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Events/InventoryClickListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Objects/BelowName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Objects/Bossbar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Objects/Sidebar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/Hologram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/RayCast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/CommonLib.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/CommonLib.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Events/GuiClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Events/GuiClickEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Objects/Ui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Objects/Ui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/UiDesigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/UiDesigner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -45,6 +57,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/gabar/Documents/GitHub/AC-CommonLib/src/main",
     "settings.editor.selected.configurable": "editor.preferences.appearance"
   }
@@ -291,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681081960457</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Extendable CommonLib">
+      <created>1681082372300</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1681082372300</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

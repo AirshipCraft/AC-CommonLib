@@ -1,16 +1,12 @@
 package tk.airshipcraft.commonlib.Events;
 
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
-import org.bukkit.event.HandlerList;
+import org.bukkit.event.*;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.entity.Player;
 
-import java.util.EventListener;
-
-public class GuiClickEvent extends Event implements Cancellable {
+public class GuiClickEvent extends Event implements Cancellable, Listener {
 
     private static final HandlerList HANDLERS = new HandlerList();
     private final Player player;
@@ -32,6 +28,7 @@ public class GuiClickEvent extends Event implements Cancellable {
         this.item = item;
         this.inventory = inventory;
         this.cancelled = false;
+
     }
 
     /**
@@ -41,6 +38,7 @@ public class GuiClickEvent extends Event implements Cancellable {
     public InventoryHolder getOwner() {
         return player;
     }
+
 
     /**
      *

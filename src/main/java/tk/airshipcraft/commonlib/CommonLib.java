@@ -2,6 +2,8 @@ package tk.airshipcraft.commonlib;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import tk.airshipcraft.commonlib.Events.GuiClickEvent;
+import tk.airshipcraft.commonlib.Events.InventoryClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,6 @@ import java.util.List;
 public abstract class CommonLib extends JavaPlugin {
     private static final List<CommonLib> plugins = new ArrayList<>();
     public static CommonLib mainInstance;
-
     static {
         for (Plugin plugin : JavaPlugin.getProvidingPlugin(CommonLib.class).getServer().getPluginManager().getPlugins()) {
             if (plugin instanceof CommonLib) {
@@ -24,11 +25,11 @@ public abstract class CommonLib extends JavaPlugin {
     public static List<CommonLib> getPlugins() {
         return plugins;
     }
-
     @Override
     public final void onEnable() {
         mainInstance = this;
         onPluginEnable();
+        getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
 
         for (CommonLib plugin : plugins) {
             if (plugin.isEnabled() && !plugin.equals(this)) {

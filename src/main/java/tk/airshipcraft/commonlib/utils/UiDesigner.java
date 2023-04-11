@@ -11,11 +11,12 @@ import tk.airshipcraft.commonlib.CommonLib;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class UiDesigner {
 
     /**
-     * Create a GUI inventory with a specific title and number of rows.
+     * Create a GUI inventory with a specific title and inventory type.
      *
      * @param title the title of the inventory
      * @param type The GUI host inventory type
@@ -81,7 +82,7 @@ public abstract class UiDesigner {
      Sets the title of the given inventory to the specified title.
      If the inventory holder is a player, the player's inventory will be closed
      and a new inventory with the new title will be created and opened for the player.
-     Otherwise, a new inventory with the new title will be created and assigned to the holder.
+     Otherwise, an IllegalArgumentException is thrown because the GUI must be owned by a player.
      @param inventory the inventory to modify
      @param title the new title for the inventory
      */
@@ -144,10 +145,11 @@ public abstract class UiDesigner {
 
         // Get the names of all classes in the same package
         String packagePath = packageName.replace('.', '/');
-        File packageDirectory = new File(UiDesigner.class.getClassLoader().getResource(packagePath).getFile());
+        File packageDirectory = new File(Objects.requireNonNull(UiDesigner.class.getClassLoader().getResource(packagePath)).getFile());
         String[] classNames = packageDirectory.list();
 
         // Iterate over all classes in the package and add any that are subclasses of the given class
+        assert classNames != null;
         for (String className : classNames) {
             if (className.endsWith(".class")) {
                 try {
