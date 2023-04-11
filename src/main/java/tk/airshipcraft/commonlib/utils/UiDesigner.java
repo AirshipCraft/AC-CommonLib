@@ -13,13 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static tk.airshipcraft.commonlib.CommonLib.getSubclassesOf;
+
 public abstract class UiDesigner {
 
     /**
      * Create a GUI inventory with a specific title and inventory type.
      *
      * @param title the title of the inventory
-     * @param type The GUI host inventory type
+     * @param type  The GUI host inventory type
      * @return the created Ui
      */
     public static Ui createGUI(String title, InventoryType type) {
@@ -30,17 +32,18 @@ public abstract class UiDesigner {
      * Set a specific slot in an inventory with a given item stack.
      *
      * @param inventory the inventory to modify
-     * @param slot the slot to modify
-     * @param item the item stack to set in the slot
+     * @param slot      the slot to modify
+     * @param item      the item stack to set in the slot
      */
     public void setSlot(Inventory inventory, int slot, ItemStack item) {
         inventory.setItem(slot, item);
     }
-    /**
 
-     Fills all empty slots in the given inventory with the specified item stack.
-     @param inventory the inventory to fill
-     @param item the item stack to fill the inventory with
+    /**
+     * Fills all empty slots in the given inventory with the specified item stack.
+     *
+     * @param inventory the inventory to fill
+     * @param item      the item stack to fill the inventory with
      */
     public void fillSlots(Inventory inventory, ItemStack item) {
         for (int i = 0; i < inventory.getSize(); i++) {
@@ -49,11 +52,12 @@ public abstract class UiDesigner {
             }
         }
     }
-    /**
 
-     Sets the border of the given inventory to the specified item stack.
-     @param inventory the inventory to modify
-     @param item the item stack to set as the border
+    /**
+     * Sets the border of the given inventory to the specified item stack.
+     *
+     * @param inventory the inventory to modify
+     * @param item      the item stack to set as the border
      */
     public void setBorder(Inventory inventory, ItemStack item) {
         int size = inventory.getSize();
@@ -63,11 +67,12 @@ public abstract class UiDesigner {
             }
         }
     }
-    /**
 
-     Fills all empty non-border slots in the given inventory with the specified item stack.
-     @param inventory the inventory to fill
-     @param item the item stack to fill the non-border slots with
+    /**
+     * Fills all empty non-border slots in the given inventory with the specified item stack.
+     *
+     * @param inventory the inventory to fill
+     * @param item      the item stack to fill the non-border slots with
      */
     public void setFiller(Inventory inventory, ItemStack item) {
         int size = inventory.getSize();
@@ -77,14 +82,15 @@ public abstract class UiDesigner {
             }
         }
     }
-    /**
 
-     Sets the title of the given inventory to the specified title.
-     If the inventory holder is a player, the player's inventory will be closed
-     and a new inventory with the new title will be created and opened for the player.
-     Otherwise, an IllegalArgumentException is thrown because the GUI must be owned by a player.
-     @param inventory the inventory to modify
-     @param title the new title for the inventory
+    /**
+     * Sets the title of the given inventory to the specified title.
+     * If the inventory holder is a player, the player's inventory will be closed
+     * and a new inventory with the new title will be created and opened for the player.
+     * Otherwise, an IllegalArgumentException is thrown because the GUI must be owned by a player.
+     *
+     * @param inventory the inventory to modify
+     * @param title     the new title for the inventory
      */
     public void setTitle(Inventory inventory, String title) {
         if (inventory.getHolder() instanceof Player) {
@@ -102,16 +108,16 @@ public abstract class UiDesigner {
      * Add an action to be executed when a player clicks on a specific slot in the inventory.
      *
      * @param inventory the inventory to modify
-     * @param slot the slot to add the action to
+     * @param slot      the slot to add the action to
      */
     public abstract void addClickAction(Inventory inventory, int slot);
 
 
     /**
-
-     Calls the addClickAction method for all subclasses of the UiDesigner class with the provided inventory and slot parameters.
-     @param inventory the inventory to pass to the addClickAction method of each subclass
-     @param slot the slot to pass to the addClickAction method of each subclass
+     * Calls the addClickAction method for all subclasses of the UiDesigner class with the provided inventory and slot parameters.
+     *
+     * @param inventory the inventory to pass to the addClickAction method of each subclass
+     * @param slot      the slot to pass to the addClickAction method of each subclass
      */
     public static void callClickAction(Inventory inventory, int slot) {
         // Get all subclasses of UiDesigner
@@ -128,42 +134,6 @@ public abstract class UiDesigner {
             }
         }
     }
-
-
-    /**
-
-     Returns a list of all subclasses of the given class that are found in the same package as the given class.
-     @param clazz the class to find subclasses of
-     @return a list of all subclasses of the given class found in the same package
-     */
-
-    private static List<Class<? extends UiDesigner>> getSubclassesOf(Class<?> clazz) {
-        List<Class<? extends UiDesigner>> subclasses = new ArrayList<>();
-
-        // Get the name of the package containing the given class
-        String packageName = clazz.getPackage().getName();
-
-        // Get the names of all classes in the same package
-        String packagePath = packageName.replace('.', '/');
-        File packageDirectory = new File(Objects.requireNonNull(UiDesigner.class.getClassLoader().getResource(packagePath)).getFile());
-        String[] classNames = packageDirectory.list();
-
-        // Iterate over all classes in the package and add any that are subclasses of the given class
-        assert classNames != null;
-        for (String className : classNames) {
-            if (className.endsWith(".class")) {
-                try {
-                    String fullClassName = packageName + '.' + className.substring(0, className.length() - 6);
-                    Class<?> c = Class.forName(fullClassName);
-                    if (clazz.isAssignableFrom(c) && !clazz.equals(c)) {
-                        subclasses.add((Class<? extends UiDesigner>) c);
-                    }
-                } catch (ClassNotFoundException e) {
-                    // Handle any exceptions thrown when attempting to load a class
-                }
-            }
-        }
-
-        return subclasses;
-    }
 }
+
+

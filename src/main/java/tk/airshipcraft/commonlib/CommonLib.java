@@ -4,9 +4,13 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import tk.airshipcraft.commonlib.Events.GuiClickEvent;
 import tk.airshipcraft.commonlib.Events.InventoryClickListener;
+import tk.airshipcraft.commonlib.utils.UiDesigner;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Supplier;
 
 /**
  * Main class file, plugins should extend this.
@@ -48,6 +52,38 @@ public abstract class CommonLib extends JavaPlugin {
             }
         }
     }
+    /**
+
+     Returns a list of all the subclasses of the given class, including indirect subclasses.
+     @param clazz the class to get the subclasses of
+     @param <T> the type of the given class
+     @return a list of subclasses of the given class
+     @throws NullPointerException if the given class or its package is null
+     */
+    public static <T> List<Class<? extends T>> getSubclassesOf(Class<T> clazz) {
+        List<Class<? extends T>> subclasses = new ArrayList<>();
+        String packageName = clazz.getPackage().getName();
+        String packagePath = packageName.replace('.', '/');
+        File packageDirectory = new File(Objects.requireNonNull(clazz.getClassLoader().getResource(packagePath)).getFile());
+        String[] classNames = packageDirectory.list();
+        assert classNames != null;
+        for (String className : classNames) {
+            if (className.endsWith(".class")) {
+                try {
+                    String fullClassName = packageName + '.' + className.substring(0, className.length() - 6);
+                    Class<?> c = Class.forName(fullClassName);
+                    if (clazz.isAssignableFrom(c) && !clazz.equals(c)) {
+                        subclasses.add((Class<? extends T>) c);
+                    }
+                } catch (ClassNotFoundException e) {
+                    throw new NullPointerException("Class not found: " + e);
+                }
+            }
+        }
+        return subclasses;
+    }
+
+
 
     public abstract void onPluginEnable();
 
