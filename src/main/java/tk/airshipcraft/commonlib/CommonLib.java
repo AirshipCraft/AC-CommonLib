@@ -54,7 +54,8 @@ public abstract class CommonLib extends JavaPlugin {
     }
     /**
 
-     Returns a list of all the subclasses of the given class, including indirect subclasses.
+     Returns a list of all the subclasses of the given class, including indirect subclasses. A variable that calls this method should be assigned like this:
+     List<\Class<\? extends Hologram>> subclasses = getSubclassesOf(Your.class); (remove the backslashes)
      @param clazz the class to get the subclasses of
      @param <T> the type of the given class
      @return a list of subclasses of the given class
