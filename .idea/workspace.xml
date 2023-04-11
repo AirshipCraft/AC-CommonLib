@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="A lot more utility">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__dev_folia_folia_api_1_19_4_R0_1_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dev_folia_folia_api_1_19_4_R0_1_SNAPSHOT.xml" afterDir="false" />
+    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Javadoc comment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonlib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commonlib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/CommonLib.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/CommonLib.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Events/HologramClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Events/HologramClickEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/Hologram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/Hologram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/UiDesigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/UiDesigner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +307,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681193032163</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="A lot more utility">
+      <created>1681195707887</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1681195707887</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Javadoc comment">
+      <created>1681195865029</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1681195865029</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -352,6 +359,7 @@
     <MESSAGE value="GUI lib" />
     <MESSAGE value="Extendable CommonLib" />
     <MESSAGE value="A lot more utility" />
-    <option name="LAST_COMMIT_MESSAGE" value="A lot more utility" />
+    <MESSAGE value="Javadoc comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Javadoc comment" />
   </component>
 </project>

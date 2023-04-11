@@ -3,6 +3,7 @@ package tk.airshipcraft.commonlib;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import tk.airshipcraft.commonlib.Events.GuiClickEvent;
+import tk.airshipcraft.commonlib.Events.HologramClickListener;
 import tk.airshipcraft.commonlib.Events.InventoryClickListener;
 import tk.airshipcraft.commonlib.utils.UiDesigner;
 
@@ -34,7 +35,7 @@ public abstract class CommonLib extends JavaPlugin {
         mainInstance = this;
         onPluginEnable();
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
-
+        getServer().getPluginManager().registerEvents(new HologramClickListener(), this);
         for (CommonLib plugin : plugins) {
             if (plugin.isEnabled() && !plugin.equals(this)) {
                 plugin.onPluginEnable();

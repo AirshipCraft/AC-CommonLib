@@ -19,14 +19,23 @@ import java.util.List;
 
 import static tk.airshipcraft.commonlib.CommonLib.getSubclassesOf;
 
+/**
+
+ A utility class for creating and managing holograms in Minecraft using ArmorStands.
+ */
 public abstract class Hologram implements Listener {
 
     private static final List<ArmorStand> armorStands = new ArrayList<>();
     private final Location location;
-    private static final List<Hologram> hologramInstances = new ArrayList<>();
+    public static final List<Hologram> hologramInstances = new ArrayList<>();
     private final String[] lines;
+/**
 
-    public Hologram(Location location, String... lines) {
+ Creates a new Hologram at the given location with the given lines.
+ @param location The location of the Hologram.
+ @param lines the lines to add to the Hologram.
+*/
+ public Hologram(Location location, String... lines) {
         this.location = location.clone().add(0, (lines.length - 1) * 0.25, 0);
         this.lines = lines;
         for (int i = 0; i < lines.length; i++) {
@@ -43,6 +52,10 @@ public abstract class Hologram implements Listener {
         }
     }
 
+    /**
+     * Teleports the Holograms or the armor stands that are an instance of Hologram
+     * @param location The desired location to teleport the Hologram to.
+     */
     public void teleport(Location location) {
         for (int i = 0; i < armorStands.size(); i++) {
             ArmorStand armorStand = armorStands.get(i);
@@ -54,38 +67,66 @@ public abstract class Hologram implements Listener {
         this.location.setZ(location.getZ());
     }
 
+    /**
+     *
+     * @return all the armor stands that are an instance of Hologram
+     */
     public List<ArmorStand> getArmorStands() {
         return armorStands;
     }
 
+    /**
+     * Sets the given slot to a given item
+     * @param item The desired item to put in a slot
+     * @param slot The desired slot to put the item in
+     */
     public void setSlot(ItemStack item, EquipmentSlot slot) {
         for (ArmorStand armorStand : armorStands) {
             armorStand.setItem(slot, item);
         }
     }
 
-    public void show(Player player) {
+    /**
+     * shows an invisible Hologram
+     */
+    public void show() {
         for (ArmorStand armorStand : armorStands) {
-            player.spawnParticle(org.bukkit.Particle.valueOf("ENTITY_EFFECT"), armorStand.getLocation().add(new Vector(0, 0.075, 0)), 1, 0, 0, 0, 0);
+            armorStand.setInvisible(true);
         }
     }
 
-    public void hide(Player player) {
+    /**
+     * hides a visible Hologram
+     */
+    public void hide() {
         for (ArmorStand armorStand : armorStands) {
-            player.spawnParticle(org.bukkit.Particle.valueOf("ENTITY_EFFECT"), armorStand.getLocation().add(new Vector(0, 0.075, 0)), 1, 0, 0, 0, 0);
+            armorStand.setInvisible(false);
         }
     }
 
+    /**
+     * removes the Hologram.
+     */
     public void remove() {
         for (ArmorStand armorStand : armorStands) {
             armorStand.remove();
         }
     }
 
+    /**
+     * Checks if a given armor stand is associated with a Hologram
+     * @param armorStand the desired armor stand to check
+     * @return a boolean; if true, it means the given armor stand is associated with a Hologram, otherwise it is not.
+     */
     public static boolean isHologram(ArmorStand armorStand) {
         return Hologram.armorStands.contains(armorStand);
     }
 
+    /**
+     * Returns an instance of a Hologram if an armor stand is associated with a Hologram
+     * @param armorStand the desired armor stand to return an instance of a Hologram from
+     * @return an instance of a hologram
+     */
     public static Hologram fromArmorStand(ArmorStand armorStand) {
         for (Hologram hologram : hologramInstances) {
             if (armorStands.contains(armorStand)) {
@@ -95,6 +136,10 @@ public abstract class Hologram implements Listener {
         return null;
     }
 
+    /**
+     * An abstract method used to add functions to a hologram when they are clicked on
+     * @param hologram
+     */
     public abstract void addClickAction(Hologram hologram);
 
     public static void callClickAction(Hologram hologram) {
@@ -116,11 +161,8 @@ public abstract class Hologram implements Listener {
             event2.setCancelled(true);
             if (Hologram.isHologram(armorStand) && Hologram.isHologram(armorStand1)) {
                 Hologram hologram = Hologram.fromArmorStand(armorStand);
-                if (hologram != null) {
+                if (hologram != null && armorStand == armorStand1) {
                     Bukkit.getServer().getPluginManager().callEvent(new HologramClickEvent(hologram, event1.getPlayer()));
-                    for (Hologram subclassHologram : hologramInstances) {
-                        callClickAction(fromArmorStand(armorStand));
-                    }
                 }
             }
         }

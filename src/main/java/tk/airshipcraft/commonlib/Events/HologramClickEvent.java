@@ -5,6 +5,9 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import tk.airshipcraft.commonlib.utils.Hologram;
+
+import static tk.airshipcraft.commonlib.utils.Hologram.*;
+
 /**
 
  This event is fired whenever a player clicks on a hologram.
