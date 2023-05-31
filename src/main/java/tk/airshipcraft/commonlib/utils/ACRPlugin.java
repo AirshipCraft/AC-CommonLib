@@ -24,12 +24,12 @@ public abstract class ACRPlugin extends CommonLib {
                 }
 
                 // Instantiate the subclass
-                ACRPlugin instance = (ACRPlugin) subclass.getDeclaredConstructor().newInstance();
+                Object instance = subclass.getDeclaredConstructor().newInstance();
 
                 // Invoke the onPluginEnable() method using reflection
                 Method method = subclass.getDeclaredMethod("onPluginEnable");
                 method.invoke(instance);
-                plugins.add(instance);
+                plugins.add((ACRPlugin) instance);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -45,12 +45,12 @@ public abstract class ACRPlugin extends CommonLib {
         for (Class<?> subclass : subclasses) {
             try {
                 // Instantiate the subclass
-                ACRPlugin instance = (ACRPlugin) subclass.getDeclaredConstructor().newInstance();
+                Object instance = subclass.getDeclaredConstructor().newInstance();
 
                 // Invoke the onPluginEnable() method using reflection
                 Method method = subclass.getDeclaredMethod("onPluginDisable");
                 method.invoke(instance);
-                plugins.remove(instance);
+                plugins.remove((ACRPlugin) instance);
             } catch (Exception e) {
                 e.printStackTrace();
             }

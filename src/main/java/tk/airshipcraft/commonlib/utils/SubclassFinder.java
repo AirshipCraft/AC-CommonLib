@@ -23,7 +23,6 @@ public class SubclassFinder {
                 subclasses.add(cls);
             }
         }
-
         return subclasses;
     }
 
@@ -43,7 +42,6 @@ public class SubclassFinder {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return classes;
     }
 
@@ -64,6 +62,7 @@ public class SubclassFinder {
                 String className = packageName + '.' + file.getName().substring(0, file.getName().length() - 6);
                 try {
                     Class<?> cls = Class.forName(className);
+                    System.out.println(cls);
                     classes.add(cls);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
