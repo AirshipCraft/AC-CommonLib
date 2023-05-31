@@ -1,74 +1,31 @@
 package tk.airshipcraft.commonlib.utils;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import tk.airshipcraft.commonlib.CommonLib;
+
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 public class SubclassFinder {
-    private static Class<?> superClass;
-    public SubclassFinder(Class<?> superClass) {
-        this.superClass = superClass;
+    private Class<?> superclass;
+    public SubclassFinder(Class<?> superclass) {
+        this.superclass = superclass;
     }
-
     public List<Class<?>> getSubclasses() {
         List<Class<?>> subclasses = new ArrayList<>();
 
-        List<Class<?>> classes = getClasses();
+        // Get all the classes in the classpath
+        ClassPathScanner classPathScanner = new ClassPathScanner();
+        List<Class<?>> classes = classPathScanner.scanClasses();
 
-        for (Class<?> cls : classes) {
-            if (superClass.isAssignableFrom(cls) && !superClass.equals(cls)) {
-                subclasses.add(cls);
+        // Check each class if it is a subclass of the given superclass
+        for (Class<?> clazz : classes) {
+            if (this.superclass.isAssignableFrom(clazz) && !this.superclass.equals(clazz)) {
+                subclasses.add(clazz);
+                CommonLib.mainInstance.getLogger().warning("Found" + clazz.getName());
             }
         }
+
         return subclasses;
-    }
-
-    private List<Class<?>> getClasses() {
-        List<Class<?>> classes = new ArrayList<>();
-        String packageName = "";  // Set your base package name here
-        String packagePath = packageName.replace('.', '/');
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-
-        try {
-            Enumeration<URL> resources = classLoader.getResources(packagePath);
-            while (resources.hasMoreElements()) {
-                URL resource = resources.nextElement();
-                File directory = new File(resource.getFile());
-                findClasses(directory, packageName, classes);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return classes;
-    }
-
-    private void findClasses(File directory, String packageName, List<Class<?>> classes) {
-        if (!directory.exists()) {
-            return;
-        }
-
-        File[] files = directory.listFiles();
-        if (files == null) {
-            return;
-        }
-
-        for (File file : files) {
-            if (file.isDirectory()) {
-                findClasses(file, packageName + "." + file.getName(), classes);
-            } else if (file.getName().endsWith(".class")) {
-                String className = packageName + '.' + file.getName().substring(0, file.getName().length() - 6);
-                try {
-                    Class<?> cls = Class.forName(className);
-                    System.out.println(cls);
-                    classes.add(cls);
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 }
 
