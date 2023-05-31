@@ -7,11 +7,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ACRPluginManager {
+public class ACRPluginManager extends CommonLib {
     private static List<ACRPlugin> plugins = new ArrayList<>();
 
-    private ACRPluginManager() {
-        throw new AssertionError("Utility class should not be instantiated.");
+    public ACRPluginManager() {
     }
 
     public static void enableSubclasses() {
