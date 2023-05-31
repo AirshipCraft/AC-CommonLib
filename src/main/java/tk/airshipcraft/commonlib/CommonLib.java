@@ -19,13 +19,6 @@ import java.util.function.Supplier;
 public abstract class CommonLib extends JavaPlugin {
     private static final List<CommonLib> plugins = new ArrayList<>();
     public static CommonLib mainInstance;
-    static {
-        for (Plugin plugin : JavaPlugin.getProvidingPlugin(CommonLib.class).getServer().getPluginManager().getPlugins()) {
-            if (plugin instanceof CommonLib) {
-                plugins.add((CommonLib) plugin);
-            }
-        }
-    }
 
     public static List<CommonLib> getPlugins() {
         return plugins;
@@ -33,26 +26,38 @@ public abstract class CommonLib extends JavaPlugin {
     @Override
     public final void onEnable() {
         mainInstance = this;
+        plugins.add(this); // Add the current plugin instance to the list
         onPluginEnable();
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new HologramClickListener(), this);
-        for (CommonLib plugin : plugins) {
-            if (plugin.isEnabled() && !plugin.equals(this)) {
-                plugin.onPluginEnable();
+
+        // Enable subclasses
+        List<Class<? extends CommonLib>> subclasses = getSubclassesOf(CommonLib.class);
+        for (Class<? extends CommonLib> subclass : subclasses) {
+            try {
+                CommonLib plugin = subclass.getDeclaredConstructor().newInstance();
+                plugin.onEnable();
+                plugins.add(plugin);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
 
+
     @Override
     public final void onDisable() {
         onPluginDisable();
-
+        // Disable subclasses
         for (CommonLib plugin : plugins) {
             if (plugin.isEnabled() && !plugin.equals(this)) {
                 plugin.onPluginDisable();
             }
         }
+
+        plugins.remove(this); // Remove the current plugin instance from the list
     }
+
     /**
 
      Returns a list of all the subclasses of the given class, including indirect subclasses. A variable that calls this method should be assigned like this:
