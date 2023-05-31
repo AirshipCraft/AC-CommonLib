@@ -20,6 +20,11 @@ public abstract class ACRPlugin extends CommonLib {
 
         for (Class<?> subclass : subclasses) {
             try {
+                // Check if the subclass is already instantiated
+                if (plugins.contains(subclass)) {
+                    continue; // Skip instantiation if already exists
+                }
+
                 // Instantiate the subclass
                 ACRPlugin instance = (ACRPlugin) subclass.getDeclaredConstructor().newInstance();
 
@@ -32,6 +37,7 @@ public abstract class ACRPlugin extends CommonLib {
             }
         }
     }
+
 
 
     public void disableSubclasses() {
