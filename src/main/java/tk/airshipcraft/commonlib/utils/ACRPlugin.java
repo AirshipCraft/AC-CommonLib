@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+/*
+this class should be extended for any ACR plugins
+*/
 public abstract class ACRPlugin extends CommonLib {
     private static List<ACRPlugin> plugins = new ArrayList<>();
     public ACRPlugin() {
