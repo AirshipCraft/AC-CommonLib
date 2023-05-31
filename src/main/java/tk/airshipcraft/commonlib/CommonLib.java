@@ -19,14 +19,9 @@ import java.util.function.Supplier;
 public abstract class CommonLib extends JavaPlugin {
     private static final List<CommonLib> plugins = new ArrayList<>();
     public static CommonLib mainInstance;
-
-    public static List<CommonLib> getPlugins() {
-        return plugins;
-    }
     @Override
     public final void onEnable() {
         mainInstance = this;
-        plugins.add(this); // Add the current plugin instance to the list
         onPluginEnable();
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new HologramClickListener(), this);
@@ -36,7 +31,7 @@ public abstract class CommonLib extends JavaPlugin {
         for (Class<? extends CommonLib> subclass : subclasses) {
             try {
                 CommonLib plugin = subclass.getDeclaredConstructor().newInstance();
-                plugin.onEnable();
+                plugin.onPluginEnable();
                 plugins.add(plugin);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -50,7 +45,7 @@ public abstract class CommonLib extends JavaPlugin {
         onPluginDisable();
         // Disable subclasses
         for (CommonLib plugin : plugins) {
-            if (plugin.isEnabled() && !plugin.equals(this)) {
+            if (plugin.isEnabled()) {
                 plugin.onPluginDisable();
             }
         }
