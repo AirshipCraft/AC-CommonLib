@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public abstract class ACRPlugin {
+public abstract class ACRPlugin extends CommonLib {
     private static List<ACRPlugin> plugins = new ArrayList<>();
     public ACRPlugin() {
     }
