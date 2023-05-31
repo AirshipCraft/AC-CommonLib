@@ -1,5 +1,8 @@
 package tk.airshipcraft.commonlib.utils;
 
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 import tk.airshipcraft.commonlib.CommonLib;
 
 import java.util.ArrayList;
@@ -12,19 +15,20 @@ public class SubclassFinder {
     }
     public List<Class<?>> getSubclasses() {
         List<Class<?>> subclasses = new ArrayList<>();
-
-        // Get all the classes in the classpath
-        ClassPathScanner classPathScanner = new ClassPathScanner();
-        List<Class<?>> classes = classPathScanner.scanClasses();
-
-        // Check each class if it is a subclass of the given superclass
-        for (Class<?> clazz : classes) {
-            if (this.superclass.isAssignableFrom(clazz) && !this.superclass.equals(clazz)) {
-                subclasses.add(clazz);
-                CommonLib.mainInstance.getLogger().warning("Found" + clazz.getName());
+        Package[] packages = Package.getPackages();
+        for (Package pkg : packages) {
+            String packageName = pkg.getName();
+            for (@NotNull Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
+                if (plugin.getClass().getPackage().getName().equals(packageName)) {
+                    Class<?>[] classes = new Class[]{plugin.getClass()};
+                    for (Class<?> clazz : classes) {
+                        if (superclass.isAssignableFrom(clazz) && !superclass.equals(clazz)) {
+                            subclasses.add(clazz);
+                        }
+                    }
+                }
             }
         }
-
         return subclasses;
     }
 }
