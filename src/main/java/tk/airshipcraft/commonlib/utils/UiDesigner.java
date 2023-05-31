@@ -13,9 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static tk.airshipcraft.commonlib.utils.ACRPlugin.getSubclassesOf;
+import tk.airshipcraft.commonlib.utils.SubclassFinder;
 
 public abstract class UiDesigner {
+    private static SubclassFinder subclassFinder;
+    public UiDesigner() {
+        this.subclassFinder = new SubclassFinder(this.getClass());
+    }
 
     /**
      * Create a GUI inventory with a specific title and inventory type.
@@ -121,12 +125,12 @@ public abstract class UiDesigner {
      */
     public static void callClickAction(Inventory inventory, int slot) {
         // Get all subclasses of UiDesigner
-        List<Class<? extends UiDesigner>> subclasses = getSubclassesOf(UiDesigner.class);
+        List<Class<?>> subclasses = subclassFinder.getSubclasses();
 
         // Iterate over all subclasses and call addClickAction on each instance
-        for (Class<? extends UiDesigner> subclass : subclasses) {
+        for (Class<?> subclass : subclasses) {
             try {
-                UiDesigner instance = subclass.getDeclaredConstructor().newInstance();
+                UiDesigner instance = (UiDesigner) subclass.getDeclaredConstructor().newInstance();
                 instance.addClickAction(inventory, slot);
             } catch (Exception e) {
                 // Handle any exceptions thrown when instantiating subclasses or calling addClickAction

@@ -17,8 +17,6 @@ import tk.airshipcraft.commonlib.Events.HologramClickEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import static tk.airshipcraft.commonlib.utils.ACRPlugin.getSubclassesOf;
-
 /**
 
  A utility class for creating and managing holograms in Minecraft using ArmorStands.
@@ -29,6 +27,7 @@ public abstract class Hologram implements Listener {
     private final Location location;
     public static final List<Hologram> hologramInstances = new ArrayList<>();
     private final String[] lines;
+    private static SubclassFinder subclassFinder;
 /**
 
  Creates a new Hologram at the given location with the given lines.
@@ -38,6 +37,7 @@ public abstract class Hologram implements Listener {
  public Hologram(Location location, String... lines) {
         this.location = location.clone().add(0, (lines.length - 1) * 0.25, 0);
         this.lines = lines;
+        subclassFinder = new SubclassFinder(this.getClass());
         for (int i = 0; i < lines.length; i++) {
             ArmorStand armorStand = (ArmorStand) location.getWorld().spawnEntity(location.clone().add(0, -i * 0.25, 0), EntityType.ARMOR_STAND);
             armorStand.setGravity(false);
@@ -147,10 +147,10 @@ public abstract class Hologram implements Listener {
      * @param hologram the hologram with the click action
      */
     public static void callClickAction(Hologram hologram) {
-        List<Class<? extends Hologram>> subclasses = getSubclassesOf(Hologram.class);
-        for (Class<? extends Hologram> subclass : subclasses) {
+        List<Class<?>> subclasses = subclassFinder.getSubclasses();
+        for (Class<?> subclass : subclasses) {
             try {
-                Hologram instance = subclass.getDeclaredConstructor().newInstance();
+                Hologram instance = (Hologram) subclass.getDeclaredConstructor().newInstance();
                 instance.addClickAction(hologram);
             } catch (Exception e) {
                 // Handle any exceptions thrown when instantiating subclasses or calling addClickAction
