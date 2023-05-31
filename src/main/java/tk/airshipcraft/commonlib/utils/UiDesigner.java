@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static tk.airshipcraft.commonlib.utils.ACRPlugin.getSubclassesOf;
+import static tk.airshipcraft.commonlib.utils.ACRPluginManager.getSubclassesOf;
 
 public abstract class UiDesigner {
 
