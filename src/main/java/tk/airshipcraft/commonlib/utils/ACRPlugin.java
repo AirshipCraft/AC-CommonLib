@@ -17,6 +17,7 @@ public abstract class ACRPlugin extends CommonLib {
     }
     public static void enableSubclasses() {
         // Enable subclasses
+        mainInstance.getLogger().warning("test");
         List<Class<? extends ACRPlugin>> subclasses = getSubclassesOf(ACRPlugin.class);
         for (Class<? extends ACRPlugin> subclass : subclasses) {
             try {
