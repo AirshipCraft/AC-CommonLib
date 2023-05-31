@@ -52,10 +52,8 @@ public abstract class ACRPlugin extends CommonLib {
                             try {
                                 String fullClassName = packageName + '.' + className.substring(0, className.length() - 6);
                                 Class<?> c = Class.forName(fullClassName);
-                                if (clazz.isAssignableFrom(c) && !clazz.equals(c)) {
-                                    System.out.println(clazz);
-                                    subclasses.add(c.asSubclass(clazz));
-                                }
+                                System.out.println(clazz);
+                                subclasses.add(c.asSubclass(clazz));
                             } catch (ClassNotFoundException e) {
                                 throw new NullPointerException("Class not found: " + e);
                             }
