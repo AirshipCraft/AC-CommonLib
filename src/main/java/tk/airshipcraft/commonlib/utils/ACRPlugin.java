@@ -21,25 +21,34 @@ public abstract class ACRPlugin extends CommonLib {
         for (Class<? extends ACRPlugin> subclass : subclasses) {
             try {
                 ACRPlugin plugin = subclass.getDeclaredConstructor().newInstance();
-                plugin.onPluginEnable();
                 plugins.add(plugin);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
+        // Call onPluginEnable() for each enabled plugin
+        for (ACRPlugin plugin : plugins) {
+            plugin.onPluginEnable();
+        }
     }
 
+
     public static void disableSubclasses() {
-        for (ACRPlugin plugin : plugins) {
-            if (plugin.isEnabled(plugin)) {
+        // Iterate over the plugins in reverse order to ensure correct disabling
+        for (int i = plugins.size() - 1; i >= 0; i--) {
+            ACRPlugin plugin = plugins.get(i);
+            if (plugin.isEnabled()) {
                 plugin.onPluginDisable();
+                plugins.remove(i);
             }
         }
     }
+
     /**
 
      Returns a list of all the subclasses of the given class, including indirect subclasses. A variable that calls this method should be assigned like this:
-     List<\Class<\? extends Hologram>> subclasses = getSubclassesOf(Your.class); (remove the backslashes)
+     List<\Class<\? extends YourClass>> subclasses = getSubclassesOf(Your.class); (remove the backslashes)
      @param clazz the class to get the subclasses of
      @param <T> the type of the given class
      @return a list of subclasses of the given class
@@ -73,10 +82,6 @@ public abstract class ACRPlugin extends CommonLib {
             }
         }
         return subclasses;
-    }
-
-    public Boolean isEnabled(ACRPlugin plugin) {
-        return plugins.contains(plugin);
     }
     public abstract void onPluginEnable();
 
