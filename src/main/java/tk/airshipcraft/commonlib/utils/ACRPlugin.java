@@ -11,11 +11,9 @@ import java.util.List;
 public abstract class ACRPlugin extends CommonLib {
     private static List<ACRPlugin> plugins = new ArrayList<>();
     private static SubclassFinder subclassFinder;
-    public ACRPlugin() {
-        subclassFinder = new SubclassFinder(this.getClass());
-    }
 
-    public void enableSubclasses() {
+    public static void enableSubclasses() {
+        subclassFinder = new SubclassFinder(ACRPlugin.class);
         List<Class<?>> subclasses = subclassFinder.getSubclasses();
 
         for (Class<?> subclass : subclasses) {
@@ -40,7 +38,8 @@ public abstract class ACRPlugin extends CommonLib {
 
 
 
-    public void disableSubclasses() {
+    public static void disableSubclasses() {
+        subclassFinder = new SubclassFinder(ACRPlugin.class);
         List<Class<?>> subclasses = subclassFinder.getSubclasses();
 
         for (Class<?> subclass : subclasses) {
