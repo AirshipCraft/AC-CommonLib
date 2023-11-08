@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AC-CommonLib" target="1.5" />
+      <module name="commonlib" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>

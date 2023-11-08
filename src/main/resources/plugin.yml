@@ -6,3 +6,5 @@ authors: [ notzune ]
 description: Plugin library for AirshipCraft
 website: https://www.airshipcraft.tk/docs/book
 folia-supported: true
+events:
+  - tk.airshipcraft.commonlib.Events.GuiClickCustomEvent
