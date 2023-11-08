@@ -1,18 +1,17 @@
 package tk.airshipcraft.commonlib.utils.cooldowns;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Cooldown implementation that keeps track of objects in ticks. The value given in the constructor is assumed to be in
  * ticks and time stamps are stored as a tick timestamp, which is powered by an internal counter that's incremented
  * every tick
  *
- * @param <E>
- *            Object that cooldowns are assigned to
+ * @param <E> Object that cooldowns are assigned to
  * @author Maxopoly
  */
 public class TickCoolDownHandler<E> implements ICoolDownHandler<E> {

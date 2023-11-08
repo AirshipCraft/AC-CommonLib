@@ -18,6 +18,7 @@ public class BelowName {
 
     /**
      * Constructs a new Belowname instance with the specified ScoreboardManager.
+     *
      * @param manager the ScoreboardManager to use for creating a new Scoreboard
      */
     public BelowName(ScoreboardManager manager) {
@@ -27,7 +28,8 @@ public class BelowName {
 
     /**
      * Sets the display name of the belowname scoreboard for the specified player.
-     * @param player the player whose scoreboard display name will be set
+     *
+     * @param player      the player whose scoreboard display name will be set
      * @param displayName the new display name for the belowname scoreboard
      */
     public void setDisplayName(Player player, String displayName) {
@@ -42,7 +44,8 @@ public class BelowName {
 
     /**
      * Adds a new team to the belowname scoreboard with the specified name and color.
-     * @param name the name of the team to add
+     *
+     * @param name  the name of the team to add
      * @param color the color of the team
      * @return the newly created Team object
      */
@@ -54,8 +57,9 @@ public class BelowName {
 
     /**
      * Sets the team for the specified player on the belowname scoreboard.
+     *
      * @param player the player whose team will be set
-     * @param team the team to set for the player
+     * @param team   the team to set for the player
      */
     public void setTeam(Player player, Team team) {
         team.addEntry(player.getName());
@@ -64,7 +68,8 @@ public class BelowName {
 
     /**
      * Sets the belowname for the specified player on the belowname scoreboard.
-     * @param player the player whose belowname will be set
+     *
+     * @param player    the player whose belowname will be set
      * @param belowname the new belowname for the player
      */
     public void setBelowname(Player player, String belowname) {

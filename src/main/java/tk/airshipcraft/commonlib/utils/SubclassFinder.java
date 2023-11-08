@@ -3,16 +3,17 @@ package tk.airshipcraft.commonlib.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
-import tk.airshipcraft.commonlib.CommonLib;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SubclassFinder {
     private Class<?> superclass;
+
     public SubclassFinder(Class<?> superclass) {
         this.superclass = superclass;
     }
+
     public List<Class<?>> getSubclasses() {
         List<Class<?>> subclasses = new ArrayList<>();
         Package[] packages = Package.getPackages();

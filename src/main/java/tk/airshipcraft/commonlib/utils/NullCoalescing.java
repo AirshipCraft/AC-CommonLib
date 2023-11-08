@@ -5,18 +5,13 @@ import java.util.function.Supplier;
 
 public final class NullCoalescing {
 
-    @FunctionalInterface
-    public interface NullChecker<T> {
-        T get() throws Exception;
-    }
-
     /**
      * <p>Returns the first non-null given parameter, if any are given.</p>
      *
      * <p>Emulates:
      * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator</p>
      *
-     * @param <T> Any non-primitive type.
+     * @param <T>   Any non-primitive type.
      * @param items The list of parameters to find a non-null value from.
      * @return Returns the first non-null value found, or null.
      */
@@ -35,7 +30,7 @@ public final class NullCoalescing {
      *
      * <p>Emulates: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining</p>
      *
-     * @param <T> Any non-primitive type.
+     * @param <T>       Any non-primitive type.
      * @param statement Function that throws an exception to call the chained statement within.
      * @return Returns the result of the chained statement, or null if the chain failed.
      */
@@ -49,9 +44,9 @@ public final class NullCoalescing {
      * <p>Emulates: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining and
      * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator</p>
      *
-     * @param <T> Any non-primitive type.
+     * @param <T>       Any non-primitive type.
      * @param statement Function that throws an exception to call the chained statement within.
-     * @param fallback The value that will be fallen back upon if something goes wrong.
+     * @param fallback  The value that will be fallen back upon if something goes wrong.
      * @return Returns the result of the chained statement, or the fallback if the chain failed.
      */
     public static <T> T chain(NullChecker<T> statement, T fallback) {
@@ -60,8 +55,7 @@ public final class NullCoalescing {
         }
         try {
             return statement.get();
-        }
-        catch (Exception ignored) {
+        } catch (Exception ignored) {
             return fallback;
         }
     }
@@ -69,8 +63,8 @@ public final class NullCoalescing {
     /**
      * Runs a handler only if the given value is not null.
      *
-     * @param <T> The type of the given parameter.
-     * @param value The given parameter.
+     * @param <T>     The type of the given parameter.
+     * @param value   The given parameter.
      * @param handler The handler to run if the given parameter exists.
      */
     public static <T> void exists(T value, Consumer<T> handler) {
@@ -82,8 +76,8 @@ public final class NullCoalescing {
     /**
      * Executes a function to supply a value should that value not already exist.
      *
-     * @param <T> The type of the value.
-     * @param value The given value.
+     * @param <T>     The type of the value.
+     * @param value   The given value.
      * @param handler The supplier that will be run should the given value be null.
      * @return Returns the given value or the result of the handler.
      */
@@ -97,7 +91,7 @@ public final class NullCoalescing {
     /**
      * Checks whether a value can be cast to a particular type.
      *
-     * @param <T> The type to cast to.
+     * @param <T>   The type to cast to.
      * @param clazz The class of the type.
      * @param value The value to attempt to cast.
      * @return Returns the value cast to the given type, nor null.
@@ -151,5 +145,10 @@ public final class NullCoalescing {
             return true;
         }
         return false;
+    }
+
+    @FunctionalInterface
+    public interface NullChecker<T> {
+        T get() throws Exception;
     }
 }

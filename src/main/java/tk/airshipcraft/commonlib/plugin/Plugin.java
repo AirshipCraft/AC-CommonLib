@@ -3,7 +3,11 @@ package tk.airshipcraft.commonlib.plugin;
 import org.bukkit.plugin.PluginLoadOrder;
 
 import javax.annotation.Nonnull;
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * Annotation to automatically generate plugin.yml files for AC projects

@@ -75,6 +75,6 @@ public class ParticleEffect {
     @Override
     public String toString() {
         return String.format("  type: %s \n   offsetX: %f \n   offsetY: %f \n   offsetZ: %f \n   speed:"
-                + " " + "%f \n   particleCount: %d", particle, offsetX, offsetY, offsetZ, speed, particleCount);
+                                     + " " + "%f \n   particleCount: %d", particle, offsetX, offsetY, offsetZ, speed, particleCount);
     }
 }

@@ -24,6 +24,7 @@ public class Bossbar {
     public Bossbar(String title, BarColor color, BarStyle style) {
         bossbar = Bukkit.createBossBar(title, color, style);
     }
+
     /**
      * Adds a player to the boss bar.
      *
@@ -43,57 +44,21 @@ public class Bossbar {
     }
 
     /**
-     * Sets the title of the boss bar.
-     *
-     * @param title The new title.
-     */
-    public void setTitle(String title) {
-        bossbar.setTitle(title);
-    }
-
-    /**
-     * Sets the color of the boss bar.
-     *
-     * @param color The new color.
-     */
-    public void setColor(BarColor color) {
-        bossbar.setColor(color);
-    }
-
-    /**
-     * Sets the style of the boss bar.
-     *
-     * @param style The new style.
-     */
-    public void setStyle(BarStyle style) {
-        bossbar.setStyle(style);
-    }
-
-    /**
-     * Sets the progress of the boss bar.
-     *
-     * @param progress The new progress (a value between 0 and 1).
-     */
-    public void setProgress(double progress) {
-        bossbar.setProgress(progress);
-    }
-
-    /**
-     * Sets the visibility of the boss bar.
-     *
-     * @param visible Whether the boss bar should be visible.
-     */
-    public void setVisible(boolean visible) {
-        bossbar.setVisible(visible);
-    }
-
-    /**
      * Gets the title of the boss bar.
      *
      * @return The title of the boss bar.
      */
     public String getTitle() {
         return bossbar.getTitle();
+    }
+
+    /**
+     * Sets the title of the boss bar.
+     *
+     * @param title The new title.
+     */
+    public void setTitle(String title) {
+        bossbar.setTitle(title);
     }
 
     /**
@@ -106,12 +71,30 @@ public class Bossbar {
     }
 
     /**
+     * Sets the color of the boss bar.
+     *
+     * @param color The new color.
+     */
+    public void setColor(BarColor color) {
+        bossbar.setColor(color);
+    }
+
+    /**
      * Gets the style of the boss bar.
      *
      * @return The style of the boss bar.
      */
     public BarStyle getStyle() {
         return bossbar.getStyle();
+    }
+
+    /**
+     * Sets the style of the boss bar.
+     *
+     * @param style The new style.
+     */
+    public void setStyle(BarStyle style) {
+        bossbar.setStyle(style);
     }
 
     /**
@@ -124,6 +107,15 @@ public class Bossbar {
     }
 
     /**
+     * Sets the progress of the boss bar.
+     *
+     * @param progress The new progress (a value between 0 and 1).
+     */
+    public void setProgress(double progress) {
+        bossbar.setProgress(progress);
+    }
+
+    /**
      * Returns whether the boss bar is visible.
      *
      * @return true if the boss bar is visible, false otherwise.
@@ -131,6 +123,16 @@ public class Bossbar {
     public boolean isVisible() {
         return bossbar.isVisible();
     }
+
+    /**
+     * Sets the visibility of the boss bar.
+     *
+     * @param visible Whether the boss bar should be visible.
+     */
+    public void setVisible(boolean visible) {
+        bossbar.setVisible(visible);
+    }
+
     /**
      * Animates the progress of the boss bar to the specified value.
      *
@@ -145,11 +147,12 @@ public class Bossbar {
             Bukkit.getScheduler().scheduleSyncDelayedTask(CommonLib.mainInstance, () -> bossbar.setProgress(newProgress), i);
         }
     }
+
     /**
      * Adds a message to the boss bar with a specified emoji. (without the object symbol)
      *
      * @param message The message to add to the boss bar.
-     * @param emoji The emoji to use.
+     * @param emoji   The emoji to use.
      */
     public void addEmoji(String message, String emoji) {
         String translated = ChatColor.translateAlternateColorCodes('&', message).replace("&e", emoji);

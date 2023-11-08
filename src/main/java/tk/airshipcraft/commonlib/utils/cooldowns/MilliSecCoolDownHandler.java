@@ -7,8 +7,7 @@ import java.util.Map;
  * Cooldown implementation that keeps track of objects in milliseconds. The value given in the constructor is assumed to
  * be in milliseconds and time stamps are stored as unix timestamp
  *
- * @param <E>
- *            Object that cooldowns are assigned to
+ * @param <E> Object that cooldowns are assigned to
  * @author Maxopoly
  */
 public class MilliSecCoolDownHandler<E> implements ICoolDownHandler<E> {

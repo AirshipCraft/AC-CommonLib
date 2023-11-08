@@ -5,18 +5,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import tk.airshipcraft.commonlib.Objects.Ui;
 import tk.airshipcraft.commonlib.CommonLib;
+import tk.airshipcraft.commonlib.Objects.Ui;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import tk.airshipcraft.commonlib.utils.SubclassFinder;
 
 public abstract class UiDesigner {
     private static SubclassFinder subclassFinder;
+
     public UiDesigner() {
         this.subclassFinder = new SubclassFinder(this.getClass());
     }
@@ -30,6 +26,28 @@ public abstract class UiDesigner {
      */
     public static Ui createGUI(String title, InventoryType type) {
         return new Ui(title, null, type);
+    }
+
+    /**
+     * Calls the addClickAction method for all subclasses of the UiDesigner class with the provided inventory and slot parameters.
+     *
+     * @param inventory the inventory to pass to the addClickAction method of each subclass
+     * @param slot      the slot to pass to the addClickAction method of each subclass
+     */
+    public static void callClickAction(Inventory inventory, int slot) {
+        // Get all subclasses of UiDesigner
+        List<Class<?>> subclasses = subclassFinder.getSubclasses();
+
+        // Iterate over all subclasses and call addClickAction on each instance
+        for (Class<?> subclass : subclasses) {
+            try {
+                UiDesigner instance = (UiDesigner) subclass.getDeclaredConstructor().newInstance();
+                instance.addClickAction(inventory, slot);
+            } catch (Exception e) {
+                // Handle any exceptions thrown when instantiating subclasses or calling addClickAction
+                CommonLib.mainInstance.getLogger().warning("No click actions found for " + subclass);
+            }
+        }
     }
 
     /**
@@ -107,7 +125,6 @@ public abstract class UiDesigner {
         }
     }
 
-
     /**
      * Add an action to be executed when a player clicks on a specific slot in the inventory.
      *
@@ -115,29 +132,6 @@ public abstract class UiDesigner {
      * @param slot      the slot to add the action to
      */
     public abstract void addClickAction(Inventory inventory, int slot);
-
-
-    /**
-     * Calls the addClickAction method for all subclasses of the UiDesigner class with the provided inventory and slot parameters.
-     *
-     * @param inventory the inventory to pass to the addClickAction method of each subclass
-     * @param slot      the slot to pass to the addClickAction method of each subclass
-     */
-    public static void callClickAction(Inventory inventory, int slot) {
-        // Get all subclasses of UiDesigner
-        List<Class<?>> subclasses = subclassFinder.getSubclasses();
-
-        // Iterate over all subclasses and call addClickAction on each instance
-        for (Class<?> subclass : subclasses) {
-            try {
-                UiDesigner instance = (UiDesigner) subclass.getDeclaredConstructor().newInstance();
-                instance.addClickAction(inventory, slot);
-            } catch (Exception e) {
-                // Handle any exceptions thrown when instantiating subclasses or calling addClickAction
-                CommonLib.mainInstance.getLogger().warning("No click actions found for " + subclass);
-            }
-        }
-    }
 }
 
 

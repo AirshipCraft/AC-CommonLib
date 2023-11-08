@@ -2,9 +2,7 @@ package tk.airshipcraft.commonlib.utils;
 
 import tk.airshipcraft.commonlib.CommonLib;
 
-import java.io.File;
 import java.lang.reflect.Method;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +33,6 @@ public abstract class ACRPlugin extends CommonLib {
             }
         }
     }
-
 
 
     public static void disableSubclasses() {

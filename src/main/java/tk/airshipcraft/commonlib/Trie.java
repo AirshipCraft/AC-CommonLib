@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * A trie (derived from retrieval) is a multiway tree data structure used for storing strings over an alphabet.
  * It is used to store a large amount of strings. The pattern matching can be done efficiently using tries.
- *
+ * <p>
  * Preprocessing pattern improves the performance of pattern matching algorithm.
  * But if a text is very large then it is better to preprocess text instead of pattern for efficient search.
  * A trie is a data structure that supports pattern matching queries in time proportional to the pattern size.
@@ -25,16 +25,16 @@ public final class Trie {
     //whether this non-leaf also represents the end of a word
     private boolean isEnd;
 
-    public static Trie getNewTrie() {
-        Trie trie = new Trie("", 0);
-        trie.children = new HashMap<>();
-        return trie;
-    }
-
     private Trie(String word, int depth) {
         this.word = word;
         this.depth = depth;
         this.isEnd = false;
+    }
+
+    public static Trie getNewTrie() {
+        Trie trie = new Trie("", 0);
+        trie.children = new HashMap<>();
+        return trie;
     }
 
     public boolean isLeaf() {
@@ -51,8 +51,7 @@ public final class Trie {
             if (word.length() > depth) {
                 children.put(word.charAt(depth), new Trie(word, depth + 1));
                 this.word = word.substring(0, depth);
-            }
-            else {
+            } else {
                 isEnd = true;
             }
         }
@@ -66,7 +65,7 @@ public final class Trie {
         return result;
     }
 
-    public List<String> complete(String [] args) {
+    public List<String> complete(String[] args) {
         String full = String.join(" ", args);
         List<String> matches = match(full);
         if (args.length < 2) {
@@ -91,7 +90,7 @@ public final class Trie {
                 //we can not be a prefix if we are shorter
                 return;
             }
-            for(int i = depth; i < this.word.length(); i++) {
+            for (int i = depth; i < this.word.length(); i++) {
                 if (wordToMatch.charAt(i) != this.word.charAt(i)) {
                     return;
                 }
@@ -103,7 +102,7 @@ public final class Trie {
             }
             if (wordToMatch.length() <= depth) {
                 //valid prefix from here on and deeper, so deep search and add everything below
-                for(Trie subTrie : children.values()) {
+                for (Trie subTrie : children.values()) {
                     subTrie.matchWord(wordToMatch, result);
                 }
                 return;

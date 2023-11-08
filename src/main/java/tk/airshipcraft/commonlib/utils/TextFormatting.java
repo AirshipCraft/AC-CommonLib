@@ -3,7 +3,6 @@ package tk.airshipcraft.commonlib.utils;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import net.kyori.adventure.text.Component;
-
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -12,6 +11,13 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TextFormatting {
+
+    private static final String titleizeLine = repeat("_", 52);
+    private static final int titleizeBalance = -1;
+
+    // -------------------------------------------- //
+    // Top-level parsing functions.
+    // -------------------------------------------- //
 
     public static String formatDuration(long time) {
         return formatDuration(time, TimeUnit.MILLISECONDS);
@@ -40,7 +46,7 @@ public class TextFormatting {
     }
 
     // -------------------------------------------- //
-    // Top-level parsing functions.
+    // Color parsing
     // -------------------------------------------- //
 
     public static String parse(String str, Object... args) {
@@ -50,10 +56,6 @@ public class TextFormatting {
     public static String parse(String str) {
         return parseColor(str);
     }
-
-    // -------------------------------------------- //
-    // Color parsing
-    // -------------------------------------------- //
 
     public static String parseColor(String string) {
         string = parseColorAmp(string);
@@ -103,6 +105,10 @@ public class TextFormatting {
                 replace("`R", ChatColor.RESET.toString()).
                 replace("`r", ChatColor.RESET.toString());
     }
+
+    // -------------------------------------------- //
+    // Standard utils like UCFirst, implode and repeat.
+    // -------------------------------------------- //
 
     public static String parseColorTags(String string) {
         return string.
@@ -158,10 +164,6 @@ public class TextFormatting {
         return parseColorTags(sting);
     }
 
-    // -------------------------------------------- //
-    // Standard utils like UCFirst, implode and repeat.
-    // -------------------------------------------- //
-
     public static String upperCaseFirst(String string) {
         Preconditions.checkArgument(string != null);
         return string.substring(0, 1).toUpperCase() + string.substring(1);
@@ -171,8 +173,7 @@ public class TextFormatting {
         Preconditions.checkArgument(string != null);
         if (times <= 0) {
             return "";
-        }
-        else {
+        } else {
             return string + repeat(string, times - 1);
         }
     }
@@ -189,6 +190,10 @@ public class TextFormatting {
         }
         return ret.toString();
     }
+
+    // -------------------------------------------- //
+    // Paging and chrome-tools like titleize
+    // -------------------------------------------- //
 
     public static String implodeCommaAnd(List<String> list, String comma, String and) {
         if (list.size() == 0) {
@@ -209,13 +214,6 @@ public class TextFormatting {
         return implodeCommaAnd(list, ", ", " and ");
     }
 
-    // -------------------------------------------- //
-    // Paging and chrome-tools like titleize
-    // -------------------------------------------- //
-
-    private static final String titleizeLine = repeat("_", 52);
-    private static final int titleizeBalance = -1;
-
     public static String titleize(String str) {
         return titleize("<a>", str);
     }
@@ -229,8 +227,7 @@ public class TextFormatting {
 
         if (eatLeft < pivot) {
             return parseColorTags(colorCode) + titleizeLine.substring(0, pivot - eatLeft) + center + titleizeLine.substring(pivot + eatRight);
-        }
-        else {
+        } else {
             return parseColorTags(colorCode) + center;
         }
     }
@@ -246,8 +243,7 @@ public class TextFormatting {
         if (pagecount == 0) {
             ret.add(parseColorTags("<i>Sorry. No Pages available."));
             return ret;
-        }
-        else if (pageZeroBased < 0 || pageHumanBased > pagecount) {
+        } else if (pageZeroBased < 0 || pageHumanBased > pagecount) {
             ret.add(parseColorTags("<i>Invalid page. Must be between 1 and " + pagecount));
             return ret;
         }
@@ -266,7 +262,7 @@ public class TextFormatting {
     /**
      * Static utility method for easily sending formatting strings to players.
      *
-     * @param player The player
+     * @param player  The player
      * @param message The message
      */
     @Deprecated
@@ -279,9 +275,9 @@ public class TextFormatting {
     /**
      * Static utility method for easily sending formatting strings to players.
      *
-     * @param player The player
+     * @param player  The player
      * @param message The message
-     * @param args Additional arguments which are used later in a String.format()
+     * @param args    Additional arguments which are used later in a String.format()
      */
     @Deprecated
     public static void msg(Player player, String message, Object... args) {

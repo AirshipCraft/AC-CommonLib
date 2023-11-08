@@ -2,38 +2,29 @@ package tk.airshipcraft.commonlib.Objects;
 
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.ComponentLike;
-import net.kyori.adventure.text.TextReplacementConfig;
 import org.bukkit.Bukkit;
-import org.bukkit.block.data.type.Chest;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
-import tk.airshipcraft.commonlib.Events.GuiClickEvent;
-import tk.airshipcraft.commonlib.utils.UiDesigner;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Ui implements Listener {
+    private static String inventoryName;
     private Inventory inventory;
     private UUID inventoryId;
     private InventoryType type;
     private InventoryHolder owner;
     private int rows;
-    private static String inventoryName;
 
     /**
-     *
      * @param inventoryName sets the name of the inventory
-     * @param owner who owns the inventory
-     * @param type the type of inventory to open. This is preferred to be a chest.
+     * @param owner         who owns the inventory
+     * @param type          the type of inventory to open. This is preferred to be a chest.
      */
     public Ui(String inventoryName, @Nullable InventoryHolder owner, InventoryType type) {
         this.inventory = Bukkit.createInventory(owner, type, inventoryName);
@@ -47,15 +38,6 @@ public class Ui implements Listener {
     }
 
     /**
-     *
-     * @return the Ui name
-     */
-    public String getName() {
-        return inventoryName;
-    }
-
-    /**
-     *
      * @param inventoryName the name of the inventory you want to check
      * @return a boolean if the inventoryName is equal to a Ui name
      */
@@ -64,20 +46,25 @@ public class Ui implements Listener {
     }
 
     /**
-     *
-     * @return the Ui's UUID
-     */
-    public UUID getId() {
-        return this.inventoryId;
-    }
-
-    /**
-     *
      * @param inventory that you want to check
      * @return a boolean if the inventory is an instance of Ui
      */
     public static Boolean isUi(Inventory inventory) {
         return inventory instanceof Ui;
+    }
+
+    /**
+     * @return the Ui name
+     */
+    public String getName() {
+        return inventoryName;
+    }
+
+    /**
+     * @return the Ui's UUID
+     */
+    public UUID getId() {
+        return this.inventoryId;
     }
 
     /**
@@ -89,15 +76,15 @@ public class Ui implements Listener {
     }
 
     /**
-     *
      * @param items The desired items to add in the GUI
      */
-    public void addButton(ItemStack ... items) {
+    public void addButton(ItemStack... items) {
         this.inventory.addItem(items);
     }
 
     /**
      * Sets the name to the current UI
+     *
      * @param name the name to set the UI to.
      * @return the new inventory, which contains the old items
      */
