@@ -13,11 +13,12 @@ import java.util.stream.Collectors;
  */
 public enum SearchAlgorithm implements StringDistance {
 
-//    NORMALIZED_LEVENSHTEIN(new NormalizedLevenshteinAlgorithm()),
+    //    NORMALIZED_LEVENSHTEIN(new NormalizedLevenshteinAlgorithm()),
     DUKE_JARO_WINKLER(new DukeJaroWinklerAlgorithm());
 
     /**
      * All search algorithms.
+     *
      * @see SearchAlgorithm
      */
     @Unmodifiable
