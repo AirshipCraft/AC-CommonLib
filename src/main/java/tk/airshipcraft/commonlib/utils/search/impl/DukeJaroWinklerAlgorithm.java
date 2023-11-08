@@ -17,7 +17,6 @@ import java.util.Arrays;
  * algorithm down drastically.
  * <p></p>
  * Originally from:
- *
  * @author Lars Marius Garshol
  * @link <a href="https://github.com/larsga/Duke/blob/master/duke-core/src/main/java/no/priv/garshol/duke/comparators/JaroWinkler.java">Lars Marius Garshol</a>
  */
@@ -27,7 +26,6 @@ public final class DukeJaroWinklerAlgorithm implements StringDistance {
      * <p></p>
      * This implementation uses the same algorithm as in the original
      * <a href="http://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance"> Wikipedia article</a>.Jaro-Winkler distance</a> implementation.
-     *
      * @param x the first string
      * @param y the second string
      * @return the Jaro-Winkler similarity between the two strings

@@ -18,13 +18,14 @@ public class BiasedRandomPicker<E> {
 
     /**
      * Constructor
-     * <p>
+     *
      * The given map should contain all objects that should be available in this instance, where each key is an object
      * to pick and the respective value for that key is the chance to pick that item. Chances must be within [0,1],
      * where 0 means 0 % chance to occur and 1 means 100 %. All chances summed up must equal one with a maximum
      * inaccuracy of 10^(-6)
      *
      * @param chances Map containing all available objects and their chances to occur
+     *
      */
     public BiasedRandomPicker(Map<E, Double> chances) {
         if (chances == null) {
