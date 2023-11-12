@@ -333,7 +333,7 @@ public class TextFormatting {
     }
 
     /**
-     * Determins if one string starts with another.
+     * Determines if one string starts with another.
      *
      * @param container The string to check the start of.
      * @param contained The string to search for.
@@ -412,7 +412,7 @@ public class TextFormatting {
 //                    component.setStrikethrough(false);
 //                    component.setObfuscated(false);
 //                }
-//                else if (format == ChatColor.BOLD) {
+//                else if (format == ChatCidk olor.BOLD) {
 //                    component.setBold(true);
 //                }
 //                else if (format == ChatColor.ITALIC) {

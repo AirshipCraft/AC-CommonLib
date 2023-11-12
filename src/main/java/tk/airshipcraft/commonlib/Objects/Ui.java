@@ -14,6 +14,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Ui implements Listener {
+
     private static String inventoryName;
     private Inventory inventory;
     private UUID inventoryId;

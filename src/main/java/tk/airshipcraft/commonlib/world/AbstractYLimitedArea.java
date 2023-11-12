@@ -5,7 +5,6 @@ import org.bukkit.Location;
 public abstract class AbstractYLimitedArea implements IArea {
 
     private double lowerYBound;
-
     private double upperYBound;
 
     public AbstractYLimitedArea(double lowerYBound, double upperYBound) {

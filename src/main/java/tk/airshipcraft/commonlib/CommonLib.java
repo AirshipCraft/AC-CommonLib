@@ -24,7 +24,4 @@ public class CommonLib extends JavaPlugin {
     public final void onDisable() {
         ACRPlugin.disableSubclasses();
     }
-
 }
-
-
