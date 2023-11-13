@@ -12,6 +12,7 @@ import tk.airshipcraft.commonlib.CommonLib;
  * Represents a Minecraft boss bar.
  */
 public class Bossbar {
+
     private BossBar bossbar;
 
     /**
@@ -144,7 +145,7 @@ public class Bossbar {
         double increment = (progress - currentProgress) / duration;
         for (int i = 0; i < duration; i++) {
             final double newProgress = currentProgress + increment;
-            Bukkit.getScheduler().scheduleSyncDelayedTask(CommonLib.mainInstance, () -> bossbar.setProgress(newProgress), i);
+            Bukkit.getScheduler().scheduleSyncDelayedTask(CommonLib.getInstance(), () -> bossbar.setProgress(newProgress), i);
         }
     }
 
