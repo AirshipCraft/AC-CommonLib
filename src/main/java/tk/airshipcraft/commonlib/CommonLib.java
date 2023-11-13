@@ -3,10 +3,8 @@ package tk.airshipcraft.commonlib;
 import org.bukkit.plugin.java.JavaPlugin;
 import tk.airshipcraft.commonlib.Events.HologramClickListener;
 import tk.airshipcraft.commonlib.Events.InventoryClickListener;
-import tk.airshipcraft.commonlib.utils.ACRPlugin;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Main class of the CommonLib library.
