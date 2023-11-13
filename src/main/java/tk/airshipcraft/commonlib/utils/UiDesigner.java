@@ -11,7 +11,9 @@ import tk.airshipcraft.commonlib.Objects.Ui;
 import java.util.List;
 
 public abstract class UiDesigner {
+    
     private static SubclassFinder subclassFinder;
+    private static CommonLib commonLib = CommonLib.getInstance();
 
     public UiDesigner() {
         this.subclassFinder = new SubclassFinder(this.getClass());
@@ -45,7 +47,7 @@ public abstract class UiDesigner {
                 instance.addClickAction(inventory, slot);
             } catch (Exception e) {
                 // Handle any exceptions thrown when instantiating subclasses or calling addClickAction
-                CommonLib.mainInstance.getLogger().warning("No click actions found for " + subclass);
+                commonLib.logDebug("No click actions found for " + subclass);
             }
         }
     }
