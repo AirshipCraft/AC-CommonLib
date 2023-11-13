@@ -6,17 +6,18 @@ import tk.airshipcraft.commonlib.Events.InventoryClickListener;
 import tk.airshipcraft.commonlib.utils.ACRPlugin;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Main class of the CommonLib library.
  * This class initializes the library and manages the lifecycle of the plugins that extend it.
  * It uses a Singleton pattern to ensure that only one instance of CommonLib exists.
- * It also provides logging capabilities.
+ * It also provides enhanced logging capabilities.
  */
 public class CommonLib extends JavaPlugin {
 
     private static CommonLib instance;
-    private boolean debugEnabled = false; // Add a flag to control debug logging
+    private boolean debugEnabled = false; // Flag to control debug logging
 
     /**
      * Returns the single instance of CommonLib.
@@ -34,7 +35,7 @@ public class CommonLib extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        setupLogging(); // Setup logging
+        setupLogging(); // Set up logging
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new HologramClickListener(), this);
         ACRPlugin.enableSubclasses();
@@ -45,8 +46,8 @@ public class CommonLib extends JavaPlugin {
      * This method can be used to configure logging and read the debug setting.
      */
     private void setupLogging() {
-        // You can read the debug setting from a config file or set it programmatically
-        // For example, you can uncomment the following line to enable debug logging:
+        // Read the debug setting from a config file or set it programmatically
+        // Uncomment the following line to enable debug logging:
         // debugEnabled = true;
 
         logInfo("CommonLib is enabled");
@@ -85,5 +86,42 @@ public class CommonLib extends JavaPlugin {
         }
     }
 
-    // Additional logging methods like logWarning, logError, etc., can be added similarly.
+    /**
+     * Logs a warning message.
+     *
+     * @param message The warning message to log.
+     */
+    public void logWarning(String message) {
+        getLogger().warning(message);
+    }
+
+    /**
+     * Logs an error message.
+     *
+     * @param message The error message to log.
+     */
+    public void logError(String message) {
+        getLogger().severe(message);
+    }
+
+    /**
+     * Logs a severe message, indicating a critical problem.
+     *
+     * @param message The severe message to log.
+     */
+    public void logSevere(String message) {
+        getLogger().log(Level.SEVERE, message);
+    }
+
+    /**
+     * Logs an exception stack trace at the SEVERE level.
+     *
+     * @param e The exception to log.
+     */
+    public void logException(Exception e) {
+        getLogger().log(Level.SEVERE, "Exception occurred: ", e);
+    }
+
+    // Additional logging methods like logConfig, logFine, etc., can be added similarly.
+    // todo: add them when im not lazy
 }
