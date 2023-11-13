@@ -3,58 +3,79 @@ package tk.airshipcraft.commonlib.utils;
 import tk.airshipcraft.commonlib.CommonLib;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * Abstract class representing a CommonLib plugin.
+ * This class provides the framework for enabling and disabling plugins that extend CommonLib.
+ */
 public abstract class ACRPlugin extends CommonLib {
-    private static List<ACRPlugin> plugins = new ArrayList<>();
+
+    private static final Map<Class<? extends ACRPlugin>, ACRPlugin> plugins = new HashMap<>();
     private static SubclassFinder subclassFinder;
 
+    /**
+     * Enables all subclasses of ACRPlugin.
+     * This method uses reflection to find and initialize subclasses, and then calls their onPluginEnable method.
+     */
     public static void enableSubclasses() {
         subclassFinder = new SubclassFinder(ACRPlugin.class);
         List<Class<?>> subclasses = subclassFinder.getSubclasses();
 
         for (Class<?> subclass : subclasses) {
             try {
-                // Check if the subclass is already instantiated
-                if (plugins.contains(subclass)) {
-                    continue; // Skip instantiation if already exists
+                ACRPlugin pluginInstance = plugins.get(subclass);
+
+                // Instantiate the subclass if not already done
+                if (pluginInstance == null) {
+                    pluginInstance = (ACRPlugin) subclass.getDeclaredConstructor().newInstance();
+                    plugins.put(subclass.asSubclass(ACRPlugin.class), pluginInstance);
                 }
 
-                // Instantiate the subclass
-                Object instance = subclass.getDeclaredConstructor().newInstance();
-
-                // Invoke the onPluginEnable() method using reflection
+                // Invoke the onPluginEnable() method
                 Method method = subclass.getDeclaredMethod("onPluginEnable");
-                method.invoke(instance);
-                plugins.add((ACRPlugin) instance);
+                method.invoke(pluginInstance);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-
+    /**
+     * Disables all subclasses of ACRPlugin.
+     * This method calls the onPluginDisable method of each subclass.
+     */
     public static void disableSubclasses() {
         subclassFinder = new SubclassFinder(ACRPlugin.class);
         List<Class<?>> subclasses = subclassFinder.getSubclasses();
 
         for (Class<?> subclass : subclasses) {
             try {
-                // Instantiate the subclass
-                Object instance = subclass.getDeclaredConstructor().newInstance();
+                ACRPlugin pluginInstance = plugins.get(subclass);
 
-                // Invoke the onPluginEnable() method using reflection
-                Method method = subclass.getDeclaredMethod("onPluginDisable");
-                method.invoke(instance);
-                plugins.remove((ACRPlugin) instance);
+                // Only proceed if the instance exists
+                if (pluginInstance != null) {
+                    // Invoke the onPluginDisable() method
+                    Method method = subclass.getDeclaredMethod("onPluginDisable");
+                    method.invoke(pluginInstance);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
+    /**
+     * Abstract method to be implemented by subclasses.
+     * This method is called when the plugin is enabled.
+     */
     public abstract void onPluginEnable();
 
+    /**
+     * Abstract method to be implemented by subclasses.
+     * This method is called when the plugin is disabled.
+     */
     public abstract void onPluginDisable();
 }
