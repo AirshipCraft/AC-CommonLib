@@ -10,6 +10,10 @@ import java.util.Map;
 /**
  * Abstract class representing a CommonLib plugin.
  * This class provides the framework for enabling and disabling plugins that extend CommonLib.
+ *
+ * @author Locutusque, notzune
+ * @since 2023-05-31
+ * @version 1.0.0
  */
 public abstract class ACRPlugin extends CommonLib {
 

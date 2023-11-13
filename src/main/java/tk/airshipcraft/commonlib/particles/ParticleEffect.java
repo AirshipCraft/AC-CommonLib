@@ -3,6 +3,13 @@ package tk.airshipcraft.commonlib.particles;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 
+/**
+ * ParticleEffect utils for spawning particles.
+ *
+ * @author notzune
+ * @since 2023-03-30
+ * @version 1.0.0
+ */
 public class ParticleEffect {
 
     private Particle particle;
