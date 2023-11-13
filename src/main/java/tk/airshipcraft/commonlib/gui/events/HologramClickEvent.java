@@ -8,6 +8,10 @@ import tk.airshipcraft.commonlib.utils.Hologram;
 
 /**
  * This event is fired whenever a player clicks on a hologram.
+ *
+ * @author Locutusque
+ * @version 1.0.0
+ * @since 2023-04-11
  */
 public class HologramClickEvent extends Event implements Cancellable {
     private static final HandlerList HANDLERS = new HandlerList();

@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Optimize">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/particles/ParticleEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/particles/ParticleEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/GuiClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/GuiClickEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/InventoryClickListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

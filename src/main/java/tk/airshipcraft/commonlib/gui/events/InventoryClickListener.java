@@ -8,7 +8,13 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import tk.airshipcraft.commonlib.gui.objects.Ui;
 import tk.airshipcraft.commonlib.utils.UiDesigner;
 
+/**
+ * @author Locutusque
+ * @version 1.0.0
+ * @since 2023-04-11
+ */
 public class InventoryClickListener implements Listener {
+
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (Ui.isUi(event.getClickedInventory())) {
