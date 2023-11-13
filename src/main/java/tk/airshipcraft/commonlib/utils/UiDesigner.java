@@ -6,7 +6,7 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import tk.airshipcraft.commonlib.CommonLib;
-import tk.airshipcraft.commonlib.Objects.Ui;
+import tk.airshipcraft.commonlib.gui.objects.Ui;
 
 import java.util.List;
 

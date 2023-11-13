@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import tk.airshipcraft.commonlib.Events.HologramClickEvent;
+import tk.airshipcraft.commonlib.gui.events.HologramClickEvent;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package tk.airshipcraft.commonlib;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import tk.airshipcraft.commonlib.Events.HologramClickListener;
-import tk.airshipcraft.commonlib.Events.InventoryClickListener;
+import tk.airshipcraft.commonlib.gui.events.HologramClickListener;
+import tk.airshipcraft.commonlib.gui.events.InventoryClickListener;
 
 import java.util.logging.Level;
 

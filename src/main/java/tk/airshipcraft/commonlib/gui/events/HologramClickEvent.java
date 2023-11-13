@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.Events;
+package tk.airshipcraft.commonlib.gui.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;

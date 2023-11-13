@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.Objects;
+package tk.airshipcraft.commonlib.gui.objects;
 
 
 import net.kyori.adventure.text.Component;

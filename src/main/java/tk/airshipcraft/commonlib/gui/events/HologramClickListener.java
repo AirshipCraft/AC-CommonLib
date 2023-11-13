@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.Events;
+package tk.airshipcraft.commonlib.gui.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
