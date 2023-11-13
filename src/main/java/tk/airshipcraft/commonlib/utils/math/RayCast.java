@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.utils;
+package tk.airshipcraft.commonlib.utils.math;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -10,6 +10,10 @@ import java.util.List;
 
 /**
  * Utility class for performing raycasts in Minecraft.
+ *
+ * @author Locutusque
+ * @since 2023-04-11
+ * @version 1.0.0
  */
 public class RayCast {
 
