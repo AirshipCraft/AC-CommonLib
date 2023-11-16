@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Optimize">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/ProgressionCurve.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/GuiClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/GuiClickEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/gui/events/InventoryClickListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,17 +42,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "reorganize",
-    "last_opened_file_path": "/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/cooldowns",
-    "settings.editor.selected.configurable": "editor.preferences.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;reorganize&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/cooldowns&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/cooldowns" />
