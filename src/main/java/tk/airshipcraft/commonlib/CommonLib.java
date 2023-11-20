@@ -1,5 +1,6 @@
 package tk.airshipcraft.commonlib;
 
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import tk.airshipcraft.commonlib.gui.events.HologramClickListener;
 import tk.airshipcraft.commonlib.gui.events.InventoryClickListener;
@@ -34,9 +35,14 @@ public class CommonLib extends JavaPlugin {
     public void onEnable() {
         instance = this;
         setupLogging(); // Set up logging
-        getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
-        getServer().getPluginManager().registerEvents(new HologramClickListener(), this);
+        registerEvents();
         ACRPlugin.enableSubclasses();
+    }
+
+    private void registerEvents() {
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new InventoryClickListener(), this);
+        pm.registerEvents(new HologramClickListener(), this);
     }
 
     /**
