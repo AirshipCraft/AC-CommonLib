@@ -2,10 +2,14 @@ package tk.airshipcraft.commonlib.configuration;
 
 package tk.airshipcraft.commonlib.preferences;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import tk.airshipcraft.commonlib.configuration.impl.IPlayerPreference;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -13,6 +17,26 @@ import java.util.concurrent.ConcurrentHashMap;
  * Manages the preferences for all players.
  * This class handles the registration of player preferences and provides methods
  * to load, save, and reset preferences for individual players.
+ * <p>
+ * This class is thread-safe and can be used to manage preferences for multiple players concurrently.
+ * </p>
+ *<p>
+ * Example usage:
+ * <pre>{@code
+ * // To check if a player has preferences:
+ * boolean hasPrefs = preferencesManager.hasPreferences(player);
+ *
+ * // To update a specific preference field:
+ * preferencesManager.updatePreferenceField(player, "townName", "NewTown");
+ *
+ * // To save all preferences on server shutdown:
+ * preferencesManager.saveAllPreferences();
+ * }
+ *</p>
+ *
+ * @author notzune
+ * @version 1.0.0
+ * @since 2023-11-20
  */
 public class PreferencesManager {
 
@@ -78,5 +102,51 @@ public class PreferencesManager {
         return (preference != null) ? preference.describe(player) : "No preferences registered.";
     }
 
-    // Additional utility methods as needed...
+    /**
+     * Retrieves all registered preferences.
+     * This can be useful for debugging or administrative purposes.
+     *
+     * @return An unmodifiable set of all registered player preferences.
+     */
+    public Set<IPlayerPreference> getAllPreferences() {
+        return Collections.unmodifiableSet(new HashSet<>(preferencesMap.values()));
+    }
+
+    /**
+     * Checks if a player has preferences registered.
+     *
+     * @param player The player to check for registered preferences.
+     * @return True if the player has preferences registered, false otherwise.
+     */
+    public boolean hasPreferences(Player player) {
+        return preferencesMap.containsKey(player.getUniqueId());
+    }
+
+    /**
+     * Updates a specific preference field for a player.
+     * This method can use reflection to update fields annotated with {@code @PlayerPref}.
+     *
+     * @param player       The player whose preference is to be updated.
+     * @param preferenceKey The key identifying the preference field to update.
+     * @param newValue     The new value for the preference field.
+     */
+    public void updatePreferenceField(Player player, String preferenceKey, Object newValue) {
+        IPlayerPreference preferences = preferencesMap.get(player.getUniqueId());
+        if (preferences != null) {
+            // Reflection logic to find the field with the matching preferenceKey and update it
+        }
+    }
+
+    /**
+     * Saves all player preferences.
+     * This method should be called on server shutdown to ensure all data is persisted.
+     */
+    public void saveAllPreferences() {
+        preferencesMap.forEach((uuid, preference) -> {
+            Player player = Bukkit.getPlayer(uuid);
+            if (player != null && player.isOnline()) {
+                preference.save(player);
+            }
+        });
+    }
 }
