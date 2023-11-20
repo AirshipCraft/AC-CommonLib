@@ -4,6 +4,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import tk.airshipcraft.commonlib.gui.events.HologramClickListener;
 import tk.airshipcraft.commonlib.gui.events.InventoryClickListener;
+import tk.airshipcraft.commonlib.gui.objects.TeamManager;
 
 import java.util.logging.Level;
 
@@ -14,6 +15,8 @@ import java.util.logging.Level;
  * It also provides enhanced logging capabilities.
  */
 public class CommonLib extends JavaPlugin {
+
+    private TeamManager teamManager = new TeamManager();
 
     private static CommonLib instance;
     private boolean debugEnabled = false; // Flag to control debug logging
@@ -43,6 +46,14 @@ public class CommonLib extends JavaPlugin {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new InventoryClickListener(), this);
         pm.registerEvents(new HologramClickListener(), this);
+    }
+
+    /**
+     * Returns a new instance of the teamManager.
+     * @return TeamManager instance
+     */
+    public TeamManager getTeamManager() {
+        return teamManager;
     }
 
     /**
