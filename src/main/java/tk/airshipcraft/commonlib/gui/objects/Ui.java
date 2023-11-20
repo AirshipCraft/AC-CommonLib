@@ -1,101 +1,96 @@
 package tk.airshipcraft.commonlib.gui.objects;
 
-
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nullable;
-import java.util.Objects;
 import java.util.UUID;
 
-public class Ui implements Listener {
+/**
+ * Represents a custom User Interface (UI) in Minecraft.
+ * This class allows for creating and managing custom inventory interfaces.
+ *
+ * @author Locutusque, notzune
+ * @version 1.0.0
+ * @since 2023-11-20
+ */
+public class Ui {
 
-    private static String inventoryName;
+    private String inventoryName;
     private Inventory inventory;
     private UUID inventoryId;
-    private InventoryType type;
     private InventoryHolder owner;
     private int rows;
 
     /**
-     * @param inventoryName sets the name of the inventory
-     * @param owner         who owns the inventory
-     * @param type          the type of inventory to open. This is preferred to be a chest.
+     * Constructs a new UI with the specified name, owner, and number of rows.
+     * This UI is typically used for creating custom inventory interfaces such as chests.
+     *
+     * @param inventoryName The name of the inventory.
+     * @param owner         The owner of the inventory, can be null.
+     * @param rows          The number of rows in the inventory (chest type).
      */
-    public Ui(String inventoryName, @Nullable InventoryHolder owner, InventoryType type) {
-        this.inventory = Bukkit.createInventory(owner, type, inventoryName);
-        this.type = type;
-        Component component = Component.text(inventoryName);
-        this.inventory.getType().defaultTitle().append(component);
-        this.owner = owner;
-        this.rows = this.inventory.getSize() / 9;
+    public Ui(String inventoryName, InventoryHolder owner, int rows) {
         this.inventoryName = inventoryName;
+        this.rows = rows;
+        this.inventory = Bukkit.createInventory(owner, rows * 9, inventoryName);
+        this.owner = owner;
         this.inventoryId = UUID.randomUUID();
     }
 
     /**
-     * @param inventoryName the name of the inventory you want to check
-     * @return a boolean if the inventoryName is equal to a Ui name
-     */
-    public static Boolean isUi(String inventoryName) {
-        return Objects.equals(Ui.inventoryName, inventoryName);
-    }
-
-    /**
-     * @param inventory that you want to check
-     * @return a boolean if the inventory is an instance of Ui
-     */
-    public static Boolean isUi(Inventory inventory) {
-        return inventory instanceof Ui;
-    }
-
-    /**
-     * @return the Ui name
-     */
-    public String getName() {
-        return inventoryName;
-    }
-
-    /**
-     * @return the Ui's UUID
-     */
-    public UUID getId() {
-        return this.inventoryId;
-    }
-
-    /**
-     * @param item The desired item to add in the GUI
-     * @param slot The slot of the inventory to add the item
+     * Adds a button (item) to the UI at the specified slot.
+     *
+     * @param item The ItemStack to add as a button.
+     * @param slot The slot to place the item in.
      */
     public void addButton(ItemStack item, int slot) {
         this.inventory.setItem(slot, item);
     }
 
     /**
-     * @param items The desired items to add in the GUI
+     * Gets the name of the UI.
+     *
+     * @return The inventory name.
      */
-    public void addButton(ItemStack... items) {
-        this.inventory.addItem(items);
+    public String getInventoryName() {
+        return inventoryName;
     }
 
     /**
-     * Sets the name to the current UI
+     * Gets the unique identifier of the UI.
      *
-     * @param name the name to set the UI to.
-     * @return the new inventory, which contains the old items
+     * @return The UUID of the inventory.
      */
-    public Inventory setName(String name) {
-        Inventory oldInventory = this.inventory;
-        ItemStack[] items = oldInventory.getContents();
-        Inventory newInventory = Bukkit.createInventory(this.owner, this.type, name);
-        newInventory.setContents(items);
-        return newInventory;
+    public UUID getInventoryId() {
+        return inventoryId;
     }
 
+    /**
+     * Gets the InventoryHolder of the UI.
+     *
+     * @return The InventoryHolder, which can be null.
+     */
+    public InventoryHolder getOwner() {
+        return owner;
+    }
 
+    /**
+     * Gets the Inventory object representing this UI.
+     *
+     * @return The Inventory instance.
+     */
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    /**
+     * Gets the number of rows in the UI.
+     *
+     * @return The number of rows.
+     */
+    public int getRows() {
+        return rows;
+    }
 }
