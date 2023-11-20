@@ -19,6 +19,7 @@ import java.util.Map;
  * and applying a color and style to the scoreboard title and lines.
  */
 public class Sidebar {
+
     private Scoreboard scoreboard;
     private Objective objective;
     private Map<String, Score> scores;
