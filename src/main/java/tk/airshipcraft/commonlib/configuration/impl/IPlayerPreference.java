@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.configuration;
+package tk.airshipcraft.commonlib.configuration.impl;
 
 import org.bukkit.entity.Player;
 

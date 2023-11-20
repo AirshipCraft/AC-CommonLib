@@ -1,7 +1,7 @@
 package tk.airshipcraft.commonlib.configuration;
 
 import org.bukkit.entity.Player;
-import tk.airshipcraft.commonlib.configuration.IPlayerPreference;
+import tk.airshipcraft.commonlib.configuration.impl.IPlayerPreference;
 
 import java.util.ArrayList;
 import java.util.List;
