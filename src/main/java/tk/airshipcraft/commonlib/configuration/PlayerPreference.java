@@ -12,6 +12,45 @@ import java.util.UUID;
  * This class provides a skeletal implementation of the IPlayerPreference interface
  * to minimize the effort required to implement this interface.
  *
+ /**
+ * Represents the preferences for a player in the MyPlugin system.
+ * This class stores the settings that can be configured by the player within the plugin.
+ *
+ * Usage example in another plugin:
+ * <pre>{@code
+ * public class MyPluginPlayerPreferences implements IPlayerPreference {
+ *
+ *     @PlayerPref(defaultValue = "defaultTown")
+ *     private String townName;
+ *
+ *     @PlayerPref(defaultValue = "defaultNation")
+ *     private String nationName;
+ *
+ *     // Constructor, getters and setters, and other methods...
+ *
+ *     @Override
+ *     public void load(Player player) {
+ *         // Logic to load preferences (potentially using reflection to read annotated fields)
+ *     }
+ *
+ *     @Override
+ *     public void save(Player player) {
+ *         // Logic to save preferences (potentially using reflection to write annotated fields)
+ *     }
+ *
+ *     @Override
+ *     public void reset(Player player) {
+ *         // Logic to reset preferences to defaults
+ *     }
+ *
+ *     @Override
+ *     public String describe(Player player) {
+ *         // Return a description of all the player's preferences
+ *         return "Town: " + townName + ", Nation: " + nationName;
+ *     }
+ * }
+ * }</pre>
+ *
  * @author notzune
  * @version 1.0.0
  * @since 2023-11-20
