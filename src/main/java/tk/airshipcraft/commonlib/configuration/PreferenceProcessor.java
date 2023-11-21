@@ -142,7 +142,7 @@ public class PreferenceProcessor {
      * @param type  The type to convert the value to.
      * @return The converted object.
      */
-    private static Object convertStringToFieldType(String value, Class<?> type) {
+    public static Object convertStringToFieldType(String value, Class<?> type) {
         // Conversion logic goes here (e.g., convert to int, boolean, etc.)
         // This is a simplified example; you may need to handle more types.
         if (type.equals(int.class) || type.equals(Integer.class)) {
