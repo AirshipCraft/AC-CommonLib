@@ -1,7 +1,12 @@
 package tk.airshipcraft.commonlib;
 
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import tk.airshipcraft.commonlib.configuration.PreferencesManager;
 import tk.airshipcraft.commonlib.gui.events.HologramClickListener;
 import tk.airshipcraft.commonlib.gui.events.InventoryClickListener;
 import tk.airshipcraft.commonlib.gui.objects.TeamManager;
@@ -13,13 +18,17 @@ import java.util.logging.Level;
  * This class initializes the library and manages the lifecycle of the plugins that extend it.
  * It uses a Singleton pattern to ensure that only one instance of CommonLib exists.
  * It also provides enhanced logging capabilities.
+ *
+ * @author notzune, Locotusque
+ * @since 2023-03-30
+ * @version 1.0.0
  */
-public class CommonLib extends JavaPlugin {
-
-    private TeamManager teamManager = new TeamManager();
+public class CommonLib extends JavaPlugin implements Listener {
 
     private static CommonLib instance;
     private boolean debugEnabled = false; // Flag to control debug logging
+    private TeamManager teamManager = new TeamManager();
+    private PreferencesManager preferencesManager = new PreferencesManager();
 
     /**
      * Returns the single instance of CommonLib.
@@ -46,6 +55,24 @@ public class CommonLib extends JavaPlugin {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new InventoryClickListener(), this);
         pm.registerEvents(new HologramClickListener(), this);
+        pm.registerEvents(this, this);
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        // Load preferences when player joins
+        preferencesManager.loadPreferences(event.getPlayer());
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        // Save preferences when player quits
+        preferencesManager.savePreferences(event.getPlayer());
+    }
+
+    // Method to get PreferencesManager
+    public PreferencesManager getPreferencesManager() {
+        return preferencesManager;
     }
 
     /**
