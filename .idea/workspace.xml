@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Optimize">
       <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
@@ -15,6 +16,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/TextFormatting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/TextFormatting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/world/AbstractYLimitedArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/world/AbstractYLimitedArea.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Optimize" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
