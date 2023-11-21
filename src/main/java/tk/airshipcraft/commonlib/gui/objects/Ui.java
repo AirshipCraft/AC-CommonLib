@@ -1,6 +1,7 @@
 package tk.airshipcraft.commonlib.gui.objects;
 
 import org.bukkit.Bukkit;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -25,6 +26,7 @@ public class Ui {
     private Inventory inventory;
     private UUID inventoryId;
     private InventoryHolder owner;
+    private InventoryType type;
     private int rows;
 
     /**
@@ -33,10 +35,12 @@ public class Ui {
      *
      * @param inventoryName The name of the inventory.
      * @param owner         The owner of the inventory, can be null.
+     * @param type          The type of the inventory (e.g., CHEST, HOPPER).
      * @param rows          The number of rows in the inventory (chest type).
      */
-    public Ui(String inventoryName, InventoryHolder owner, int rows) {
+    public Ui(String inventoryName, InventoryHolder owner, InventoryType type, int rows) {
         this.inventoryName = inventoryName;
+        this.type = type;
         this.rows = rows;
         this.inventory = Bukkit.createInventory(owner, rows * 9, inventoryName);
         this.owner = owner;
@@ -88,6 +92,15 @@ public class Ui {
      */
     public Inventory getInventory() {
         return inventory;
+    }
+
+    /**
+     * Gets the type of the UI.
+     *
+     * @return The InventoryType instance.
+     */
+    public InventoryType getType() {
+        return type;
     }
 
     /**
