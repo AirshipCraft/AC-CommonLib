@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
 <<<<<<< Updated upstream
     <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Optimize">
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__dev_folia_folia_api_1_19_4_R0_1_SNAPSHOT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonlib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commonlib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/CommonLib.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/CommonLib.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Objects/Ui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/Objects/Ui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/TextFormatting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/TextFormatting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/world/AbstractYLimitedArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/world/AbstractYLimitedArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
 =======
     <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Optimize" />
@@ -29,6 +21,8 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="module-info" />
+        <option value="package-info" />
       </list>
     </option>
   </component>
@@ -55,16 +49,20 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/gabar/Documents/GitHub/AC-CommonLib/src/main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;reorganize&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/cooldowns&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.appearance&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/utils/cooldowns" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/.github" />
       <recent name="C:\Users\gabar\Documents\GitHub\AC-CommonLib\src\main" />
     </key>
   </component>
@@ -355,6 +353,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="PluginDependency interface&#10;&#10;Interface for defining plugin dependencies, completes #863gc2erg" />
     <MESSAGE value="automate plugin.yml annotation&#10;&#10;completes #863gc2ekx" />
     <MESSAGE value="processor for handling annotations&#10;&#10;completes #863gc2ey6" />

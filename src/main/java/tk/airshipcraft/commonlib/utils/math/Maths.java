@@ -2,6 +2,10 @@ package tk.airshipcraft.commonlib.utils.math;
 
 /**
  * Collection of random Math related utils.
+ *
+ * @author notzune
+ * @version 1.0.0
+ * @since 2023-04-03
  */
 public class Maths {
 
