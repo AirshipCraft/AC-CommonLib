@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.0.0...v1.0.1) (2023-11-21)
+
+
+### Bug Fixes
+
+* add workflow scripts ([db97801](https://github.com/AirshipCraft/AC-CommonLib/commit/db97801b37461efce0f2c276dd84401d63aab456))
+
 # 1.0.0 (2023-11-21)
 
 
