@@ -17,7 +17,7 @@ import java.util.UUID;
  *
  * @author notzune
  * @version 1.0.0
- * @since 2023-
+ * @since 2023-11-20
  */
 public class PreferenceProcessor {
 
