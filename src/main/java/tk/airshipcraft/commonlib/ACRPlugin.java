@@ -12,8 +12,8 @@ import java.util.Map;
  * This class provides the framework for enabling and disabling plugins that extend CommonLib.
  *
  * @author Locutusque, notzune
- * @since 2023-05-31
  * @version 1.0.0
+ * @since 2023-05-31
  */
 public abstract class ACRPlugin extends CommonLib {
 

@@ -11,11 +11,11 @@ import java.util.UUID;
  * Abstract base class for player preferences.
  * This class provides a skeletal implementation of the IPlayerPreference interface
  * to minimize the effort required to implement this interface.
- *
- /**
+ * <p>
+ * /**
  * Represents the preferences for a player in the MyPlugin system.
  * This class stores the settings that can be configured by the player within the plugin.
- *
+ * <p>
  * Usage example in another plugin:
  * <pre>{@code
  * public class MyPluginPlayerPreferences implements IPlayerPreference {

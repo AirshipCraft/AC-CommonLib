@@ -4,8 +4,8 @@ package tk.airshipcraft.commonlib.utils.math;
  * Collection of random Math related utils.
  *
  * @author notzune
- * @since 2023-04-03
  * @version 1.0.0
+ * @since 2023-04-03
  */
 public class Maths {
 

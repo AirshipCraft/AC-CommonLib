@@ -10,8 +10,8 @@ import java.util.TreeMap;
  *
  * @param <E> Type of object which should be picked
  * @author notzune
- * @since 2023-04-03
  * @version 1.0.0
+ * @since 2023-04-03
  */
 public class BiasedRandomPicker<E> {
 

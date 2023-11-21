@@ -20,8 +20,8 @@ import java.util.logging.Level;
  * It also provides enhanced logging capabilities.
  *
  * @author notzune, Locotusque
- * @since 2023-03-30
  * @version 1.0.0
+ * @since 2023-03-30
  */
 public class CommonLib extends JavaPlugin implements Listener {
 
@@ -77,6 +77,7 @@ public class CommonLib extends JavaPlugin implements Listener {
 
     /**
      * Returns a new instance of the teamManager.
+     *
      * @return TeamManager instance
      */
     public TeamManager getTeamManager() {

@@ -24,9 +24,9 @@ public class PreferenceProcessor {
     /**
      * Loads player preferences from the data store into the annotated fields.
      *
-     * @param player      The player whose preferences should be loaded.
-     * @param preference  The preference object containing the fields to be loaded.
-     * @param config      The configuration file from which to load the preferences.
+     * @param player     The player whose preferences should be loaded.
+     * @param preference The preference object containing the fields to be loaded.
+     * @param config     The configuration file from which to load the preferences.
      */
     public static void load(Player player, IPlayerPreference preference, FileConfiguration config) {
         UUID playerUuid = player.getUniqueId();
@@ -48,9 +48,9 @@ public class PreferenceProcessor {
     /**
      * Saves player preferences from the annotated fields into the data store.
      *
-     * @param player      The player whose preferences should be saved.
-     * @param preference  The preference object containing the fields to be saved.
-     * @param config      The configuration file to which to save the preferences.
+     * @param player     The player whose preferences should be saved.
+     * @param preference The preference object containing the fields to be saved.
+     * @param config     The configuration file to which to save the preferences.
      */
     public static void save(Player player, IPlayerPreference preference, FileConfiguration config) {
         UUID playerUuid = player.getUniqueId();
@@ -72,9 +72,9 @@ public class PreferenceProcessor {
     /**
      * Loads player preferences from a MySQL database into the annotated fields.
      *
-     * @param player      The player whose preferences should be loaded.
-     * @param preference  The preference object containing the fields to be loaded.
-     * @param connection  The database connection.
+     * @param player     The player whose preferences should be loaded.
+     * @param preference The preference object containing the fields to be loaded.
+     * @param connection The database connection.
      */
     public static void loadFromDatabase(Player player, IPlayerPreference preference, Connection connection) {
         UUID playerUuid = player.getUniqueId();
@@ -106,9 +106,9 @@ public class PreferenceProcessor {
     /**
      * Saves player preferences from the annotated fields into a MySQL database.
      *
-     * @param player      The player whose preferences should be saved.
-     * @param preference  The preference object containing the fields to be saved.
-     * @param connection  The database connection.
+     * @param player     The player whose preferences should be saved.
+     * @param preference The preference object containing the fields to be saved.
+     * @param connection The database connection.
      */
     public static void saveToDatabase(Player player, IPlayerPreference preference, Connection connection) {
         UUID playerUuid = player.getUniqueId();

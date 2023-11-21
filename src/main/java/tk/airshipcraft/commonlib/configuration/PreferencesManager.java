@@ -4,11 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import tk.airshipcraft.commonlib.configuration.impl.IPlayerPreference;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -18,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p>
  * This class is thread-safe and can be used to manage preferences for multiple players concurrently.
  * </p>
- *<p>
+ * <p>
  * Example usage:
  * <pre>{@code
  * // To check if a player has preferences:
@@ -30,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * // To save all preferences on server shutdown:
  * preferencesManager.saveAllPreferences();
  * }
- *</p>
+ * </p>
  *
  * @author notzune
  * @version 1.0.0
@@ -135,9 +131,9 @@ public class PreferencesManager {
      * Updates a specific preference field for a player.
      * This method can use reflection to update fields annotated with {@code @PlayerPref}.
      *
-     * @param player       The player whose preference is to be updated.
+     * @param player        The player whose preference is to be updated.
      * @param preferenceKey The key identifying the preference field to update.
-     * @param newValue     The new value for the preference field.
+     * @param newValue      The new value for the preference field.
      */
     public void updatePreferenceField(Player player, String preferenceKey, Object newValue) {
         IPlayerPreference preferences = preferencesMap.get(player.getUniqueId());

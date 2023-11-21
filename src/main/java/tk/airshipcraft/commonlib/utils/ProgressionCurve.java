@@ -6,15 +6,15 @@ package tk.airshipcraft.commonlib.utils;
  * players a better chance to catch up.
  *
  * @author notzune
- * @since 2023-11-16
  * @version 1.0.0
+ * @since 2023-11-16
  */
 public class ProgressionCurve {
 
     /**
      * Calculates the number of rank-ups required for the next token.
      *
-     * @param tokensEarned The total number of tokens already earned by the player.
+     * @param tokensEarned  The total number of tokens already earned by the player.
      * @param catchUpFactor The catch-up factor that controls the rate of growth in difficulty.
      * @return The number of rank-ups required to earn the next token, rounded up to the nearest whole number.
      */

@@ -11,7 +11,7 @@ import tk.airshipcraft.commonlib.gui.objects.Ui;
 import java.util.List;
 
 public abstract class UiDesigner {
-    
+
     private static SubclassFinder subclassFinder;
     private static CommonLib commonLib = CommonLib.getInstance();
 

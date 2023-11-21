@@ -12,8 +12,8 @@ import java.util.List;
  * Utility class for performing raycasts in Minecraft.
  *
  * @author Locutusque
- * @since 2023-04-11
  * @version 1.0.0
+ * @since 2023-04-11
  */
 public class RayCast {
 
