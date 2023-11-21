@@ -1,3 +1,14 @@
+## [1.0.3](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.0.2...v1.0.3) (2023-11-21)
+
+
+### Bug Fixes
+
+* add helper methods to inv click listener ([27b50da](https://github.com/AirshipCraft/AC-CommonLib/commit/27b50da49e412d22a011af7ebf5f52fed061fd96))
+* add helper methods to sidebar ([9763d13](https://github.com/AirshipCraft/AC-CommonLib/commit/9763d13a6f2db935a9fb80ddf08e996491c40917))
+* add isUI method ([f7857e5](https://github.com/AirshipCraft/AC-CommonLib/commit/f7857e5d1aad1fb522bc172db17f725569e163ea))
+* add javadoc comments and helper methods to bossbar ([c2922df](https://github.com/AirshipCraft/AC-CommonLib/commit/c2922df86ffd06dd516b5cd2c40f110dbe67151e))
+* workflow errors with javadocs ([8658992](https://github.com/AirshipCraft/AC-CommonLib/commit/8658992db3b07e67e68e8df96ab3c095faefc300))
+
 ## [1.0.2](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.0.1...v1.0.2) (2023-11-21)
 
 
