@@ -10,6 +10,7 @@
  * <p>Key classes:</p>
  * <ul>
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.BelowName} - Manages display names below player entities.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.gui.objects.Gui} - Base class for creating custom GUIs.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.Bossbar} - Wrapper for the boss bar UI component.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.Sidebar} - Represents a scoreboard on the side of the screen.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.TeamManager} - Manages teams and their properties within the GUI.</li>

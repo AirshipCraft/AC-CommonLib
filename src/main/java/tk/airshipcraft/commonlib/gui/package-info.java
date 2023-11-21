@@ -11,7 +11,6 @@
  *
  * <p>Key classes:</p>
  * <ul>
- *   <li>{@link tk.airshipcraft.commonlib.gui.objects.Gui} - Base class for creating custom GUIs.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.GuiBuilder} - Aids in building complex GUIs with a fluent interface.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.GuiManager} - Manages the lifecycle and interactions of all GUI instances.</li>
  * </ul>
