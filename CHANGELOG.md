@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.0.1...v1.0.2) (2023-11-21)
+
+
+### Bug Fixes
+
+* lang version in workflows ([2f5d4f3](https://github.com/AirshipCraft/AC-CommonLib/commit/2f5d4f32ac55fb6f400d141afef86e6af1cfaed6))
+
 ## [1.0.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.0.0...v1.0.1) (2023-11-21)
 
 
