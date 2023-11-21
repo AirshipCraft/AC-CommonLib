@@ -9,6 +9,9 @@ import java.util.TreeMap;
  * Allows you to assign chances to objects and then randomly pick some
  *
  * @param <E> Type of object which should be picked
+ * @author notzune
+ * @version 1.0.0
+ * @since 2023-04-03
  */
 public class BiasedRandomPicker<E> {
 
