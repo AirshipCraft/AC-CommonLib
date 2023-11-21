@@ -10,13 +10,16 @@ import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
- * This class represents a scoreboard sidebar for a player in Minecraft.
- * <p>
- * It allows adding and removing lines of text to the scoreboard, setting their position,
- * <p>
- * and applying a color and style to the scoreboard title and lines.
+ * This class represents a sidebar scoreboard in Minecraft, which is displayed on the side of the player's screen.
+ * It allows for the creation of custom scoreboard objectives and scores that can be displayed to players.
+ * Additionally, this class provides methods to add, remove, and manipulate scores and text on the sidebar.
+ *
+ * @author Locutusque, notzune
+ * @version 1.0.0
+ * @since 2023-04-11
  */
 public class Sidebar {
 
@@ -25,9 +28,9 @@ public class Sidebar {
     private Map<String, Score> scores;
 
     /**
-     * Creates a new Sidebar object with the given title.
+     * Initializes a new Sidebar instance with a specific title.
      *
-     * @param title the title of the scoreboard sidebar
+     * @param title The title displayed at the top of the sidebar.
      */
     public Sidebar(String title) {
         scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
@@ -37,10 +40,11 @@ public class Sidebar {
     }
 
     /**
-     * Adds a line of text to the scoreboard at the specified score.
+     * Adds a text line with a specific score to the sidebar.
+     * If the text already exists, it will update its score.
      *
-     * @param text  the text to add to the scoreboard
-     * @param score the score at which to add the text
+     * @param text  The text to add as a line on the sidebar.
+     * @param score The score used to order the text on the sidebar.
      */
     public void add(String text, int score) {
         Score s = objective.getScore(text);
@@ -49,113 +53,154 @@ public class Sidebar {
     }
 
     /**
-     * Adds a line of text to the scoreboard with the next available score.
+     * Adds a text line to the sidebar with the next available score.
      *
-     * @param text the text to add to the scoreboard
+     * @param text The text to add as a line on the sidebar.
      */
     public void add(String text) {
-        int score = scores.size() + 1;
-        Score s = objective.getScore(text);
-        s.setScore(score);
-        scores.put(text, s);
+        add(text, scores.size() + 1);
     }
 
     /**
-     * Adds a line of text to the scoreboard with the next available score.
+     * Removes a specific line of text from the sidebar.
      *
-     * @param text the text to add to the scoreboard
+     * @param text The text line to remove from the sidebar.
      */
     public void remove(String text) {
-        Score s = scores.get(text);
-        if (s != null) {
-            objective.getScoreboard().resetScores(text);
-            scores.remove(text);
-        }
+        scores.remove(text);
+        scoreboard.resetScores(text);
     }
 
     /**
-     * Sets the position of a line of text on the scoreboard.
-     * This method removes the line from its current position and adds it to the new position.
+     * Sets the score for an existing line of text. If the text does not exist, it is added.
      *
-     * @param text  the text to set the position of
-     * @param score the new position of the text
+     * @param text  The line of text to update the score for.
+     * @param score The new score for the text line.
      */
     public void setLine(String text, int score) {
-        remove(text);
+        if (scores.containsKey(text)) {
+            remove(text);
+        }
         add(text, score);
     }
 
     /**
-     * Clears all lines of text from the scoreboard.
+     * Clears all text lines from the sidebar.
      */
     public void clear() {
-        for (String text : scores.keySet()) {
-            objective.getScoreboard().resetScores(text);
-        }
+        scores.keySet().forEach(scoreboard::resetScores);
         scores.clear();
     }
 
     /**
-     * Applies a color and style to the scoreboard title and lines of text.
+     * Applies a color and style to the sidebar title and text lines.
      *
-     * @param color the color to apply to the title and lines
-     * @param style the style to apply to the title and lines
+     * @param color The color to apply to the sidebar text.
+     * @param style The style to apply to the sidebar text.
      */
     public void applyStyle(ChatColor color, ChatColor style) {
         objective.setDisplayName(color + "" + style + objective.getDisplayName());
-        for (String text : scores.keySet()) {
-            Score s = scores.get(text);
-            int oldScore = s.getScore();
-            objective.getScoreboard().resetScores(text);
-            Score newScore = objective.getScore(color + "" + style + text);
-            newScore.setScore(oldScore);
-            scores.put(text, newScore);
-        }
+        scores.forEach((text, score) -> {
+            scoreboard.resetScores(text);
+            add(color + "" + style + text, score.getScore());
+        });
     }
 
     /**
-     * shows a hidden sidebar to a given player
+     * Displays the sidebar to a specified player.
      *
-     * @param player the player to show the sidebar to
+     * @param player The player to display the sidebar to.
      */
     public void show(Player player) {
         player.setScoreboard(scoreboard);
     }
 
     /**
-     * hides a sidebar to a given player
+     * Hides the sidebar from a specified player, reverting them to the main scoreboard.
      *
-     * @param player the player to hide the sidebar from
+     * @param player The player to hide the sidebar from.
      */
     public void hide(Player player) {
         player.setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
     }
 
     /**
-     * get the text from a specific line in a sidebar
+     * Retrieves the text from a specific line on the sidebar.
      *
-     * @param line the line to get the text from
-     * @return returns the text in the given line. Returns null if the line is out of range or if the sidebar does not exist.
+     * @param line The line number to retrieve text from.
+     * @return The text of the specified line, or {@code null} if no text is set at that line.
      */
     public String getTextFromLine(int line) {
-        for (Map.Entry<String, Score> entry : scores.entrySet()) {
-            if (entry.getValue().getScore() == line) {
-                return entry.getKey();
-            }
-        }
-        return null;
+        return scores.entrySet().stream()
+                .filter(entry -> entry.getValue().getScore() == line)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
     }
 
     /**
-     * Checks if a given line is out of range, or does not have a value
+     * Checks whether a specific line on the sidebar has text set.
      *
-     * @param line the line to check
-     * @return a boolean; if true the line is either out of range or does not have a value, if false the line has a value.
+     * @param line The line number to check.
+     * @return {@code true} if the line has no text set, {@code false} otherwise.
      */
-    public boolean isLineNull(int line) {
-        for (Map.Entry<String, Score> entry : scores.entrySet()) {
-            return entry.getValue().getScore() == line;
+    public boolean isLineEmpty(int line) {
+        return getTextFromLine(line) == null;
+    }
+
+    /**
+     * Renames a line if it exists or adds it if it does not.
+     *
+     * @param oldText The existing text to find and rename.
+     * @param newText The new text to replace the old text.
+     */
+    public void renameLine(String oldText, String newText) {
+        Score score = scores.get(oldText);
+        if (score != null) {
+            scores.remove(oldText);
+            scoreboard.resetScores(oldText);
+            add(newText, score.getScore());
         }
-        return true;
+    }
+
+    /**
+     * Increments the score of a given line by a specified amount.
+     *
+     * @param text   The line of text whose score to increment.
+     * @param amount The amount to increment the score by.
+     */
+    public void incrementScore(String text, int amount) {
+        Score score = scores.get(text);
+        if (score != null) {
+            score.setScore(score.getScore() + amount);
+        }
+    }
+
+    /**
+     * Decrements the score of a given line by a specified amount.
+     *
+     * @param text   The line of text whose score to decrement.
+     * @param amount The amount to decrement the score by.
+     */
+    public void decrementScore(String text, int amount) {
+        incrementScore(text, -amount);
+    }
+
+    /**
+     * Updates the display name of the sidebar.
+     *
+     * @param name The new name to set for the sidebar.
+     */
+    public void updateDisplayName(String name) {
+        objective.setDisplayName(name);
+    }
+
+    /**
+     * Gets the Scoreboard object this sidebar is based on.
+     *
+     * @return The Scoreboard object.
+     */
+    public Scoreboard getScoreboard() {
+        return scoreboard;
     }
 }
