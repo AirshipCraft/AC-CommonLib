@@ -1,40 +1,55 @@
 package tk.airshipcraft.commonlib.utils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import tk.airshipcraft.commonlib.CommonLib;
 import tk.airshipcraft.commonlib.gui.objects.Ui;
 
 import java.util.List;
 
+/**
+ * A utility class for designing user interfaces (UIs) in Minecraft.
+ * Provides methods to create custom inventory GUIs, set items in inventory slots,
+ * fill empty slots with items, and manage inventory borders and titles.
+ * This class is intended to be extended to add specific click actions for different UIs.
+ *
+ * @author Locutusque, notzune
+ * @version 1.0.0
+ * @since 2023-04-09
+ */
 public abstract class UiDesigner {
 
     private static SubclassFinder subclassFinder;
-    private static CommonLib commonLib = CommonLib.getInstance();
+    private static final CommonLib commonLib = CommonLib.getInstance();
 
     public UiDesigner() {
-        this.subclassFinder = new SubclassFinder(this.getClass());
+        subclassFinder = new SubclassFinder(this.getClass());
     }
 
     /**
-     * Create a GUI inventory with a specific title and inventory type.
+     * Creates a custom GUI (Graphical User Interface) inventory with a specific title and type.
+     * This method simplifies the process of creating custom inventory interfaces.
      *
-     * @param title the title of the inventory
-     * @param type  The GUI host inventory type
-     * @return the created Ui
+     * @param title The title of the inventory GUI.
+     * @param type  The type of the inventory (e.g., CHEST, HOPPER).
+     * @param rows  The number of rows in the inventory (chest type).
+     * @return A new Ui instance representing the custom GUI.
      */
-    public static Ui createGUI(String title, InventoryType type) {
-        return new Ui(title, null, type);
+    public static Ui createGUI(String title, InventoryType type, int rows) {
+        return new Ui(title, null, type, rows);
     }
 
     /**
-     * Calls the addClickAction method for all subclasses of the UiDesigner class with the provided inventory and slot parameters.
+     * Calls the addClickAction method for all subclasses of the UiDesigner class.
+     * This method is useful for triggering UI-related actions when a player clicks on a specific inventory slot.
      *
-     * @param inventory the inventory to pass to the addClickAction method of each subclass
-     * @param slot      the slot to pass to the addClickAction method of each subclass
+     * @param inventory The inventory where the click action occurred.
+     * @param slot      The slot number that was clicked.
      */
     public static void callClickAction(Inventory inventory, int slot) {
         // Get all subclasses of UiDesigner
@@ -46,11 +61,57 @@ public abstract class UiDesigner {
                 UiDesigner instance = (UiDesigner) subclass.getDeclaredConstructor().newInstance();
                 instance.addClickAction(inventory, slot);
             } catch (Exception e) {
-                // Handle any exceptions thrown when instantiating subclasses or calling addClickAction
-                commonLib.logDebug("No click actions found for " + subclass);
+                // Handle exceptions
+                commonLib.logDebug("Error in executing click action for " + subclass.getName() + ": " + e.getMessage());
             }
         }
     }
+
+    /**
+     * Clears all items from the given inventory.
+     *
+     * @param inventory The inventory to clear.
+     */
+    public void clearInventory(Inventory inventory) {
+        inventory.clear();
+    }
+
+    /**
+     * Opens the specified inventory for the given player.
+     * This method is useful for showing a custom UI to a player.
+     *
+     * @param player    The player to show the inventory to.
+     * @param inventory The inventory to be shown.
+     */
+    public void openInventoryForPlayer(Player player, Inventory inventory) {
+        player.openInventory(inventory);
+    }
+
+    /**
+     * Creates an item stack with specified material, amount, and custom name.
+     * This method simplifies the process of creating customized items for UIs.
+     *
+     * @param material The material of the item.
+     * @param amount   The amount of the item.
+     * @param name     The custom name of the item.
+     * @return The created ItemStack.
+     */
+    public static ItemStack createItemStack(Material material, int amount, String name) {
+        ItemStack item = new ItemStack(material, amount);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    /**
+     * Abstract method to define actions when a player clicks on a specific slot in the UI.
+     * Subclasses should override this method to implement custom click behavior.
+     *
+     * @param inventory The inventory where the click occurred.
+     * @param slot      The slot number that was clicked.
+     */
+    public abstract void addClickAction(Inventory inventory, int slot);
 
     /**
      * Set a specific slot in an inventory with a given item stack.
@@ -126,14 +187,4 @@ public abstract class UiDesigner {
             throw new IllegalArgumentException("GUI holder must be a player");
         }
     }
-
-    /**
-     * Add an action to be executed when a player clicks on a specific slot in the inventory.
-     *
-     * @param inventory the inventory to modify
-     * @param slot      the slot to add the action to
-     */
-    public abstract void addClickAction(Inventory inventory, int slot);
 }
-
-
