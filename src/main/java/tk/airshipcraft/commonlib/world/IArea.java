@@ -6,40 +6,55 @@ import org.bukkit.World;
 
 import java.util.Collection;
 
+/**
+ * Defines the contract for area-related operations within the world.
+ * Implementations of this interface should provide mechanisms for determining
+ * area boundaries, locating chunks within these boundaries, and managing world-related properties.
+ *
+ * @author notzune
+ * @version 1.0.0
+ * @since 2023-03-30
+ */
 public interface IArea {
 
     /**
-     * Checks whether a given location is inside the defined area
+     * Determines whether a specific location falls within the boundaries of this area.
      *
-     * @param loc location to check
-     * @return true if the given location is inside the area, false if not
+     * @param loc The location to check.
+     * @return True if the location is within the boundaries of the area, false otherwise.
      */
     boolean isInArea(Location loc);
 
     /**
-     * Collects all chunks which are (partially) inside the defined area. If the area contains an infinite amount of
-     * chunks, this will return null
+     * Retrieves a collection of all chunks that are within or intersect the boundaries of this area.
+     * For areas of infinite size, this method may return null.
      *
-     * @return All chunks in the area or null in case of an infinite size
+     * @return A collection of {@link Chunk} instances representing the chunks within this area,
+     *         or null if the area has an infinite extent.
      */
     Collection<Chunk> getChunks();
 
     /**
-     * Collects all chunks which are (partially) inside the defined area. Instead of actual chunk objects, which require
-     * the chunk behind it to be loaded, this will only return pseudo chunks, which contain the right chunk coordinates
-     * for it to be loaded later on
+     * Retrieves a collection of all pseudo chunk coordinates that are within or intersect the boundaries of this area.
+     * This method provides a lightweight alternative to {@link #getChunks()} by avoiding actual chunk loading.
+     * For areas of infinite size, this method may return null.
      *
-     * @return All chunks in the area represented through pseudo chunks or null in case of an infinite size
+     * @return A collection of {@link PseudoChunk} instances representing the chunk coordinates within this area,
+     *         or null if the area has an infinite extent.
      */
     Collection<PseudoChunk> getPseudoChunks();
 
     /**
-     * @return Center of this area
+     * Provides the central point of this area, which can be used as an anchor for various operations.
+     *
+     * @return The central {@link Location} of the area.
      */
     Location getCenter();
 
     /**
-     * @return World in which this area is
+     * Retrieves the world where this area exists.
+     *
+     * @return The {@link World} instance associated with this area.
      */
     World getWorld();
 }
