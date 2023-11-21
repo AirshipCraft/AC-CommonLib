@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.gui;
+package tk.airshipcraft.commonlib.gui.objects;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

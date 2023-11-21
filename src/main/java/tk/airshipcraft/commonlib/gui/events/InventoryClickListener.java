@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import tk.airshipcraft.commonlib.gui.objects.Ui;
-import tk.airshipcraft.commonlib.utils.UiDesigner;
+import tk.airshipcraft.commonlib.gui.UiDesigner;
 
 /**
  * This class listens to inventory click events and determines if the event should

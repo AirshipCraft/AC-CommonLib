@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.utils;
+package tk.airshipcraft.commonlib.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import tk.airshipcraft.commonlib.CommonLib;
 import tk.airshipcraft.commonlib.gui.objects.Ui;
+import tk.airshipcraft.commonlib.utils.SubclassFinder;
 
 import java.util.List;
 
