@@ -121,6 +121,17 @@ public class PreferencesManager {
     }
 
     /**
+     * Retrieves the preference object for a given player.
+     * This method can be used to access and manipulate a player's preferences directly.
+     *
+     * @param player The player whose preference object is to be retrieved.
+     * @return The IPlayerPreference object associated with the player, or null if none is registered.
+     */
+    public IPlayerPreference getPreference(Player player) {
+        return preferencesMap.get(player.getUniqueId());
+    }
+
+    /**
      * Updates a specific preference field for a player.
      * This method can use reflection to update fields annotated with {@code @PlayerPref}.
      *
