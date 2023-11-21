@@ -5,6 +5,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -16,6 +18,8 @@ import java.util.UUID;
  * @since 2023-11-20
  */
 public class Ui {
+
+    private static final Map<UUID, Ui> uis = new HashMap<>(); // A map to track all UI instances by their ID.
 
     private String inventoryName;
     private Inventory inventory;
@@ -37,6 +41,7 @@ public class Ui {
         this.inventory = Bukkit.createInventory(owner, rows * 9, inventoryName);
         this.owner = owner;
         this.inventoryId = UUID.randomUUID();
+        uis.put(inventoryId, this); // Track the UI instance.
     }
 
     /**
@@ -92,5 +97,19 @@ public class Ui {
      */
     public int getRows() {
         return rows;
+    }
+
+    /**
+     * Checks if the provided inventory is a UI created by this plugin.
+     *
+     * @param inventory The inventory to check.
+     * @return True if the inventory is a custom UI, false otherwise.
+     */
+    public static boolean isUi(Inventory inventory) {
+        if (inventory.getHolder() instanceof Ui) {
+            Ui ui = (Ui) inventory.getHolder();
+            return uis.containsKey(ui.getInventoryId());
+        }
+        return false;
     }
 }
