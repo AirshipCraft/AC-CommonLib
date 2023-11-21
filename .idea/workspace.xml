@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0293d1b2-a09f-4aa2-9bb0-63c079dabdf8" name="Changes" comment="Optimize">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/commands/PreferenceCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/CommonLib.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/CommonLib.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/configuration/PreferencesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/airshipcraft/commonlib/configuration/PreferencesManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
