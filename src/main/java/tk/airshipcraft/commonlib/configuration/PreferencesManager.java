@@ -8,14 +8,12 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Manages the preferences for all players.
- * This class handles the registration of player preferences and provides methods
- * to load, save, and reset preferences for individual players.
- * <p>
- * This class is thread-safe and can be used to manage preferences for multiple players concurrently.
- * </p>
- * <p>
- * Example usage:
+ * <p>Manages the preferences of all players on a Minecraft server.</p>
+ * <p>This class acts as a central point for registering, loading, saving, and resetting player preferences.</p>
+ * <p>It uses a thread-safe map to handle concurrent operations, ensuring that player preference data is managed safely in a multi-threaded environment.</p>
+ *
+ * <p>Example implementation would be checking if a player has preferences, updating specific preference fields, and saving all preferences during server shutdown.</p>
+ * <p>Example usage:
  * <pre>{@code
  * // To check if a player has preferences:
  * boolean hasPrefs = preferencesManager.hasPreferences(player);
@@ -25,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * // To save all preferences on server shutdown:
  * preferencesManager.saveAllPreferences();
- * }
+ * }</pre>
  * </p>
  *
  * @author notzune
@@ -33,25 +31,24 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 2023-11-20
  */
 public class PreferencesManager {
-
     private final Map<UUID, IPlayerPreference> preferencesMap = new ConcurrentHashMap<>();
 
     /**
-     * Registers a player's preference object.
-     * If a preference object already exists for the player, it will be replaced.
+     * Registers or updates the preference object for a specific player.
+     * If a preference object already exists for the player, it will be replaced with the new one.
      *
      * @param playerUuid The UUID of the player.
-     * @param preference The player's preference object.
+     * @param preference The player's preference object to be registered or updated.
      */
     public void registerPreference(UUID playerUuid, IPlayerPreference preference) {
         preferencesMap.put(playerUuid, preference);
     }
 
     /**
-     * Loads the preferences for a player.
-     * This method should be called when a player logs in or when preferences need to be reloaded.
+     * Loads the preferences for a specific player.
+     * Should be called when a player logs in or when preferences need to be refreshed.
      *
-     * @param player The player whose preferences should be loaded.
+     * @param player The player whose preferences are to be loaded.
      */
     public void loadPreferences(Player player) {
         IPlayerPreference preference = preferencesMap.get(player.getUniqueId());
@@ -61,10 +58,10 @@ public class PreferencesManager {
     }
 
     /**
-     * Saves the preferences for a player.
-     * This method should be called when a player logs out or when preferences need to be persisted.
+     * Saves the preferences for a specific player.
+     * Should be called when a player logs out or when preferences need to be persisted.
      *
-     * @param player The player whose preferences should be saved.
+     * @param player The player whose preferences are to be saved.
      */
     public void savePreferences(Player player) {
         IPlayerPreference preference = preferencesMap.get(player.getUniqueId());
@@ -74,9 +71,10 @@ public class PreferencesManager {
     }
 
     /**
-     * Resets the preferences for a player to their default values.
+     * Resets the preferences for a specific player to their default values.
+     * This can be useful when preferences need to be reverted to a known state.
      *
-     * @param player The player whose preferences should be reset.
+     * @param player The player whose preferences are to be reset.
      */
     public void resetPreferences(Player player) {
         IPlayerPreference preference = preferencesMap.get(player.getUniqueId());
@@ -86,10 +84,11 @@ public class PreferencesManager {
     }
 
     /**
-     * Describes the preferences for a player.
+     * Provides a descriptive string of a player's preferences.
+     * Useful for displaying preference information to the player or for administrative purposes.
      *
-     * @param player The player whose preferences should be described.
-     * @return A string description of the player's preferences.
+     * @param player The player whose preferences are to be described.
+     * @return A string description of the player's preferences, or a message indicating no preferences are registered.
      */
     public String describePreferences(Player player) {
         IPlayerPreference preference = preferencesMap.get(player.getUniqueId());
@@ -97,19 +96,19 @@ public class PreferencesManager {
     }
 
     /**
-     * Retrieves all registered preferences.
-     * This can be useful for debugging or administrative purposes.
+     * Retrieves a set of all registered player preferences.
+     * This can be useful for administrative or debugging purposes.
      *
-     * @return An unmodifiable set of all registered player preferences.
+     * @return An unmodifiable set containing all registered player preference objects.
      */
     public Set<IPlayerPreference> getAllPreferences() {
         return Collections.unmodifiableSet(new HashSet<>(preferencesMap.values()));
     }
 
     /**
-     * Checks if a player has preferences registered.
+     * Checks whether a specific player has preferences registered.
      *
-     * @param player The player to check for registered preferences.
+     * @param player The player to check.
      * @return True if the player has preferences registered, false otherwise.
      */
     public boolean hasPreferences(Player player) {
@@ -117,23 +116,23 @@ public class PreferencesManager {
     }
 
     /**
-     * Retrieves the preference object for a given player.
-     * This method can be used to access and manipulate a player's preferences directly.
+     * Retrieves the preference object associated with a specific player.
+     * This allows direct access to and manipulation of the player's preferences.
      *
      * @param player The player whose preference object is to be retrieved.
-     * @return The IPlayerPreference object associated with the player, or null if none is registered.
+     * @return The IPlayerPreference object for the player, or null if none is registered.
      */
     public IPlayerPreference getPreference(Player player) {
         return preferencesMap.get(player.getUniqueId());
     }
 
     /**
-     * Updates a specific preference field for a player.
-     * This method can use reflection to update fields annotated with {@code @PlayerPref}.
+     * Updates a specific field within a player's preferences.
+     * This method can utilize reflection to identify and update fields annotated with {@code @PlayerPref}.
      *
      * @param player        The player whose preference is to be updated.
      * @param preferenceKey The key identifying the preference field to update.
-     * @param newValue      The new value for the preference field.
+     * @param newValue      The new value to assign to the preference field.
      */
     public void updatePreferenceField(Player player, String preferenceKey, Object newValue) {
         IPlayerPreference preferences = preferencesMap.get(player.getUniqueId());
@@ -143,8 +142,8 @@ public class PreferencesManager {
     }
 
     /**
-     * Saves all player preferences.
-     * This method should be called on server shutdown to ensure all data is persisted.
+     * Saves all registered player preferences.
+     * This method should be invoked during server shutdown to ensure all preferences are persisted.
      */
     public void saveAllPreferences() {
         preferencesMap.forEach((uuid, preference) -> {
