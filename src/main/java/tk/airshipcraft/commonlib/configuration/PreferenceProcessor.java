@@ -13,7 +13,10 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 /**
- * Processes player preferences by using reflection to load and save annotated fields.
+ * Provides static utility methods to process player preferences using reflection.
+ * This class handles loading and saving player preferences to and from various data stores (e.g., files, databases),
+ * by dynamically interacting with fields annotated with {@link PlayerPref}.
+ * The use of reflection allows for a flexible and extensible approach to preference management.
  *
  * @author notzune
  * @version 1.0.0
@@ -22,10 +25,11 @@ import java.util.UUID;
 public class PreferenceProcessor {
 
     /**
-     * Loads player preferences from the data store into the annotated fields.
+     * Loads player preferences from a configuration file into an {@link IPlayerPreference} instance.
+     * This method uses reflection to dynamically assign values to fields annotated with {@link PlayerPref} based on the stored config.
      *
      * @param player     The player whose preferences should be loaded.
-     * @param preference The preference object containing the fields to be loaded.
+     * @param preference The {@link IPlayerPreference} object containing the fields to be loaded.
      * @param config     The configuration file from which to load the preferences.
      */
     public static void load(Player player, IPlayerPreference preference, FileConfiguration config) {
@@ -46,10 +50,11 @@ public class PreferenceProcessor {
     }
 
     /**
-     * Saves player preferences from the annotated fields into the data store.
+     * Saves player preferences from an {@link IPlayerPreference} instance to a configuration file.
+     * This method reflects through fields annotated with {@link PlayerPref} and saves their values in the config.
      *
      * @param player     The player whose preferences should be saved.
-     * @param preference The preference object containing the fields to be saved.
+     * @param preference The {@link IPlayerPreference} object containing the fields to be saved.
      * @param config     The configuration file to which to save the preferences.
      */
     public static void save(Player player, IPlayerPreference preference, FileConfiguration config) {
@@ -70,10 +75,11 @@ public class PreferenceProcessor {
     }
 
     /**
-     * Loads player preferences from a MySQL database into the annotated fields.
+     * Loads player preferences from a MySQL database into an {@link IPlayerPreference} instance.
+     * This method queries the database for each annotated field's value and assigns it dynamically.
      *
      * @param player     The player whose preferences should be loaded.
-     * @param preference The preference object containing the fields to be loaded.
+     * @param preference The {@link IPlayerPreference} object containing the fields to be loaded.
      * @param connection The database connection.
      */
     public static void loadFromDatabase(Player player, IPlayerPreference preference, Connection connection) {
@@ -104,10 +110,11 @@ public class PreferenceProcessor {
     }
 
     /**
-     * Saves player preferences from the annotated fields into a MySQL database.
+     * Saves player preferences from an {@link IPlayerPreference} instance to a MySQL database.
+     * This method updates the database with the current values of fields annotated with {@link PlayerPref}.
      *
      * @param player     The player whose preferences should be saved.
-     * @param preference The preference object containing the fields to be saved.
+     * @param preference The {@link IPlayerPreference} object containing the fields to be saved.
      * @param connection The database connection.
      */
     public static void saveToDatabase(Player player, IPlayerPreference preference, Connection connection) {
@@ -136,11 +143,11 @@ public class PreferenceProcessor {
 
     /**
      * Converts a string value to the specified field type.
-     * This is a utility method used in loading preferences from the database.
+     * This utility method facilitates the conversion of database string values to their appropriate field types.
      *
      * @param value The string value to convert.
      * @param type  The type to convert the value to.
-     * @return The converted object.
+     * @return The converted object, appropriately typed according to the specified class.
      */
     public static Object convertStringToFieldType(String value, Class<?> type) {
         // Conversion logic goes here (e.g., convert to int, boolean, etc.)
