@@ -1,13 +1,13 @@
 /**
- * Holds the essential objects and interfaces for the GUI system's various components,
- * such as scoreboards, boss bars, and other custom UI elements.
+ * <p>Holds the essential objects and interfaces for the GUI system's various components,
+ * such as scoreboards, boss bars, and other custom UI elements.</p>
  *
- * <p>Subpackages:</p>
+ * <h2>Subpackages:</h2>
  * <ul>
  *   <li>{@code impl} - Contains implementations of the {@link tk.airshipcraft.commonlib.gui.objects.impl.ITeam} interface.</li>
  * </ul>
  *
- * <p>Key classes:</p>
+ * <h2>Key classes:</h2>
  * <ul>
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.BelowName} - Manages display names below player entities.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.Gui} - Base class for creating custom GUIs.</li>
