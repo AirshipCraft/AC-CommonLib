@@ -9,9 +9,9 @@ import tk.airshipcraft.commonlib.gui.objects.Ui;
 import tk.airshipcraft.commonlib.gui.UiDesigner;
 
 /**
- * This class listens to inventory click events and determines if the event should
- * trigger a custom GUI click event based on whether the inventory clicked is a custom UI.
- * It serves as a bridge between the Bukkit inventory events and the custom UI system.
+ * Listener class for inventory click events in Bukkit.
+ * This class detects clicks in custom UIs and triggers appropriate custom GUI click events.
+ * It acts as a mediator between Bukkit's inventory system and the custom UI framework, allowing for integrated event handling.
  *
  * @author Locutusque, notzune
  * @version 1.0.0
@@ -20,18 +20,19 @@ import tk.airshipcraft.commonlib.gui.UiDesigner;
 public class InventoryClickListener implements Listener {
 
     /**
-     * Handles the InventoryClickEvent by checking if it was triggered from a custom UI.
-     * If so, it fires a GuiClickEvent and performs any defined click actions.
+     * Processes InventoryClickEvents, checking if they occur within a custom UI.
+     * If the event occurs in a custom UI, a GuiClickEvent is fired, and associated actions are performed.
+     * This method is crucial for integrating Bukkit's inventory interactions with the custom UI system.
      *
-     * @param event The InventoryClickEvent provided by the Bukkit API.
+     * @param event The InventoryClickEvent triggered by a player's interaction with an inventory.
      */
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!(event.getWhoClicked() instanceof Player)) return; // Ensure a player triggered the event
+        if (!(event.getWhoClicked() instanceof Player)) return; // Ensures that the event is triggered by a player
 
         // Check if the inventory clicked is a custom UI
         if (Ui.isUi(event.getClickedInventory())) {
-            // Create and call a custom GUI click event
+            // Create and trigger a custom GUI click event
             Bukkit.getServer().getPluginManager().callEvent(new GuiClickEvent(
                     (Player) event.getWhoClicked(),
                     event.getSlot(),
@@ -39,17 +40,18 @@ public class InventoryClickListener implements Listener {
                     event.getClickedInventory()
             ));
 
-            // Execute any defined actions for the clicked UI element
+            // Execute actions defined for the clicked UI element
             UiDesigner.callClickAction(event.getInventory(), event.getSlot());
         }
     }
 
     /**
-     * A utility method to safely cast and handle the inventory click event.
-     * This encapsulates type-checking and casting within a single method to avoid redundant checks.
+     * A utility method to handle the casting and processing of InventoryClickEvents.
+     * This method encapsulates the logic for checking if an event is associated with a custom UI and handling it accordingly.
+     * It returns a boolean indicating whether the event was processed as part of a custom UI interaction.
      *
-     * @param event The InventoryClickEvent to handle.
-     * @return True if the event was successfully handled, false otherwise.
+     * @param event The InventoryClickEvent to be processed.
+     * @return True if the event corresponds to a custom UI interaction and was handled, false otherwise.
      */
     public boolean handleInventoryClick(InventoryClickEvent event) {
         if (!(event.getWhoClicked() instanceof Player)) {
