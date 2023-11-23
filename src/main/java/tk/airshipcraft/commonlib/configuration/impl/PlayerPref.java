@@ -6,17 +6,29 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotation to mark fields in classes implementing IPlayerPreference that should be
- * considered as player preference settings.
+ * <p>The PlayerPref annotation is used to designate fields within classes that implement the IPlayerPreference interface as player preference settings.
+ * This annotation serves as a marker to indicate which fields represent customizable settings for a player.
+ * It also optionally allows for the specification of a default value for the preference,
+ * which can be utilized during the initialization or resetting of preferences.</p>
+ *
+ * <p>Usage of this annotation simplifies the process of identifying and handling player-specific preference fields dynamically,
+ * especially when working with reflection to automate preference management tasks.</p>
+ *
+ * @author notzune
+ * @version 1.0.0
+ * @since 2023-11-20
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface PlayerPref {
+
     /**
-     * An optional default value string for the preference.
-     * This can be used when resetting preferences or when a value is not yet set.
+     * Specifies an optional default value for the player preference.
+     * This default value is used as a fallback when the preference has not been set previously or when resetting to defaults.
+     * The value is provided as a string and should be convertible to the type of the field it annotates.
      *
-     * @return The default value for the preference as a string.
+     * @return The default value for the annotated preference field, represented as a String.
+     *         If not specified, defaults to an empty string.
      */
     String defaultValue() default "";
 }
