@@ -10,19 +10,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Utility class for text formatting in Minecraft, providing methods for color parsing,
+ * duration formatting, and string manipulation.
+ *
+ * @author notzune
+ * @since 2023-04-02
+ * @version 1.0.0
+ */
 public class TextFormatting {
 
     private static final String titleizeLine = repeat("_", 52);
     private static final int titleizeBalance = -1;
 
-    // -------------------------------------------- //
-    // Top-level parsing functions.
-    // -------------------------------------------- //
-
+    /**
+     * Formats a duration in milliseconds into a human-readable string.
+     *
+     * @param time Duration in milliseconds.
+     * @return Formatted duration as a string.
+     */
     public static String formatDuration(long time) {
         return formatDuration(time, TimeUnit.MILLISECONDS);
     }
 
+    /**
+     * Formats a duration in a specified time unit into a human-readable string.
+     *
+     * @param time Duration.
+     * @param unit TimeUnit of the duration.
+     * @return Formatted duration as a string.
+     */
     public static String formatDuration(long time, TimeUnit unit) {
         long totalSeconds = TimeUnit.SECONDS.convert(time, unit);
         long seconds = totalSeconds % 60;
@@ -49,10 +66,22 @@ public class TextFormatting {
     // Color parsing
     // -------------------------------------------- //
 
+    /**
+     * Parses a string
+     *
+     * @param str
+     * @param args
+     * @return parsed string
+     */
     public static String parse(String str, Object... args) {
         return String.format(parse(str), args);
     }
 
+    /**
+     *
+     * @param str
+     * @return
+     */
     public static String parse(String str) {
         return parseColor(str);
     }

@@ -3,8 +3,9 @@ package tk.airshipcraft.commonlib.gui.objects.impl;
 import java.util.List;
 
 /**
- * Interface defining the structure and basic functionalities of a team.
- * This interface allows different plugins to implement their own team logic and hierarchies.
+ * Interface for defining the structure and functionality of a team in a plugin environment.
+ * This interface provides a standard way to manage teams, including their names, hierarchy, and relationships.
+ * Implementing this interface allows different plugins to create and manage their own team logic, structures, and hierarchies.
  *
  * @author notzune
  * @version 1.0.0
@@ -13,56 +14,59 @@ import java.util.List;
 public interface ITeam {
 
     /**
-     * Gets the name of the team.
+     * Retrieves the name of the team.
+     * This method should return the current name under which the team is recognized.
      *
-     * @return The name of the team.
+     * @return The name of the team as a String.
      */
     String getName();
 
     /**
      * Sets the name of the team.
+     * This method is used to change the team's name.
      *
-     * @param name The new name of the team.
+     * @param name The new name of the team as a String.
      */
     void setName(String name);
 
     /**
-     * Gets the child teams of this team.
-     * Child teams can represent sub-groups or divisions within the team.
+     * Gets a list of child teams associated with this team.
+     * Child teams represent sub-groups or divisions within the larger team structure.
      *
-     * @return A list of child teams.
+     * @return A list of ITeam instances representing the child teams.
      */
     List<ITeam> getChildTeams();
 
     /**
      * Adds a child team to this team.
-     * This method is used to build hierarchical structures of teams.
+     * This method is used to expand the team hierarchy by adding a new sub-team.
      *
-     * @param team The child team to be added.
+     * @param team The ITeam instance representing the child team to be added.
      */
     void addChildTeam(ITeam team);
 
     /**
-     * Removes a child team from this team.
-     * This method allows for dynamic modification of the team's structure.
+     * Removes a specific child team from this team.
+     * This method allows for the dynamic reorganization or simplification of the team structure.
      *
-     * @param team The child team to be removed.
+     * @param team The ITeam instance representing the child team to be removed.
      */
     void removeChildTeam(ITeam team);
 
     /**
-     * Retrieves the parent team of this team.
-     * The parent team is the team that this team is a sub-group or division of.
+     * Retrieves the parent team of this team, if any.
+     * The parent team is the higher-level team to which this team belongs.
+     * A return value of null indicates that this team is at the top of its hierarchy.
      *
-     * @return The parent team, or null if this team is a top-level team.
+     * @return The ITeam instance representing the parent team, or null if there is no parent.
      */
     ITeam getParentTeam();
 
     /**
-     * Sets the parent team of this team.
-     * This method is used to establish hierarchical relationships between teams.
+     * Sets the parent team for this team.
+     * This method establishes or updates the hierarchical relationship of this team within a larger team structure.
      *
-     * @param parent The parent team to set.
+     * @param parent The ITeam instance representing the new parent team.
      */
     void setParentTeam(ITeam parent);
 }

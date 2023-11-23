@@ -11,8 +11,9 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Represents a custom User Interface (UI) in Minecraft.
- * This class allows for creating and managing custom inventory interfaces.
+ * Represents a custom User Interface (UI) in Minecraft, facilitating the creation and management of custom inventory interfaces.
+ * This class allows for the design and interaction of inventory-based GUIs such as chests or hoppers, with custom layouts and functionalities.
+ * It supports adding items as buttons and managing these interfaces within the Minecraft environment.
  *
  * @author Locutusque, notzune
  * @version 1.0.0
@@ -20,7 +21,7 @@ import java.util.UUID;
  */
 public class Ui {
 
-    private static final Map<UUID, Ui> uis = new HashMap<>(); // A map to track all UI instances by their ID.
+    private static final Map<UUID, Ui> uis = new HashMap<>(); // A map to keep track of all UI instances by their ID.
 
     private String inventoryName;
     private Inventory inventory;
@@ -30,13 +31,13 @@ public class Ui {
     private int rows;
 
     /**
-     * Constructs a new UI with the specified name, owner, and number of rows.
-     * This UI is typically used for creating custom inventory interfaces such as chests.
+     * Constructs a new Ui instance with specified parameters.
+     * This constructor sets up a custom inventory interface, which can be a chest, hopper, etc., based on the provided type and rows.
      *
-     * @param inventoryName The name of the inventory.
-     * @param owner         The owner of the inventory, can be null.
-     * @param type          The type of the inventory (e.g., CHEST, HOPPER).
-     * @param rows          The number of rows in the inventory (chest type).
+     * @param inventoryName The name of the inventory, displayed at the top of the UI.
+     * @param owner         The InventoryHolder associated with this UI, can be null.
+     * @param type          The type of inventory (e.g., CHEST, HOPPER) to create.
+     * @param rows          The number of rows in the inventory if it's a chest type.
      */
     public Ui(String inventoryName, InventoryHolder owner, InventoryType type, int rows) {
         this.inventoryName = inventoryName;
@@ -49,26 +50,28 @@ public class Ui {
     }
 
     /**
-     * Adds a button (item) to the UI at the specified slot.
+     * Adds an item as a button to the UI at the specified slot.
+     * This method places an ItemStack in the inventory at a given slot, which can represent a button or an interactive element.
      *
-     * @param item The ItemStack to add as a button.
-     * @param slot The slot to place the item in.
+     * @param item The ItemStack to be added as a button.
+     * @param slot The inventory slot where the item will be placed.
      */
     public void addButton(ItemStack item, int slot) {
         this.inventory.setItem(slot, item);
     }
 
     /**
-     * Gets the name of the UI.
+     * Retrieves the name of the UI's inventory.
      *
-     * @return The inventory name.
+     * @return The name of the inventory.
      */
     public String getInventoryName() {
         return inventoryName;
     }
 
     /**
-     * Gets the unique identifier of the UI.
+     * Gets the unique identifier of this UI instance.
+     * This UUID can be used to distinguish and track individual UIs.
      *
      * @return The UUID of the inventory.
      */
@@ -77,46 +80,51 @@ public class Ui {
     }
 
     /**
-     * Gets the InventoryHolder of the UI.
+     * Retrieves the InventoryHolder associated with this UI.
+     * The InventoryHolder represents the entity or object that holds this UI.
      *
-     * @return The InventoryHolder, which can be null.
+     * @return The InventoryHolder of this UI, which may be null.
      */
     public InventoryHolder getOwner() {
         return owner;
     }
 
     /**
-     * Gets the Inventory object representing this UI.
+     * Obtains the Inventory object representing this UI.
+     * This inventory is the actual container in which items and buttons are placed.
      *
-     * @return The Inventory instance.
+     * @return The Inventory instance representing this UI.
      */
     public Inventory getInventory() {
         return inventory;
     }
 
     /**
-     * Gets the type of the UI.
+     * Gets the type of the UI's inventory.
+     * The type determines the layout and behavior of the inventory (e.g., chest, hopper).
      *
-     * @return The InventoryType instance.
+     * @return The InventoryType of this UI.
      */
     public InventoryType getType() {
         return type;
     }
 
     /**
-     * Gets the number of rows in the UI.
+     * Retrieves the number of rows in the UI's inventory.
+     * This is relevant for types like chests that have a variable number of rows.
      *
-     * @return The number of rows.
+     * @return The number of rows in the inventory.
      */
     public int getRows() {
         return rows;
     }
 
     /**
-     * Checks if the provided inventory is a UI created by this plugin.
+     * Checks if a given inventory is a custom UI created by this class.
+     * This static method can be used to verify if an inventory is part of the custom UI system.
      *
-     * @param inventory The inventory to check.
-     * @return True if the inventory is a custom UI, false otherwise.
+     * @param inventory The Inventory to check.
+     * @return True if the inventory is a custom UI created by this class, false otherwise.
      */
     public static boolean isUi(Inventory inventory) {
         if (inventory.getHolder() instanceof Ui) {

@@ -5,8 +5,10 @@ import org.bukkit.Particle;
 import org.bukkit.World;
 
 /**
- * Utility class for creating and playing particle effects in Minecraft.
- * This class encapsulates the properties of a particle effect and provides a method to display it.
+ * Represents a customizable particle effect in Minecraft, providing methods to create,
+ * configure, and display particle effects in the game world. This class encapsulates
+ * various parameters such as the type of particle, offset, speed, and count, enabling
+ * fine-tuned control over the appearance and behavior of particle effects.
  *
  * @author notzune
  * @version 1.0.0
@@ -22,14 +24,15 @@ public class ParticleEffect {
     private Particle particle;
 
     /**
-     * Constructs a new ParticleEffect with the specified properties.
+     * Constructs a new ParticleEffect with specified properties, allowing for the creation
+     * of diverse visual effects ranging from simple to complex animations.
      *
-     * @param particle      The type of particle for this effect.
-     * @param offsetX       The amount to be randomly offset by in the X axis.
-     * @param offsetY       The amount to be randomly offset by in the Y axis.
-     * @param offsetZ       The amount to be randomly offset by in the Z axis.
-     * @param speed         The speed of the particles.
-     * @param particleCount The number of particles to display.
+     * @param particle      The type of particle to use for this effect.
+     * @param offsetX       The maximum random offset on the X axis for each particle.
+     * @param offsetY       The maximum random offset on the Y axis for each particle.
+     * @param offsetZ       The maximum random offset on the Z axis for each particle.
+     * @param speed         The speed at which particles move after being spawned.
+     * @param particleCount The number of particles to spawn for this effect.
      */
     public ParticleEffect(Particle particle, float offsetX, float offsetY, float offsetZ, float speed, int particleCount) {
         this.particle = particle;
@@ -92,11 +95,11 @@ public class ParticleEffect {
     }
 
     /**
-     * Displays the particle effect at the specified location.
-     * The particles will be spawned in the world of the given location.
+     * Displays the configured particle effect at a specific location in the game world.
+     * This method is typically used to visually indicate events, enhance ambiance, or signal in-game actions.
      *
-     * @param location the location at which to play the particle effect.
-     * @throws IllegalArgumentException if the location's world is null.
+     * @param location The location where the particle effect should be played.
+     * @throws IllegalArgumentException if the location's world is null, as particles need a world context.
      */
     public void playEffect(Location location) {
         World world = location.getWorld();
@@ -134,9 +137,15 @@ public class ParticleEffect {
         return new ParticleEffect(particle, offsetX, offsetY, offsetZ, speed, particleCount);
     }
 
+    /**
+     * Generates a string representation of the ParticleEffect, providing details
+     * about the particle type and its properties. Useful for logging and debugging.
+     *
+     * @return A formatted string containing information about the ParticleEffect.
+     */
     @Override
     public String toString() {
         return String.format("ParticleEffect{type=%s, offsetX=%.3f, offsetY=%.3f, offsetZ=%.3f, speed=%.3f, particleCount=%d}",
-                particle, offsetX, offsetY, offsetZ, speed, particleCount);
+                             particle, offsetX, offsetY, offsetZ, speed, particleCount);
     }
 }

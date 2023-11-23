@@ -8,9 +8,9 @@ import org.bukkit.entity.Player;
 import tk.airshipcraft.commonlib.CommonLib;
 
 /**
- * This class encapsulates the BossBar feature from the Bukkit API, providing a simplified
- * interface to create and manipulate boss bars in-game. It includes utility methods
- * for common tasks such as animating the progress of the boss bar, adding emojis, and more.
+ * Encapsulates the Bukkit API's BossBar feature, offering a simplified and enhanced interface for creating and manipulating boss bars.
+ * This class includes utility methods for animating boss bar progress, flashing the bar, updating its appearance after a delay,
+ * and adding emojis to the title, providing a richer in-game experience.
  *
  * @author Locutusque, notzune
  * @version 1.0.0
@@ -21,29 +21,29 @@ public class Bossbar {
     private BossBar bossbar;
 
     /**
-     * Creates a new boss bar with the specified title, color, and style.
+     * Constructs a new Bossbar instance with the specified title, color, and style.
      *
-     * @param title The title of the boss bar.
-     * @param color The color of the boss bar.
-     * @param style The style of the boss bar.
+     * @param title The title text of the boss bar.
+     * @param color The color of the boss bar, using BarColor.
+     * @param style The style of the boss bar, using BarStyle.
      */
     public Bossbar(String title, BarColor color, BarStyle style) {
         bossbar = Bukkit.createBossBar(title, color, style);
     }
 
     /**
-     * Adds a player to the boss bar.
+     * Adds a player to this boss bar, making it visible to them.
      *
-     * @param player The player to add.
+     * @param player The Player to add to the boss bar's visibility.
      */
     public void addPlayer(Player player) {
         bossbar.addPlayer(player);
     }
 
     /**
-     * Removes a player from the boss bar.
+     * Removes a player from this boss bar, hiding it from their view.
      *
-     * @param player The player to remove.
+     * @param player The Player to remove from the boss bar's visibility.
      */
     public void removePlayer(Player player) {
         bossbar.removePlayer(player);
@@ -52,10 +52,11 @@ public class Bossbar {
     // Additional getters and setters for boss bar properties (omitted for brevity)
 
     /**
-     * Animates the progress of the boss bar to the specified value over a given duration.
+     * Animates the progress of the boss bar from its current value to a specified target value over a given duration.
+     * The animation is achieved by gradually updating the progress value at regular intervals.
      *
-     * @param progress The target progress value (between 0.0 and 1.0).
-     * @param duration The duration over which to animate the progress (in ticks).
+     * @param progress The target progress value to animate to (between 0.0 and 1.0).
+     * @param duration The duration in game ticks over which to animate the progress.
      */
     public void animateProgress(double progress, int duration) {
         double currentProgress = bossbar.getProgress();
@@ -72,9 +73,10 @@ public class Bossbar {
     }
 
     /**
-     * Flashes the boss bar by alternating its color and style for a specified duration.
+     * Flashes the boss bar by alternating its color and style at regular intervals for a specified duration.
+     * This effect creates a noticeable flashing animation to draw players' attention.
      *
-     * @param duration The number of ticks to flash the boss bar for.
+     * @param duration The duration in ticks for which the boss bar should flash.
      */
     public void flash(int duration) {
         BarColor originalColor = bossbar.getColor();
@@ -92,9 +94,10 @@ public class Bossbar {
 
     /**
      * Updates the color and style of the boss bar after a specified delay.
+     * This method allows for delayed customization of the boss bar's appearance.
      *
-     * @param color  The new color to set after the delay.
-     * @param style  The new style to set after the delay.
+     * @param color  The new color to set for the boss bar, using BarColor.
+     * @param style  The new style to set for the boss bar, using BarStyle.
      * @param delay  The delay in ticks before applying the new color and style.
      */
     public void updateAfterDelay(BarColor color, BarStyle style, long delay) {
@@ -105,9 +108,10 @@ public class Bossbar {
     }
 
     /**
-     * Adds an emoji to the beginning of the boss bar title.
+     * Adds an emoji or special character to the beginning of the boss bar's title.
+     * This method is useful for adding visual flair or emphasizing the boss bar's message.
      *
-     * @param emoji The emoji to prepend to the title.
+     * @param emoji The emoji or character string to prepend to the boss bar's title.
      */
     public void addEmojiToTitle(String emoji) {
         bossbar.setTitle(emoji + " " + bossbar.getTitle());

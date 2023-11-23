@@ -7,9 +7,10 @@ import org.bukkit.inventory.Inventory;
 import tk.airshipcraft.commonlib.gui.events.GuiClickEvent;
 
 /**
- * Abstract class for creating GUIs (Graphical User Interfaces) in Minecraft.
- * This class provides a framework for opening GUIs and handling interactions within them.
- * Extend this class to create specific GUIs with custom behavior and event handling.
+ * Abstract base class for creating custom Graphical User Interfaces (GUIs) in Minecraft.
+ * This class provides a foundational framework for GUI creation, including inventory initialization, event handling,
+ * and interaction management. It is designed to be extended by subclasses to create specific types of GUIs with
+ * custom behavior and event handling tailored to the needs of different plugins or functionalities.
  *
  * @author notzune
  * @version 1.0.0
@@ -20,51 +21,52 @@ public abstract class Gui {
     protected Inventory inventory;
 
     /**
-     * Constructor to initialize the GUI with an inventory.
+     * Constructs a new Gui instance with the provided inventory.
      *
-     * @param inventory The inventory associated with the GUI.
+     * @param inventory The Inventory object associated with this GUI, representing the interface layout and contents.
      */
     public Gui(Inventory inventory) {
         this.inventory = inventory;
     }
 
     /**
-     * Handles a click event within this GUI.
+     * Handles a click event within the GUI.
+     * This method is responsible for creating and dispatching a custom GuiClickEvent upon player interaction with the GUI.
+     * It also provides a point of extension for handling the event after its creation and dispatch.
      *
-     * @param event  The InventoryClickEvent triggered when a player clicks within the inventory.
+     * @param event  The InventoryClickEvent triggered when a player clicks an item within the inventory.
      * @param player The player who clicked in the GUI.
      */
     public void handleClick(InventoryClickEvent event, Player player) {
-        // Create and dispatch a custom GuiClickEvent
         GuiClickEvent guiClickEvent = new GuiClickEvent(player, event.getSlot(), event.getCurrentItem(), inventory);
         Bukkit.getServer().getPluginManager().callEvent(guiClickEvent);
 
         if (!guiClickEvent.isCancelled()) {
-            // Handle the event if it's not cancelled
-            handleCustomClick(guiClickEvent);
+            handleCustomClick(guiClickEvent);  // Handle custom behavior if the event is not cancelled.
         }
     }
 
     /**
-     * Abstract method to handle custom GuiClickEvent.
-     * This should be implemented by subclasses to define custom behavior for the event.
+     * Abstract method for handling custom GuiClickEvent.
+     * Subclasses should override this method to define specific behaviors for GUI interactions.
      *
-     * @param event The custom GuiClickEvent.
+     * @param event The custom GuiClickEvent to be handled.
      */
     public abstract void handleCustomClick(GuiClickEvent event);
 
     /**
-     * Opens the GUI for a specific player.
-     * This method should be called to display the GUI to a player.
+     * Opens the GUI for a specified player.
+     * This method should be invoked to display the GUI, making it visible and interactive for the player.
      *
-     * @param player The player to whom the GUI should be shown.
+     * @param player The player for whom the GUI should be opened.
      */
     public void open(Player player) {
         player.openInventory(inventory);
     }
 
     /**
-     * Gets the inventory associated with this GUI.
+     * Retrieves the Inventory object associated with this GUI.
+     * This inventory represents the layout and content of the GUI.
      *
      * @return The Inventory object representing this GUI.
      */

@@ -6,7 +6,8 @@ import org.bukkit.scoreboard.*;
 
 /**
  * A utility class for managing and customizing the below-name scoreboard in Minecraft.
- * This class allows for creating and updating a scoreboard display below player names.
+ * This class facilitates the creation and management of scoreboards that display information below player names,
+ * such as health, scores, or custom text. It provides methods to set up and modify these displays per player.
  *
  * @author Locutusque, notzune
  * @version 1.0.0
@@ -20,19 +21,19 @@ public class BelowName {
 
     /**
      * Constructs a new BelowName instance using the provided ScoreboardManager.
+     * Initializes a new scoreboard and sets up the objective for below-name display.
      *
-     * @param manager The ScoreboardManager for creating scoreboards.
+     * @param manager The ScoreboardManager used for creating and managing scoreboards.
      */
     public BelowName(ScoreboardManager manager) {
         this.manager = manager;
         this.scoreboard = manager.getNewScoreboard();
-        // Ensure the objective is properly set up.
-        setupObjective();
+        setupObjective();  // Initialize the objective for below-name display.
     }
 
     /**
-     * Sets up the objective for the below-name display.
-     * If the objective doesn't exist, it's created.
+     * Sets up the objective for the below-name display on the scoreboard.
+     * If the objective does not already exist, it is created and configured.
      */
     private void setupObjective() {
         Objective objective = scoreboard.getObjective(OBJECTIVE_NAME);
@@ -43,10 +44,11 @@ public class BelowName {
     }
 
     /**
-     * Sets the display name of the below-name scoreboard for the specified player.
+     * Sets the display name of the below-name scoreboard for a specific player.
+     * This display name appears below the player's name in the game.
      *
-     * @param player      The player whose scoreboard display name is to be set.
-     * @param displayName The display name for the below-name scoreboard.
+     * @param player      The player for whom the display name is to be set.
+     * @param displayName The display name to be shown below the player's name.
      */
     public void setDisplayName(Player player, String displayName) {
         Objective objective = scoreboard.getObjective(OBJECTIVE_NAME);
@@ -55,10 +57,11 @@ public class BelowName {
     }
 
     /**
-     * Adds a new team to the below-name scoreboard with a specified name and color.
+     * Adds a new team to the scoreboard with a specified name and color.
+     * This team can be used to group players and customize their below-name displays.
      *
-     * @param name  The name of the team to add.
-     * @param color The color of the team.
+     * @param name  The name of the team to be added.
+     * @param color The color to be associated with the team, using ChatColor.
      * @return The newly created Team object.
      */
     public Team addTeam(String name, ChatColor color) {
@@ -68,10 +71,11 @@ public class BelowName {
     }
 
     /**
-     * Sets the team for a specified player on the below-name scoreboard.
+     * Assigns a player to a specific team on the below-name scoreboard.
+     * This can be used to group players and apply common display settings.
      *
-     * @param player The player whose team is to be set.
-     * @param team   The team to set for the player.
+     * @param player The player to be added to the team.
+     * @param team   The team to which the player is to be added.
      */
     public void setTeam(Player player, Team team) {
         team.addEntry(player.getName());
@@ -79,10 +83,11 @@ public class BelowName {
     }
 
     /**
-     * Sets the below-name text for a specified player on the below-name scoreboard.
+     * Sets a custom text to display below the name of a specific player.
+     * This text appears below the player's name and can be used for various purposes, such as showing scores or statuses.
      *
-     * @param player    The player whose below-name text is to be set.
-     * @param belowName The text to display below the player's name.
+     * @param player    The player for whom the below-name text is to be set.
+     * @param belowName The custom text to display below the player's name.
      */
     public void setBelowName(Player player, String belowName) {
         Team team = getOrCreateTeam(player);
@@ -91,11 +96,11 @@ public class BelowName {
     }
 
     /**
-     * Gets or creates a team for a player.
-     * If a team for the player doesn't exist, it is created.
+     * Retrieves or creates a team for a given player on the scoreboard.
+     * If no team exists for the player, a new team is created and associated with them.
      *
      * @param player The player for whom the team is to be retrieved or created.
-     * @return The Team associated with the player.
+     * @return The Team object associated with the player.
      */
     private Team getOrCreateTeam(Player player) {
         Team team = scoreboard.getEntryTeam(player.getName());

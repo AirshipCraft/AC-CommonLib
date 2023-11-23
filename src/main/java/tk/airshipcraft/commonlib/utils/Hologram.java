@@ -17,6 +17,10 @@ import java.util.List;
 
 /**
  * A utility class for creating and managing holograms in Minecraft using ArmorStands.
+ *
+ * @author Locutusque
+ * @version 1.0.0
+ * @since 2023-04-11
  */
 public abstract class Hologram implements Listener {
 

@@ -14,10 +14,10 @@ import tk.airshipcraft.commonlib.utils.SubclassFinder;
 import java.util.List;
 
 /**
- * A utility class for designing user interfaces (UIs) in Minecraft.
- * Provides methods to create custom inventory GUIs, set items in inventory slots,
- * fill empty slots with items, and manage inventory borders and titles.
- * This class is intended to be extended to add specific click actions for different UIs.
+ * A utility class designed for crafting and handling Graphical User Interfaces (GUIs) within Minecraft.
+ * It provides a suite of methods to create and configure custom inventory GUIs, such as setting items in slots,
+ * filling empty slots with placeholder items, managing inventory borders, and defining titles.
+ * Extend this class to implement specific click actions and other interactive features for different GUIs.
  *
  * @author Locutusque, notzune
  * @version 1.0.0
@@ -28,6 +28,10 @@ public abstract class UiDesigner {
     private static SubclassFinder subclassFinder;
     private static final CommonLib commonLib = CommonLib.getInstance();
 
+    /**
+     * Initializes a new SubclassFinder for UiDesigner subclasses.
+     * The SubclassFinder utility helps identify all subclasses of UiDesigner for click action processing.
+     */
     public UiDesigner() {
         subclassFinder = new SubclassFinder(this.getClass());
     }
@@ -46,11 +50,11 @@ public abstract class UiDesigner {
     }
 
     /**
-     * Calls the addClickAction method for all subclasses of the UiDesigner class.
-     * This method is useful for triggering UI-related actions when a player clicks on a specific inventory slot.
+     * Invokes the addClickAction method for all UiDesigner subclasses.
+     * This allows the execution of click actions defined in UiDesigner subclasses when a player interacts with an inventory slot.
      *
-     * @param inventory The inventory where the click action occurred.
-     * @param slot      The slot number that was clicked.
+     * @param inventory The inventory where the interaction occurred.
+     * @param slot      The slot number that was interacted with.
      */
     public static void callClickAction(Inventory inventory, int slot) {
         // Get all subclasses of UiDesigner
@@ -106,10 +110,10 @@ public abstract class UiDesigner {
     }
 
     /**
-     * Abstract method to define actions when a player clicks on a specific slot in the UI.
-     * Subclasses should override this method to implement custom click behavior.
+     * Abstract method to add a click action for a GUI.
+     * Subclasses of UiDesigner should override this method to provide specific behavior when a slot in the UI is clicked.
      *
-     * @param inventory The inventory where the click occurred.
+     * @param inventory The inventory in which the click occurred.
      * @param slot      The slot number that was clicked.
      */
     public abstract void addClickAction(Inventory inventory, int slot);
@@ -140,10 +144,11 @@ public abstract class UiDesigner {
     }
 
     /**
-     * Sets the border of the given inventory to the specified item stack.
+     * Sets the border of the inventory with a specified item.
+     * This method can be used to visually separate the content area from the edges in the GUI.
      *
-     * @param inventory the inventory to modify
-     * @param item      the item stack to set as the border
+     * @param inventory The inventory to modify.
+     * @param item      The ItemStack to use as a border.
      */
     public void setBorder(Inventory inventory, ItemStack item) {
         int size = inventory.getSize();
@@ -155,10 +160,11 @@ public abstract class UiDesigner {
     }
 
     /**
-     * Fills all empty non-border slots in the given inventory with the specified item stack.
+     * Fills all empty slots that are not part of the border in the inventory with a specified item.
+     * This can be used to create a background effect or indicate unusable slots.
      *
-     * @param inventory the inventory to fill
-     * @param item      the item stack to fill the non-border slots with
+     * @param inventory The inventory to fill.
+     * @param item      The ItemStack to use as filler for non-border slots.
      */
     public void setFiller(Inventory inventory, ItemStack item) {
         int size = inventory.getSize();
@@ -170,13 +176,12 @@ public abstract class UiDesigner {
     }
 
     /**
-     * Sets the title of the given inventory to the specified title.
-     * If the inventory holder is a player, the player's inventory will be closed
-     * and a new inventory with the new title will be created and opened for the player.
-     * Otherwise, an IllegalArgumentException is thrown because the GUI must be owned by a player.
+     * Changes the title of the inventory.
+     * This method will close the existing inventory for the player, if necessary, and open a new one with the new title.
+     * Note that changing the title is not possible without reopening the inventory.
      *
-     * @param inventory the inventory to modify
-     * @param title     the new title for the inventory
+     * @param inventory The inventory whose title is to be changed.
+     * @param title     The new title for the inventory.
      */
     public void setTitle(Inventory inventory, String title) {
         if (inventory.getHolder() instanceof Player) {
