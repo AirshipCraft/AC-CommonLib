@@ -7,55 +7,65 @@ import org.bukkit.event.HandlerList;
 import tk.airshipcraft.commonlib.utils.Hologram;
 
 /**
- * This event is fired whenever a player clicks on a hologram.
+ * Represents an event that is fired when a player clicks on a hologram within the game.
+ * This event class provides details about the hologram interaction, including the player who clicked and the specific hologram.
+ * It can be used to handle custom actions upon hologram interactions and can be cancelled to prevent default behavior.
  *
  * @author Locutusque
  * @version 1.0.0
  * @since 2023-04-11
  */
 public class HologramClickEvent extends Event implements Cancellable {
+
     private static final HandlerList HANDLERS = new HandlerList();
     private final Hologram hologram;
     private final Player player;
     private boolean cancelled = false;
 
     /**
-     * Constructor for the HologramClickEvent class.
+     * Constructs a HologramClickEvent with the specified hologram and the player who interacted with it.
      *
-     * @param hologram The hologram that was clicked on.
-     * @param player   The player that clicked on the hologram.
+     * @param hologram The Hologram object that was clicked on.
+     * @param player   The Player who clicked on the hologram.
      */
     public HologramClickEvent(Hologram hologram, Player player) {
         this.hologram = hologram;
         this.player = player;
     }
 
+    /**
+     * Returns the HandlerList for this event type.
+     * Required for custom event implementation in Bukkit.
+     *
+     * @return The static HandlerList for HologramClickEvent.
+     */
     public static HandlerList getHandlerList() {
         return HANDLERS;
     }
 
     /**
-     * Returns the hologram that was clicked on.
+     * Retrieves the hologram that was clicked on by the player.
      *
-     * @return The hologram that was clicked on.
+     * @return The Hologram instance representing the hologram that was interacted with.
      */
     public Hologram getHologram() {
         return hologram;
     }
 
     /**
-     * Returns the player that clicked on the hologram.
+     * Gets the player who clicked on the hologram.
      *
-     * @return The player that clicked on the hologram.
+     * @return The Player instance representing the player who clicked on the hologram.
      */
     public Player getPlayer() {
         return player;
     }
 
     /**
-     * Returns whether the event is cancelled or not.
+     * Checks if the event has been cancelled.
+     * A cancelled event will not proceed with the default interaction behavior.
      *
-     * @return Whether the event is cancelled or not.
+     * @return True if the event is cancelled, false otherwise.
      */
     @Override
     public boolean isCancelled() {
@@ -63,15 +73,22 @@ public class HologramClickEvent extends Event implements Cancellable {
     }
 
     /**
-     * Sets whether the event is cancelled or not.
+     * Sets the cancellation state of the event.
+     * Cancelling the event can prevent the default interaction behavior associated with the hologram click.
      *
-     * @param cancelled Whether the event is cancelled or not.
+     * @param cancelled True to cancel the event, false to allow it to proceed.
      */
     @Override
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 
+    /**
+     * Returns the handlers associated with this event.
+     * Part of the Bukkit event handling mechanism.
+     *
+     * @return The HandlerList for this event.
+     */
     @Override
     public HandlerList getHandlers() {
         return HANDLERS;
