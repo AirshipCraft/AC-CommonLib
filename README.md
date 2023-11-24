@@ -1,3 +1,4 @@
+[![Maven Package and Deploy](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-publish.yml) [![Maven Build and Release](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-build-and-release.yml/badge.svg)](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-build-and-release.yml) 
 # AC-CommonLib
 
 AC-CommonLib is a comprehensive utility library designed to streamline the development of plugins for the AirshipCraft: Reborn (AC:R) project. It provides a broad API to simplify common tasks and implement advanced features with minimal boilerplate.
