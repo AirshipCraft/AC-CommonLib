@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.9...v1.1.10) (2023-11-24)
+
+
+### Bug Fixes
+
+* use github token and change permission scope ([e087f3e](https://github.com/AirshipCraft/AC-CommonLib/commit/e087f3e37ff238850ffd47e0838c27a79b332272))
+
 ## [1.1.9](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.8...v1.1.9) (2023-11-24)
 
 
