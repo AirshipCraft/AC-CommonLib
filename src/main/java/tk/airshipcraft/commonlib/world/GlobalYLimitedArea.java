@@ -7,16 +7,12 @@ import org.bukkit.World;
 import java.util.Collection;
 
 /**
- * Represents a world-limited area that spans the entire X and Z dimensions,
- * but is limited by specified Y levels (lower and upper Y bounds).
+ * <p>Represents a world-limited area with vertical bounds that extend infinitely along the X and Z axes.
+ * This class provides functionality to work with and determine locations within these vertical boundaries
+ * within a specific world context.</p>
  *
- * <p>
- *     This class is useful for defining vertical slices of the world for various purposes.
- * </p>
- * <p>
- *     This class extends the {@link AbstractYLimitedArea}
- *     and implements the {@link IArea} interface.
- * </p>
+ * <p>This class is particularly useful for operations that are concerned with vertical sections of the world,
+ * such as checking if entities are within a certain Y-level range or applying effects to those regions.</p>
  *
  * @author notzune
  * @version 1.0.0

@@ -10,19 +10,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * <p>Utility class for text formatting in Minecraft, providing methods for color parsing,
+ * duration formatting, and string manipulation.</p>
+ *
+ * <p>This class offers a variety of static methods to handle common text formatting tasks
+ * such as coloring text, formatting time durations, and various string utilities.</p>
+ *
+ * @author notzune
+ * @since 2023-04-02
+ * @version 1.0.0
+ */
 public class TextFormatting {
 
     private static final String titleizeLine = repeat("_", 52);
     private static final int titleizeBalance = -1;
 
-    // -------------------------------------------- //
-    // Top-level parsing functions.
-    // -------------------------------------------- //
-
+    /**
+     * Formats a duration in milliseconds into a human-readable string.
+     *
+     * @param time Duration in milliseconds.
+     * @return Formatted duration as a string.
+     */
     public static String formatDuration(long time) {
         return formatDuration(time, TimeUnit.MILLISECONDS);
     }
 
+    /**
+     * Formats a duration in a specified time unit into a human-readable string.
+     *
+     * @param time Duration.
+     * @param unit TimeUnit of the duration.
+     * @return Formatted duration as a string.
+     */
     public static String formatDuration(long time, TimeUnit unit) {
         long totalSeconds = TimeUnit.SECONDS.convert(time, unit);
         long seconds = totalSeconds % 60;
@@ -46,17 +66,36 @@ public class TextFormatting {
     }
 
     // -------------------------------------------- //
-    // Color parsing
+    //               Color Parsing                  //
     // -------------------------------------------- //
 
+    /**
+     * Parses a string with formatting and arguments.
+     *
+     * @param str   The string to be formatted.
+     * @param args  Arguments for formatting.
+     * @return      The formatted string.
+     */
     public static String parse(String str, Object... args) {
         return String.format(parse(str), args);
     }
 
+    /**
+     * Parses a string for color codes.
+     *
+     * @param str   The string to be parsed.
+     * @return      The string with color codes parsed.
+     */
     public static String parse(String str) {
         return parseColor(str);
     }
 
+    /**
+     * Parses a string for Minecraft color codes.
+     *
+     * @param string The string to be parsed.
+     * @return       The parsed string with Minecraft color codes.
+     */
     public static String parseColor(String string) {
         string = parseColorAmp(string);
         string = parseColorAcc(string);
@@ -64,12 +103,26 @@ public class TextFormatting {
         return string;
     }
 
+    /**
+     * Converts ampersand color codes to Minecraft color codes.
+     *
+     * @param string The string to be converted.
+     * @return       The string with converted color codes.
+     */
     public static String parseColorAmp(String string) {
         string = string.replace("&&", "&");
         string = string.replaceAll("&([a-zA-Z0-9])", "§$1");
         return string;
     }
 
+    /**
+     * Replaces specific accent color codes within a string with their corresponding ChatColor values.
+     * This method is used to parse strings containing custom accent color codes (`0, `1, `2, etc.)
+     * and replace them with the color codes used by the ChatColor class.
+     *
+     * @param string The string to be parsed.
+     * @return The string with custom accent color codes replaced by ChatColor color codes.
+     */
     public static String parseColorAcc(String string) {
         return string.
                 replace("`0", ChatColor.BLACK.toString()).
@@ -106,10 +159,18 @@ public class TextFormatting {
                 replace("`r", ChatColor.RESET.toString());
     }
 
-    // -------------------------------------------- //
-    // Standard utils like UCFirst, implode and repeat.
-    // -------------------------------------------- //
+    // ------------------------------------------------ //
+    // Standard utils like UCFirst, implode and repeat. //
+    // ------------------------------------------------ //
 
+    /**
+     * Replaces color tag placeholders within a string with their corresponding ChatColor values.
+     * This method is used to parse strings containing color tags {@code (<black>, <red>, etc.)} and replace
+     * them with the color codes provided by the ChatColor class.
+     *
+     * @param string The string to be parsed.
+     * @return The string with color tag placeholders replaced by ChatColor color codes.
+     */
     public static String parseColorTags(String string) {
         return string.
                 replace("<black>", ChatColor.BLACK.toString()).
@@ -159,16 +220,37 @@ public class TextFormatting {
                         replace("<lp>", ChatColor.LIGHT_PURPLE.toString());
     }
 
+    /**
+     * This method is deprecated and replaced by {@link #parseColorTags(String)}
+     * .
+     * @param sting The string to be parsed.
+     * @return The string with color tags parsed.
+     */
     @Deprecated
     public static String parseTags(String sting) {
         return parseColorTags(sting);
     }
 
+    /**
+     * Capitalizes the first letter of the provided string.
+     *
+     * @param string The string to capitalize.
+     * @return The string with the first character converted to uppercase.
+     * @throws IllegalArgumentException If the input string is null.
+     */
     public static String upperCaseFirst(String string) {
         Preconditions.checkArgument(string != null);
         return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
 
+    /**
+     * Repeats the given string a specified number of times.
+     *
+     * @param string The string to repeat.
+     * @param times The number of times to repeat the string.
+     * @return A new string composed of the input string repeated the specified number of times.
+     * @throws IllegalArgumentException If the input string is null or times is less than 1.
+     */
     public static String repeat(String string, int times) {
         Preconditions.checkArgument(string != null);
         if (times <= 0) {
@@ -178,6 +260,14 @@ public class TextFormatting {
         }
     }
 
+    /**
+     * Concatenates the elements of a list into a single string with a specified delimiter.
+     *
+     * @param list The list of strings to concatenate.
+     * @param glue The delimiter to insert between each element.
+     * @return A string resulting from concatenating the elements of the list, separated by the given delimiter.
+     * @throws IllegalArgumentException If the input list or delimiter is null.
+     */
     public static String implode(List<String> list, String glue) {
         Preconditions.checkArgument(list != null);
         Preconditions.checkArgument(glue != null);
@@ -192,9 +282,18 @@ public class TextFormatting {
     }
 
     // -------------------------------------------- //
-    // Paging and chrome-tools like titleize
+    //     Paging and chrome-tools like titleize    //
     // -------------------------------------------- //
 
+    /**
+     * Concatenates the elements of a list into a single string, using a comma as a delimiter,
+     * and "and" before the last element. Intended for human-readable lists.
+     *
+     * @param list The list of strings to concatenate.
+     * @param comma The delimiter to use between elements, typically a comma.
+     * @param and The string to use before the last element, typically "and".
+     * @return A human-readable string representing the list.
+     */
     public static String implodeCommaAnd(List<String> list, String comma, String and) {
         if (list.size() == 0) {
             return "";
@@ -210,14 +309,37 @@ public class TextFormatting {
         return implode(list, comma);
     }
 
+    /**
+     * Concatenates the elements of a list into a single string, using a comma as a delimiter,
+     * and "and" before the last element. This is a convenience method that uses default delimiters.
+     *
+     * @param list The list of strings to concatenate.
+     * @return A human-readable string representing the list with default delimiters.
+     */
     public static String implodeCommaAnd(List<String> list) {
         return implodeCommaAnd(list, ", ", " and ");
     }
 
+    /**
+     * Creates a title string with a specific format including color codes and padding.
+     * This method is typically used for stylizing titles in text-based UIs where the
+     * title is centered within a line of decorative characters.
+     *
+     * @param str The string to be stylized as a title.
+     * @return The titleized string with color and format applied.
+     */
     public static String titleize(String str) {
         return titleize("<a>", str);
     }
 
+    /**
+     * Creates a title string with a specific color code, format including color codes, and padding.
+     * This method allows for custom color codes to be applied to the title.
+     *
+     * @param colorCode The color code to apply to the title.
+     * @param str The string to be stylized as a title.
+     * @return The titleized string with the specified color and format applied.
+     */
     public static String titleize(String colorCode, String str) {
         String center = ".[ " + parseColorTags("<l>") + str + parseColorTags(colorCode) + " ].";
         int centerlen = ChatColor.stripColor(center).length();
@@ -232,6 +354,16 @@ public class TextFormatting {
         }
     }
 
+    /**
+     * Retrieves a specific page of text from a larger list, formatted for display.
+     * This method is used for paginating text for easier reading and display in a
+     * UI, where each page contains a subset of the total lines.
+     *
+     * @param lines The list of strings to paginate.
+     * @param pageHumanBased The human-readable page number (1-based index).
+     * @param title The title to be displayed at the top of the page.
+     * @return A list of strings representing the page of text.
+     */
     public static ArrayList<String> getPage(List<String> lines, int pageHumanBased, String title) {
         ArrayList<String> ret = new ArrayList<>();
         int pageZeroBased = pageHumanBased - 1;
@@ -287,7 +419,7 @@ public class TextFormatting {
     }
 
     // -------------------------------------------- //
-    // Misc
+    //                    Misc                      //
     // -------------------------------------------- //
 
     /**
@@ -365,7 +497,7 @@ public class TextFormatting {
         return Strings.isNullOrEmpty(component.toString());
     }
 
-    // This method is super old and outdated, i took it from Civcraft. will rewrite to use kyori
+    // This method is ancient and outdated, i took it from Civcraft. will rewrite to use kyori
 
 //    /**
 //     * This is an easy way to create a text component when all you want to do is colour it.

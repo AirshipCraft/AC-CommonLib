@@ -1,9 +1,9 @@
 /**
- * Contains classes and interfaces for handling events related to the graphical user interfaces (GUIs) in Minecraft.
+ * <p>Contains classes and interfaces for handling events related to the graphical user interfaces (GUIs) in Minecraft.
  * This includes custom event classes for GUI clicks and hologram interactions, as well as listeners to respond
- * to these events.
+ * to these events.</p>
  *
- * <p>Key classes:</p>
+ * <h2>Key classes:</h2>
  * <ul>
  *   <li>{@link tk.airshipcraft.commonlib.gui.events.GuiClickEvent} - Fired when a player clicks within a custom GUI.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.events.HologramClickEvent} - Represents a click event on a hologram.</li>

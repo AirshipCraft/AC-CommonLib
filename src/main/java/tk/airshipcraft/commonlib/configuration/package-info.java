@@ -1,106 +1,50 @@
 /**
- * Provides the classes necessary for managing player preferences within a Bukkit plugin.
- * The preference system allows for persistent storage and retrieval of player-specific settings,
- * which can be used across different plugins.
- * <p>
- * Classes:
- * <p>
- * {@link tk.airshipcraft.commonlib.configuration.impl.IPlayerPreference} - An interface defining
- * the necessary methods for a player preference class, including load, save, and describe methods.
- * </p>
- * <p>
- * {@link tk.airshipcraft.commonlib.configuration.impl.PlayerPref} - An annotation used to mark
- * fields in IPlayerPreference implementations that should be persisted and loaded from the data store.
- * </p>
- * <p>
- * {@link tk.airshipcraft.commonlib.configuration.PlayerPreference} - An abstract class that
- * provides basic implementations of IPlayerPreference methods and handles the reflection logic
- * for annotated fields.
- * <p>
- * Usage example in another plugin:
+ * <p>Provides abstract interface classes for managing player preferences within a Bukkit plugin environment.
+ * These classes facilitate the storage, retrieval, and management of player-specific settings, which
+ * can be utilized by other plugins for a persistent, personalized experience.</p>
+ *
+ * <h2>Classes:</h2>
+ * <ul>
+ *   <li><b>{@link tk.airshipcraft.commonlib.configuration.IPlayerPreference}</b>: An interface outlining the necessary
+ *   methods for handling player preferences. It includes methods to load, save, reset, and describe player-specific settings.</li>
+ *
+ *   <li><b>{@link tk.airshipcraft.commonlib.configuration.PlayerPref}</b>: An annotation indicating that a field
+ *   should be considered a player preference, making it eligible for automatic persistence and retrieval by the preference system.</li>
+ * </ul>
+ *
+ * <h2>Usage:</h2>
+ * <p>To implement the player preference system, developers must create classes that implement the
+ * {@link tk.airshipcraft.commonlib.configuration.IPlayerPreference} interface. Fields within these classes
+ * should be annotated with {@link tk.airshipcraft.commonlib.configuration.PlayerPref} to indicate they are
+ * player preferences. Developers can then interact with these preferences through the provided interface methods.</p>
+ *
+ * <h2>Example:</h2>
  * <pre>{@code
- * public class MyPluginPlayerPreferences implements IPlayerPreference {
- *
- *     @PlayerPref(defaultValue = "defaultTown")
- *     private String townName;
- *
- *     @PlayerPref(defaultValue = "defaultNation")
- *     private String nationName;
- *
- *     // Constructor, getters and setters, and other methods...
- *
- *     @Override
- *     public void load(Player player) {
- *         // Logic to load preferences (potentially using reflection to read annotated fields)
- *     }
- *
- *     @Override
- *     public void save(Player player) {
- *         // Logic to save preferences (potentially using reflection to write annotated fields)
- *     }
- *
- *     @Override
- *     public void reset(Player player) {
- *         // Logic to reset preferences to defaults
- *     }
- *
- *     @Override
- *     public String describe(Player player) {
- *         // Return a description of all the player's preferences
- *         return "Town: " + townName + ", Nation: " + nationName;
- *     }
- * }
- * }</pre>
- * </p>
- * <p>
- * {@link tk.airshipcraft.commonlib.configuration.PreferenceProcessor} - A utility class that
- * contains static methods to load and save annotated fields from and to both a file configuration
- * and a MySQL database using reflection.
- * </p>
- * <p>
- * {@link tk.airshipcraft.commonlib.configuration.PreferencesManager} - Manages all player preferences,
- * providing methods to register, load, save, and reset preferences, as well as to describe them for
- * individual players.
- * </p>
- * <p>
- * Usage:
- * To use the preference system, a plugin developer must create a class that implements the
- * {@link tk.airshipcraft.commonlib.configuration.impl.IPlayerPreference} interface and use the
- * {@link tk.airshipcraft.commonlib.configuration.impl.PlayerPref} annotation to mark which fields
- * should be managed. The {@link tk.airshipcraft.commonlib.configuration.PreferencesManager} is then
- * used to handle these preferences.
- * <p>
- * Example:
- * <pre>{@code
- * public class MyPluginPreference implements IPlayerPreference {
+ * public class ExamplePlayerPreference implements IPlayerPreference {
  *     @PlayerPref
- *     private String exampleSetting;
+ *     private String someSetting;
  *
  *     public void load(Player player) {
- *         // Load logic here, potentially using PreferenceProcessor
+ *         // Implement loading logic here
  *     }
  *
  *     public void save(Player player) {
- *         // Save logic here, potentially using PreferenceProcessor
+ *         // Implement saving logic here
+ *     }
+ *
+ *     public void reset(Player player) {
+ *         // Implement reset logic here
  *     }
  *
  *     public String describe(Player player) {
- *         return "Example Setting: " + exampleSetting;
+ *         // Implement description logic here
  *     }
  * }
- *
- * // In your plugin's onEnable method:
- * PreferencesManager prefManager = new PreferencesManager();
- * prefManager.registerPreference(player.getUniqueId(), new MyPluginPreference());
  * }</pre>
- * </p>
- * The {@link tk.airshipcraft.commonlib.commands.PreferenceCommand} can be used as a template for
- * creating commands that interact with the player preferences, allowing players to set and view
- * their preferences in-game.
- * <p>
- * Please note that the reflection-based operations require careful exception handling and validation
- * to ensure data integrity and plugin stability.
- * </p>
+ *
+ * <p>This system allows for a modular approach to player preferences, where each plugin can define its own
+ * preferences without worrying about conflicts with others. The use of annotations and interfaces makes the
+ * system extensible and easy to integrate into any plugin.</p>
  *
  * @author notzune
  * @version 1.0.0

@@ -13,7 +13,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * CommandManager class. Forces the command to be registered to the CommandMap without the use of a plugin.yml.
+ * This abstract class CommandManager extends BukkitCommand to facilitate the registration and management of custom commands in a Minecraft server.
+ * It allows for the registration of commands directly to the server's CommandMap without the need for specifying them in the plugin.yml file.
+ * This approach offers greater flexibility and programmatic control over command registration and handling.
  *
  * @author notzune
  * @version 0.0.1
@@ -22,12 +24,13 @@ import java.util.List;
 public abstract class CommandManager extends BukkitCommand {
 
     /**
-     * CommandManager class. Forces the command to be registered to the CommandMap without the use of a plugin.yml.
+     * Constructs and registers a new command with the provided details.
+     * The command is immediately registered to the server's CommandMap upon creation of the instance.
      *
-     * @param command     the name of the command to be registered
-     * @param description the description of the command to show up in /help
-     * @param permission  the permission required to execute this command
-     * @param aliases     aliases that users type to access this command (i.e. /tp, /teleport)
+     * @param command     The primary name of the command (e.g., "teleport").
+     * @param description A brief description of what the command does, displayed in command help.
+     * @param permission  The permission node required to use this command.
+     * @param aliases     Alternative names for this command (e.g., "tp" as an alias for "teleport").
      */
     protected CommandManager(@NotNull String command,
                              @NotNull String description,
@@ -39,6 +42,7 @@ public abstract class CommandManager extends BukkitCommand {
         this.setPermission(permission);
         this.setAliases(Arrays.asList(aliases));
 
+        // Reflection is used here to access the private commandMap of the Bukkit server.
         try {
             Field field = Bukkit.getServer().getClass().getDeclaredField("commandMap");
             field.setAccessible(true);
@@ -51,11 +55,14 @@ public abstract class CommandManager extends BukkitCommand {
     }
 
     /**
-     * Executes the command.
+     * This method is invoked when a command registered to this CommandManager is executed.
+     * It should be overridden in subclasses to define the specific behavior of the command.
+     * This method wraps the abstract execute method with exception handling for SQL exceptions.
      *
-     * @param sender       Source object which is executing this command
-     * @param commandLabel The alias of the command used
-     * @param args         All arguments passed to the command, split via ' '
+     * @param sender       The entity that sent the command (player, console, command block, etc.).
+     * @param commandLabel The exact command alias used by the sender.
+     * @param args         Command arguments separated by spaces.
+     * @return true if the command was executed successfully, false otherwise.
      */
     @SneakyThrows
     @Override
@@ -69,19 +76,24 @@ public abstract class CommandManager extends BukkitCommand {
     }
 
     /**
-     * @param sender Source object which is executing this command
-     * @param args   Command arguments, remember that /args (1) (2) (3) ...
-     * @throws SQLException
+     * Abstract method to be implemented by subclasses to define the command's behavior.
+     * This method should contain the core logic for the command's execution.
+     *
+     * @param sender Source object which is executing this command.
+     * @param args   Command arguments passed to the command.
+     * @throws SQLException If a database access error occurs.
      */
     public abstract void execute(CommandSender sender, String[] args) throws SQLException;
 
     /**
-     * Lists the aliases for the command in the TabComplete list in-order to be iterated over.
+     * Provides tab completion options for this command.
+     * This method can be overridden to customize the tab completion behavior for the command.
      *
-     * @param sender Source object which is executing this command
-     * @param alias  the alias being used
-     * @param args   All arguments passed to the command, split via ' '
-     * @throws IllegalArgumentException
+     * @param sender Source object which is executing this command.
+     * @param alias  The alias of the command used.
+     * @param args   Command arguments passed to the command.
+     * @return A List of Strings containing potential tab complete options.
+     * @throws IllegalArgumentException If the arguments are not valid for tab completion.
      */
     @Override
     public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) throws IllegalArgumentException {
@@ -89,25 +101,23 @@ public abstract class CommandManager extends BukkitCommand {
     }
 
     /**
-     * Lists the aliases for the command in the TabComplete list in-order to be iterated over.
+     * Abstract method to provide custom tab completion options.
+     * This method is called by tabComplete and should be overridden in subclasses to define specific tab completion logic.
      * <p>
-     * This here is an example for a way to loop through player names in tab complete
-     * <p>
-     * {@code
+     * Example:
+     * <pre>{@code
      * if (args.length == 2) {
-     * *
-     * *      List<String> names = new ArrayList<>();
-     * *      *
-     * *      for (Player player : Bukkit.getOnlinePlayers()) {
-     * *      *      names.add(player.getName());
-     * *      }
-     * *      *
-     * *      return StringUtil.copyPartialMatches(args[1], names, new ArrayList<>());
+     *      List<String> names = new ArrayList<>();
+     *      for (Player player : Bukkit.getOnlinePlayers()) {
+     *          names.add(player.getName());
+     *      }
+     *      return StringUtil.copyPartialMatches(args[1], names, new ArrayList<>());
      * }
-     * }
+     * }</pre>
      *
-     * @param sender Source object which is executing this command
-     * @param args   All arguments passed to the command, split via ' '
+     * @param sender The entity that sent the command.
+     * @param args   Command arguments passed to the command.
+     * @return A List of Strings containing tab completion options.
      */
     public abstract List<String> onTabComplete(CommandSender sender, String[] args);
 }

@@ -8,9 +8,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * Event triggered when a player interacts with a GUI.
- * This class encapsulates all relevant information about the interaction, such as:
- * the player, the clicked item, and the slot.
+ * Represents an event triggered when a player interacts with a Graphical User Interface (GUI) in the game.
+ * This event class encapsulates all the relevant information about the interaction, including the player involved,
+ * the specific item clicked, the slot index where the click occurred, and the inventory involved in the GUI.
+ * This event can be cancelled, allowing developers to control the outcome of the interaction.
  *
  * @author Locutusque
  * @version 1.0.0
@@ -26,12 +27,12 @@ public class GuiClickEvent extends Event implements Cancellable {
     private boolean cancelled;
 
     /**
-     * Constructs a new GuiClickEvent with the specified details of the interaction.
+     * Constructs a new GuiClickEvent with the specified details of the player's interaction with the GUI.
      *
-     * @param player    The player who clicked in the GUI.
-     * @param slot      The slot index that was clicked.
-     * @param item      The ItemStack at the clicked slot, can be null.
-     * @param inventory The inventory associated with the GUI.
+     * @param player    The player who clicked in the GUI, not null.
+     * @param slot      The slot index in the inventory that was clicked.
+     * @param item      The ItemStack present at the clicked slot, can be null if the slot is empty.
+     * @param inventory The inventory object associated with the GUI being interacted with, not null.
      */
     public GuiClickEvent(Player player, int slot, ItemStack item, Inventory inventory) {
         this.player = player;
@@ -42,52 +43,54 @@ public class GuiClickEvent extends Event implements Cancellable {
     }
 
     /**
-     * Gets the HandlerList for this event.
+     * Returns the HandlerList for this event type.
+     * Required for custom event implementation in Bukkit.
      *
-     * @return The handler list.
+     * @return The static HandlerList for GuiClickEvent.
      */
     public static HandlerList getHandlerList() {
         return HANDLERS;
     }
 
     /**
-     * Gets the player who clicked in the GUI.
+     * Gets the player who interacted with the GUI.
      *
-     * @return The player involved in this event.
+     * @return The Player instance representing the player who clicked in the GUI.
      */
     public Player getWhoClicked() {
         return player;
     }
 
     /**
-     * Gets the slot index that was clicked in the GUI.
+     * Gets the index of the slot that was clicked in the GUI.
      *
-     * @return The clicked slot index.
+     * @return The zero-based index of the clicked slot.
      */
     public int getSlot() {
         return slot;
     }
 
     /**
-     * Gets the ItemStack at the clicked slot in the GUI.
+     * Retrieves the ItemStack at the slot that was clicked.
      *
-     * @return The clicked item, or null if the slot is empty.
+     * @return The ItemStack at the clicked slot, or null if the slot is empty.
      */
     public ItemStack getItem() {
         return item;
     }
 
     /**
-     * Gets the inventory associated with the GUI.
+     * Gets the Inventory object associated with the GUI that was clicked.
      *
-     * @return The inventory of the GUI.
+     * @return The Inventory instance representing the GUI's inventory.
      */
     public Inventory getInventory() {
         return this.inventory;
     }
 
     /**
-     * Checks if the event is cancelled.
+     * Checks if the event has been cancelled.
+     * A cancelled event will not proceed with the default interaction behavior.
      *
      * @return True if the event is cancelled, false otherwise.
      */
@@ -97,9 +100,10 @@ public class GuiClickEvent extends Event implements Cancellable {
     }
 
     /**
-     * Sets the cancellation state of this event.
+     * Sets the cancellation state of the event.
+     * Cancelling the event can prevent the default interaction behavior associated with the GUI click.
      *
-     * @param cancelled True to cancel the event, false otherwise.
+     * @param cancelled True to cancel the event, false to allow it to proceed.
      */
     @Override
     public void setCancelled(boolean cancelled) {
@@ -107,9 +111,10 @@ public class GuiClickEvent extends Event implements Cancellable {
     }
 
     /**
-     * Gets the handlers for this event.
+     * Returns the handlers associated with this event.
+     * Part of the Bukkit event handling mechanism.
      *
-     * @return The handler list.
+     * @return The HandlerList for this event.
      */
     @Override
     public HandlerList getHandlers() {

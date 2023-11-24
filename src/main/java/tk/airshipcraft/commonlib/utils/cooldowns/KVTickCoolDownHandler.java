@@ -8,134 +8,63 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Cooldown handler implementation using Minecraft ticks as the time unit.
- * Each object can have its own cooldown timer for different actions,
- * which are identified by unique keys.
+ * Implementation of {@link IKVCoolDownHandler} using Minecraft ticks as the time unit.
+ * Allows managing cooldowns for different types of actions or events, identified by unique keys, for various objects.
  *
  * @param <T> The type of objects that cooldowns are assigned to.
- * @param <K> The type of key identifying the cooldown.
- * @author Maxopoly, notzune
+ * @param <K> The type of key identifying different cooldowns.
  * @version 1.0.1
+ * @author Maxopoly, notzune
  * @since 2023-10-11
  */
 public class KVTickCoolDownHandler<T, K> implements IKVCoolDownHandler<T, K> {
 
-    /**
-     * A synchronized map holding cooldown data for each object.
-     */
     private final Map<T, Map<K, Long>> cooldownData = Collections.synchronizedMap(new HashMap<>());
-
-    /**
-     * The total duration of the cooldown in ticks.
-     */
     private final long cooldown;
-
-    /**
-     * A counter that increments with each tick, used for tracking cooldowns.
-     */
     private long tickCounter;
 
     /**
-     * Constructs a new TickCoolDownHandler instance.
+     * Constructs a new {@code KVTickCoolDownHandler} instance.
      *
-     * @param executingPlugin The plugin instance executing this handler.
-     * @param cooldown        The total duration of the cooldown in ticks.
+     * @param executingPlugin The Bukkit plugin instance executing this handler.
+     * @param cooldown The total duration of the cooldown in ticks.
      */
     public KVTickCoolDownHandler(JavaPlugin executingPlugin, long cooldown) {
         this.cooldown = cooldown;
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(executingPlugin, () -> {
-            tickCounter++; // Increment every tick
-        }, 1L, 1L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(executingPlugin, () -> tickCounter++, 1L, 1L);
     }
 
-    /**
-     * Puts the specified object on cooldown for a specific action.
-     *
-     * @param t The object to put on cooldown.
-     * @param k The key identifying the cooldown.
-     */
     @Override
     public void putOnCoolDown(T t, K k) {
-        cooldownData.computeIfAbsent(t, key -> Collections.synchronizedMap(new HashMap<>()))
-                .put(k, tickCounter);
+        cooldownData.computeIfAbsent(t, key -> Collections.synchronizedMap(new HashMap<>())).put(k, tickCounter);
     }
 
-    /**
-     * Gets a specific cooldown duration based on the key for a given object.
-     *
-     * @param t The object to get the cooldown for.
-     * @param k The key identifying the cooldown.
-     * @return The specific cooldown duration in ticks, or 0 if the object is not on cooldown for the specified key.
-     */
     public long getSpecificCoolDown(T t, K k) {
         Map<K, Long> cooldownMap = cooldownData.get(t);
-        if (cooldownMap != null) {
-            Long lastUsed = cooldownMap.get(k);
-            if (lastUsed != null) {
-                long leftOver = tickCounter - lastUsed;
-                return Math.max(0L, cooldown - leftOver);
-            }
-        }
-        return 0L;  // Return 0 if the object is not on cooldown for the specified key
+        return cooldownMap != null && cooldownMap.get(k) != null ? Math.max(0L, cooldown - (tickCounter - cooldownMap.get(k))) : 0L;
     }
 
-    /**
-     * Checks whether the specified object is on cooldown for any action.
-     *
-     * @param t The object to check.
-     * @return True if the object is on cooldown for any action, false otherwise.
-     */
     @Override
     public boolean onCoolDown(T t, K k) {
         Map<K, Long> cooldownMap = cooldownData.get(t);
-        if (cooldownMap != null) {
-            for (Long lastUsed : cooldownMap.values()) {
-                if ((tickCounter - lastUsed) <= cooldown) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return cooldownMap != null && cooldownMap.containsKey(k) && (tickCounter - cooldownMap.get(k)) <= cooldown;
     }
 
-    /**
-     * Gets the remaining cooldown duration for the specified object for any action.
-     * This method returns the remaining cooldown for the first action found to be on cooldown.
-     *
-     * @param t The object to check.
-     * @return The remaining cooldown duration in ticks, or 0 if the object is not on cooldown.
-     */
     @Override
     public long getRemainingCoolDown(T t, K k) {
         Map<K, Long> cooldownMap = cooldownData.get(t);
-        if (cooldownMap != null) {
-            for (Long lastUsed : cooldownMap.values()) {
-                long leftOver = tickCounter - lastUsed;
-                long remaining = Math.max(0L, cooldown - leftOver);
-                if (remaining > 0) {
-                    return remaining;
-                }
-            }
+        if (cooldownMap != null && cooldownMap.containsKey(k)) {
+            long leftOver = tickCounter - cooldownMap.get(k);
+            return Math.max(0L, cooldown - leftOver);
         }
         return 0L;
     }
 
-    /**
-     * Gets the total cooldown duration for this handler.
-     *
-     * @return The total cooldown duration in ticks.
-     */
     @Override
     public long getTotalCoolDown() {
         return cooldown;
     }
 
-    /**
-     * Removes the cooldown for the specified object and key.
-     *
-     * @param t The object to remove the cooldown for.
-     * @param k The key identifying the cooldown.
-     */
     @Override
     public void removeCooldown(T t, K k) {
         Map<K, Long> cooldownMap = cooldownData.get(t);
@@ -148,16 +77,11 @@ public class KVTickCoolDownHandler<T, K> implements IKVCoolDownHandler<T, K> {
     }
 
     /**
-     * Cleans up expired cooldown entries from the cooldown map.
-     * This can be called periodically to ensure stale data is removed.
+     * Cleans up expired cooldown entries. This method should be called periodically to prevent memory leaks.
+     * It removes any entries that have exceeded their cooldown period.
      */
     public void cleanupExpiredEntries() {
         long currentTick = tickCounter;
-        cooldownData.forEach((t, map) -> {
-            map.entrySet().removeIf(entry -> (currentTick - entry.getValue()) > cooldown);
-            if (map.isEmpty()) {
-                cooldownData.remove(t);
-            }
-        });
+        cooldownData.forEach((t, map) -> map.entrySet().removeIf(entry -> (currentTick - entry.getValue()) > cooldown));
     }
 }

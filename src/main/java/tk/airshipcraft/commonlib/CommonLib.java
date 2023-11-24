@@ -6,10 +6,10 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import tk.airshipcraft.commonlib.configuration.PreferencesManager;
+import tk.airshipcraft.commonlib.configuration.impl.PreferencesManager;
 import tk.airshipcraft.commonlib.gui.events.HologramClickListener;
 import tk.airshipcraft.commonlib.gui.events.InventoryClickListener;
-import tk.airshipcraft.commonlib.gui.objects.TeamManager;
+import tk.airshipcraft.commonlib.gui.objects.impl.TeamManager;
 
 import java.util.logging.Level;
 

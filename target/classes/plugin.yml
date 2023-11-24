@@ -1,0 +1,10 @@
+name: AC-CommonLib
+version: '0.0.1'
+main: tk.airshipcraft.commonlib.CommonLib
+api-version: 1.19
+authors: [ notzune ]
+description: Plugin library for AirshipCraft
+website: https://www.airshipcraft.tk/docs/book
+folia-supported: true
+events:
+  - tk.airshipcraft.commonlib.Events.GuiClickCustomEvent

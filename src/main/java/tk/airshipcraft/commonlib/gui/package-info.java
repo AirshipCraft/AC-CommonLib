@@ -1,23 +1,34 @@
 /**
- * The GUI package provides a comprehensive set of classes for creating and managing graphical user interfaces
- * within the Minecraft server. This includes event handling for GUI interactions, and implementation classes for
- * various GUI components like scoreboards (Sidebar), action bars (Bossbar), and player-specific displays (BelowName).
+ * <p>The <b>GUI package</b> in <code>tk.airshipcraft.commonlib</code> offers a robust framework for creating and managing
+ * graphical user interfaces (GUIs) within a Minecraft server environment. It facilitates the development of interactive
+ * and dynamic interfaces for server plugins, enhancing player experience on the server.</p>
  *
- * <p>Subpackages:</p>
+ * <p><b>Subpackages:</b></p>
  * <ul>
- *   <li>{@code events} - Contains classes for GUI event handling.</li>
- *   <li>{@code objects} - Contains classes for GUI components and their implementations.</li>
+ *   <li><code>events</code>: This subpackage contains classes dedicated to handling events related to GUI interactions,
+ *       enabling responsive and interactive UI elements within the game.</li>
+ *   <li><code>objects</code>: Comprises classes for specific GUI components, such as scoreboards (Sidebar), action bars
+ *       (Bossbar), and player-specific displays (BelowName). These classes provide implementations for various
+ *       standard and custom GUI elements.</li>
  * </ul>
  *
- * <p>Key classes:</p>
+ * <p><b>Key Classes:</b></p>
  * <ul>
- *   <li>{@link tk.airshipcraft.commonlib.gui.Gui} - Base class for creating custom GUIs.</li>
- *   <li>{@link tk.airshipcraft.commonlib.gui.GuiBuilder} - Aids in building complex GUIs with a fluent interface.</li>
- *   <li>{@link tk.airshipcraft.commonlib.gui.GuiManager} - Manages the lifecycle and interactions of all GUI instances.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.gui.GuiBuilder}</b>: Employs the builder pattern to facilitate the easy
+ *       construction of GUIs. It allows for a fluent, chainable interface, making GUI creation straightforward
+ *       and intuitive.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.gui.UiDesigner}</b>: An abstract class designed to serve as a foundational
+ *       framework for UI design. It requires extension and customization for specific use cases, particularly in
+ *       implementing interactive elements and click actions.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.gui.GuiManager}</b>: Manages the lifecycle and interactions of GUI instances,
+ *       ensuring efficient handling and operation of multiple GUI elements within the server.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.gui.Hologram}</b>: An abstract class for creating and managing holograms, providing methods for hologram manipulation and interaction.</li>
  * </ul>
  *
- * <p>Use this package as a foundation for building interactive and dynamic interfaces for server plugins,
- * providing a seamless experience for players.</p>
+ * <p><b>Usage:</b></p>
+ * <p>The package is designed to be versatile and extensible, suitable for a range of applications from simple
+ * inventory interfaces to complex interactive displays. It provides both foundational structures (via
+ * UiDesigner) and quick-setup tools (via GuiBuilder) to cater to diverse GUI development needs.</p>
  *
  * @author notzune
  * @version 1.0.0

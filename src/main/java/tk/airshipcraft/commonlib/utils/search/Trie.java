@@ -8,12 +8,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A trie (derived from retrieval) is a multiway tree data structure used for storing strings over an alphabet.
- * It is used to store a large amount of strings. The pattern matching can be done efficiently using tries.
- * <p>
- * Preprocessing pattern improves the performance of pattern matching algorithm.
- * But if a text is very large then it is better to preprocess text instead of pattern for efficient search.
- * A trie is a data structure that supports pattern matching queries in time proportional to the pattern size.
+ * <p>Implements a trie (prefix tree) data structure that provides fast retrieval of strings based on their prefixes.
+ * It is commonly used for autocomplete systems, spell checkers, and other applications that require quick searches
+ * of a large collection of strings.</p>
+ *
+ * <p>This trie supports inserting words and searching for all words that match a given prefix. It can also be used to
+ * suggest completions for partial words.</p>
+ *
+ * @author notzune
+ * @version 1.0.0
+ * @since 2023-03-30
  */
 public final class Trie {
 
@@ -31,16 +35,32 @@ public final class Trie {
         this.isEnd = false;
     }
 
+    /**
+     * Factory method to create a new Trie with initialized children.
+     *
+     * @return A new instance of a Trie with an empty string and depth 0.
+     */
     public static Trie getNewTrie() {
         Trie trie = new Trie("", 0);
         trie.children = new HashMap<>();
         return trie;
     }
 
+    /**
+     * Checks if this node of the trie is a leaf node (does not have any children).
+     *
+     * @return True if the node is a leaf, false otherwise.
+     */
     public boolean isLeaf() {
         return children == null;
     }
 
+    /**
+     * Inserts a word into the trie. If the word already exists, no changes are made.
+     * The insertion process constructs the necessary nodes to represent the word within the trie.
+     *
+     * @param wordToInsert The word to be inserted into the trie.
+     */
     public void insert(String wordToInsert) {
         if (isLeaf()) {
             if (word.equals(wordToInsert)) {
@@ -59,12 +79,25 @@ public final class Trie {
         targetNode.insert(wordToInsert);
     }
 
+    /**
+     * Searches the trie for words that match a given prefix.
+     *
+     * @param prefix The prefix to match against words in the trie.
+     * @return A list of words that match the given prefix.
+     */
     public List<String> match(String prefix) {
         List<String> result = new ArrayList<>();
         matchWord(prefix, result);
         return result;
     }
 
+    /**
+     * Provides auto-completion suggestions based on the input arguments, treating them as space-separated parts of a prefix.
+     * This can be useful for command-line applications or chat interfaces where users type in commands or queries.
+     *
+     * @param args An array of strings representing parts of a command or query.
+     * @return A list of auto-completion suggestions based on the provided arguments.
+     */
     public List<String> complete(String[] args) {
         String full = String.join(" ", args);
         List<String> matches = match(full);
@@ -80,6 +113,13 @@ public final class Trie {
         return matches;
     }
 
+    /**
+     * Helper method to recursively search for and collect words in the trie that match the given word or prefix.
+     * This method contributes to the implementation of the {@link #match(String)} method.
+     *
+     * @param wordToMatch The word or prefix to match.
+     * @param result The list to collect matching words.
+     */
     private void matchWord(String wordToMatch, List<String> result) {
         if (isLeaf()) {
             if (wordToMatch.length() <= this.word.length()) {
