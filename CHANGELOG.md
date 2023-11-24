@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.1...v1.1.2) (2023-11-24)
+
+
+### Bug Fixes
+
+* really horrible workflow issue ([d9faeea](https://github.com/AirshipCraft/AC-CommonLib/commit/d9faeea54fcb4a217ed49ea2ccfded73382fd595))
+
 ## [1.1.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.0...v1.1.1) (2023-11-24)
 
 
