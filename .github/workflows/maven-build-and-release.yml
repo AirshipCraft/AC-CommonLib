@@ -41,7 +41,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add pom.xml
           git commit -m "ci: update pom.xml version to ${{ env.RELEASE_VERSION }}"
-          git push
+          git push origin HEAD:main
 
       - name: Maven Clean Install
         run: mvn clean install
