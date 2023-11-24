@@ -27,20 +27,20 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Extract GitHub release tag
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+        run: echo "RELEASE_VERSION=$(echo ${GITHUB_REF#refs/tags/} | cut -c 2-)" >> $GITHUB_ENV
 
       - name: Print release version
         run: echo "Release version is ${{ env.RELEASE_VERSION }}"
 
       - name: Update Maven project version
-        run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION:1 }} -X
+        run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }} -X
 
       - name: Commit updated pom.xml
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add pom.xml
-          git commit -m "ci: update pom.xml version to ${{ env.RELEASE_VERSION:1 }}"
+          git commit -m "ci: update pom.xml version to ${{ env.RELEASE_VERSION }}"
           git push origin HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
