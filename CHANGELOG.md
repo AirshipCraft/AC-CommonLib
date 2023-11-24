@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.0.3...v1.1.0) (2023-11-24)
+
+
+### Bug Fixes
+
+* fix constructor to add inventory type ([563ad1d](https://github.com/AirshipCraft/AC-CommonLib/commit/563ad1d1e7581bff65b446c0f5ce6b12b185daf8))
+* improve ui designer class ([5872c01](https://github.com/AirshipCraft/AC-CommonLib/commit/5872c01a20541fcfc1f954362b6f1f946cdd5daa))
+* pom changes ([0e2aae5](https://github.com/AirshipCraft/AC-CommonLib/commit/0e2aae5c833f6e9101fe93f6d40676f5074ea212))
+* re-add missing license ([793b2f3](https://github.com/AirshipCraft/AC-CommonLib/commit/793b2f3bfa02ce7c4692ad68e011d76e3b490111))
+
+
+### Features
+
+* creating package-infos ([13999fe](https://github.com/AirshipCraft/AC-CommonLib/commit/13999fe6b3b5f23f1350fd19c8494a94e8bc6309))
+
 ## [1.0.3](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.0.2...v1.0.3) (2023-11-21)
 
 
