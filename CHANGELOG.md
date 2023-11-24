@@ -1,3 +1,12 @@
+## [1.1.11](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.10...v1.1.11) (2023-11-24)
+
+
+### Bug Fixes
+
+* fix changing of pom version ([efbcde1](https://github.com/AirshipCraft/AC-CommonLib/commit/efbcde122e6e79a45ab4dfdacc7eecb8c4cb8dc5))
+* fix pom to show correct version ([c538146](https://github.com/AirshipCraft/AC-CommonLib/commit/c538146533d3bc5ac822d7f3c8bbb5a0fefdd734))
+* more workflow changes ([e7d0087](https://github.com/AirshipCraft/AC-CommonLib/commit/e7d0087724f09adc0608e1a47d620a580b8303db))
+
 ## [1.1.10](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.9...v1.1.10) (2023-11-24)
 
 
