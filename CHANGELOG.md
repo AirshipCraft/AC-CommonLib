@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.2...v1.1.3) (2023-11-24)
+
+
+### Bug Fixes
+
+* fix deploy issue ([cd8d87f](https://github.com/AirshipCraft/AC-CommonLib/commit/cd8d87f6abc6a58f6ef79e69845162593205472c))
+
 ## [1.1.2](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.1...v1.1.2) (2023-11-24)
 
 
