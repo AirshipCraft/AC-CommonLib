@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.7...v1.1.8) (2023-11-24)
+
+
+### Bug Fixes
+
+* specifying different access token this time ([d78aa5e](https://github.com/AirshipCraft/AC-CommonLib/commit/d78aa5e609b05bb50ec2804bfe01d5297af9069f))
+
 ## [1.1.7](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.6...v1.1.7) (2023-11-24)
 
 
