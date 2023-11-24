@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.5...v1.1.6) (2023-11-24)
+
+
+### Bug Fixes
+
+* update maven build workflow ([f16383e](https://github.com/AirshipCraft/AC-CommonLib/commit/f16383e2821401876e4d692bf2bd17f68709bf50))
+
 ## [1.1.5](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.4...v1.1.5) (2023-11-24)
 
 
