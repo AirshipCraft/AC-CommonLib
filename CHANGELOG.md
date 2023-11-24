@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.8...v1.1.9) (2023-11-24)
+
+
+### Bug Fixes
+
+* small particle util class ([5c1bb4c](https://github.com/AirshipCraft/AC-CommonLib/commit/5c1bb4cb65128ad6b9edab99dcbccdff7d7f8cd9))
+
 ## [1.1.8](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.7...v1.1.8) (2023-11-24)
 
 
