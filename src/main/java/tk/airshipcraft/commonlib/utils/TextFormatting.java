@@ -165,7 +165,7 @@ public class TextFormatting {
 
     /**
      * Replaces color tag placeholders within a string with their corresponding ChatColor values.
-     * This method is used to parse strings containing color tags (<black>, <red>, etc.) and replace
+     * This method is used to parse strings containing color tags {@code (<black>, <red>, etc.)} and replace
      * them with the color codes provided by the ChatColor class.
      *
      * @param string The string to be parsed.

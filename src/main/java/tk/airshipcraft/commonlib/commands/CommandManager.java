@@ -63,7 +63,6 @@ public abstract class CommandManager extends BukkitCommand {
      * @param commandLabel The exact command alias used by the sender.
      * @param args         Command arguments separated by spaces.
      * @return true if the command was executed successfully, false otherwise.
-     * @throws SQLException If a database access error occurs in the command's execution.
      */
     @SneakyThrows
     @Override

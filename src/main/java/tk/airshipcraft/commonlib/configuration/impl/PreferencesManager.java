@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p>It uses a thread-safe map to handle concurrent operations, ensuring that player preference data is managed safely in a multi-threaded environment.</p>
  *
  * <p>Example implementation would be checking if a player has preferences, updating specific preference fields, and saving all preferences during server shutdown.</p>
- * <p>Example usage:
+ * <p>Example usage:</p>
  * <pre>{@code
  * // To check if a player has preferences:
  * boolean hasPrefs = preferencesManager.hasPreferences(player);
@@ -24,7 +24,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * // To save all preferences on server shutdown:
  * preferencesManager.saveAllPreferences();
  * }</pre>
- * </p>
  *
  * @author notzune
  * @version 1.0.0
