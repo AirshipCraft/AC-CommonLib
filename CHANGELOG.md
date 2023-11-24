@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.3...v1.1.4) (2023-11-24)
+
+
+### Bug Fixes
+
+* Update maven-publish.yml ([cd75a1e](https://github.com/AirshipCraft/AC-CommonLib/commit/cd75a1e1153cf2b2260cff301b9a6c887ba5e1da))
+
 ## [1.1.3](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.2...v1.1.3) (2023-11-24)
 
 
