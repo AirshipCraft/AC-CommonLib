@@ -61,6 +61,11 @@
                     <!-- Any additional configuration needed -->
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.16.2</version>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -104,6 +109,12 @@
     </repositories>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/versions-maven-plugin -->
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>versions-maven-plugin</artifactId>
+            <version>2.16.2</version>
+        </dependency>
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>

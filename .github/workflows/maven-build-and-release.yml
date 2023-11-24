@@ -29,14 +29,25 @@ jobs:
       - name: Extract GitHub release tag
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
+      - name: Print release version
+        run: echo "Release version is ${{ env.RELEASE_VERSION }}"
+
       - name: Update Maven project version
-        run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }}
+        run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }} -X
+
+      - name: Commit updated pom.xml
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add pom.xml
+          git commit -m "ci: update pom.xml version to ${{ env.RELEASE_VERSION }}"
+          git push
 
       - name: Maven Clean Install
         run: mvn clean install
 
       - name: Upload JAR files to GitHub Release
-        env: # Add this line
+        env:
           GITHUB_TOKEN: ${{ secrets.PAT }}  # Add this line
         uses: actions/upload-release-asset@v1
         with:
