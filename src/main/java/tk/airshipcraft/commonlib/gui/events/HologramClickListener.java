@@ -2,10 +2,10 @@ package tk.airshipcraft.commonlib.gui.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import tk.airshipcraft.commonlib.utils.Hologram;
+import tk.airshipcraft.commonlib.gui.Hologram;
 
-import static tk.airshipcraft.commonlib.utils.Hologram.callClickAction;
-import static tk.airshipcraft.commonlib.utils.Hologram.hologramInstances;
+import static tk.airshipcraft.commonlib.gui.Hologram.callClickAction;
+import static tk.airshipcraft.commonlib.gui.Hologram.hologramInstances;
 
 /**
  * Listener class for handling HologramClickEvents.

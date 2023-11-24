@@ -394,7 +394,7 @@ public class TextFormatting {
         return Strings.isNullOrEmpty(component.toString());
     }
 
-    // This method is super old and outdated, i took it from Civcraft. will rewrite to use kyori
+    // This method is ancient and outdated, i took it from Civcraft. will rewrite to use kyori
 
 //    /**
 //     * This is an easy way to create a text component when all you want to do is colour it.

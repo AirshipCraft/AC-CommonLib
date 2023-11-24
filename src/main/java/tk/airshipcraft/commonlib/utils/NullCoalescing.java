@@ -3,17 +3,20 @@ package tk.airshipcraft.commonlib.utils;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+/**
+ * Provides utility methods for null-safe operations, inspired by JavaScript's nullish coalescing and optional chaining.
+ * This class helps to reduce boilerplate code associated with null checks and default value assignments.
+ *
+ * @see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator"> Nullish Coalescing Operator</a>
+ */
 public final class NullCoalescing {
 
     /**
-     * <p>Returns the first non-null given parameter, if any are given.</p>
+     * Returns the first non-null value from the provided items.
      *
-     * <p>Emulates:
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator</p>
-     *
-     * @param <T>   Any non-primitive type.
-     * @param items The list of parameters to find a non-null value from.
-     * @return Returns the first non-null value found, or null.
+     * @param <T>   The type of the values being checked.
+     * @param items The array of values to check for non-nullity.
+     * @return The first non-null value, or null if all are null.
      */
     @SafeVarargs
     public static <T> T coalesce(T... items) {
@@ -26,28 +29,24 @@ public final class NullCoalescing {
     }
 
     /**
-     * <p>Allows developers to chain statements that might otherwise require a ton of null checking.</p>
+     * Executes a function and returns its value if not null; otherwise, returns null.
+     * This is similar to JavaScript's optional chaining.
      *
-     * <p>Emulates: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining</p>
-     *
-     * @param <T>       Any non-primitive type.
-     * @param statement Function that throws an exception to call the chained statement within.
-     * @return Returns the result of the chained statement, or null if the chain failed.
+     * @param <T>       The type of the value expected from the function.
+     * @param statement The function to execute.
+     * @return The value from the function if not null, or null if the function or its result is null.
      */
     public static <T> T chain(NullChecker<T> statement) {
         return chain(statement, null);
     }
 
     /**
-     * <p>Allows developers to chain statements that might otherwise require a ton of null checking.</p>
+     * Executes a function and returns its value if not null; otherwise, returns a fallback value.
      *
-     * <p>Emulates: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining and
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator</p>
-     *
-     * @param <T>       Any non-primitive type.
-     * @param statement Function that throws an exception to call the chained statement within.
-     * @param fallback  The value that will be fallen back upon if something goes wrong.
-     * @return Returns the result of the chained statement, or the fallback if the chain failed.
+     * @param <T>       The type of the value expected from the function.
+     * @param statement The function to execute.
+     * @param fallback  The fallback value to return if the function or its result is null.
+     * @return The value from the function if not null, or the fallback value.
      */
     public static <T> T chain(NullChecker<T> statement, T fallback) {
         if (statement == null) {
@@ -61,11 +60,11 @@ public final class NullCoalescing {
     }
 
     /**
-     * Runs a handler only if the given value is not null.
+     * Executes a consumer if the provided value is not null.
      *
-     * @param <T>     The type of the given parameter.
-     * @param value   The given parameter.
-     * @param handler The handler to run if the given parameter exists.
+     * @param <T>     The type of the value.
+     * @param value   The value to check.
+     * @param handler The consumer to execute if the value is not null.
      */
     public static <T> void exists(T value, Consumer<T> handler) {
         if (value != null && handler != null) {
@@ -74,12 +73,12 @@ public final class NullCoalescing {
     }
 
     /**
-     * Executes a function to supply a value should that value not already exist.
+     * If the provided value is null, uses the supplier to generate a new value.
      *
      * @param <T>     The type of the value.
-     * @param value   The given value.
-     * @param handler The supplier that will be run should the given value be null.
-     * @return Returns the given value or the result of the handler.
+     * @param value   The value to check.
+     * @param handler The supplier to use if the value is null.
+     * @return The original value if not null; otherwise, the value from the supplier.
      */
     public static <T> T notExists(T value, Supplier<T> handler) {
         if (value == null && handler != null) {
@@ -89,12 +88,12 @@ public final class NullCoalescing {
     }
 
     /**
-     * Checks whether a value can be cast to a particular type.
+     * Attempts to cast an object to a specified type and returns null if the cast is not possible.
      *
-     * @param <T>   The type to cast to.
-     * @param clazz The class of the type.
-     * @param value The value to attempt to cast.
-     * @return Returns the value cast to the given type, nor null.
+     * @param <T>   The target type for the cast.
+     * @param clazz The class object of the target type.
+     * @param value The object to cast.
+     * @return The cast object if successful, or null if the cast is not possible.
      */
     @SuppressWarnings("unchecked")
     public static <T> T castOrNull(Class<T> clazz, Object value) {
@@ -108,11 +107,11 @@ public final class NullCoalescing {
     }
 
     /**
-     * Determines if two objects objects are equal.
+     * Compares two objects for equality, handling nulls safely.
      *
-     * @param former The former object.
-     * @param latter The latter object.
-     * @return Returns true if the values equal each other.
+     * @param former The first object to compare.
+     * @param latter The second object to compare.
+     * @return True if both objects are equal; false otherwise.
      */
     public static boolean equals(Object former, Object latter) {
         if (former == latter) {
@@ -128,11 +127,11 @@ public final class NullCoalescing {
     }
 
     /**
-     * Determines if two objects objects are equal, except that null values are disallowed.
+     * Compares two objects for equality, where nulls are considered unequal.
      *
-     * @param former The former object.
-     * @param latter The latter object.
-     * @return Returns true only if both objects are not null and pass an equals test.
+     * @param former The first object to compare.
+     * @param latter The second object to compare.
+     * @return True if both objects are non-null and equal; false otherwise.
      */
     public static boolean equalsNotNull(Object former, Object latter) {
         if (former == null || latter == null) {
@@ -147,6 +146,11 @@ public final class NullCoalescing {
         return false;
     }
 
+    /**
+     * Functional interface for null-check operations.
+     *
+     * @param <T> The type of the value returned by the operation.
+     */
     @FunctionalInterface
     public interface NullChecker<T> {
         T get() throws Exception;

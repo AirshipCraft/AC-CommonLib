@@ -4,17 +4,20 @@ import java.util.Arrays;
 import java.util.UUID;
 
 /**
- * <p>A utility class for quickly and efficiently parsing {@link java.util.UUID} instances from strings and writing UUID
- * instances as strings. The methods contained in this class are optimized for speed and to minimize garbage collection
- * pressure. In benchmarks, {@link #parseUUIDDashed(CharSequence)} is a little more than 14 times faster than
- * {@link UUID#fromString(String)}, and {@link #toStringDashed(UUID)} is a little more than six times faster than
- * {@link UUID#toString()} when compared to the implementations in Java 8 and older. Under Java 9 and newer,
- * {@link #parseUUIDDashed(CharSequence)} is about six times faster than the JDK implementation and
- * {@link #toStringDashed(UUID)} does not offer any performance enhancements (or regressions!).</p>
- * <p>
- * Modified to include a variant with undashed UUIDs.
+ * A utility class for efficient parsing of {@link UUID} instances from strings and for converting UUID instances to strings.
+ * The provided methods are optimized for high performance and minimal garbage collection overhead.
+ * Benchmarks have shown that {@link #parseUUIDDashed(CharSequence)} is significantly faster than
+ * {@link UUID#fromString(String)}, and {@link #toStringDashed(UUID)} outperforms {@link UUID#toString()} in Java 8 and older.
+ * In Java 9 and newer, {@link #parseUUIDDashed(CharSequence)} remains faster, while {@link #toStringDashed(UUID)} is
+ * comparable to the JDK's implementation.
  *
- * @author <a href="https://github.com/jchambers/">Jon Chambers</a>
+ * <p>This class is particularly useful in high-throughput environments where UUID operations are a bottleneck.</p>
+ *
+ * <p>The class also includes methods to handle undashed UUID strings.</p>
+ *
+ * @author <a href="https://github.com/jchambers/">Jon Chambers</a>, notzune
+ * @version 1.0.0
+ * @since 2023-06-23
  */
 public class FastUUID {
 
@@ -130,6 +133,13 @@ public class FastUUID {
         return new UUID(mostSignificantBits, leastSignificantBits);
     }
 
+    /**
+     * Parses a UUID from a character sequence without dashes.
+     *
+     * @param uuidSequence The character sequence to parse.
+     * @return The UUID represented by the character sequence.
+     * @throws IllegalArgumentException If the sequence is not exactly 32 characters long.
+     */
     public static UUID parseUUIDUUndashed(CharSequence uuidSequence) {
         if (uuidSequence.length() != UUID_UNDASHED_STRING_LENGTH) {
             throw new IllegalArgumentException("Illegal UUID string: " + uuidSequence);
@@ -282,6 +292,13 @@ public class FastUUID {
         return new String(uuidChars);
     }
 
+    /**
+     * Gets the numerical value associated with a hexadecimal character for UUID parsing.
+     *
+     * @param c The hexadecimal character.
+     * @return The numerical value of the hexadecimal character.
+     * @throws IllegalArgumentException If the character is not a valid hexadecimal digit.
+     */
     private static long getHexValueForChar(final char c) {
         try {
             if (HEX_VALUES[c] < 0) {

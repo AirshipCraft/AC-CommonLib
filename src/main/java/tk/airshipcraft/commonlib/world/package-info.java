@@ -1,20 +1,20 @@
 /**
- * Provides classes for defining and working with various geometric areas within the Minecraft world.
- * These areas can be used for a variety of purposes such as event handling, entity management, custom mechanics, and more.
+ * <p>Provides classes for defining and working with various geometric areas within the Minecraft world.
+ * These areas can be used for a variety of purposes such as event handling, entity management, custom mechanics, and more.</p>
  *
  * <p>The key abstractions provided by this package include:</p>
  *
  * <ul>
- *   <li>{@link tk.airshipcraft.commonlib.world.IArea} - An interface for general area definitions in a world.</li>
- *   <li>{@link tk.airshipcraft.commonlib.world.AbstractYLimitedArea} - An abstract class that implements IArea
+ *   <li><b>{@link tk.airshipcraft.commonlib.world.IArea}</b>: An interface for general area definitions in a world.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.world.AbstractYLimitedArea}</b>: An abstract class that implements IArea
  *       and adds vertical (Y-level) boundaries to an area.</li>
- *   <li>{@link tk.airshipcraft.commonlib.world.EllipseArea} - Defines an elliptical area based on a center point
+ *   <li><b>{@link tk.airshipcraft.commonlib.world.EllipseArea}</b>: Defines an elliptical area based on a center point
  *       and radii along the X and Z axes.</li>
- *   <li>{@link tk.airshipcraft.commonlib.world.GlobalYLimitedArea} - Represents a globally spanning area limited only
+ *   <li><b>{@link tk.airshipcraft.commonlib.world.GlobalYLimitedArea}</b>: Represents a globally spanning area limited only
  *       by Y levels, ignoring X and Z constraints.</li>
- *   <li>{@link tk.airshipcraft.commonlib.world.PseudoChunk} - Represents a chunk by its coordinates without holding
+ *   <li><b>{@link tk.airshipcraft.commonlib.world.PseudoChunk}</b>: Represents a chunk by its coordinates without holding
  *       its actual data, useful for lightweight chunk referencing.</li>
- *   <li>{@link tk.airshipcraft.commonlib.world.RectangleArea} - Defines a rectangular area based on a center point
+ *   <li><b>{@link tk.airshipcraft.commonlib.world.RectangleArea}</b>: Defines a rectangular area based on a center point
  *       and dimensions along the X and Z axes.</li>
  * </ul>
  *

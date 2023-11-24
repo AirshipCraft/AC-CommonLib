@@ -1,9 +1,11 @@
 package tk.airshipcraft.commonlib.utils;
 
+
 /**
- * This class represents a progression curve for a game where players earn tokens and rank up.
- * The curve is designed to slow down more active players, allowing newer or less active
- * players a better chance to catch up.
+ * The {@code ProgressionCurve} class provides a calculation model to determine progression
+ * requirements within a game. It is designed to balance the progression of different players,
+ * ensuring fair competition by slowing down the advancement of more active players and
+ * allowing less active players to catch up.
  *
  * @author notzune
  * @version 1.0.0
@@ -12,11 +14,16 @@ package tk.airshipcraft.commonlib.utils;
 public class ProgressionCurve {
 
     /**
-     * Calculates the number of rank-ups required for the next token.
+     * Calculates the required number of rank-ups for a player to earn their next token.
+     * This method applies a catch-up mechanic, where the difficulty of earning additional tokens
+     * increases as players progress, but does so at a rate that allows less active players
+     * to remain competitive.
      *
-     * @param tokensEarned  The total number of tokens already earned by the player.
-     * @param catchUpFactor The catch-up factor that controls the rate of growth in difficulty.
-     * @return The number of rank-ups required to earn the next token, rounded up to the nearest whole number.
+     * @param tokensEarned  The total number of tokens the player has already earned.
+     * @param catchUpFactor A coefficient dictating the progression curve's slope; a higher value
+     *                      results in a gentler slope, offering a more lenient catch-up mechanism.
+     * @return The number of rank-ups the player must achieve to obtain the next token. This value
+     *         is always a whole number, as partial rank-ups are not considered in the game's design.
      */
     public static int calculateRankUpsForNextToken(int tokensEarned, double catchUpFactor) {
         // Apply the progression formula as per the design

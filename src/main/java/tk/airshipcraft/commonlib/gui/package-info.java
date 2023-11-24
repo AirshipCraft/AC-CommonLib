@@ -14,14 +14,15 @@
  *
  * <p><b>Key Classes:</b></p>
  * <ul>
- *   <li>{@link tk.airshipcraft.commonlib.gui.GuiBuilder}: Employs the builder pattern to facilitate the easy
+ *   <li><b>{@link tk.airshipcraft.commonlib.gui.GuiBuilder}</b>: Employs the builder pattern to facilitate the easy
  *       construction of GUIs. It allows for a fluent, chainable interface, making GUI creation straightforward
  *       and intuitive.</li>
- *   <li>{@link tk.airshipcraft.commonlib.gui.UiDesigner}: An abstract class designed to serve as a foundational
+ *   <li><b>{@link tk.airshipcraft.commonlib.gui.UiDesigner}</b>: An abstract class designed to serve as a foundational
  *       framework for UI design. It requires extension and customization for specific use cases, particularly in
  *       implementing interactive elements and click actions.</li>
- *   <li>{@link tk.airshipcraft.commonlib.gui.GuiManager}: Manages the lifecycle and interactions of GUI instances,
+ *   <li><b>{@link tk.airshipcraft.commonlib.gui.GuiManager}</b>: Manages the lifecycle and interactions of GUI instances,
  *       ensuring efficient handling and operation of multiple GUI elements within the server.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.gui.Hologram}</b>: An abstract class for creating and managing holograms, providing methods for hologram manipulation and interaction.</li>
  * </ul>
  *
  * <p><b>Usage:</b></p>

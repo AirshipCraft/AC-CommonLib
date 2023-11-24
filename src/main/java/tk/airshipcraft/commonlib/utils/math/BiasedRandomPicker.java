@@ -6,9 +6,11 @@ import java.util.Random;
 import java.util.TreeMap;
 
 /**
- * Allows you to assign chances to objects and then randomly pick some
+ * This class allows for random selection of objects based on assigned probabilities.
+ * It is particularly useful when objects need to be picked with non-uniform chances,
+ * enabling the creation of biased random outcomes according to specified weights.
  *
- * @param <E> Type of object which should be picked
+ * @param <E> The type of object that can be picked.
  * @author notzune
  * @version 1.0.0
  * @since 2023-04-03
@@ -20,14 +22,12 @@ public class BiasedRandomPicker<E> {
     private Random rng;
 
     /**
-     * Constructor
-     * <p>
-     * The given map should contain all objects that should be available in this instance, where each key is an object
-     * to pick and the respective value for that key is the chance to pick that item. Chances must be within [0,1],
-     * where 0 means 0 % chance to occur and 1 means 100 %. All chances summed up must equal one with a maximum
-     * inaccuracy of 10^(-6)
+     * Constructs a BiasedRandomPicker with a map of objects and their associated probabilities.
+     * The total sum of all provided chances must equal 1, within a tolerance of 10^(-6).
+     * A chance of 0 indicates that the object will never be picked, while a chance of 1 indicates certainty.
      *
-     * @param chances Map containing all available objects and their chances to occur
+     * @param chances A map where each key is an object to pick and each value is the chance of picking that object.
+     * @throws IllegalArgumentException If the provided map is null, contains null values, or if the sum of chances is not 1.
      */
     public BiasedRandomPicker(Map<E, Double> chances) {
         if (chances == null) {
@@ -54,11 +54,11 @@ public class BiasedRandomPicker<E> {
     }
 
     /**
-     * Randomly picks an element according to the chances specified for this instance. In the case of malformed configs,
-     * this method may be unable to pick an element and return null, but the chance for that is guaranteed to be less
-     * than 10^(-120)
+     * Randomly selects an object from the pool, considering the assigned chances.
+     * If the configuration is malformed, there is an extremely low probability that this method
+     * may return null, but such a case is highly unlikely (less than 10^(-120)).
      *
-     * @return A randomly picked element
+     * @return A randomly picked element based on the biased chances.
      */
     public E getRandom() {
         int retries = 0;
@@ -74,11 +74,11 @@ public class BiasedRandomPicker<E> {
     }
 
     /**
-     * Gets the chance for specific object to be picked by this instance. If they object doesnt have an explicit chance
-     * set, 0.0 will be returned
+     * Retrieves the probability of an object being picked by this BiasedRandomPicker instance.
+     * If the object was not assigned an explicit chance, a default of 0.0 is returned.
      *
-     * @param e Object to check chance for
-     * @return Chance for this object to be picked by this instance
+     * @param e The object for which to retrieve the selection chance.
+     * @return The probability of the object being picked.
      */
     public double getChance(E e) {
         Double chance = originalChances.get(e);

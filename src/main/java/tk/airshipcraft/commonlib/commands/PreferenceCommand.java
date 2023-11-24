@@ -3,9 +3,9 @@ package tk.airshipcraft.commonlib.commands;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import tk.airshipcraft.commonlib.CommonLib;
-import tk.airshipcraft.commonlib.configuration.PreferenceProcessor;
-import tk.airshipcraft.commonlib.configuration.impl.IPlayerPreference;
-import tk.airshipcraft.commonlib.configuration.impl.PlayerPref;
+import tk.airshipcraft.commonlib.configuration.impl.PreferenceProcessor;
+import tk.airshipcraft.commonlib.configuration.IPlayerPreference;
+import tk.airshipcraft.commonlib.configuration.PlayerPref;
 
 import java.lang.reflect.Field;
 import java.sql.SQLException;

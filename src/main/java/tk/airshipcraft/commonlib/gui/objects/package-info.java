@@ -4,7 +4,7 @@
  *
  * <h2>Subpackages:</h2>
  * <ul>
- *   <li>{@code impl} - Contains implementations of the {@link tk.airshipcraft.commonlib.gui.objects.impl.ITeam} interface.</li>
+ *   <li>{@code impl} - Contains implementations of the {@link tk.airshipcraft.commonlib.gui.objects.ITeam} interface.</li>
  * </ul>
  *
  * <h2>Key classes:</h2>
@@ -13,7 +13,7 @@
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.Gui} - Base class for creating custom GUIs.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.Bossbar} - Wrapper for the boss bar UI component.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.Sidebar} - Represents a scoreboard on the side of the screen.</li>
- *   <li>{@link tk.airshipcraft.commonlib.gui.objects.TeamManager} - Manages teams and their properties within the GUI.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.gui.objects.impl.TeamManager} - Manages teams and their properties within the GUI.</li>
  *   <li>{@link tk.airshipcraft.commonlib.gui.objects.Ui} - Base class for all UI objects.</li>
  * </ul>
  *
