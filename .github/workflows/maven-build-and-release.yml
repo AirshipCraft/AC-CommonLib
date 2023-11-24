@@ -43,7 +43,7 @@ jobs:
           git commit -m "ci: update pom.xml version to ${{ env.RELEASE_VERSION }}"
           git push origin HEAD:main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Maven Clean Install
         run: mvn clean install
@@ -56,4 +56,4 @@ jobs:
           asset_name: commonlib-${{ env.RELEASE_VERSION }}.jar
           asset_content_type: application/java-archive
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
