@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.utils;
+package tk.airshipcraft.commonlib.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -11,14 +11,19 @@ import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import tk.airshipcraft.commonlib.gui.events.HologramClickEvent;
+import tk.airshipcraft.commonlib.utils.SubclassFinder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A utility class for creating and managing holograms in Minecraft using ArmorStands.
+ * Represents a hologram created using an {@link ArmorStand} in Minecraft.
+ * Holograms are used to display text to players in the game world.
+ * This class allows for the creation, manipulation, and interaction of holograms.
  *
- * @author Locutusque
+ * <p>Subclasses should implement the {@code addClickAction} method to define behavior when a hologram is interacted with.</p>
+ *
+ * @author Locutusque, notzune
  * @version 1.0.0
  * @since 2023-04-11
  */
@@ -65,10 +70,10 @@ public abstract class Hologram implements Listener {
     }
 
     /**
-     * Returns an instance of a Hologram if an armor stand is associated with a Hologram
+     * Retrieves the {@link Hologram} instance corresponding to the given {@link ArmorStand}.
      *
-     * @param armorStand the desired armor stand to return an instance of a Hologram from
-     * @return an instance of a hologram
+     * @param armorStand The ArmorStand associated with a Hologram.
+     * @return The Hologram instance, or null if none found.
      */
     public static Hologram fromArmorStand(ArmorStand armorStand) {
         for (Hologram hologram : hologramInstances) {
@@ -80,9 +85,9 @@ public abstract class Hologram implements Listener {
     }
 
     /**
-     * calls the addClickAction abstract methods for all the subclasses
+     * Calls the {@code addClickAction} method for all hologram subclasses.
      *
-     * @param hologram the hologram with the click action
+     * @param hologram The hologram that was clicked.
      */
     public static void callClickAction(Hologram hologram) {
         List<Class<?>> subclasses = subclassFinder.getSubclasses();
@@ -121,10 +126,10 @@ public abstract class Hologram implements Listener {
     }
 
     /**
-     * Sets the given slot to a given item
+     * Sets an item in a specified slot for the armor stand associated with this hologram.
      *
-     * @param item The desired item to put in a slot
-     * @param slot The desired slot to put the item in
+     * @param item The item to set.
+     * @param slot The equipment slot to place the item in.
      */
     public void setSlot(ItemStack item, EquipmentSlot slot) {
         for (ArmorStand armorStand : armorStands) {
@@ -160,12 +165,18 @@ public abstract class Hologram implements Listener {
     }
 
     /**
-     * An abstract method used to add functions to a hologram when they are clicked on
+     * An abstract method that subclasses must implement to define the behavior when the hologram is clicked.
      *
-     * @param hologram
+     * @param hologram The hologram that was clicked.
      */
     protected abstract void addClickAction(Hologram hologram);
 
+    /**
+     * Handles click events on the hologram and triggers the appropriate actions.
+     *
+     * @param event1 The PlayerInteractAtEntityEvent.
+     * @param event2 The EntityDamageByEntityEvent.
+     */
     @EventHandler
     public void onHologramClick(PlayerInteractAtEntityEvent event1, EntityDamageByEntityEvent event2) {
         if (event1.getRightClicked() instanceof ArmorStand armorStand && event2 instanceof ArmorStand armorStand1) {
@@ -179,4 +190,3 @@ public abstract class Hologram implements Listener {
         }
     }
 }
-

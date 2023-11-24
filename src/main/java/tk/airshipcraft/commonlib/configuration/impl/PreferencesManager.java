@@ -1,8 +1,8 @@
-package tk.airshipcraft.commonlib.configuration;
+package tk.airshipcraft.commonlib.configuration.impl;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import tk.airshipcraft.commonlib.configuration.impl.IPlayerPreference;
+import tk.airshipcraft.commonlib.configuration.IPlayerPreference;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

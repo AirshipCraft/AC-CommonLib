@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.configuration.impl;
+package tk.airshipcraft.commonlib.configuration;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

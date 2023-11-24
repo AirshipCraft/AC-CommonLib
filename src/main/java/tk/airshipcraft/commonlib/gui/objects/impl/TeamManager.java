@@ -1,6 +1,6 @@
-package tk.airshipcraft.commonlib.gui.objects;
+package tk.airshipcraft.commonlib.gui.objects.impl;
 
-import tk.airshipcraft.commonlib.gui.objects.impl.ITeam;
+import tk.airshipcraft.commonlib.gui.objects.ITeam;
 
 import java.util.HashMap;
 import java.util.Map;

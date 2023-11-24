@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.utils.search.impl;
+package tk.airshipcraft.commonlib.utils.search;
 
 import org.jetbrains.annotations.NotNull;
 import tk.airshipcraft.commonlib.utils.search.StringDistance;
@@ -6,31 +6,34 @@ import tk.airshipcraft.commonlib.utils.search.StringDistance;
 import java.util.Arrays;
 
 /**
- * Highly optimized Jaro-Winkler similarity algorithm implementation.
- * <p></p>
- * Main difference between this and most other implementations is that
- * this counts all the metrics used to calculate the total similarity
- * measurement, in the same loop.
- * <p></p>
- * Additionally, we use byte arrays directly here instead of strings.
- * I also removed the common character checking, because it slows the
- * algorithm down drastically.
- * <p></p>
- * Originally from:
+ * <p>This class provides a highly optimized implementation of the Jaro-Winkler similarity algorithm,
+ * which is a measure of similarity between two byte arrays (and by extension, two strings). The
+ * main optimizations over standard implementations include calculating all metrics within a single
+ * loop and using byte arrays instead of Strings for performance gains.</p>
  *
- * @author Lars Marius Garshol
- * @link <a href="https://github.com/larsga/Duke/blob/master/duke-core/src/main/java/no/priv/garshol/duke/comparators/JaroWinkler.java">Lars Marius Garshol</a>
+ * <p>Unlike some implementations, it doesn't perform a common character check because it tends to
+ * slow down the algorithm without significant accuracy benefit for the intended use-cases.</p>
+ *
+ * <p>This implementation is adapted from Lars Marius Garshol's version, and it is designed to be
+ * used in high-performance scenarios where text similarity needs to be computed rapidly and at scale.</p>
+ *
+ * @see <a href="https://github.com/larsga/Duke/blob/master/duke-core/src/main/java/no/priv/garshol/duke/comparators/JaroWinkler.java">
+ * Lars Marius Garshol's original implementation</a>
+ *
+ * @version 1.0.0
+ * @since 2023-04-11
  */
 public final class DukeJaroWinklerAlgorithm implements StringDistance {
     /**
-     * Calculates the Jaro-Winkler similarity between two strings.
-     * <p></p>
-     * This implementation uses the same algorithm as in the original
-     * <a href="http://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance"> Wikipedia article</a>.Jaro-Winkler distance</a> implementation.
+     * <p>Computes the Jaro-Winkler similarity score between two byte arrays. The score is symmetrical
+     * and gives a value between 0 and 1, where 1 means an exact match and 0 means no similarity.</p>
      *
-     * @param x the first string
-     * @param y the second string
-     * @return the Jaro-Winkler similarity between the two strings
+     * <p>The algorithm considers the number of matching characters and transpositions, adjusting for
+     * common prefixes up to a maximum of 4 characters.</p>
+     *
+     * @param x The first byte array to compare.
+     * @param y The second byte array to compare.
+     * @return A double value representing the similarity score between the two byte arrays.
      */
     @Override
     public double calculate(final byte @NotNull [] x, final byte @NotNull [] y) {

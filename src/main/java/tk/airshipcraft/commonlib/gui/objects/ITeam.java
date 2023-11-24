@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.gui.objects.impl;
+package tk.airshipcraft.commonlib.gui.objects;
 
 import java.util.List;
 

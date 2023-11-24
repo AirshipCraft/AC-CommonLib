@@ -1,9 +1,9 @@
-package tk.airshipcraft.commonlib.configuration;
+package tk.airshipcraft.commonlib.configuration.impl;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import tk.airshipcraft.commonlib.configuration.impl.IPlayerPreference;
-import tk.airshipcraft.commonlib.configuration.impl.PlayerPref;
+import tk.airshipcraft.commonlib.configuration.IPlayerPreference;
+import tk.airshipcraft.commonlib.configuration.PlayerPref;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
