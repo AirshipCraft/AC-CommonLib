@@ -1,3 +1,10 @@
+## [1.1.13](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.12...v1.1.13) (2023-11-24)
+
+
+### Bug Fixes
+
+* generate javadocs AFTER correct versioning ([bf4f17e](https://github.com/AirshipCraft/AC-CommonLib/commit/bf4f17e0c06d6d5c821aa7d7dc4ee52ed818d7d6))
+
 ## [1.1.12](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.11...v1.1.12) (2023-11-24)
 
 
