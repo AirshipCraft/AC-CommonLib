@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.11...v1.1.12) (2023-11-24)
+
+
+### Bug Fixes
+
+* fix incorrect syntax in workflow causing it to fail ([b966923](https://github.com/AirshipCraft/AC-CommonLib/commit/b966923c89b8198d9ac3f2ba4a83e34bce33971c))
+
 ## [1.1.11](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.10...v1.1.11) (2023-11-24)
 
 
