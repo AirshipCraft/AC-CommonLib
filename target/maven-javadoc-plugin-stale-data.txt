@@ -17,11 +17,11 @@
 -docencoding
 'UTF-8'
 -doctitle
-'commonlib 0.0.1 API'
+'commonlib 1.1.2 API'
 -use
 -version
 -windowtitle
-'commonlib 0.0.1 API'
+'commonlib 1.1.2 API'
 tk.airshipcraft.commonlib.configuration.impl
 tk.airshipcraft.commonlib.configuration
 tk.airshipcraft.commonlib.world
@@ -89,23 +89,24 @@ tk.airshipcraft.commonlib.commands
 /Users/zeyad/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar = 1678250374056
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/.DS_Store = 1680149816989
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java = 1700530315186
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/generated-sources/annotations = 1700787300405
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/tag-search-index.js = 1700787311156
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/overview-tree.html = 1700787311068
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/module-search-index.js = 1700787311152
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/index.html = 1700787311078
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/package-search-index.js = 1700787311153
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/jquery-ui.overrides.css = 1700787311287
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/index-all.html = 1700787311252
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/allpackages-index.html = 1700787311150
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/deprecated-list.html = 1700787311073
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/member-search-index.js = 1700787311155
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/copy.svg = 1700787311268
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/script.js = 1700787311266
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/stylesheet.css = 1700787311265
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/overview-summary.html = 1700787311256
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/help-doc.html = 1700787311263
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/element-list = 1700787310764
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/allclasses-index.html = 1700787311147
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/type-search-index.js = 1700787311154
-/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/search.js = 1700787311270
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/generated-sources/annotations = 1700797451816
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/tag-search-index.js = 1700797736293
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/overview-tree.html = 1700797736224
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/module-search-index.js = 1700797736286
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/index.html = 1700797736231
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/package-search-index.js = 1700797736287
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/jquery-ui.overrides.css = 1700797736375
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/index-all.html = 1700797736350
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/allpackages-index.html = 1700797736284
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/deprecated-list.html = 1700797736228
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/member-search-index.js = 1700797736291
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/copy.svg = 1700797736360
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/script.js = 1700797736360
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/stylesheet.css = 1700797736359
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/overview-summary.html = 1700797736352
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/help-doc.html = 1700797736356
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/javadoc.sh = 1700797733567
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/element-list = 1700797735948
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/allclasses-index.html = 1700797736282
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/type-search-index.js = 1700797736287
+/Users/zeyad/Documents/GitHub/AC-CommonLib/target/apidocs/search.js = 1700797736361

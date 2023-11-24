@@ -6,7 +6,7 @@
 
     <groupId>tk.airshipcraft</groupId>
     <artifactId>commonlib</artifactId>
-    <version>0.0.1</version>
+    <version>1.1.2</version>
     <packaging>jar</packaging>
 
     <name>commonlib</name>
@@ -72,12 +72,12 @@
 
     <distributionManagement>
         <repository>
-            <id>sonatype-nexus-staging</id>
+            <id>nexus-releases</id>
             <name>Sonatype Nexus Staging</name>
             <url>https://zuner.xyz/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
+            <id>nexus-snapshots</id>
             <name>Sonatype Nexus Snapshots</name>
             <url>https://zuner.xyz/repository/maven-snapshots/</url>
         </snapshotRepository>
