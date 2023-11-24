@@ -28,6 +28,7 @@ tk/airshipcraft/commonlib/gui/GuiManager.class
 tk/airshipcraft/commonlib/gui/events/HologramClickListener.class
 tk/airshipcraft/commonlib/utils/search/DukeJaroWinklerAlgorithm.class
 tk/airshipcraft/commonlib/gui/objects/Sidebar.class
+tk/airshipcraft/commonlib/particles/ParticleUtils.class
 tk/airshipcraft/commonlib/world/RectangleArea.class
 tk/airshipcraft/commonlib/utils/cooldowns/ICoolDownHandler.class
 tk/airshipcraft/commonlib/ACRPlugin.class
