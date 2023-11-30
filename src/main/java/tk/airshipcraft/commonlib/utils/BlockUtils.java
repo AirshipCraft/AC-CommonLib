@@ -122,7 +122,9 @@ public class BlockUtils {
                 material == Material.BIRCH_PLANKS ||
                 material == Material.JUNGLE_PLANKS ||
                 material == Material.SPRUCE_PLANKS ||
-                material == Material.MANGROVE_PLANKS;
+                material == Material.MANGROVE_PLANKS ||
+                material == Material.CRIMSON_PLANKS ||
+                material == Material.WARPED_PLANKS;
     }
 
     /**
