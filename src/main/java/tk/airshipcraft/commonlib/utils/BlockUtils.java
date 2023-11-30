@@ -250,6 +250,8 @@ public class BlockUtils {
                 material == Material.CRIMSON_SIGN || material == Material.CRIMSON_WALL_SIGN;
     }
 
+    // the reason for this method checking both is that I assume if you are looking for a freestanding sign then ANY sign would do
+
     /**
      * Retrieves the block type of a given material.
      *
