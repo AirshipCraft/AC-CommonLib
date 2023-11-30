@@ -178,7 +178,7 @@ public class BlockUtils {
     }
 
     /**
-     * Checks if a material is a stone.
+     * Checks if a material is a stone type. Includes granite, diorite, and andesite.
      *
      * @param material The material to check.
      * @return true if the material is any type of stone, false otherwise.
