@@ -357,7 +357,7 @@ public class BlockUtils {
      */
     public enum BlockType {
         LOG, WOOD, PLANK,
-        LEAVES, SAPLING,
+        LEAVES,
         WALL_SIGN, SIGN,
         STONE,
         CANDLE
