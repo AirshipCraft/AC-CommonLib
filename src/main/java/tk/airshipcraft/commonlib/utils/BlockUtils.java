@@ -123,6 +123,12 @@ public class BlockUtils {
                 material == Material.WARPED_STEM || material == Material.STRIPPED_WARPED_STEM;
     }
 
+    /**
+     * Checks if a material is a type of plank.
+     *
+     * @param material The material to check.
+     * @return true if the material is a plank, false otherwise.
+     */
     private static boolean isPlankMaterial(Material material) {
         return material == Material.ACACIA_PLANKS ||
                 material == Material.OAK_PLANKS ||
@@ -135,6 +141,12 @@ public class BlockUtils {
                 material == Material.WARPED_PLANKS;
     }
 
+    /**
+     * Checks if a material is a type of wood. ("Log" texture on all six sides)
+     *
+     * @param material The material to check.
+     * @return true if the material is wood, false otherwise.
+     */
     private static boolean isWoodMaterial(Material material) {
         return material == Material.ACACIA_WOOD || material == Material.STRIPPED_ACACIA_WOOD ||
                 material == Material.OAK_WOOD || material == Material.STRIPPED_OAK_WOOD ||
@@ -165,6 +177,12 @@ public class BlockUtils {
                 material == Material.WARPED_FUNGUS;     // same for this
     }
 
+    /**
+     * Checks if a material is a type of stone.
+     *
+     * @param material The material to check.
+     * @return true if the material is stone, false otherwise.
+     */
     private static boolean isStoneMaterial(Material material) {
         return material == Material.STONE ||
                 material == Material.GRANITE ||
@@ -172,6 +190,12 @@ public class BlockUtils {
                 material == Material.ANDESITE;
     }
 
+    /**
+     * Checks if a material is a candle type.
+     *
+     * @param material The material to check.
+     * @return true if the material is a candle, false otherwise.
+     */
     private static boolean isCandleMaterial(Material material) {
         return material ==  Material.CANDLE ||
                 material == Material.BLACK_CANDLE ||
