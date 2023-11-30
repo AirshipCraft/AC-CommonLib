@@ -41,6 +41,12 @@ public class BlockUtils {
             if (isCandleMaterial(material)) {
                 addMapping(material, BlockType.CANDLE);
             }
+            if (isSignMaterial(material)) {
+                addMapping(material, BlockType.SIGN);
+            }
+            if (isWallSignMaterial(material)) {
+                addMapping(material, BlockType.WALL_SIGN);
+            }
         }
     }
 
@@ -94,7 +100,7 @@ public class BlockUtils {
     }
 
     /**
-     * Checks if a material is a log type (agnostic if it is stripped or unstripped).
+     * Checks if a material is a log type agnostic if it is stripped or unstripped.
      *
      * @param material The material to check.
      * @return true if the material is a log, false otherwise.
@@ -111,13 +117,6 @@ public class BlockUtils {
                 material == Material.WARPED_STEM || material == Material.STRIPPED_WARPED_STEM;
     }
 
-    private static boolean isStoneMaterial(Material material) {
-        return material == Material.STONE ||
-                material == Material.GRANITE ||
-                material == Material.DIORITE ||
-                material == Material.ANDESITE;
-    }
-
     private static boolean isPlankMaterial(Material material) {
         return material == Material.ACACIA_PLANKS ||
                 material == Material.OAK_PLANKS ||
@@ -128,6 +127,13 @@ public class BlockUtils {
                 material == Material.MANGROVE_PLANKS ||
                 material == Material.CRIMSON_PLANKS ||
                 material == Material.WARPED_PLANKS;
+    }
+
+    private static boolean isStoneMaterial(Material material) {
+        return material == Material.STONE ||
+                material == Material.GRANITE ||
+                material == Material.DIORITE ||
+                material == Material.ANDESITE;
     }
 
     private static boolean isCandleMaterial(Material material) {
@@ -148,6 +154,40 @@ public class BlockUtils {
                 material == Material.GREEN_CANDLE ||
                 material == Material.CYAN_CANDLE ||
                 material == Material.RED_CANDLE;
+    }
+
+    /**
+     * Checks if a material is a wall sign type.
+     *
+     * @param material The material to check.
+     * @return true if the material is a wall sign, false otherwise.
+     */
+    private static boolean isWallSignMaterial(Material material) {
+        return material == Material.ACACIA_WALL_SIGN ||
+                material == Material.BIRCH_WALL_SIGN ||
+                material == Material.DARK_OAK_WALL_SIGN ||
+                material == Material.JUNGLE_WALL_SIGN ||
+                material == Material.OAK_WALL_SIGN ||
+                material == Material.SPRUCE_WALL_SIGN ||
+                material == Material.WARPED_WALL_SIGN ||
+                material == Material.CRIMSON_WALL_SIGN;
+    }
+
+    /**
+     * Checks if a material is a sign type agnostic if it is a wall sign or not.
+     *
+     * @param material The material to check.
+     * @return true if the material is a sign, false otherwise.
+     */
+    private static boolean isSignMaterial(Material material) {
+        return material == Material.ACACIA_SIGN || material == Material.ACACIA_WALL_SIGN ||
+                material == Material.BIRCH_SIGN || material == Material.BIRCH_WALL_SIGN ||
+                material == Material.DARK_OAK_SIGN || material == Material.DARK_OAK_WALL_SIGN ||
+                material == Material.JUNGLE_SIGN || material == Material.JUNGLE_WALL_SIGN ||
+                material == Material.OAK_SIGN || material == Material.OAK_WALL_SIGN ||
+                material == Material.SPRUCE_SIGN || material == Material.SPRUCE_WALL_SIGN ||
+                material == Material.WARPED_SIGN || material == Material.WARPED_WALL_SIGN ||
+                material == Material.CRIMSON_SIGN || material == Material.CRIMSON_WALL_SIGN;
     }
 
     /**
@@ -238,6 +278,7 @@ public class BlockUtils {
     public enum BlockType {
         LOG, LOG_STRIPPED, LOG_UNSTRIPPED,
         WOOD, PLANK,
+        WALL_SIGN, SIGN,
         STONE,
         CANDLE
     }
