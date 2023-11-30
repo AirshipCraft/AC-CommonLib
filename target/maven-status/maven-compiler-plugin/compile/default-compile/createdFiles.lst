@@ -1,3 +1,4 @@
+tk/airshipcraft/commonlib/utils/BlockUtils.class
 tk/airshipcraft/commonlib/utils/ClassPathScanner.class
 tk/airshipcraft/commonlib/gui/objects/BelowName.class
 tk/airshipcraft/commonlib/configuration/impl/PreferencesManager.class
@@ -32,6 +33,7 @@ tk/airshipcraft/commonlib/particles/ParticleUtils.class
 tk/airshipcraft/commonlib/world/RectangleArea.class
 tk/airshipcraft/commonlib/utils/cooldowns/ICoolDownHandler.class
 tk/airshipcraft/commonlib/ACRPlugin.class
+tk/airshipcraft/commonlib/utils/BlockUtils$BlockType.class
 tk/airshipcraft/commonlib/utils/TextFormatting.class
 tk/airshipcraft/commonlib/CommonLib.class
 tk/airshipcraft/commonlib/gui/Hologram.class
