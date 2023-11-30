@@ -24,10 +24,10 @@ public class BlockUtils {
         // Initialize the mapping
         for (Material material : Material.values()) {
             if (isUnstrippedLogMaterial(material)) {
-                addMapping(material, BlockType.LOG_UNSTRIPPED);
+                addMapping(material, BlockType.UNSTRIPPED_LOG);
             }
             if (isStrippedLogMaterial(material)) {
-                addMapping(material, BlockType.LOG_STRIPPED);
+                addMapping(material, BlockType.STRIPPED_LOG);
             }
             if (isLogMaterial(material)) {
                 addMapping(material, BlockType.LOG);
@@ -46,6 +46,14 @@ public class BlockUtils {
             }
             if (isWallSignMaterial(material)) {
                 addMapping(material, BlockType.WALL_SIGN);
+            }
+            if (isWoodMaterial(material)) {
+                addMapping(material, BlockType.WOOD);
+            }
+            if (isStrippedWoodMaterial(material))
+                addMapping(material, BlockType.STRIPPED_WOOD);
+            if (isLeavesMaterial(material)) {
+                addMapping(material, BlockType.LEAVES);
             }
         }
     }
@@ -127,6 +135,52 @@ public class BlockUtils {
                 material == Material.MANGROVE_PLANKS ||
                 material == Material.CRIMSON_PLANKS ||
                 material == Material.WARPED_PLANKS;
+    }
+
+    private static boolean isWoodMaterial(Material material) {
+        return material == Material.ACACIA_WOOD ||
+                material == Material.OAK_WOOD ||
+                material == Material.DARK_OAK_WOOD ||
+                material == Material.BIRCH_WOOD ||
+                material == Material.JUNGLE_WOOD ||
+                material == Material.SPRUCE_WOOD ||
+                material == Material.MANGROVE_WOOD ||
+                material == Material.CRIMSON_HYPHAE ||
+                material == Material.CRIMSON_STEM ||
+                material == Material.WARPED_STEM ||
+                material == Material.WARPED_HYPHAE;
+    }
+
+    private static boolean isStrippedWoodMaterial(Material material) {
+        return material == Material.STRIPPED_ACACIA_WOOD ||
+                material == Material.STRIPPED_OAK_WOOD ||
+                material == Material.STRIPPED_DARK_OAK_WOOD ||
+                material == Material.STRIPPED_BIRCH_WOOD ||
+                material == Material.STRIPPED_JUNGLE_WOOD ||
+                material == Material.STRIPPED_SPRUCE_WOOD ||
+                material == Material.STRIPPED_MANGROVE_WOOD ||
+                material == Material.STRIPPED_CRIMSON_HYPHAE ||
+                material == Material.STRIPPED_CRIMSON_STEM ||
+                material == Material.STRIPPED_WARPED_STEM ||
+                material == Material.STRIPPED_WARPED_HYPHAE;
+    }
+
+    /**
+     * Checks if a material is a leaf type.
+     *
+     * @param material The material to check.
+     * @return true if the material is a leaf, false otherwise.
+     */
+    private static boolean isLeavesMaterial(Material material) {
+        return material == Material.ACACIA_LEAVES ||
+                material == Material.OAK_LEAVES ||
+                material == Material.DARK_OAK_LEAVES ||
+                material == Material.BIRCH_LEAVES ||
+                material == Material.JUNGLE_LEAVES ||
+                material == Material.SPRUCE_LEAVES ||
+                material == Material.MANGROVE_LEAVES ||
+                material == Material.CRIMSON_FUNGUS ||  // i think this is the right material but tbh not sure
+                material == Material.WARPED_FUNGUS;     // same for this
     }
 
     private static boolean isStoneMaterial(Material material) {
@@ -229,7 +283,7 @@ public class BlockUtils {
      * @return true if the material is any type of unstripped log, false otherwise.
      */
     public static boolean isLogUnstripped(Material material) {
-        return getBlockType(material) == BlockType.LOG_UNSTRIPPED;
+        return getBlockType(material) == BlockType.UNSTRIPPED_LOG;
     }
 
     /**
@@ -239,7 +293,7 @@ public class BlockUtils {
      * @return true if the material is any type of stripped log, false otherwise.
      */
     public static boolean isLogStripped(Material material) {
-        return getBlockType(material) == BlockType.LOG_STRIPPED;
+        return getBlockType(material) == BlockType.STRIPPED_LOG;
     }
 
     /**
@@ -263,6 +317,16 @@ public class BlockUtils {
     }
 
     /**
+     * Checks if a material is a leaf.
+     *
+     * @param material The material to check.
+     * @return true if the material is any type of leaf, false otherwise.
+     */
+    public static boolean isLeaf(Material material) {
+        return getBlockType(material) == BlockType.LEAVES;
+    }
+
+    /**
      * Checks if a material is a candle agnostic of its color.
      *
      * @param material The material to check.
@@ -273,11 +337,33 @@ public class BlockUtils {
     }
 
     /**
+     * Checks if a material is a wall sign.
+     *
+     * @param material The material to check.
+     * @return true if the material is any type of wall sign, false otherwise.
+     */
+    public static boolean isWallSign(Material material) {
+        return getBlockType(material) == BlockType.WALL_SIGN;
+    }
+
+    /**
+     * Checks if a material is a sign agnostic if it is a wall sign or not.
+     *
+     * @param material The material to check.
+     * @return true if the material is any type of sign, false otherwise.
+     */
+    public static boolean isSign(Material material) {
+        return getBlockType(material) == BlockType.SIGN;
+    }
+
+    /**
      * Enum representing different types of Minecraft blocks grouped by category.
      */
     public enum BlockType {
-        LOG, LOG_STRIPPED, LOG_UNSTRIPPED,
-        WOOD, PLANK,
+        LOG, STRIPPED_LOG, UNSTRIPPED_LOG,
+        WOOD, STRIPPED_WOOD, UNSTRIPPED_WOOD,
+        PLANK,
+        LEAVES, SAPLING,
         WALL_SIGN, SIGN,
         STONE,
         CANDLE
