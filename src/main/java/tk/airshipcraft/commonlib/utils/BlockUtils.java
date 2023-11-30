@@ -38,6 +38,9 @@ public class BlockUtils {
             if (isPlankMaterial(material)) {
                 addMapping(material, BlockType.PLANK);
             }
+            if (isCandleMaterial(material)) {
+                addMapping(material, BlockType.CANDLE);
+            }
         }
     }
 
@@ -127,6 +130,26 @@ public class BlockUtils {
                 material == Material.WARPED_PLANKS;
     }
 
+    private static boolean isCandleMaterial(Material material) {
+        return material ==  Material.CANDLE ||
+                material == Material.BLACK_CANDLE ||
+                material == Material.WHITE_CANDLE ||
+                material == Material.GRAY_CANDLE ||
+                material == Material.LIGHT_GRAY_CANDLE ||
+                material == Material.ORANGE_CANDLE ||
+                material == Material.MAGENTA_CANDLE ||
+                material == Material.LIGHT_BLUE_CANDLE ||
+                material == Material.YELLOW_CANDLE ||
+                material == Material.LIME_CANDLE ||
+                material == Material.PINK_CANDLE ||
+                material == Material.PURPLE_CANDLE ||
+                material == Material.BLUE_CANDLE ||
+                material == Material.BROWN_CANDLE ||
+                material == Material.GREEN_CANDLE ||
+                material == Material.CYAN_CANDLE ||
+                material == Material.RED_CANDLE;
+    }
+
     /**
      * Retrieves the block type of a given material.
      *
@@ -200,11 +223,22 @@ public class BlockUtils {
     }
 
     /**
+     * Checks if a material is a candle agnostic of its color.
+     *
+     * @param material The material to check.
+     * @return true if the material is any type of candle, false otherwise.
+     */
+    public static boolean isCandle(Material material) {
+        return getBlockType(material) == BlockType.CANDLE;
+    }
+
+    /**
      * Enum representing different types of Minecraft blocks grouped by category.
      */
     public enum BlockType {
         LOG, LOG_STRIPPED, LOG_UNSTRIPPED,
         WOOD, PLANK,
-        STONE
+        STONE,
+        CANDLE
     }
 }
