@@ -32,11 +32,17 @@ public class BlockUtils {
             if (isLogMaterial(material)) {
                 addMapping(material, BlockType.LOG);
             }
-            if (isStoneMaterial(material)) {
-                addMapping(material, BlockType.STONE);
-            }
             if (isPlankMaterial(material)) {
                 addMapping(material, BlockType.PLANK);
+            }
+            if (isWoodMaterial(material)) {
+                addMapping(material, BlockType.WOOD);
+            }
+            if (isLeavesMaterial(material)) {
+                addMapping(material, BlockType.LEAVES);
+            }
+            if (isStoneMaterial(material)) {
+                addMapping(material, BlockType.STONE);
             }
             if (isCandleMaterial(material)) {
                 addMapping(material, BlockType.CANDLE);
@@ -46,12 +52,6 @@ public class BlockUtils {
             }
             if (isWallSignMaterial(material)) {
                 addMapping(material, BlockType.WALL_SIGN);
-            }
-            if (isWoodMaterial(material)) {
-                addMapping(material, BlockType.WOOD);
-            }
-            if (isLeavesMaterial(material)) {
-                addMapping(material, BlockType.LEAVES);
             }
         }
     }
