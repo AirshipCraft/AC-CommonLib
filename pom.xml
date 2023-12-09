@@ -6,7 +6,7 @@
 
     <groupId>tk.airshipcraft</groupId>
     <artifactId>commonlib</artifactId>
-    <version>1.1.13</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
 
     <name>commonlib</name>
