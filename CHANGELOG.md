@@ -1,3 +1,20 @@
+# [1.2.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.13...v1.2.0) (2023-12-09)
+
+
+### Bug Fixes
+
+* add warped and crimson planks ([4cac897](https://github.com/AirshipCraft/AC-CommonLib/commit/4cac897dee1c0e436b894017a13df9c13d5ef96e))
+* remove useless blocktype ([8f511c7](https://github.com/AirshipCraft/AC-CommonLib/commit/8f511c73bbdfbeea593b0a02198976b680d53f6a))
+
+
+### Features
+
+* add block utils ([e4bfb9b](https://github.com/AirshipCraft/AC-CommonLib/commit/e4bfb9bef9deb4ce450a6f621639fbe8d5c70412))
+* add checks for signs (wall and non) ([7abcd01](https://github.com/AirshipCraft/AC-CommonLib/commit/7abcd01cfcd415264fbe6b5172a6b725f4412cb6))
+* add methods for checking candle blocktype ([fe0be82](https://github.com/AirshipCraft/AC-CommonLib/commit/fe0be8253f4aebbb2a2a0274f8ba3ebc0e96080d))
+* add methods for wood and leaves ([b9b0720](https://github.com/AirshipCraft/AC-CommonLib/commit/b9b0720436cc527276faca0f7980e9454d0470c4))
+* deprecated seperate methods for stripped/unstripped variants ([11c7355](https://github.com/AirshipCraft/AC-CommonLib/commit/11c7355de8f5cc01b31e5c5dcea23dd286655c33))
+
 ## [1.1.13](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.12...v1.1.13) (2023-11-24)
 
 
