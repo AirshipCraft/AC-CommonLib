@@ -7,8 +7,8 @@ package tk.airshipcraft.commonlib.utils.cooldowns;
  * @param <E> The type of object that the cooldowns are assigned to. This could be any object type, like a player or an item.
  * @param <K> The type of the key identifying different types of cooldowns, like an action or event type.
  * @author Maxopoly, notzune
- * @since 2023-11-13
  * @version 1.0.0
+ * @since 2023-11-13
  */
 public interface IKVCoolDownHandler<E, K> {
 

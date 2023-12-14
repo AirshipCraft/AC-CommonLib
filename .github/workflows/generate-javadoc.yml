@@ -2,7 +2,7 @@ name: Generate and Publish Javadoc
 
 on:
   workflow_run:
-    workflows: ["Maven Package and Deploy"]
+    workflows: [ "Maven Package and Deploy" ]
     types:
       - completed
 

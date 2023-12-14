@@ -23,7 +23,7 @@ public class ProgressionCurve {
      * @param catchUpFactor A coefficient dictating the progression curve's slope; a higher value
      *                      results in a gentler slope, offering a more lenient catch-up mechanism.
      * @return The number of rank-ups the player must achieve to obtain the next token. This value
-     *         is always a whole number, as partial rank-ups are not considered in the game's design.
+     * is always a whole number, as partial rank-ups are not considered in the game's design.
      */
     public static int calculateRankUpsForNextToken(int tokensEarned, double catchUpFactor) {
         // Apply the progression formula as per the design

@@ -33,5 +33,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface ConfigOption {
     String key();
+
     String defaultValue() default "";
 }

@@ -96,9 +96,9 @@ public class Bossbar {
      * Updates the color and style of the boss bar after a specified delay.
      * This method allows for delayed customization of the boss bar's appearance.
      *
-     * @param color  The new color to set for the boss bar, using BarColor.
-     * @param style  The new style to set for the boss bar, using BarStyle.
-     * @param delay  The delay in ticks before applying the new color and style.
+     * @param color The new color to set for the boss bar, using BarColor.
+     * @param style The new style to set for the boss bar, using BarStyle.
+     * @param delay The delay in ticks before applying the new color and style.
      */
     public void updateAfterDelay(BarColor color, BarStyle style, long delay) {
         Bukkit.getScheduler().runTaskLater(CommonLib.getInstance(), () -> {

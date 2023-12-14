@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
  * approach for calculation.
  *
  * @author notzune
- * @since 2023-06-23
  * @version 1.0.0
+ * @since 2023-06-23
  */
 public enum SearchAlgorithm implements StringDistance {
 

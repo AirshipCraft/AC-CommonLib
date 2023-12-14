@@ -1,7 +1,6 @@
 package tk.airshipcraft.commonlib.utils.search;
 
 import org.jetbrains.annotations.NotNull;
-import tk.airshipcraft.commonlib.utils.search.StringDistance;
 
 import java.util.Arrays;
 
@@ -11,8 +10,8 @@ import java.util.Arrays;
  * The normalization is performed by dividing the Levenshtein distance by the length of the longest array,
  * producing a score between 0 and 1, where 0 indicates identical arrays and 1 indicates maximum dissimilarity.
  *
- * @version 1.0.0
  * @author notzune
+ * @version 1.0.0
  * @since 2023-06-23
  */
 public final class NormalizedLevenshteinAlgorithm implements StringDistance {

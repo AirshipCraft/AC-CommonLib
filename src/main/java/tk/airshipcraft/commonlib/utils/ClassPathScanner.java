@@ -26,14 +26,16 @@ public class ClassPathScanner {
     /**
      * Default constructor.
      */
-    public ClassPathScanner() {}
+    public ClassPathScanner() {
+    }
 
     /**
      * Constructor with package names to restrict the scanning scope.
      *
      * @param packages Array of package names to scan within.
      */
-    public ClassPathScanner(String... packages) {}
+    public ClassPathScanner(String... packages) {
+    }
 
     /**
      * Scans for all classes extending the specified superclass within the given package names.

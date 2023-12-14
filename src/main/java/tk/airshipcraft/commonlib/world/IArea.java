@@ -30,7 +30,7 @@ public interface IArea {
      * For areas of infinite size, this method may return null.
      *
      * @return A collection of {@link Chunk} instances representing the chunks within this area,
-     *         or null if the area has an infinite extent.
+     * or null if the area has an infinite extent.
      */
     Collection<Chunk> getChunks();
 
@@ -40,7 +40,7 @@ public interface IArea {
      * For areas of infinite size, this method may return null.
      *
      * @return A collection of {@link PseudoChunk} instances representing the chunk coordinates within this area,
-     *         or null if the area has an infinite extent.
+     * or null if the area has an infinite extent.
      */
     Collection<PseudoChunk> getPseudoChunks();
 

@@ -1,7 +1,6 @@
 package tk.airshipcraft.commonlib.utils.search;
 
 import org.jetbrains.annotations.NotNull;
-import tk.airshipcraft.commonlib.utils.search.StringDistance;
 
 import java.util.Arrays;
 
@@ -17,10 +16,9 @@ import java.util.Arrays;
  * <p>This implementation is adapted from Lars Marius Garshol's version, and it is designed to be
  * used in high-performance scenarios where text similarity needs to be computed rapidly and at scale.</p>
  *
+ * @version 1.0.0
  * @see <a href="https://github.com/larsga/Duke/blob/master/duke-core/src/main/java/no/priv/garshol/duke/comparators/JaroWinkler.java">
  * Lars Marius Garshol's original implementation</a>
- *
- * @version 1.0.0
  * @since 2023-04-11
  */
 public final class DukeJaroWinklerAlgorithm implements StringDistance {

@@ -2,7 +2,7 @@ name: Maven Package and Deploy
 
 on:
   workflow_run:
-    workflows: ["Maven Build and Release"]
+    workflows: [ "Maven Build and Release" ]
     types:
       - completed
 

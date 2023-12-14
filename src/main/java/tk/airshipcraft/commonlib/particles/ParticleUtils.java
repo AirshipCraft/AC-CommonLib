@@ -24,7 +24,7 @@ public class ParticleUtils {
     /**
      * Spawns bullet particles at the specified location.
      *
-     * @param location The location to spawn the bullet particles.
+     * @param location   The location to spawn the bullet particles.
      * @param incendiary Whether the bullet is incendiary.
      */
     public static void spawnBulletParticles(Location location, boolean incendiary) {

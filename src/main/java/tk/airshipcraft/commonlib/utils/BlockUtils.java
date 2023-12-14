@@ -1,6 +1,7 @@
 package tk.airshipcraft.commonlib.utils;
 
 import org.bukkit.Material;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -60,7 +61,7 @@ public class BlockUtils {
      * Adds a mapping between a material and a block type.
      *
      * @param material The material to be mapped.
-     * @param type The block type to associate with the material.
+     * @param type     The block type to associate with the material.
      */
     private static void addMapping(Material material, BlockType type) {
         blockTypeMap.put(material, type);
@@ -197,7 +198,7 @@ public class BlockUtils {
      * @return true if the material is a candle, false otherwise.
      */
     private static boolean isCandleMaterial(Material material) {
-        return material ==  Material.CANDLE ||
+        return material == Material.CANDLE ||
                 material == Material.BLACK_CANDLE ||
                 material == Material.WHITE_CANDLE ||
                 material == Material.GRAY_CANDLE ||
@@ -274,6 +275,7 @@ public class BlockUtils {
     }
 
     // Added boolean check methods
+
     /**
      * Checks if a material is a log agnostic of whether it is stripped or not.
      *

@@ -28,7 +28,7 @@ public @interface PlayerPref {
      * The value is provided as a string and should be convertible to the type of the field it annotates.
      *
      * @return The default value for the annotated preference field, represented as a String.
-     *         If not specified, defaults to an empty string.
+     * If not specified, defaults to an empty string.
      */
     String defaultValue() default "";
 }

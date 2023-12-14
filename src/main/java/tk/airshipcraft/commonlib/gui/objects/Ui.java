@@ -50,6 +50,21 @@ public class Ui {
     }
 
     /**
+     * Checks if a given inventory is a custom UI created by this class.
+     * This static method can be used to verify if an inventory is part of the custom UI system.
+     *
+     * @param inventory The Inventory to check.
+     * @return True if the inventory is a custom UI created by this class, false otherwise.
+     */
+    public static boolean isUi(Inventory inventory) {
+        if (inventory.getHolder() instanceof Ui) {
+            Ui ui = (Ui) inventory.getHolder();
+            return uis.containsKey(ui.getInventoryId());
+        }
+        return false;
+    }
+
+    /**
      * Adds an item as a button to the UI at the specified slot.
      * This method places an ItemStack in the inventory at a given slot, which can represent a button or an interactive element.
      *
@@ -117,20 +132,5 @@ public class Ui {
      */
     public int getRows() {
         return rows;
-    }
-
-    /**
-     * Checks if a given inventory is a custom UI created by this class.
-     * This static method can be used to verify if an inventory is part of the custom UI system.
-     *
-     * @param inventory The Inventory to check.
-     * @return True if the inventory is a custom UI created by this class, false otherwise.
-     */
-    public static boolean isUi(Inventory inventory) {
-        if (inventory.getHolder() instanceof Ui) {
-            Ui ui = (Ui) inventory.getHolder();
-            return uis.containsKey(ui.getInventoryId());
-        }
-        return false;
     }
 }

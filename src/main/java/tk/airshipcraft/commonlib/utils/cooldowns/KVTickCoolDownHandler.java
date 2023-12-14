@@ -13,8 +13,8 @@ import java.util.Map;
  *
  * @param <T> The type of objects that cooldowns are assigned to.
  * @param <K> The type of key identifying different cooldowns.
- * @version 1.0.1
  * @author Maxopoly, notzune
+ * @version 1.0.1
  * @since 2023-10-11
  */
 public class KVTickCoolDownHandler<T, K> implements IKVCoolDownHandler<T, K> {
@@ -27,7 +27,7 @@ public class KVTickCoolDownHandler<T, K> implements IKVCoolDownHandler<T, K> {
      * Constructs a new {@code KVTickCoolDownHandler} instance.
      *
      * @param executingPlugin The Bukkit plugin instance executing this handler.
-     * @param cooldown The total duration of the cooldown in ticks.
+     * @param cooldown        The total duration of the cooldown in ticks.
      */
     public KVTickCoolDownHandler(JavaPlugin executingPlugin, long cooldown) {
         this.cooldown = cooldown;

@@ -118,7 +118,7 @@ public final class Trie {
      * This method contributes to the implementation of the {@link #match(String)} method.
      *
      * @param wordToMatch The word or prefix to match.
-     * @param result The list to collect matching words.
+     * @param result      The list to collect matching words.
      */
     private void matchWord(String wordToMatch, List<String> result) {
         if (isLeaf()) {

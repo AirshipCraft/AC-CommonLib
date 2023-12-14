@@ -11,7 +11,7 @@ import static tk.airshipcraft.commonlib.gui.Hologram.hologramInstances;
  * Listener class for handling HologramClickEvents.
  * This class listens for any HologramClickEvent fired within the game and processes them.
  * Specifically, it iterates through all instances of Holograms and invokes their respective click actions.
- *
+ * <p>
  * The class demonstrates how to handle custom events within a Bukkit plugin context, especially those related to hologram interactions.
  *
  * @author Locutusque

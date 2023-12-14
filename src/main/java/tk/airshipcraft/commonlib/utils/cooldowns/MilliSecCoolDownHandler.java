@@ -9,8 +9,8 @@ import java.util.Map;
  *
  * @param <E> The type of object that cooldowns are being tracked for.
  * @author Maxopoly, notzune
- * @since 2023-04-02
  * @version 1.0.0
+ * @since 2023-04-02
  */
 public class MilliSecCoolDownHandler<E> implements ICoolDownHandler<E> {
 

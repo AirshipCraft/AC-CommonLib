@@ -5,8 +5,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import tk.airshipcraft.commonlib.gui.objects.Ui;
 import tk.airshipcraft.commonlib.gui.UiDesigner;
+import tk.airshipcraft.commonlib.gui.objects.Ui;
 
 /**
  * Listener class for inventory click events in Bukkit.

@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
  * such as coloring text, formatting time durations, and various string utilities.</p>
  *
  * @author notzune
- * @since 2023-04-02
  * @version 1.0.0
+ * @since 2023-04-02
  */
 public class TextFormatting {
 
@@ -72,9 +72,9 @@ public class TextFormatting {
     /**
      * Parses a string with formatting and arguments.
      *
-     * @param str   The string to be formatted.
-     * @param args  Arguments for formatting.
-     * @return      The formatted string.
+     * @param str  The string to be formatted.
+     * @param args Arguments for formatting.
+     * @return The formatted string.
      */
     public static String parse(String str, Object... args) {
         return String.format(parse(str), args);
@@ -83,8 +83,8 @@ public class TextFormatting {
     /**
      * Parses a string for color codes.
      *
-     * @param str   The string to be parsed.
-     * @return      The string with color codes parsed.
+     * @param str The string to be parsed.
+     * @return The string with color codes parsed.
      */
     public static String parse(String str) {
         return parseColor(str);
@@ -94,7 +94,7 @@ public class TextFormatting {
      * Parses a string for Minecraft color codes.
      *
      * @param string The string to be parsed.
-     * @return       The parsed string with Minecraft color codes.
+     * @return The parsed string with Minecraft color codes.
      */
     public static String parseColor(String string) {
         string = parseColorAmp(string);
@@ -107,7 +107,7 @@ public class TextFormatting {
      * Converts ampersand color codes to Minecraft color codes.
      *
      * @param string The string to be converted.
-     * @return       The string with converted color codes.
+     * @return The string with converted color codes.
      */
     public static String parseColorAmp(String string) {
         string = string.replace("&&", "&");
@@ -223,6 +223,7 @@ public class TextFormatting {
     /**
      * This method is deprecated and replaced by {@link #parseColorTags(String)}
      * .
+     *
      * @param sting The string to be parsed.
      * @return The string with color tags parsed.
      */
@@ -247,7 +248,7 @@ public class TextFormatting {
      * Repeats the given string a specified number of times.
      *
      * @param string The string to repeat.
-     * @param times The number of times to repeat the string.
+     * @param times  The number of times to repeat the string.
      * @return A new string composed of the input string repeated the specified number of times.
      * @throws IllegalArgumentException If the input string is null or times is less than 1.
      */
@@ -289,9 +290,9 @@ public class TextFormatting {
      * Concatenates the elements of a list into a single string, using a comma as a delimiter,
      * and "and" before the last element. Intended for human-readable lists.
      *
-     * @param list The list of strings to concatenate.
+     * @param list  The list of strings to concatenate.
      * @param comma The delimiter to use between elements, typically a comma.
-     * @param and The string to use before the last element, typically "and".
+     * @param and   The string to use before the last element, typically "and".
      * @return A human-readable string representing the list.
      */
     public static String implodeCommaAnd(List<String> list, String comma, String and) {
@@ -337,7 +338,7 @@ public class TextFormatting {
      * This method allows for custom color codes to be applied to the title.
      *
      * @param colorCode The color code to apply to the title.
-     * @param str The string to be stylized as a title.
+     * @param str       The string to be stylized as a title.
      * @return The titleized string with the specified color and format applied.
      */
     public static String titleize(String colorCode, String str) {
@@ -359,9 +360,9 @@ public class TextFormatting {
      * This method is used for paginating text for easier reading and display in a
      * UI, where each page contains a subset of the total lines.
      *
-     * @param lines The list of strings to paginate.
+     * @param lines          The list of strings to paginate.
      * @param pageHumanBased The human-readable page number (1-based index).
-     * @param title The title to be displayed at the top of the page.
+     * @param title          The title to be displayed at the top of the page.
      * @return A list of strings representing the page of text.
      */
     public static ArrayList<String> getPage(List<String> lines, int pageHumanBased, String title) {

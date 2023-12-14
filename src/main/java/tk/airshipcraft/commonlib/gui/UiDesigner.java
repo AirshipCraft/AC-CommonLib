@@ -25,8 +25,8 @@ import java.util.List;
  */
 public abstract class UiDesigner {
 
-    private static SubclassFinder subclassFinder;
     private static final CommonLib commonLib = CommonLib.getInstance();
+    private static SubclassFinder subclassFinder;
 
     /**
      * Initializes a new SubclassFinder for UiDesigner subclasses.
@@ -73,6 +73,23 @@ public abstract class UiDesigner {
     }
 
     /**
+     * Creates an item stack with specified material, amount, and custom name.
+     * This method simplifies the process of creating customized items for UIs.
+     *
+     * @param material The material of the item.
+     * @param amount   The amount of the item.
+     * @param name     The custom name of the item.
+     * @return The created ItemStack.
+     */
+    public static ItemStack createItemStack(Material material, int amount, String name) {
+        ItemStack item = new ItemStack(material, amount);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    /**
      * Clears all items from the given inventory.
      *
      * @param inventory The inventory to clear.
@@ -90,23 +107,6 @@ public abstract class UiDesigner {
      */
     public void openInventoryForPlayer(Player player, Inventory inventory) {
         player.openInventory(inventory);
-    }
-
-    /**
-     * Creates an item stack with specified material, amount, and custom name.
-     * This method simplifies the process of creating customized items for UIs.
-     *
-     * @param material The material of the item.
-     * @param amount   The amount of the item.
-     * @param name     The custom name of the item.
-     * @return The created ItemStack.
-     */
-    public static ItemStack createItemStack(Material material, int amount, String name) {
-        ItemStack item = new ItemStack(material, amount);
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(name);
-        item.setItemMeta(meta);
-        return item;
     }
 
     /**
