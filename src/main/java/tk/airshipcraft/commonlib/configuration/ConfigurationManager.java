@@ -32,43 +32,51 @@ public class ConfigurationManager {
     }
 
     /**
-     * Loads the configuration, applying default values for missing settings.
-     * Reflectively scans the specified configuration class for annotated fields
-     * and initializes them with values from the plugin's configuration file.
+     * Repairs the configuration file on plugin restart.
+     * This method ensures that the config file is correctly formatted and contains all necessary values.
+     * Existing values are not overwritten unless they are malformed or missing.
      */
-    public void loadConfig() {
+    public void repairConfig() {
         plugin.reloadConfig();
         FileConfiguration config = plugin.getConfig();
+        boolean configUpdated = false;
 
         for (Field field : configClass.getDeclaredFields()) {
             if (field.isAnnotationPresent(ConfigOption.class)) {
                 ConfigOption option = field.getAnnotation(ConfigOption.class);
                 String key = option.key();
                 Object defaultValue = option.defaultValue();
-                Object value = config.get(key, defaultValue);
 
-                field.setAccessible(true);
-                try {
-                    field.set(null, value); // Assuming static fields for configuration
-                } catch (IllegalAccessException e) {
-                    CommonLib.getInstance().logException(e);
+                if (!config.contains(key) || isMalformed(config, key)) {
+                    config.set(key, defaultValue);
+                    configUpdated = true;
+                    CommonLib.getInstance().logInfo("Repaired missing or malformed field: " + key);
                 }
             }
         }
 
-        plugin.saveConfig();
-        CommonLib.getInstance().logInfo("Configuration loaded successfully.");
+        if (configUpdated) {
+            plugin.saveConfig();
+            CommonLib.getInstance().logInfo("Configuration repaired and saved.");
+        } else {
+            CommonLib.getInstance().logInfo("No repair needed for configuration.");
+        }
     }
 
     /**
-     * Repairs the configuration file on plugin restart.
-     * Ensures the config file is correctly formatted and contains all necessary values.
-     * Existing values are not overwritten.
+     * Checks if the configuration value for a given key is malformed.
+     * This method can be customized based on what counts as a malformed value.
+     *
+     * @param config The configuration to check.
+     * @param key    The key of the configuration option.
+     * @return True if the value is malformed, false otherwise.
      */
-    public void repairConfig() {
-        // Additional logic for repairing the config can be added here
-        loadConfig();
-        CommonLib.getInstance().logInfo("Configuration repaired.");
+    private boolean isMalformed(FileConfiguration config, String key) {
+        // Implement logic to determine if the value is malformed.
+        // This could be based on expected type, format, or range.
+        // Example: return config.getString(key, "").isEmpty();
+        // For now, let's just return false, meaning no value is considered malformed.
+        return false;
     }
 
     // Additional methods and logic can be implemented as needed
