@@ -1,3 +1,13 @@
+# [1.3.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.2.0...v1.3.0) (2023-12-14)
+
+
+### Features
+
+* add methods for creating or loading default config ([e958655](https://github.com/AirshipCraft/AC-CommonLib/commit/e9586551be2964dea59a1bee19e10ab81d6baba2))
+* configoption annotation ([b45863a](https://github.com/AirshipCraft/AC-CommonLib/commit/b45863a13b9385fb5794478818a27f4e125ecba5))
+* create configuration manager ([9318cb9](https://github.com/AirshipCraft/AC-CommonLib/commit/9318cb983941a50aa1c03340720e02781925f163))
+* work on repairConfig() method ([97b5a57](https://github.com/AirshipCraft/AC-CommonLib/commit/97b5a57891547ee6e34f00c2fa800017f37bb6ff))
+
 # [1.2.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.13...v1.2.0) (2023-12-09)
 
 ### Bug Fixes
