@@ -1,4 +1,4 @@
-[![Maven Package and Deploy](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-publish.yml) [![Maven Build and Release](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-build-and-release.yml/badge.svg)](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-build-and-release.yml)
+[![Maven Package and Deploy](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-publish.yml) [![Maven Build and Release](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-build-and-release.yml/badge.svg)](https://github.com/AirshipCraft/AC-CommonLib/actions/workflows/maven-build-and-release.yml) ![GitHub release (with filter)](https://img.shields.io/github/v/release/AirshipCraft/AC-CommonLib)
 
 # AC-CommonLib
 
