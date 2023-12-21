@@ -78,11 +78,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>airshipcraft-snapshots</id>
-            <url>https://zuner.xyz/repository/airshipcraft-snapshots/</url>
+            <url>https://nexus.zuner.xyz/repository/airshipcraft-snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>airshipcraft-releases</id>
-            <url>https://zuner.xyz/repository/airshipcraft-releases/</url>
+            <url>https://nexus.zuner.xyz/repository/airshipcraft-releases/</url>
         </repository>
     </distributionManagement>
 

@@ -49,7 +49,7 @@ Add the following repository to your `pom.xml` to fetch AC-CommonLib:
 <repositories>
     <repository>
         <id>airshipcraft-releases</id>
-        <url>https://zuner.xyz/repository/maven-public/</url>
+        <url>https://nexus.zuner.xyz/repository/airshipcraft-releases/</url>
     </repository>
 </repositories>
 ```
@@ -59,7 +59,7 @@ For snapshot builds, add this as well:
 ```xml
     <repository>
         <id>airshipcraft-snapshots</id>
-        <url>https://zuner.xyz/repository/maven-public/</url>
+        <url>https://nexus.zuner.xyz/repository/airshipcraft-snapshots/</url>
     </repository>
 ```
 
