@@ -32,13 +32,13 @@ To include AC-CommonLib in your project, add the following dependency snippet to
     <dependency>
         <groupId>tk.airshipcraft</groupId>
         <artifactId>commonlib</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>VERSION</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
 ```
 
-Replace `0.0.1-SNAPSHOT` with the latest version of AC-CommonLib.
+Replace `VERSION` with the latest version of AC-CommonLib.
 
 ### Repositories
 
@@ -48,10 +48,19 @@ Add the following repository to your `pom.xml` to fetch AC-CommonLib:
 
 <repositories>
     <repository>
-        <id>ac-commonlib</id>
+        <id>airshipcraft-releases</id>
         <url>https://zuner.xyz/repository/maven-public/</url>
     </repository>
 </repositories>
+```
+
+For snapshot builds, add this as well:
+
+```xml
+    <repository>
+        <id>airshipcraft-snapshots</id>
+        <url>https://zuner.xyz/repository/maven-public/</url>
+    </repository>
 ```
 
 ### Usage
@@ -77,7 +86,7 @@ them to our issue tracker or repository.
 To compile AC-CommonLib, clone the repository and run `mvn clean install`.
 
 ```bash
-git clone https://github.com/YourUsername/AC-CommonLib.git
+git clone https://github.com/AirshipCraft/AC-CommonLib.git
 cd AC-CommonLib
 mvn clean install
 ```
