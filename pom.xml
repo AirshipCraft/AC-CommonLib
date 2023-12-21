@@ -76,16 +76,14 @@
     </build>
 
     <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Sonatype Nexus Staging</name>
-            <url>https://zuner.xyz/repository/maven-releases/</url>
-        </repository>
         <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://zuner.xyz/repository/maven-snapshots/</url>
+            <id>airshipcraft-snapshots</id>
+            <url>https://zuner.xyz/repository/airshipcraft-snapshots/</url>
         </snapshotRepository>
+        <repository>
+            <id>airshipcraft-releases</id>
+            <url>https://zuner.xyz/repository/airshipcraft-releases/</url>
+        </repository>
     </distributionManagement>
 
     <repositories>
