@@ -1,3 +1,12 @@
+## [1.3.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.3.0...v1.3.1) (2023-12-21)
+
+
+### Bug Fixes
+
+* change maven host repo ([0952661](https://github.com/AirshipCraft/AC-CommonLib/commit/09526616c59e437d7ec03c8beed96b02c1baff86))
+* fix maven deploy workflow to accurately reflect these changes ([3e7ed93](https://github.com/AirshipCraft/AC-CommonLib/commit/3e7ed93a3bdf5ee03ffba8a8d63f902f65c7361b))
+* moved repo to subdomain ([90787a6](https://github.com/AirshipCraft/AC-CommonLib/commit/90787a6a9e792070ef711b1a1b7848c62b2b60d6))
+
 # [1.3.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.2.0...v1.3.0) (2023-12-14)
 
 
