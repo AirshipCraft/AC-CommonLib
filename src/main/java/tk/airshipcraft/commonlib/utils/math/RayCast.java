@@ -3,21 +3,44 @@ package tk.airshipcraft.commonlib.utils.math;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
- * Provides functionality to perform raycasts in Minecraft, which is a process of simulating "rays" to detect
+ * Provides functionality to perform ray casts in Minecraft, which is a process of simulating "rays" to detect
  * blocks or entities along a line. This can be used for features like shooting mechanics, line of sight calculations,
  * and interaction with the game world at a distance.
  *
- * @author Locutusque
+ * @author Locutusque, notzune, eerieXanthic
  * @version 1.0.0
  * @since 2023-04-11
  */
 public class RayCast {
+
+    // Private constructor to prevent instantiation
+    private RayCast() {
+        throw new UnsupportedOperationException("RayCast is a utility class and cannot be instantiated");
+    }
+
+    /**
+     * Validates that the specified distance is a non-negative value.
+     * If the distance is negative, an {@link IllegalArgumentException} is thrown.
+     *
+     * @param distance the distance to validate
+     * @throws IllegalArgumentException if the distance is negative
+     */
+    private static void validateDistance(int distance) {
+        if (distance < 0) {
+            throw new IllegalArgumentException("Distance cannot be negative, but was " + distance);
+        }
+    }
 
     /**
      * Casts a ray from the player's eye location in the given direction, returning the first block or entity encountered.
@@ -107,5 +130,70 @@ public class RayCast {
         }
 
         return blocks;
+    }
+
+    /**
+     * Performs a raycast from the specified living entity to the nearest solid block within
+     * a specified distance.
+     *
+     * @param from     the living entity from which the raycast originates
+     * @param distance the maximum distance to perform the raycast (in blocks)
+     * @return an Optional containing the location of the nearest solid block, or an empty Optional if no solid block is found
+     * @throws IllegalArgumentException if distance is negative
+     */
+    public static Optional<Location> raycastWithinRadius(LivingEntity from, int distance) {
+        validateDistance(distance);
+
+        BlockIterator blockIterator = new BlockIterator(from.getEyeLocation(), 0, distance);
+        while (blockIterator.hasNext()) {
+            Location location = blockIterator.next().getLocation();
+            if (location.getBlock().getType().isSolid()) {
+                return Optional.of(location);
+            }
+        }
+        return Optional.empty();
+    }
+
+    /**
+     * Performs a raycast from the specified living entity and returns all blocks hit by the ray within
+     * the specified distance.
+     *
+     * @param from     the living entity from which the raycast originates
+     * @param distance the maximum distance to perform the raycast (in blocks)
+     * @return a list of blocks hit by the ray
+     * @throws IllegalArgumentException if distance is negative
+     */
+    public static List<Block> raycastAllBlocks(LivingEntity from, int distance) {
+        validateDistance(distance);
+
+        List<Block> hitBlocks = new ArrayList<>();
+        BlockIterator blockIterator = new BlockIterator(from.getEyeLocation(), 0, distance);
+        while (blockIterator.hasNext()) {
+            hitBlocks.add(blockIterator.next());
+        }
+        return hitBlocks;
+    }
+
+    /**
+     * Performs a raycast from the specified living entity and returns the nearest block that satisfies
+     * the specified predicate within the specified distance.
+     *
+     * @param from      the living entity from which the raycast originates
+     * @param distance  the maximum distance to perform the raycast (in blocks)
+     * @param predicate the predicate to filter blocks
+     * @return an Optional containing the block that satisfies the predicate, or an empty Optional if no such block is found
+     * @throws IllegalArgumentException if distance is negative
+     */
+    public static Optional<Block> raycastWithFilter(LivingEntity from, int distance, Predicate<Block> predicate) {
+        validateDistance(distance);
+
+        BlockIterator blockIterator = new BlockIterator(from.getEyeLocation(), 0, distance);
+        while (blockIterator.hasNext()) {
+            Block block = blockIterator.next();
+            if (predicate.test(block)) {
+                return Optional.of(block);
+            }
+        }
+        return Optional.empty();
     }
 }
