@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.utils;
+package tk.airshipcraft.commonlib.utils.classes;
 
 import java.io.File;
 import java.io.IOException;

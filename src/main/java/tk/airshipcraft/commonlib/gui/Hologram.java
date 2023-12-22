@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import tk.airshipcraft.commonlib.gui.events.HologramClickEvent;
-import tk.airshipcraft.commonlib.utils.SubclassFinder;
+import tk.airshipcraft.commonlib.utils.classes.SubclassFinder;
 
 import java.util.ArrayList;
 import java.util.List;

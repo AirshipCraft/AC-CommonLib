@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import tk.airshipcraft.commonlib.CommonLib;
 import tk.airshipcraft.commonlib.gui.objects.Ui;
-import tk.airshipcraft.commonlib.utils.SubclassFinder;
+import tk.airshipcraft.commonlib.utils.classes.SubclassFinder;
 
 import java.util.List;
 

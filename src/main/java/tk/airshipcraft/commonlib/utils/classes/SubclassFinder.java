@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.utils;
+package tk.airshipcraft.commonlib.utils.classes;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;

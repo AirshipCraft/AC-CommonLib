@@ -1,6 +1,6 @@
 package tk.airshipcraft.commonlib;
 
-import tk.airshipcraft.commonlib.utils.SubclassFinder;
+import tk.airshipcraft.commonlib.utils.classes.SubclassFinder;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
