@@ -20,20 +20,20 @@ import java.lang.reflect.Field;
  * @version 1.0.0
  * @since 2023-12-13
  */
-public class ConfigurationManager {
+public class ConfigHelper {
 
-    private ACRPlugin plugin;
-    private Class<?> configClass;
-    private FileConfiguration defaultConfig; // Cached default configuration
+    private final ACRPlugin plugin;
+    private final Class<?> configClass;
+    private final FileConfiguration defaultConfig; // Cached default configuration
 
     /**
-     * Constructs a ConfigurationManager for the given plugin and configuration class.
+     * Constructs a ConfigHelper for the given plugin and configuration class.
      * This will initialize the default configuration by either creating it or loading it if it already exists.
      *
      * @param plugin      The plugin instance. This is used to access plugin-specific configuration and data.
      * @param configClass The class containing configuration fields. Fields in this class should be annotated with {@link ConfigOption}.
      */
-    public ConfigurationManager(ACRPlugin plugin, Class<?> configClass) {
+    public ConfigHelper(ACRPlugin plugin, Class<?> configClass) {
         this.plugin = plugin;
         this.configClass = configClass;
         this.defaultConfig = createOrLoadDefaultConfig();
