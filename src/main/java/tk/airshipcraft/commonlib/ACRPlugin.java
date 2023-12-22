@@ -75,11 +75,11 @@ public abstract class ACRPlugin extends CommonLib {
      * Abstract method to be implemented by subclasses.
      * This method is called when the plugin is enabled.
      */
-    public abstract void onPluginEnable();
+    public abstract void onEnable();
 
     /**
      * Abstract method to be implemented by subclasses.
      * This method is called when the plugin is disabled.
      */
-    public abstract void onPluginDisable();
+    public abstract void onDisable();
 }
