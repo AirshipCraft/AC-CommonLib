@@ -24,12 +24,12 @@ public class BlockUtils {
     static {
         // Initialize the mapping
         for (Material material : Material.values()) {
-//            if (isUnstrippedLogMaterial(material)) {
-//                addMapping(material, BlockType.UNSTRIPPED_LOG);
-//            }
-//            if (isStrippedLogMaterial(material)) {
-//                addMapping(material, BlockType.STRIPPED_LOG);
-//            }
+            if (isUnstrippedLogMaterial(material)) {
+                addMapping(material, BlockType.UNSTRIPPED_LOG);
+            }
+            if (isStrippedLogMaterial(material)) {
+                addMapping(material, BlockType.STRIPPED_LOG);
+            }
             if (isLogMaterial(material)) {
                 addMapping(material, BlockType.LOG);
             }
@@ -70,41 +70,41 @@ public class BlockUtils {
         typeToMaterialsMap.get(type).add(material);
     }
 
-//    /**
-//     * Checks if a material is an unstripped log type.
-//     *
-//     * @param material The material to check.
-//     * @return true if the material is an unstripped log, false otherwise.
-//     */
-//    private static boolean isUnstrippedLogMaterial(Material material) {
-//        return material == Material.ACACIA_LOG ||
-//                material == Material.OAK_LOG ||
-//                material == Material.DARK_OAK_LOG ||
-//                material == Material.BIRCH_LOG ||
-//                material == Material.JUNGLE_LOG ||
-//                material == Material.SPRUCE_LOG ||
-//                material == Material.MANGROVE_LOG ||
-//                material == Material.CRIMSON_HYPHAE ||
-//                material == Material.CRIMSON_STEM;
-//    }
-//
-//    /**
-//     * Checks if a material is an stripped log type.
-//     *
-//     * @param material The material to check.
-//     * @return true if the material is an stripped log, false otherwise.
-//     */
-//    private static boolean isStrippedLogMaterial(Material material) {
-//        return material == Material.STRIPPED_ACACIA_LOG ||
-//                material == Material.STRIPPED_OAK_LOG ||
-//                material == Material.STRIPPED_DARK_OAK_LOG ||
-//                material == Material.STRIPPED_BIRCH_LOG ||
-//                material == Material.STRIPPED_JUNGLE_LOG ||
-//                material == Material.STRIPPED_SPRUCE_LOG ||
-//                material == Material.STRIPPED_MANGROVE_LOG ||
-//                material == Material.STRIPPED_CRIMSON_HYPHAE ||
-//                material == Material.STRIPPED_CRIMSON_STEM;
-//    }
+    /**
+     * Checks if a material is an unstripped log type.
+     *
+     * @param material The material to check.
+     * @return true if the material is an unstripped log, false otherwise.
+     */
+    private static boolean isUnstrippedLogMaterial(Material material) {
+        return material == Material.ACACIA_LOG ||
+                material == Material.OAK_LOG ||
+                material == Material.DARK_OAK_LOG ||
+                material == Material.BIRCH_LOG ||
+                material == Material.JUNGLE_LOG ||
+                material == Material.SPRUCE_LOG ||
+                material == Material.MANGROVE_LOG ||
+                material == Material.CRIMSON_HYPHAE ||
+                material == Material.CRIMSON_STEM;
+    }
+
+    /**
+     * Checks if a material is an stripped log type.
+     *
+     * @param material The material to check.
+     * @return true if the material is an stripped log, false otherwise.
+     */
+    private static boolean isStrippedLogMaterial(Material material) {
+        return material == Material.STRIPPED_ACACIA_LOG ||
+                material == Material.STRIPPED_OAK_LOG ||
+                material == Material.STRIPPED_DARK_OAK_LOG ||
+                material == Material.STRIPPED_BIRCH_LOG ||
+                material == Material.STRIPPED_JUNGLE_LOG ||
+                material == Material.STRIPPED_SPRUCE_LOG ||
+                material == Material.STRIPPED_MANGROVE_LOG ||
+                material == Material.STRIPPED_CRIMSON_HYPHAE ||
+                material == Material.STRIPPED_CRIMSON_STEM;
+    }
 
     /**
      * Checks if a material is a log type agnostic if it is stripped or unstripped.
@@ -360,7 +360,7 @@ public class BlockUtils {
      * Enum representing different types of Minecraft blocks grouped by category.
      */
     public enum BlockType {
-        LOG, WOOD, PLANK,
+        LOG, WOOD, PLANK, STRIPPED_LOG, UNSTRIPPED_LOG,
         LEAVES,
         WALL_SIGN, SIGN,
         STONE,
