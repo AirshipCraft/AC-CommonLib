@@ -25,5 +25,5 @@ jobs:
 
       - name: Generate Changelog and Bump Version
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }} # for some reason github actions don't trigger other github actions
         run: npx semantic-release
