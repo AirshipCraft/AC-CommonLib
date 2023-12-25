@@ -29,7 +29,7 @@ class TodoManager:
             if re.search(r'//\s*TODO:', line, re.IGNORECASE):
                 todo_line = line.strip().lower()
                 if todo_line not in seen_todos:
-                    todos.append(f"{file_name}:{line_number}: {line.strip()}")
+                    todos.append((file_name, line_number, line.strip()))
                     seen_todos.add(todo_line)
         return todos
     
@@ -59,8 +59,7 @@ class TodoManager:
 
     def create_issues_for_new_todos(self, new_todos, branch_name):
         for todo in new_todos:
-            file_name, line_number, description = todo.split(': ', 2)
-            line_number = int(line_number)
+            file_name, line_number, description = todo  # Unpack the tuple
             snippet = self.get_code_snippet(file_name, line_number)
             issue_title = f"TODO: {description} (from branch {branch_name})"
 
