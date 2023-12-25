@@ -1,3 +1,13 @@
+## [1.4.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.0...v1.4.1) (2023-12-25)
+
+
+### Bug Fixes
+
+* fix 2 scripts ([b76c972](https://github.com/AirshipCraft/AC-CommonLib/commit/b76c972bed7dea6142548b70493bc273c2b2a5ec))
+* fix changelog workflow ([4c58d39](https://github.com/AirshipCraft/AC-CommonLib/commit/4c58d3921c2def31f9cbcb3c710a0f408309d351))
+* update workflows ([bce1e95](https://github.com/AirshipCraft/AC-CommonLib/commit/bce1e9576b4009280621a1ce86d9ffd3b314d2e9))
+* update workflows again ([915a8bd](https://github.com/AirshipCraft/AC-CommonLib/commit/915a8bdc8208f5259b1a2764d2de1b5b89a81623))
+
 # [1.4.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.3.1...v1.4.0) (2023-12-25)
 
 
