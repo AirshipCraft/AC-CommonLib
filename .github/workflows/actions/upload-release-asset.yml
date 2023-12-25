@@ -1,8 +1,0 @@
-uses: actions/upload-release-asset@v1
-with:
-  upload_url: ${{ inputs.upload_url }}
-  asset_path: ${{ inputs.asset_path }}
-  asset_name: ${{ inputs.asset_name }}
-  asset_content_type: ${{ inputs.asset_content_type }}
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
