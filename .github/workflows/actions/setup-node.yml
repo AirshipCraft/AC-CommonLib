@@ -1,0 +1,3 @@
+uses: actions/setup-node@v2
+with:
+  node-version: ${{ inputs.node-version }}

@@ -1,0 +1,33 @@
+name: Generate and Publish Javadoc
+
+on:
+  workflow_run:
+    workflows: [ "Maven Package and Deploy" ]
+    types:
+      - completed
+
+jobs:
+  javadoc:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout code
+        uses: .github/workflows/actions/checkout
+
+      - name: Load Environment Variables
+        run: .github/workflows/scripts/set-env-vars.sh
+
+      - name: Setup Java
+        uses: .github/workflows/actions/setup-java
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Generate Javadoc
+        run: mvn javadoc:javadoc -Dmaven.javadoc.failOnError=false
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_PAGES_TOKEN }}
+          publish_dir: target/site/apidocs/
