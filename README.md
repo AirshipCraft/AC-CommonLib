@@ -57,10 +57,11 @@ Add the following repository to your `pom.xml` to fetch AC-CommonLib:
 For snapshot builds, add this as well:
 
 ```xml
-    <repository>
-        <id>airshipcraft-snapshots</id>
-        <url>https://nexus.zuner.xyz/repository/airshipcraft-snapshots/</url>
-    </repository>
+
+<repository>
+    <id>airshipcraft-snapshots</id>
+    <url>https://nexus.zuner.xyz/repository/airshipcraft-snapshots/</url>
+</repository>
 ```
 
 ### Usage

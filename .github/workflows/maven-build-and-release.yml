@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Load Environment Variables
         run: .github/workflows/scripts/set-env-vars.sh
 
@@ -44,7 +44,7 @@ jobs:
 
       - name: Maven Clean Install
         run: mvn clean install
-      
+
       - name: Extract artifact ID from pom.xml
         run: |
           ARTIFACT_ID=$(grep "<artifactId>" pom.xml | head -1 | sed -e 's/<[\/]*artifactId>//g' -e 's/^[[:space:]]*//')

@@ -1,6 +1,7 @@
 import os
 from github import Github
 
+
 def remove_todos():
     # Load the GitHub access token and repository name from the environment
     github_access_token = os.getenv('GH_TOKEN')
@@ -25,6 +26,7 @@ def remove_todos():
     with open('TODO.md', 'w') as todo_file:
         for todo in todos:
             todo_file.write(todo)
+
 
 if __name__ == "__main__":
     remove_todos()

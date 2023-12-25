@@ -1,7 +1,6 @@
+import logging
 import os
 import re
-import logging
-from datetime import datetime
 from github import Github
 
 
@@ -32,7 +31,7 @@ class TodoManager:
                     todos.append((file_name, line_number, line.strip()))
                     seen_todos.add(todo_line)
         return todos
-    
+
     def get_current_branch(self):
         ref = os.getenv('GITHUB_REF')
         if ref.startswith('refs/heads/'):
@@ -124,7 +123,7 @@ class TodoManager:
                     file_path = os.path.join(root, file_name)
                     with open(file_path, 'r') as file:
                         lines = file.readlines()
-                    
+
                     with open(file_path, 'w') as file:
                         for line in lines:
                             if not todo_regex.search(line):
@@ -136,7 +135,6 @@ class TodoManager:
             logging.info(f"Removed TODO for issue: {issue_title}")
         else:
             logging.warning(f"No TODO found for issue: {issue_title}")
-
 
 
 def main():
@@ -159,6 +157,7 @@ def main():
             todo_manager.add_todo_comment(issue_title, issue_body)
         else:
             todo_manager.handle_issue_event(issue_event, issue_title)
+
 
 if __name__ == '__main__':
     main()

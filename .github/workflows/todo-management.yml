@@ -2,10 +2,10 @@ name: TODO Management
 
 on:
   push:
-    branches: 
+    branches:
       - '**'  # This will trigger the workflow on push to any branch
   issues:
-    types: [opened, closed, deleted]
+    types: [ opened, closed, deleted ]
 
 jobs:
   manage-todo:
