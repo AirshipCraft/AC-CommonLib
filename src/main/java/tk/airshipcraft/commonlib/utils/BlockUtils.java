@@ -364,7 +364,7 @@ public class BlockUtils {
         LOG,
         /** Represents a stripped log block type. */
         STRIPPED_LOG,
-        /** Represents only unstripped log block type. */
+        /** Represents only unstripped log block variants. */
         UNSTRIPPED_LOG,
         /** Represents a wood block (log or plank) type. */
         WOOD,
