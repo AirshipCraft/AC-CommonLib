@@ -34,7 +34,7 @@ jobs:
         run: mvn clean install
 
       - name: Create settings.xml
-        run: .github/workflows/scripts/create-settings-xml
+        run: .github/workflows/scripts/create-settings-xml.sh
         shell: bash
 
       - name: Deploy to Sonatype
