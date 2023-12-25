@@ -60,6 +60,7 @@ public class CommonLib extends JavaPlugin implements Listener {
 
     /**
      * Handles the player join event.
+     *
      * @param event the player join event
      */
     @EventHandler
@@ -70,7 +71,8 @@ public class CommonLib extends JavaPlugin implements Listener {
 
     /**
      * Handles the PlayerQuitEvent to save their preferences.
-     @param event the player quit event
+     *
+     * @param event the player quit event
      */
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {

@@ -32,9 +32,9 @@ public class Pair<L, R> {
      * Creates a new Pair with the specified values.
      * This method is a shorthand for creating a new Pair instance.
      *
-     * @param <L> The type of the left element.
-     * @param <R> The type of the right element.
-     * @param left The left element, must not be null.
+     * @param <L>   The type of the left element.
+     * @param <R>   The type of the right element.
+     * @param left  The left element, must not be null.
      * @param right The right element, must not be null.
      * @return A new {@code Pair<L, R>} instance.
      * @throws NullPointerException if either left or right is null.

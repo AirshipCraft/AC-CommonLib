@@ -360,25 +360,45 @@ public class BlockUtils {
      * Enum representing different types of Minecraft blocks grouped by category.
      */
     public enum BlockType {
-        /** Represents a log block type. */
+        /**
+         * Represents a log block type.
+         */
         LOG,
-        /** Represents a stripped log block type. */
+        /**
+         * Represents a stripped log block type.
+         */
         STRIPPED_LOG,
-        /** Represents only unstripped log block variants. */
+        /**
+         * Represents only unstripped log block variants.
+         */
         UNSTRIPPED_LOG,
-        /** Represents a wood block (log or plank) type. */
+        /**
+         * Represents a wood block (log or plank) type.
+         */
         WOOD,
-        /** Represents a plank block type. */
+        /**
+         * Represents a plank block type.
+         */
         PLANK,
-        /** Represents a leaf block type. */
+        /**
+         * Represents a leaf block type.
+         */
         LEAVES,
-        /** Represents a wall sign block type. */
+        /**
+         * Represents a wall sign block type.
+         */
         WALL_SIGN,
-        /** Represents any sign type (wall sign or freestanding sign) */
+        /**
+         * Represents any sign type (wall sign or freestanding sign)
+         */
         SIGN,
-        /** Represents any kind of stone */
+        /**
+         * Represents any kind of stone
+         */
         STONE,
-        /** Represents a candle block type. */
+        /**
+         * Represents a candle block type.
+         */
         CANDLE
     }
 }
