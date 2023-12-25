@@ -1,3 +1,20 @@
+# [1.4.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.3.1...v1.4.0) (2023-12-25)
+
+
+### Bug Fixes
+
+* fix abstract method header ([90431cd](https://github.com/AirshipCraft/AC-CommonLib/commit/90431cd52919545530c1247c40915bda3c826695))
+* made fields final ([0343e3e](https://github.com/AirshipCraft/AC-CommonLib/commit/0343e3e25430e41c0e69c402ba05e336620084ad))
+* re-add redundant methods for checking stripped/unstripped logs ([44a82d2](https://github.com/AirshipCraft/AC-CommonLib/commit/44a82d2acc3ca29218f5848b67d271aad3e3b731))
+
+
+### Features
+
+* add vector math util ([ea83769](https://github.com/AirshipCraft/AC-CommonLib/commit/ea83769effb661c1f9aac47c95ddf5a43263245d))
+* added new methods to raycast util ([d43afdc](https://github.com/AirshipCraft/AC-CommonLib/commit/d43afdcfecb1f469af29ff46119bed573cc9368e))
+* create random math util ([40c33ed](https://github.com/AirshipCraft/AC-CommonLib/commit/40c33eda0bbf95a019946b4e282519738816e22d))
+* pair util ([83e17f8](https://github.com/AirshipCraft/AC-CommonLib/commit/83e17f8f50ae727c3323fb621492d5e582e63912))
+
 ## [1.3.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.3.0...v1.3.1) (2023-12-21)
 
 
