@@ -42,8 +42,7 @@ class TodoManager:
     def extract_todos_from_file(self, file_path):
         with open(file_path, 'r') as file:
             lines = file.readlines()
-        file_name = os.path.basename(file_path)
-        return self.find_todos_in_lines(lines, file_name, self.seen_todos)
+        return self.find_todos_in_lines(lines, file_path, self.seen_todos)
 
     def scan_for_new_todos(self):
         java_files_directory = os.path.join(os.environ.get('GITHUB_WORKSPACE', ''), self.java_files_directory)

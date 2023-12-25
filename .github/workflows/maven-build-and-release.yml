@@ -2,7 +2,7 @@ name: Maven Build and Release
 
 on:
   release:
-    types: [published]
+    types: [created, published]
   workflow_dispatch:
 
 jobs:
@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
 
       - name: Cache Maven packages
         uses: actions/cache@v2

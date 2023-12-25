@@ -17,10 +17,11 @@ jobs:
       - name: Load Environment Variables
         run: .github/workflows/scripts/set-env-vars.sh
 
-      - name: Setup Java
+      - name: Setup JDK
         uses: actions/setup-java@v2
         with:
           java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
 
       - name: Generate Javadoc
         run: mvn javadoc:javadoc -Dmaven.javadoc.failOnError=false
