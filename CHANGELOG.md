@@ -1,3 +1,10 @@
+## [1.4.7](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.6...v1.4.7) (2023-12-25)
+
+
+### Bug Fixes
+
+* fix incorrect javadoc tag ([4412f5b](https://github.com/AirshipCraft/AC-CommonLib/commit/4412f5bd28fdda6dd9c1c37d011e28e9d22a5bc2))
+
 ## [1.4.6](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.5...v1.4.6) (2023-12-25)
 
 
