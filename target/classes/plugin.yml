@@ -1,5 +1,5 @@
 name: AC-CommonLib
-version: '1.1.13'
+version: '1.4.6'
 main: tk.airshipcraft.commonlib.CommonLib
 api-version: 1.19
 authors: [ notzune ]

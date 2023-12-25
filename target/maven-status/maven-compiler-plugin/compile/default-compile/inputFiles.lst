@@ -1,5 +1,6 @@
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/objects/ITeam.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickEvent.java
+/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/Pair.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/objects/impl/package-info.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/objects/BelowName.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/commands/CommandManager.java
@@ -17,6 +18,7 @@
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/math/package-info.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/world/GlobalYLimitedArea.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/configuration/package-info.java
+/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/math/RandomMath.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/events/GuiClickEvent.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/events/package-info.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/objects/Gui.java
@@ -31,8 +33,9 @@
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/search/package-info.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/FastUUID.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/cooldowns/package-info.java
+/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/classes/ClassPathScanner.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/search/StringDistance.java
-/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/SubclassFinder.java
+/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/configuration/ConfigOption.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/objects/package-info.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/world/PseudoChunk.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/package-info.java
@@ -45,13 +48,15 @@
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/cooldowns/KVTickCoolDownHandler.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/commands/package-info.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/events/HologramClickListener.java
-/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/ClassPathScanner.java
+/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/configuration/ConfigHelper.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/world/EllipseArea.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/cooldowns/IKVCoolDownHandler.java
+/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/classes/SubclassFinder.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/ProgressionCurve.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/configuration/impl/package-info.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/math/Maths.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/Time.java
+/Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/math/VectorMath.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/utils/cooldowns/TickCoolDownHandler.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/objects/Sidebar.java
 /Users/zeyad/Documents/GitHub/AC-CommonLib/src/main/java/tk/airshipcraft/commonlib/gui/GuiManager.java
