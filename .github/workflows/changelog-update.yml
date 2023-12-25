@@ -12,6 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Load Environment Variables
+        run: .github/workflows/scripts/set-env-vars.sh
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
