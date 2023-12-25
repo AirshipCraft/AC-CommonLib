@@ -1,12 +1,9 @@
 name: Generate Changelog
 
-env:
-  DEFAULT_BRANCH: main
-
 on:
   push:
     branches:
-      - ${{ env.DEFAULT_BRANCH }}
+      - main  # Replace 'main' with your default branch name if different
 
 jobs:
   generate-changelog:

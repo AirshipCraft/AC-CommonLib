@@ -57,12 +57,12 @@ class TodoManager:
 
         return new_todos
 
-    def create_issues_for_new_todos(self, new_todos):
+    def create_issues_for_new_todos(self, new_todos, branch_name):
         for todo in new_todos:
             file_name, line_number, description = todo.split(': ', 2)
             line_number = int(line_number)
             snippet = self.get_code_snippet(file_name, line_number)
-            issue_title = f"TODO: {description}"
+            issue_title = f"TODO: {description} (from branch {branch_name})"
 
             # Check if an issue already exists
             existing_issue = None
@@ -72,20 +72,20 @@ class TodoManager:
                     break
 
             if existing_issue is None:
-                issue_body = self.format_issue_body(description, file_name, line_number, snippet)
+                issue_body = self.format_issue_body(description, file_name, line_number, snippet, branch_name)
                 self.github_repo.create_issue(title=issue_title, body=issue_body, labels=["TODO"])
                 logging.info(f"Created GitHub issue for TODO: {description}")
 
-    def format_issue_body(self, description, file_name, line_number, snippet):
+    def format_issue_body(self, description, file_name, line_number, snippet, branch_name):
         return (f"### TODO Description\n{description}\n\n"
+                f"### Branch\n{branch_name}\n\n"
                 f"### File\n[Link to File](https://github.com/{self.github_repo.full_name}/"
-                f"blob/main/{file_name}#L{line_number})\n\n"
+                f"blob/{branch_name}/{file_name}#L{line_number})\n\n"
                 f"### Code Snippet\n```java\n{snippet}\n```\n\n")
 
-    def handle_push_event(self):
-        # Scan for new TODOs and create issues
+    def handle_push_event(self, branch_name):
         new_todos = self.scan_for_new_todos()
-        self.create_issues_for_new_todos(new_todos)
+        self.create_issues_for_new_todos(new_todos, branch_name)
 
     def handle_issue_event(self, issue_event, issue_title):
         """
@@ -155,7 +155,6 @@ def main():
     if event_name == 'push':
         branch_name = todo_manager.get_current_branch()
         todo_manager.handle_push_event(branch_name)
-        todo_manager.handle_push_event()
     elif event_name == 'issues':
         issue_event = os.getenv('GITHUB_EVENT_ACTION')
         if issue_event == 'opened':
