@@ -36,6 +36,9 @@ jobs:
       - name: Create settings.xml
         run: .github/workflows/scripts/create-settings-xml.sh
         shell: bash
+        env:
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
 
       - name: Deploy to Sonatype
         run: mvn deploy -DskipTests

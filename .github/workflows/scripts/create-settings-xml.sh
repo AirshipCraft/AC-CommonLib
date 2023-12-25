@@ -8,13 +8,13 @@ cat <<EOF > $HOME/.m2/settings.xml
   <servers>
     <server>
       <id>airshipcraft-releases</id>
-      <username>${{ secrets.SONATYPE_USERNAME }}</username>
-      <password>${{ secrets.SONATYPE_PASSWORD }}</password>
+      <username>${SONATYPE_USERNAME}</username>
+      <password>${SONATYPE_PASSWORD}</password>
     </server>
     <server>
       <id>airshipcraft-snapshots</id>
-      <username>${{ secrets.SONATYPE_USERNAME }}</username>
-      <password>${{ secrets.SONATYPE_PASSWORD }}</password>
+      <username>${SONATYPE_USERNAME}</username>
+      <password>${SONATYPE_PASSWORD}</password>
     </server>
   </servers>
 </settings>
