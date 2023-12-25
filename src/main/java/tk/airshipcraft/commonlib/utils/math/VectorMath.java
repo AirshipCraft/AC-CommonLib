@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * Provides methods for vector rotation, randomization, scaling, and more.
  *
  * @version 1.1.0
- * @authors eerieXanthic, notzune
+ * @author eerieXanthic, notzune
  * @since 2023-10-11
  */
 public class VectorMath {
