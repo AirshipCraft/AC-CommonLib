@@ -5,8 +5,8 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Utility class for generating random numbers within specified ranges.
  *
- * @version 1.1.0
  * @author eerieXanthic, notzune
+ * @version 1.1.0
  * @since 2023-10-11
  */
 public class RandomMath {

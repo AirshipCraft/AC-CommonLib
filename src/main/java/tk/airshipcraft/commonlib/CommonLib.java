@@ -58,19 +58,29 @@ public class CommonLib extends JavaPlugin implements Listener {
         pm.registerEvents(this, this);
     }
 
+    /**
+     * Handles the PlayerJoinEvent to load their preferences.
+     */
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         // Load preferences when player joins
         preferencesManager.loadPreferences(event.getPlayer());
     }
 
+    /**
+     * Handles the PlayerQuitEvent to save their preferences.
+     */
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         // Save preferences when player quits
         preferencesManager.savePreferences(event.getPlayer());
     }
 
-    // Method to get PreferencesManager
+    /**
+     * Retrieves the preferences manager instance.
+     *
+     * @return the preferences manager
+     */
     public PreferencesManager getPreferencesManager() {
         return preferencesManager;
     }

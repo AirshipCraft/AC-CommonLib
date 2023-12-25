@@ -57,6 +57,9 @@ import java.util.UUID;
  */
 public abstract class PlayerPreference implements IPlayerPreference {
 
+    /**
+     * Player UUID associated with this preference instance.
+     */
     protected UUID playerUuid;
 
     /**

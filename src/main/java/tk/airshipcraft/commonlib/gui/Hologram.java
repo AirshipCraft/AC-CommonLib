@@ -29,6 +29,9 @@ import java.util.List;
  */
 public abstract class Hologram implements Listener {
 
+    /**
+     * A list of all Hologram instances created.
+     */
     public static final List<Hologram> hologramInstances = new ArrayList<>();
     private static final List<ArmorStand> armorStands = new ArrayList<>();
     private static SubclassFinder subclassFinder;

@@ -7,8 +7,8 @@ import java.util.Objects;
  *
  * @param <L> the type of the left element
  * @param <R> the type of the right element
- * @version 1.0.0
  * @author eerieXanthic, notzune
+ * @version 1.0.0
  * @since 2023-10-11
  */
 public class Pair<L, R> {
@@ -32,6 +32,14 @@ public class Pair<L, R> {
         this.right = right;
     }
 
+    /**
+     * Creates a new Pair with the specified values.
+     * This method is a shorthand for {@code Pair.of(left, right)}.
+     * @return new Pair<L, R>(left, right)
+     * @throws NullPointerException if either left or right is null
+     * @param <L> the type of the left element
+     * @param <R> the type of the right element
+     */
     public static <L, R> Pair<L, R> of(L left, R right) {
         return new Pair<>(left, right);
     }

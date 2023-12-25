@@ -5,7 +5,7 @@
  *
  * <h2>Key Components:</h2>
  * <ul>
- *   <li><b>{@link tk.airshipcraft.commonlib.configuration.ConfigurationManager}</b>: Handles loading, saving,
+ *   <li><b>{@link tk.airshipcraft.commonlib.configuration.ConfigHelper}</b>: Handles loading, saving,
  *   and repairing configurations for plugins that extend CommonLib. It uses reflection to initialize configuration
  *   values and maintains a default configuration file for robustness.</li>
  *
@@ -61,7 +61,7 @@
  *
  * @author notzune
  * @version 1.0.0
- * @since 2023-11-20
  * @see tk.airshipcraft.commonlib.configuration.impl.PlayerPreference
+ * @since 2023-11-20
  */
 package tk.airshipcraft.commonlib.configuration;
