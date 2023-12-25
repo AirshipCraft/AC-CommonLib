@@ -8,6 +8,7 @@ tk.airshipcraft.commonlib.gui.objects
 tk.airshipcraft.commonlib.gui.objects.impl
 tk.airshipcraft.commonlib.particles
 tk.airshipcraft.commonlib.utils
+tk.airshipcraft.commonlib.utils.classes
 tk.airshipcraft.commonlib.utils.cooldowns
 tk.airshipcraft.commonlib.utils.math
 tk.airshipcraft.commonlib.utils.search
