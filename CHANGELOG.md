@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.5...v1.4.6) (2023-12-25)
+
+
+### Bug Fixes
+
+* should finally fix the workflow not triggering ([00cc9ef](https://github.com/AirshipCraft/AC-CommonLib/commit/00cc9efd54e1384f5fc5e6c8ec4aac4ff05b14af))
+
 ## [1.4.5](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.4...v1.4.5) (2023-12-25)
 
 
