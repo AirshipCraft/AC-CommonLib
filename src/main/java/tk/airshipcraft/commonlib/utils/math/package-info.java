@@ -1,16 +1,16 @@
 /**
- * <p>Provides a suite of mathematical utilities for various operations such as biased random picking,
- * common math functions, and raycasting. These classes are designed to facilitate complex mathematical
- * computations commonly required in game development and other computational applications.</p>
+ * <p>Provides a comprehensive suite of mathematical utilities tailored for game development in Minecraft.
+ * This package includes classes for biased random selection, general math operations, random number generation,
+ * raycasting in a Minecraft world, and vector math operations. These utilities are essential for creating
+ * immersive and dynamic gameplay experiences in Minecraft plugins.</p>
  *
  * <h2>Classes in this package:</h2>
  * <ul>
- *   <li><b>{@link tk.airshipcraft.commonlib.utils.math.BiasedRandomPicker}</b>: A class for randomly selecting an item from a collection based on
- *   weighted probabilities.</li>
- *   <li><b>{@link tk.airshipcraft.commonlib.utils.math.Maths}</b>: A utility class containing static methods for common mathematical operations such
- *   as clamping and normalization.</li>
- *   <li><b>{@link tk.airshipcraft.commonlib.utils.math.RayCast}</b>: A class for performing raycasting operations in 3D space, useful for collision
- *   detection, line of sight, and more.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.utils.math.BiasedRandomPicker}</b>: Enables biased random selection of objects based on assigned probabilities, useful for non-uniform random outcomes.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.utils.math.Maths}</b>: Offers a collection of general mathematical functions such as clamping, normalization, linear interpolation, and specialized rounding methods.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.utils.math.RandomMath}</b>: Provides methods for generating random numbers within specified ranges, including Gaussian distribution and boolean values.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.utils.math.RayCast}</b>: Facilitates ray casting in Minecraft, enabling detection of blocks or entities along a line, useful for shooting mechanics, line of sight calculations, and more.</li>
+ *   <li><b>{@link tk.airshipcraft.commonlib.utils.math.VectorMath}</b>: Contains methods for vector mathematical operations including rotation, randomization, and scaling, crucial for managing entity movements and interactions.</li>
  * </ul>
  *
  * <h3>Usage Examples:</h3>
