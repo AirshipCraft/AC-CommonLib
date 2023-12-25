@@ -38,7 +38,7 @@ jobs:
         run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }} -X
 
       - name: Commit updated pom.xml
-        run: .github/workflows/scripts/commit-updates
+        run: .github/workflows/scripts/commit-updates.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
