@@ -1,3 +1,10 @@
+## [1.4.12](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.11...v1.4.12) (2023-12-25)
+
+
+### Bug Fixes
+
+* fix GH pages workflow ([815d127](https://github.com/AirshipCraft/AC-CommonLib/commit/815d1277103331da4c06abe81e1833be63102f83))
+
 ## [1.4.11](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.10...v1.4.11) (2023-12-25)
 
 
