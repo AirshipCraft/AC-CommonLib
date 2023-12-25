@@ -45,6 +45,9 @@ jobs:
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
+          git fetch
+          git checkout ${{ steps.extract_branch.outputs.branch }}
+          git merge origin/${{ steps.extract_branch.outputs.branch }}
           git add -A
           git commit -m "Automated TODO management" || echo "No changes to commit"
           git push origin ${{ steps.extract_branch.outputs.branch }}
