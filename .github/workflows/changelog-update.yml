@@ -1,5 +1,8 @@
 name: Generate Changelog
 
+env:
+  DEFAULT_BRANCH: main
+
 on:
   push:
     branches:
