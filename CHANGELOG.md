@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.1...v1.4.2) (2023-12-25)
+
+
+### Bug Fixes
+
+* once again fixing workflows ([c008427](https://github.com/AirshipCraft/AC-CommonLib/commit/c008427ada3db8b47001c8dba16e542cfe3e17cb))
+
 ## [1.4.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.0...v1.4.1) (2023-12-25)
 
 
