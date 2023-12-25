@@ -1,3 +1,10 @@
+## [1.4.10](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.9...v1.4.10) (2023-12-25)
+
+
+### Bug Fixes
+
+* fix incorrect path to secrets ([eb4239f](https://github.com/AirshipCraft/AC-CommonLib/commit/eb4239f8534b10f501042ec8d96cfa6f0981438a))
+
 ## [1.4.9](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.8...v1.4.9) (2023-12-25)
 
 
