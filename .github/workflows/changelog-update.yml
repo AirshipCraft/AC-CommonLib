@@ -9,14 +9,14 @@ jobs:
   generate-changelog:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: .github/workflows/actions/checkout
+
       - name: Load Environment Variables
         run: .github/scripts/set-env-vars.sh
 
-      - name: Checkout code
-        uses: ./.github/workflows/actions/checkout
-
       - name: Setup Node.js
-        uses: ./.github/workflows/actions/setup-node
+        uses: .github/workflows/actions/setup-node
         with:
           node-version: ${{ env.NODE_VERSION }}
 

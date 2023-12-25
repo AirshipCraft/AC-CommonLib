@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: .github/workflows/actions/checkout
+
       - name: Load Environment Variables
         run: .github/scripts/set-env-vars.sh
 
-      - name: Checkout code
-        uses: ./.github/workflows/actions/checkout
-
       - name: Setup JDK
-        uses: ./.github/workflows/actions/setup-java
+        uses: .github/workflows/actions/setup-java
         with:
           java-version: ${{ env.JAVA_VERSION }}
 
@@ -37,7 +37,7 @@ jobs:
         run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }} -X
 
       - name: Commit updated pom.xml
-        run: ./.github/workflows/scripts/commit-updates
+        run: .github/workflows/scripts/commit-updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -45,10 +45,10 @@ jobs:
         run: mvn clean install
 
       - name: Upload JAR files to GitHub Release
-        uses: ./.github/workflows/actions/upload-release-asset
+        uses: .github/workflows/actions/upload-release-asset
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./target/${{ env.ARTIFACT_NAME }}-${{ env.RELEASE_VERSION }}.jar
+          asset_path: target/${{ env.ARTIFACT_NAME }}-${{ env.RELEASE_VERSION }}.jar
           asset_name: ${{ env.ARTIFACT_NAME }}-${{ env.RELEASE_VERSION }}.jar
           asset_content_type: application/java-archive
         env:

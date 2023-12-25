@@ -12,14 +12,14 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
+      - name: Checkout code
+        uses: .github/workflows/actions/checkout
+
       - name: Load Environment Variables
         run: .github/scripts/set-env-vars.sh
 
-      - name: Checkout code
-        uses: ./.github/workflows/actions/checkout
-
       - name: Setup Java
-        uses: ./.github/workflows/actions/setup-java
+        uses: .github/workflows/actions/setup-java
         with:
           java-version: ${{ env.JAVA_VERSION }}
 
@@ -30,4 +30,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_PAGES_TOKEN }}
-          publish_dir: ./target/site/apidocs/
+          publish_dir: target/site/apidocs/
