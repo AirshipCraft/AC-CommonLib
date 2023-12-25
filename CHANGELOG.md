@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.2...v1.4.3) (2023-12-25)
+
+
+### Bug Fixes
+
+* one more time for good luck ([7ba4fd8](https://github.com/AirshipCraft/AC-CommonLib/commit/7ba4fd89a8e7e739cce9161be11e9dfdfbbacb18))
+
 ## [1.4.2](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.1...v1.4.2) (2023-12-25)
 
 
