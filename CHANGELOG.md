@@ -1,3 +1,11 @@
+## [1.4.9](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.8...v1.4.9) (2023-12-25)
+
+
+### Bug Fixes
+
+* fix incorrect path to script ([cdcb5a7](https://github.com/AirshipCraft/AC-CommonLib/commit/cdcb5a78bfc7c98fdbf900cb33512c64e5907431))
+* reformat code ([067b480](https://github.com/AirshipCraft/AC-CommonLib/commit/067b480d77816eb4fda33a82b3486e13998df8a3))
+
 ## [1.4.8](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.7...v1.4.8) (2023-12-25)
 
 
