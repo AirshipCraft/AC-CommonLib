@@ -10,47 +10,27 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v2
+    steps:
+      - name: Load Environment Variables
+        run: .github/scripts/set-env-vars.sh
+        
+      - name: Checkout code
+        uses: ./.github/workflows/actions/checkout
+
+      - name: Setup JDK
+        uses: ./.github/workflows/actions/setup-java
         with:
-          java-version: '17'
-          distribution: 'adopt'
+          java-version: ${{ env.JAVA_VERSION }}
 
       - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+        uses: ./.github/workflows/actions/cache-maven
 
       - name: Build with Maven
         run: mvn clean install
 
       - name: Create settings.xml
-        run: |
-          cat <<EOF > $HOME/.m2/settings.xml
-          <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                                        http://maven.apache.org/xsd/settings-1.0.0.xsd">
-            <servers>
-              <server>
-                <id>airshipcraft-releases</id>
-                <username>${{ secrets.SONATYPE_USERNAME }}</username>
-                <password>${{ secrets.SONATYPE_PASSWORD }}</password>
-              </server>
-              <server>
-                <id>airshipcraft-snapshots</id>
-                <username>${{ secrets.SONATYPE_USERNAME }}</username>
-                <password>${{ secrets.SONATYPE_PASSWORD }}</password>
-              </server>
-            </servers>
-          </settings>
-          EOF
+        run: ./.github/workflows/scripts/create-settings-xml
         shell: bash
 
       - name: Deploy to Sonatype

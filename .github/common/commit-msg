@@ -1,0 +1,24 @@
+#!/bin/sh
+
+message=$(cat "$1")
+
+# Define valid commit types based on Conventional Commits
+types=("feat" "fix" "chore" "docs" "style" "refactor" "perf" "test" "build" "ci" "revert")
+
+# Join the types into a regex alternation pattern
+types_pattern=$(IFS='|'; echo "${types[*]}")
+
+# Regex pattern to validate commit message
+# Supports 'type', 'type(scope):', and 'type!:' formats, including 'BREAKING CHANGE' in footer
+pattern="^(${types_pattern})(\(.+\))?(!)?: .+"
+
+# Check for BREAKING CHANGE footer
+breaking_change_footer="BREAKING CHANGE:"
+
+# Check if the message follows the Conventional Commits format
+if [[ $message =~ $pattern ]] || [[ $message =~ $breaking_change_footer ]]; then
+  exit 0
+else
+  echo "ERROR: Commit message does not follow Conventional Commits format."
+  exit 1
+fi
