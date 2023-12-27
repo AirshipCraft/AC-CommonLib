@@ -24,18 +24,18 @@ public interface ICalendarManager {
     LocalDate getCurrentDate();
 
     /**
-     * Advances the calendar by a specified number of days.
-     *
-     * @param days The number of days to advance the calendar.
-     */
-    void advanceDays(int days);
-
-    /**
      * Sets the current in-game date.
      *
      * @param newDate The new in-game date.
      */
     void setCurrentDate(LocalDate newDate);
+
+    /**
+     * Advances the calendar by a specified number of days.
+     *
+     * @param days The number of days to advance the calendar.
+     */
+    void advanceDays(int days);
 
     /**
      * Returns the number of days until the specified date.

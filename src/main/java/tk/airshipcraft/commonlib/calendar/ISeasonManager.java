@@ -11,8 +11,16 @@ import tk.airshipcraft.commonlib.calendar.impl.SeasonManager;
  *
  * @author notzune
  * @version 1.0.0
- * @since 2023-12-27 */
+ * @since 2023-12-27
+ */
 public interface ISeasonManager {
+
+    /**
+     * Determines the current season based on the current in-game date.
+     *
+     * @return The current season as a {@link Season} enum value.
+     */
+    Season getCurrentSeason();
 
     /**
      * Enumeration of seasons.
@@ -23,11 +31,4 @@ public interface ISeasonManager {
         AUTUMN,
         WINTER
     }
-
-    /**
-     * Determines the current season based on the current in-game date.
-     *
-     * @return The current season as a {@link Season} enum value.
-     */
-    Season getCurrentSeason();
 }

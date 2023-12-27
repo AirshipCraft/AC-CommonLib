@@ -10,13 +10,13 @@ import java.util.Map;
 
 /**
  * <p>
- *     The EventManager class is responsible for managing and scheduling in-game events in the Minecraft world.
- *     It allows for the creation, scheduling, and triggering of events based on in-game dates, providing a dynamic
- *     gameplay experience that changes with the calendar.
+ * The EventManager class is responsible for managing and scheduling in-game events in the Minecraft world.
+ * It allows for the creation, scheduling, and triggering of events based on in-game dates, providing a dynamic
+ * gameplay experience that changes with the calendar.
  * </p>
  * <p>
- *     The GameEvent abstract class provides a structure for creating different types of in-game events.
- *     Subclasses of GameEvent can define specific behaviors in their trigger method
+ * The GameEvent abstract class provides a structure for creating different types of in-game events.
+ * Subclasses of GameEvent can define specific behaviors in their trigger method
  * </p>
  *
  * @author notzune

@@ -1,126 +1,139 @@
 ## [1.4.12](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.11...v1.4.12) (2023-12-25)
 
-
 ### Bug Fixes
 
-* fix GH pages workflow ([815d127](https://github.com/AirshipCraft/AC-CommonLib/commit/815d1277103331da4c06abe81e1833be63102f83))
+* fix GH pages
+  workflow ([815d127](https://github.com/AirshipCraft/AC-CommonLib/commit/815d1277103331da4c06abe81e1833be63102f83))
 
 ## [1.4.11](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.10...v1.4.11) (2023-12-25)
 
-
 ### Bug Fixes
 
-* fix maven publish workflow ([b44f285](https://github.com/AirshipCraft/AC-CommonLib/commit/b44f28566fc5a0185633259898a8a78d0db99ea0))
+* fix maven publish
+  workflow ([b44f285](https://github.com/AirshipCraft/AC-CommonLib/commit/b44f28566fc5a0185633259898a8a78d0db99ea0))
 
 ## [1.4.10](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.9...v1.4.10) (2023-12-25)
 
-
 ### Bug Fixes
 
-* fix incorrect path to secrets ([eb4239f](https://github.com/AirshipCraft/AC-CommonLib/commit/eb4239f8534b10f501042ec8d96cfa6f0981438a))
+* fix incorrect path to
+  secrets ([eb4239f](https://github.com/AirshipCraft/AC-CommonLib/commit/eb4239f8534b10f501042ec8d96cfa6f0981438a))
 
 ## [1.4.9](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.8...v1.4.9) (2023-12-25)
 
-
 ### Bug Fixes
 
-* fix incorrect path to script ([cdcb5a7](https://github.com/AirshipCraft/AC-CommonLib/commit/cdcb5a78bfc7c98fdbf900cb33512c64e5907431))
-* reformat code ([067b480](https://github.com/AirshipCraft/AC-CommonLib/commit/067b480d77816eb4fda33a82b3486e13998df8a3))
+* fix incorrect path to
+  script ([cdcb5a7](https://github.com/AirshipCraft/AC-CommonLib/commit/cdcb5a78bfc7c98fdbf900cb33512c64e5907431))
+* reformat
+  code ([067b480](https://github.com/AirshipCraft/AC-CommonLib/commit/067b480d77816eb4fda33a82b3486e13998df8a3))
 
 ## [1.4.8](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.7...v1.4.8) (2023-12-25)
 
-
 ### Bug Fixes
 
-* fix javadoc comment errors (hopefully) ([dc66542](https://github.com/AirshipCraft/AC-CommonLib/commit/dc665422735a2529b2828f55555a6903827a0e54))
+* fix javadoc comment errors (
+  hopefully) ([dc66542](https://github.com/AirshipCraft/AC-CommonLib/commit/dc665422735a2529b2828f55555a6903827a0e54))
 
 ## [1.4.7](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.6...v1.4.7) (2023-12-25)
 
-
 ### Bug Fixes
 
-* fix incorrect javadoc tag ([4412f5b](https://github.com/AirshipCraft/AC-CommonLib/commit/4412f5bd28fdda6dd9c1c37d011e28e9d22a5bc2))
+* fix incorrect javadoc
+  tag ([4412f5b](https://github.com/AirshipCraft/AC-CommonLib/commit/4412f5bd28fdda6dd9c1c37d011e28e9d22a5bc2))
 
 ## [1.4.6](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.5...v1.4.6) (2023-12-25)
 
-
 ### Bug Fixes
 
-* should finally fix the workflow not triggering ([00cc9ef](https://github.com/AirshipCraft/AC-CommonLib/commit/00cc9efd54e1384f5fc5e6c8ec4aac4ff05b14af))
+* should finally fix the workflow not
+  triggering ([00cc9ef](https://github.com/AirshipCraft/AC-CommonLib/commit/00cc9efd54e1384f5fc5e6c8ec4aac4ff05b14af))
 
 ## [1.4.5](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.4...v1.4.5) (2023-12-25)
 
-
 ### Bug Fixes
 
-* fix incorrect path for script ([07b9394](https://github.com/AirshipCraft/AC-CommonLib/commit/07b939489f06295a44b12c6f331779909f1fd1aa))
+* fix incorrect path for
+  script ([07b9394](https://github.com/AirshipCraft/AC-CommonLib/commit/07b939489f06295a44b12c6f331779909f1fd1aa))
 
 ## [1.4.4](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.3...v1.4.4) (2023-12-25)
 
-
 ### Bug Fixes
 
-* update ci workflows ([3346781](https://github.com/AirshipCraft/AC-CommonLib/commit/3346781700dca52a5f454528cdd8d2adfd3ec7f4))
+* update ci
+  workflows ([3346781](https://github.com/AirshipCraft/AC-CommonLib/commit/3346781700dca52a5f454528cdd8d2adfd3ec7f4))
 
 ## [1.4.3](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.2...v1.4.3) (2023-12-25)
 
-
 ### Bug Fixes
 
-* one more time for good luck ([7ba4fd8](https://github.com/AirshipCraft/AC-CommonLib/commit/7ba4fd89a8e7e739cce9161be11e9dfdfbbacb18))
+* one more time for good
+  luck ([7ba4fd8](https://github.com/AirshipCraft/AC-CommonLib/commit/7ba4fd89a8e7e739cce9161be11e9dfdfbbacb18))
 
 ## [1.4.2](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.1...v1.4.2) (2023-12-25)
 
-
 ### Bug Fixes
 
-* once again fixing workflows ([c008427](https://github.com/AirshipCraft/AC-CommonLib/commit/c008427ada3db8b47001c8dba16e542cfe3e17cb))
+* once again fixing
+  workflows ([c008427](https://github.com/AirshipCraft/AC-CommonLib/commit/c008427ada3db8b47001c8dba16e542cfe3e17cb))
 
 ## [1.4.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.0...v1.4.1) (2023-12-25)
 
-
 ### Bug Fixes
 
-* fix 2 scripts ([b76c972](https://github.com/AirshipCraft/AC-CommonLib/commit/b76c972bed7dea6142548b70493bc273c2b2a5ec))
-* fix changelog workflow ([4c58d39](https://github.com/AirshipCraft/AC-CommonLib/commit/4c58d3921c2def31f9cbcb3c710a0f408309d351))
-* update workflows ([bce1e95](https://github.com/AirshipCraft/AC-CommonLib/commit/bce1e9576b4009280621a1ce86d9ffd3b314d2e9))
-* update workflows again ([915a8bd](https://github.com/AirshipCraft/AC-CommonLib/commit/915a8bdc8208f5259b1a2764d2de1b5b89a81623))
+* fix 2
+  scripts ([b76c972](https://github.com/AirshipCraft/AC-CommonLib/commit/b76c972bed7dea6142548b70493bc273c2b2a5ec))
+* fix changelog
+  workflow ([4c58d39](https://github.com/AirshipCraft/AC-CommonLib/commit/4c58d3921c2def31f9cbcb3c710a0f408309d351))
+* update
+  workflows ([bce1e95](https://github.com/AirshipCraft/AC-CommonLib/commit/bce1e9576b4009280621a1ce86d9ffd3b314d2e9))
+* update workflows
+  again ([915a8bd](https://github.com/AirshipCraft/AC-CommonLib/commit/915a8bdc8208f5259b1a2764d2de1b5b89a81623))
 
 # [1.4.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.3.1...v1.4.0) (2023-12-25)
 
-
 ### Bug Fixes
 
-* fix abstract method header ([90431cd](https://github.com/AirshipCraft/AC-CommonLib/commit/90431cd52919545530c1247c40915bda3c826695))
-* made fields final ([0343e3e](https://github.com/AirshipCraft/AC-CommonLib/commit/0343e3e25430e41c0e69c402ba05e336620084ad))
-* re-add redundant methods for checking stripped/unstripped logs ([44a82d2](https://github.com/AirshipCraft/AC-CommonLib/commit/44a82d2acc3ca29218f5848b67d271aad3e3b731))
-
+* fix abstract method
+  header ([90431cd](https://github.com/AirshipCraft/AC-CommonLib/commit/90431cd52919545530c1247c40915bda3c826695))
+* made fields
+  final ([0343e3e](https://github.com/AirshipCraft/AC-CommonLib/commit/0343e3e25430e41c0e69c402ba05e336620084ad))
+* re-add redundant methods for checking stripped/unstripped
+  logs ([44a82d2](https://github.com/AirshipCraft/AC-CommonLib/commit/44a82d2acc3ca29218f5848b67d271aad3e3b731))
 
 ### Features
 
-* add vector math util ([ea83769](https://github.com/AirshipCraft/AC-CommonLib/commit/ea83769effb661c1f9aac47c95ddf5a43263245d))
-* added new methods to raycast util ([d43afdc](https://github.com/AirshipCraft/AC-CommonLib/commit/d43afdcfecb1f469af29ff46119bed573cc9368e))
-* create random math util ([40c33ed](https://github.com/AirshipCraft/AC-CommonLib/commit/40c33eda0bbf95a019946b4e282519738816e22d))
+* add vector math
+  util ([ea83769](https://github.com/AirshipCraft/AC-CommonLib/commit/ea83769effb661c1f9aac47c95ddf5a43263245d))
+* added new methods to raycast
+  util ([d43afdc](https://github.com/AirshipCraft/AC-CommonLib/commit/d43afdcfecb1f469af29ff46119bed573cc9368e))
+* create random math
+  util ([40c33ed](https://github.com/AirshipCraft/AC-CommonLib/commit/40c33eda0bbf95a019946b4e282519738816e22d))
 * pair util ([83e17f8](https://github.com/AirshipCraft/AC-CommonLib/commit/83e17f8f50ae727c3323fb621492d5e582e63912))
 
 ## [1.3.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.3.0...v1.3.1) (2023-12-21)
 
-
 ### Bug Fixes
 
-* change maven host repo ([0952661](https://github.com/AirshipCraft/AC-CommonLib/commit/09526616c59e437d7ec03c8beed96b02c1baff86))
-* fix maven deploy workflow to accurately reflect these changes ([3e7ed93](https://github.com/AirshipCraft/AC-CommonLib/commit/3e7ed93a3bdf5ee03ffba8a8d63f902f65c7361b))
-* moved repo to subdomain ([90787a6](https://github.com/AirshipCraft/AC-CommonLib/commit/90787a6a9e792070ef711b1a1b7848c62b2b60d6))
+* change maven host
+  repo ([0952661](https://github.com/AirshipCraft/AC-CommonLib/commit/09526616c59e437d7ec03c8beed96b02c1baff86))
+* fix maven deploy workflow to accurately reflect these
+  changes ([3e7ed93](https://github.com/AirshipCraft/AC-CommonLib/commit/3e7ed93a3bdf5ee03ffba8a8d63f902f65c7361b))
+* moved repo to
+  subdomain ([90787a6](https://github.com/AirshipCraft/AC-CommonLib/commit/90787a6a9e792070ef711b1a1b7848c62b2b60d6))
 
 # [1.3.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.2.0...v1.3.0) (2023-12-14)
 
-
 ### Features
 
-* add methods for creating or loading default config ([e958655](https://github.com/AirshipCraft/AC-CommonLib/commit/e9586551be2964dea59a1bee19e10ab81d6baba2))
-* configoption annotation ([b45863a](https://github.com/AirshipCraft/AC-CommonLib/commit/b45863a13b9385fb5794478818a27f4e125ecba5))
-* create configuration manager ([9318cb9](https://github.com/AirshipCraft/AC-CommonLib/commit/9318cb983941a50aa1c03340720e02781925f163))
-* work on repairConfig() method ([97b5a57](https://github.com/AirshipCraft/AC-CommonLib/commit/97b5a57891547ee6e34f00c2fa800017f37bb6ff))
+* add methods for creating or loading default
+  config ([e958655](https://github.com/AirshipCraft/AC-CommonLib/commit/e9586551be2964dea59a1bee19e10ab81d6baba2))
+* configoption
+  annotation ([b45863a](https://github.com/AirshipCraft/AC-CommonLib/commit/b45863a13b9385fb5794478818a27f4e125ecba5))
+* create configuration
+  manager ([9318cb9](https://github.com/AirshipCraft/AC-CommonLib/commit/9318cb983941a50aa1c03340720e02781925f163))
+* work on repairConfig()
+  method ([97b5a57](https://github.com/AirshipCraft/AC-CommonLib/commit/97b5a57891547ee6e34f00c2fa800017f37bb6ff))
 
 # [1.2.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.1.13...v1.2.0) (2023-12-09)
 
