@@ -40,6 +40,13 @@ public class CalendarManager {
     }
 
     /**
+     * Advances the calendar by one day. This method is intended to be called when a new Minecraft day starts.
+     */
+    public void newMinecraftDay() {
+        advanceDays(1); // Advance the calendar by one day
+    }
+
+    /**
      * Gets the current in-game date.
      *
      * @return The current in-game date as a {@link LocalDate}.
