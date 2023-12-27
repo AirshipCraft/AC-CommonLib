@@ -7,6 +7,10 @@ import java.time.LocalDate;
  * It determines the current season based on the in-game date and provides functionalities to
  * query the current season. This class plays a crucial role in the calendar system by integrating
  * seasonal effects with in-game time.
+ *
+ * @author notzune
+ * @version 1.0.0
+ * @since 2023-12-27
  */
 public class SeasonManager {
 
