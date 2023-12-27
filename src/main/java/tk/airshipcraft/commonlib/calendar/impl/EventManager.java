@@ -1,4 +1,4 @@
-package tk.airshipcraft.commonlib.calendar;
+package tk.airshipcraft.commonlib.calendar.impl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

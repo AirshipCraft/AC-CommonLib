@@ -1,4 +1,6 @@
-package tk.airshipcraft.commonlib.calendar;
+package tk.airshipcraft.commonlib.calendar.impl;
+
+import tk.airshipcraft.commonlib.calendar.ICalendarManager;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -13,7 +15,7 @@ import java.time.temporal.ChronoUnit;
  * @version 1.0.0
  * @since 2023-12-27
  */
-public class CalendarManager {
+public class CalendarManager implements ICalendarManager {
 
     /**
      * The current in-game date. It is represented as a {@link LocalDate} object.
