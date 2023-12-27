@@ -1,13 +1,15 @@
 package tk.airshipcraft.commonlib.calendar;
 
 import tk.airshipcraft.commonlib.calendar.impl.EventManager;
-import tk.airshipcraft.commonlib.calendar.impl.EventManager.GameEvent;
 
 import java.time.LocalDate;
 
 /**
  * Interface for managing and scheduling in-game events in Minecraft.
  * Provides methods to schedule events based on in-game dates and trigger them accordingly.
+ * <p>
+ *     This interface is implemented by the {@link EventManager}
+ * </p>
  *
  * @author notzune
  * @version 1.0.0
