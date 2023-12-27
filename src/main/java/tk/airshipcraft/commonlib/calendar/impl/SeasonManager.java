@@ -1,5 +1,6 @@
 package tk.airshipcraft.commonlib.calendar.impl;
 
+import tk.airshipcraft.commonlib.calendar.ISeasonManager;
 import tk.airshipcraft.commonlib.calendar.impl.CalendarManager;
 
 import java.time.LocalDate;
@@ -14,17 +15,7 @@ import java.time.LocalDate;
  * @version 1.0.0
  * @since 2023-12-27
  */
-public class SeasonManager {
-
-    /**
-     * Enumeration of seasons.
-     */
-    public enum Season {
-        SPRING,
-        SUMMER,
-        AUTUMN,
-        WINTER
-    }
+public class SeasonManager implements ISeasonManager {
 
     private CalendarManager calendarManager;
 
@@ -42,6 +33,7 @@ public class SeasonManager {
      *
      * @return The current season as a {@link Season} enum value.
      */
+    @Override
     public Season getCurrentSeason() {
         LocalDate currentDate = calendarManager.getCurrentDate();
         int month = currentDate.getMonthValue();
