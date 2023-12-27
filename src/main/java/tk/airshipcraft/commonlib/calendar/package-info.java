@@ -1,45 +1,64 @@
 /**
  * <h1>AirshipCraft Calendar and Event System Package</h1>
  * <p>
- * This package, part of the AirshipCraft's <code>CommonLib</code> core library, provides a calendar and event system
- * for Minecraft servers. Designed to serve as an API, it allows other plugins to integrate time-based functionalities
- * such as seasonal changes, event scheduling, and dynamic in-game news. The system is built for ease of use and
- * interoperability with various server features, including agriculture, economy, and AI-driven NPCs.
+ * This package, part of AirshipCraft's <code>CommonLib</code> core library, provides a comprehensive calendar and event system
+ * for Minecraft servers. It is designed to serve as an API, facilitating the integration of time-based functionalities such as
+ * seasonal changes, event scheduling, and dynamic in-game news. The system emphasizes ease of use, interoperability, and
+ * extensibility to enhance server features like agriculture, economy, and AI-driven NPCs.
  * </p>
  *
- * <h2>Core Classes:</h2>
+ * <h2>Interfaces:</h2>
  * <ul>
- *   <li><b>CalendarManager:</b> Manages the in-game calendar, time conversion, and special calendar events.
- *       Exposes API methods for other plugins to access current date and time information.</li>
- *   <li><b>SeasonManager:</b> Handles seasonal changes and environmental effects related to seasons.
- *       Provides an API for querying the current season, supporting use cases like crop growth management in an agriculture plugin.</li>
- *   <li><b>EventManager:</b> Manages in-game events linked to the calendar, including scheduling and triggering.
- *       Features an API for other plugins to hook into event-related functionalities and create dynamic server events.</li>
- *   <li><b>NewsGenerator:</b> Generates news and newsletters for player updates and server events.
- *       Integrates with the calendar system to offer news generation services to other plugins.</li>
+ *   <li><b>ICalendarManager:</b> Defines the contract for managing in-game time and date information.</li>
+ *   <li><b>IEventManager:</b> Outlines methods for scheduling and triggering in-game events.</li>
+ *   <li><b>ISeasonManager:</b> Provides functionality for determining in-game seasonal changes.</li>
  * </ul>
  *
- * <h2>Auxiliary Classes:</h2>
+ * <h2>Implementation Classes:</h2>
  * <ul>
- *   <li><b>DatabaseManager:</b> Manages data storage and retrieval for player and event data.
- *       Essential for maintaining a consistent and persistent calendar state across server sessions.</li>
- *   <li><b>UserInterfaceManager:</b> Provides an interface for players to interact with the calendar and event systems.
- *       Ensures intuitive and accessible interactions for players with calendar-related information.</li>
+ *   <li><b>CalendarManager:</b> Implements <code>ICalendarManager</code>, handling the conversion between real-world and in-game time.
+ *       It maintains the current date and allows for time progression.</li>
+ *   <li><b>SeasonManager:</b> Implements <code>ISeasonManager</code>, calculating the current season based on the in-game date
+ *       provided by <code>CalendarManager</code>.</li>
+ *   <li><b>EventManager:</b> Implements <code>IEventManager</code>, managing the lifecycle of scheduled events and providing
+ *       mechanisms to trigger them on specific dates.</li>
  * </ul>
+ *
+ * <h2>Core Classes Usage Examples:</h2>
+ * <pre>{@code
+ * // Example for CalendarManager
+ * ICalendarManager calendar = new CalendarManager();
+ * LocalDate today = calendar.getCurrentDate();
+ * calendar.advanceTime(1); // Advances the in-game calendar by one day.
+ *
+ * // Example for SeasonManager
+ * ISeasonManager seasonManager = new SeasonManager(calendar);
+ * ISeasonManager.Season currentSeason = seasonManager.getCurrentSeason();
+ *
+ * // Example for EventManager
+ * IEventManager eventManager = new EventManager();
+ * eventManager.scheduleEvent(today.plusDays(10), new GameEvent() {
+ *     @Override
+ *     public void trigger() {
+ *         // Event logic goes here.
+ *     }
+ * });
+ * eventManager.triggerEvents(today); // Triggers all events scheduled for today.
+ * }</pre>
  *
  * <h2>Example Use Cases:</h2>
  * <ul>
- *   <li><b>Agriculture Plugin:</b> Utilizes <code>SeasonManager</code> to dynamically adjust crop growth rates and harvesting schedules
- *       based on the current season, enhancing realism and gameplay depth.</li>
- *   <li><b>Economy Plugin:</b> Integrates with <code>EventManager</code> to create and manage market events or special sales
- *       that are tied to in-game holidays, seasons, or other calendar events.</li>
- *   <li><b>NPC Interaction Plugin:</b> Leverages <code>CalendarManager</code> to modify NPC behaviors or available quests
- *       based on the time of year, special events, or seasonal changes, contributing to a dynamic game environment.</li>
+ *   <li><b>Agriculture Plugin:</b> Uses <code>SeasonManager</code> to adjust crop growth rates and harvesting schedules
+ *       dynamically based on the current season, enhancing realism and gameplay depth.</li>
+ *   <li><b>Economy Plugin:</b> Integrates with <code>EventManager</code> to create and manage market events or sales
+ *       tied to in-game holidays, seasons, or other calendar events, impacting the server's economy dynamically.</li>
+ *   <li><b>NPC Interaction Plugin:</b> Leverages <code>CalendarManager</code> to alter NPC behaviors or available quests
+ *       depending on the time of year, special events, or seasonal changes, contributing to a dynamic game environment.</li>
  * </ul>
  *
  * <p>
- * This package, as a component of <code>commonlib</code>, provides a comprehensive and reusable calendar system,
- * enhancing the capabilities of other plugins and contributing to a more dynamic, immersive Minecraft server environment.
+ * The design of this package allows for a decoupled and layered approach to handling time-related functionalities,
+ * promoting maintainable and scalable server architecture.
  * </p>
  *
  * @author notzune
