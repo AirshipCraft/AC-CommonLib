@@ -1,9 +1,11 @@
 package tk.airshipcraft.commonlib.db.dao.impl;
 
 import tk.airshipcraft.commonlib.db.dao.UserDao;
-import tk.airshipcraft.commonlib.model.User;
 import tk.airshipcraft.commonlib.db.SqlConnectionManager;
+import tk.airshipcraft.commonlib.db.model.User;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -20,21 +22,25 @@ public class SqlUserDao implements UserDao {
     @Override
     public Optional<User> findById(UUID id) {
         // Implement the SQL logic to find a user by ID
+        return Optional.empty();
     }
 
     @Override
     public List<User> findAll() {
         // Implement the SQL logic to retrieve all users
+        return null;
     }
 
     @Override
     public User create(User user) {
         // Implement the SQL logic to create a new user
+        return user;
     }
 
     @Override
     public User update(User user) {
         // Implement the SQL logic to update an existing user
+        return user;
     }
 
     @Override
