@@ -1,5 +1,6 @@
 package tk.airshipcraft.commonlib.db.model;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -10,22 +11,32 @@ public class User {
 
     private UUID id;
     private String username;
-    private long lastLogin;
-    private double balance;
-    private boolean isActive;
-    private String rank;
+    private LocalDateTime joinDate;
+    private LocalDateTime lastJoin;
+    private LocalDateTime lastSeen;
+    private long totalPlaytime;
+    private int totalDeaths;
+    private int totalKills;
+    private int totalBlocksBroken;
+    private int fishCaught;
 
     // Constructors
     public User() {
     }
 
-    public User(UUID id, String username, long lastLogin, double balance, boolean isActive, String rank) {
+    public User(UUID id, String username, LocalDateTime joinDate, LocalDateTime lastJoin,
+                LocalDateTime lastSeen, long totalPlaytime, int totalDeaths, int totalKills,
+                int totalBlocksBroken, int fishCaught) {
         this.id = id;
         this.username = username;
-        this.lastLogin = lastLogin;
-        this.balance = balance;
-        this.isActive = isActive;
-        this.rank = rank;
+        this.joinDate = joinDate;
+        this.lastJoin = lastJoin;
+        this.lastSeen = lastSeen;
+        this.totalPlaytime = totalPlaytime;
+        this.totalDeaths = totalDeaths;
+        this.totalKills = totalKills;
+        this.totalBlocksBroken = totalBlocksBroken;
+        this.fishCaught = fishCaught;
     }
 
     // Getters and Setters
@@ -46,54 +57,83 @@ public class User {
         this.username = username;
     }
 
-    public long getLastLogin() {
-        return lastLogin;
+    public LocalDateTime getJoinDate() {
+        return joinDate;
     }
 
-    public void setLastLogin(long lastLogin) {
-        this.lastLogin = lastLogin;
+    public void setJoinDate(LocalDateTime joinDate) {
+        this.joinDate = joinDate;
     }
 
-    public double getBalance() {
-        return balance;
+    public LocalDateTime getLastJoin() {
+        return lastJoin;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setLastJoin(LocalDateTime lastJoin) {
+        this.lastJoin = lastJoin;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public LocalDateTime getLastSeen() {
+        return lastSeen;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setLastSeen(LocalDateTime lastSeen) {
+        this.lastSeen = lastSeen;
     }
 
-    public String getRank() {
-        return rank;
+    public long getTotalPlaytime() {
+        return totalPlaytime;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setTotalPlaytime(long totalPlaytime) {
+        this.totalPlaytime = totalPlaytime;
     }
 
-    // toString, equals, and hashCode methods
+    public int getTotalDeaths() {
+        return totalDeaths;
+    }
+
+    public void setTotalDeaths(int totalDeaths) {
+        this.totalDeaths = totalDeaths;
+    }
+
+    public int getTotalKills() {
+        return totalKills;
+    }
+
+    public void setTotalKills(int totalKills) {
+        this.totalKills = totalKills;
+    }
+
+    public int getTotalBlocksBroken() {
+        return totalBlocksBroken;
+    }
+
+    public void setTotalBlocksBroken(int totalBlocksBroken) {
+        this.totalBlocksBroken = totalBlocksBroken;
+    }
+
+    public int getFishCaught() {
+        return fishCaught;
+    }
+
+    public void setFishCaught(int fishCaught) {
+        this.fishCaught = fishCaught;
+    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", lastLogin=" + lastLogin +
-                ", balance=" + balance +
-                ", isActive=" + isActive +
-                ", rank='" + rank + '\'' +
+                ", joinDate=" + joinDate +
+                ", lastJoin=" + lastJoin +
+                ", lastSeen=" + lastSeen +
+                ", totalPlaytime=" + totalPlaytime +
+                ", totalDeaths=" + totalDeaths +
+                ", totalKills=" + totalKills +
+                ", totalBlocksBroken=" + totalBlocksBroken +
+                ", fishCaught=" + fishCaught +
                 '}';
     }
-
-    // Override equals and hashCode if you plan to use instances in collections or compare them.
-    // ...
-
-    // Additional methods specific to Minecraft player management can be added as needed.
 }
