@@ -19,8 +19,7 @@ The library encapsulates a wide range of functionalities including, but not limi
 
 ### Prerequisites
 
-Ensure that you have Maven installed and configured correctly to manage dependencies for your Minecraft plugin
-development.
+Ensure that you have Maven installed and configured correctly to manage dependencies.
 
 ### Adding AC-CommonLib as a Dependency
 
