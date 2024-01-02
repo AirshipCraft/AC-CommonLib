@@ -48,5 +48,10 @@ public class SqlUserDao implements UserDao {
         // Implement the SQL logic to delete a user by ID
     }
 
+    @Override
+    public User findByUsername(String username) {
+        return null; // Implement the SQL logic to find a user by username
+    }
+
     // Additional user-specific methods implementations
 }
