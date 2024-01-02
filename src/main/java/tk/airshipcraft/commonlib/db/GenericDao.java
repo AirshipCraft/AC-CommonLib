@@ -8,7 +8,7 @@ import java.util.Optional;
  *
  * @param <T> the type of the model object
  * @param <ID> the type of the model object's identifier
- *            
+ *
  * @author notzune
  * @version 1.0.0
  * @since 2023-12-27
