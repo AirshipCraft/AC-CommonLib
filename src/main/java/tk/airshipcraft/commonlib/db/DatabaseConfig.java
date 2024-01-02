@@ -16,6 +16,9 @@ import java.util.Properties;
  */
 public class DatabaseConfig {
 
+    /**
+     * The properties object to store the configuration settings.
+     */
     private final Properties properties;
 
     /**
