@@ -7,6 +7,8 @@ import java.util.Properties;
 /**
  * Manages database configuration settings, providing methods to load from
  * external sources and to access individual configuration properties.
+ * This class facilitates the setup of database connections by allowing
+ * dynamic configuration management.
  *
  * @author notzune
  * @version 1.0.0
@@ -24,10 +26,12 @@ public class DatabaseConfig {
     }
 
     /**
-     * Loads database configuration properties from a file.
+     * Loads database configuration properties from a specified file.
+     * This method reads a properties file from the given file path and loads
+     * the configuration settings into the properties object.
      *
      * @param filePath The path to the configuration file.
-     * @throws IOException If there is an issue reading the file.
+     * @throws IOException If an error occurs during reading the file.
      */
     public void loadFromFile(String filePath) throws IOException {
         try (FileInputStream input = new FileInputStream(filePath)) {
