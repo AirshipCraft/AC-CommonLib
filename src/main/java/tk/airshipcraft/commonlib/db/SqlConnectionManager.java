@@ -20,10 +20,11 @@ public class SqlConnectionManager {
     private HikariDataSource dataSource;
 
     /**
-     * Creates a connection pool manager for SQL databases using the provided
-     * database configuration settings.
+     * Initializes a new SqlConnectionManager with the provided database configuration.
+     * Sets up a connection pool using HikariCP with the configuration settings
+     * specified in the provided DatabaseConfig object.
      *
-     * @param config The database configuration that contains connection properties.
+     * @param config The database configuration object containing properties for setting up the connection pool.
      */
     public SqlConnectionManager(DatabaseConfig config) {
         // Initialize HikariCP configuration with database properties
@@ -54,7 +55,8 @@ public class SqlConnectionManager {
 
     /**
      * Closes the data source and releases all pooled connections.
-     * This should be called when the connection manager is no longer needed.
+     * This method should be called when the connection manager is no longer needed,
+     * typically at the application shutdown, to ensure that all resources are properly released.
      */
     public void close() {
         if (this.dataSource != null && !this.dataSource.isClosed()) {
