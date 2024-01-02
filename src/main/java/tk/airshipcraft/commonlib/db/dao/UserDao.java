@@ -11,4 +11,5 @@ import java.util.UUID;
  */
 public interface UserDao extends GenericDao<User, UUID> {
     // Additional user-specific methods can be defined here
+    User findByUsername(String username);
 }
