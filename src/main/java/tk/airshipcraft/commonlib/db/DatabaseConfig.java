@@ -118,7 +118,14 @@ public class DatabaseConfig {
         setProperty("password", password);
     }
 
-    // ... additional setters and getters for other properties ...
+    
+    public void setMaximumPoolSize(String maximumPoolSize) {
+        setProperty("maximumPoolSize", maximumPoolSize);
+    }
+
+    public String getMaximumPoolSize() {
+        return getProperty("maximumPoolSize");
+    }
 
     // Example for Redis Configuration
 
