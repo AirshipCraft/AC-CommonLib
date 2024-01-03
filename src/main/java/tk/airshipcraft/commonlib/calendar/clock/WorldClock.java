@@ -3,6 +3,7 @@ package tk.airshipcraft.commonlib.calendar.clock;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import tk.airshipcraft.commonlib.CommonLib;
 import tk.airshipcraft.commonlib.calendar.impl.CalendarManager;
@@ -18,6 +19,7 @@ public class WorldClock {
     private final double tickRateModifier; // Modifier to adjust the in-game tick rate
     private CalendarManager calendarManager;
     private CommonLib plugin; // Reference to your plugin
+    private long lastUpdateTick; // Tracks the last tick when the calendar was updated
 
     public WorldClock(CommonLib plugin, CalendarManager calendarManager) {
         this.plugin = plugin;
@@ -26,6 +28,7 @@ public class WorldClock {
 
         // Calculate the modifier based on the loaded config
         tickRateModifier = 24000.0 / (20 * 60) / (realSecondsPerMinecraftDay / 20.0);
+        lastUpdateTick = 0;
     }
 
     public void start() {
@@ -36,6 +39,12 @@ public class WorldClock {
                     long time = world.getTime();
                     time += tickRateModifier; // Adjust time based on the modifier
                     world.setTime(time);
+
+                    // Check if a Minecraft day has passed
+                    if (time - lastUpdateTick >= 24000) {
+                        calendarManager.newMinecraftDay(); // Advance the calendar by one day
+                        lastUpdateTick = time;
+                    }
                 }
             }
         }.runTaskTimer(plugin, 0L, 1L);
