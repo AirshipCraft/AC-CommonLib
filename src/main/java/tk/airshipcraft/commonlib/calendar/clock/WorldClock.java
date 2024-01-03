@@ -1,9 +1,8 @@
-package tk.airshipcraft.commonlib.calendar.cycle;
+package tk.airshipcraft.commonlib.calendar.clock;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import tk.airshipcraft.commonlib.CommonLib;
 import tk.airshipcraft.commonlib.calendar.impl.CalendarManager;

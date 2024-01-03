@@ -6,7 +6,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import tk.airshipcraft.commonlib.calendar.cycle.WorldClock;
+import tk.airshipcraft.commonlib.calendar.clock.WorldClock;
 import tk.airshipcraft.commonlib.calendar.impl.CalendarManager;
 import tk.airshipcraft.commonlib.configuration.impl.PreferencesManager;
 import tk.airshipcraft.commonlib.gui.events.HologramClickListener;
