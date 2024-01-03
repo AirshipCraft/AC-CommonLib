@@ -31,7 +31,7 @@ public class EventManager implements IEventManager {
     private Map<LocalDate, List<GameEvent>> scheduledEvents;
 
     /**
-     * Initializes a new EventManager.
+     * Initializes a new EventManager. Creates a new empty map to hold scheduled events.
      */
     public EventManager() {
         scheduledEvents = new HashMap<>();
@@ -70,6 +70,4 @@ public class EventManager implements IEventManager {
          */
         public abstract void trigger();
     }
-
-    // Additional methods as needed...
 }
