@@ -6,6 +6,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import tk.airshipcraft.commonlib.calendar.cycle.WorldClock;
+import tk.airshipcraft.commonlib.calendar.impl.CalendarManager;
 import tk.airshipcraft.commonlib.configuration.impl.PreferencesManager;
 import tk.airshipcraft.commonlib.gui.events.HologramClickListener;
 import tk.airshipcraft.commonlib.gui.events.InventoryClickListener;
@@ -29,6 +31,8 @@ public class CommonLib extends JavaPlugin implements Listener {
     private boolean debugEnabled = false; // Flag to control debug logging
     private TeamManager teamManager = new TeamManager();
     private PreferencesManager preferencesManager = new PreferencesManager();
+    private WorldClock worldClock;
+    private CalendarManager calendarManager;
 
     /**
      * Returns the single instance of CommonLib.
@@ -46,6 +50,10 @@ public class CommonLib extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         instance = this;
+        calendarManager = new CalendarManager();
+        worldClock = new WorldClock(this, calendarManager);
+        worldClock.loadState();
+        worldClock.start();
         setupLogging(); // Set up logging
         registerEvents();
         ACRPlugin.enableSubclasses();
@@ -120,6 +128,7 @@ public class CommonLib extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         logInfo("CommonLib is being disabled");
+        worldClock.saveState();
         ACRPlugin.disableSubclasses();
     }
 
@@ -179,6 +188,6 @@ public class CommonLib extends JavaPlugin implements Listener {
         getLogger().log(Level.SEVERE, "Exception occurred: ", e);
     }
 
-    // Additional logging methods like logConfig, logFine, etc., can be added similarly.
+    // Additional logging methods like logConfig, etc., can be added similarly.
     // todo: add them when im not lazy
 }
