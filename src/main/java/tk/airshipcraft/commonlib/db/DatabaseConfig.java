@@ -156,5 +156,21 @@ public class DatabaseConfig {
         setProperty("redisUri", redisUri);
     }
 
-    // ... and so on for each property you need to manage
+    /**
+     * Gets the Redis server password from the properties.
+     *
+     * @return The Redis server password.
+     */
+    public String getRedisPassword() {
+        return getProperty("redisPassword");
+    }
+
+    /**
+     * Sets the Redis server password in the properties.
+     *
+     * @param redisPassword The Redis server password to set.
+     */
+    public void setRedisPassword(String redisPassword) {
+        setProperty("redisPassword", redisPassword);
+    }
 }
