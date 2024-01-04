@@ -1,8 +1,18 @@
 package tk.airshipcraft.commonlib.calendar.impl;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import tk.airshipcraft.commonlib.calendar.IEventManager;
 import tk.airshipcraft.commonlib.calendar.clock.CustomDate;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,8 +26,8 @@ import java.util.Map;
  * gameplay experience that changes with the calendar.
  * </p>
  * <p>
- * The GameEvent abstract class provides a structure for creating different types of in-game events.
- * Subclasses of GameEvent can define specific behaviors in their trigger method
+ * The AbstractGameEvent abstract class provides a structure for creating different types of in-game events.
+ * Subclasses of AbstractGameEvent can define specific behaviors in their trigger method
  * </p>
  *
  * @author notzune
@@ -29,13 +39,21 @@ public class EventManager implements IEventManager {
     /**
      * A map to hold scheduled events, keyed by the date on which they occur.
      */
-    private Map<LocalDate, List<GameEvent>> scheduledEvents;
+    private Map<LocalDate, List<AbstractGameEvent>> scheduledEvents;
+    /**
+     * The file in which the scheduled events are stored.
+     */
+    private final File eventFile;
+    private final Gson gson = new Gson();
 
     /**
      * Initializes a new EventManager. Creates a new empty map to hold scheduled events.
      */
     public EventManager() {
         scheduledEvents = new HashMap<>();
+        //todo: fix this to correct path
+        this.eventFile = new File("path/to/your/plugin/directory", "event-calendar.json");
+        loadEvents();
     }
 
     /**
@@ -45,7 +63,7 @@ public class EventManager implements IEventManager {
      * @param event The event to be scheduled.
      */
     @Override
-    public void scheduleEvent(LocalDate date, GameEvent event) {
+    public void scheduleEvent(LocalDate date, AbstractGameEvent event) {
         scheduledEvents.computeIfAbsent(date, k -> new ArrayList<>()).add(event);
     }
 
@@ -56,10 +74,9 @@ public class EventManager implements IEventManager {
      */
     @Override
     public void triggerCustomEvents(CustomDate currentDate) {
-        List<GameEvent> eventsToday = scheduledEvents.getOrDefault(currentDate, new ArrayList<>());
-        for (GameEvent event : eventsToday) {
-            event.trigger();
-        }
+        // Convert CustomDate to LocalDate if needed
+        LocalDate date = currentDate.toLocalDate();
+        triggerEvents(date);
     }
 
     /**
@@ -69,19 +86,35 @@ public class EventManager implements IEventManager {
      */
     @Override
     public void triggerEvents(LocalDate currentDate) {
-        List<GameEvent> eventsToday = scheduledEvents.getOrDefault(currentDate, new ArrayList<>());
-        for (GameEvent event : eventsToday) {
+        List<AbstractGameEvent> eventsToday = scheduledEvents.getOrDefault(currentDate, new ArrayList<>());
+        for (AbstractGameEvent event : eventsToday) {
             event.trigger();
         }
     }
 
     /**
-     * Represents a generic game event with a trigger method.
+     * Saves the scheduled events to a file.
      */
-    public static abstract class GameEvent {
-        /**
-         * Triggers the event action.
-         */
-        public abstract void trigger();
+    private void saveEvents() {
+        try (Writer writer = new FileWriter(eventFile)) {
+            gson.toJson(scheduledEvents, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Loads the scheduled events from a file.
+     */
+    private void loadEvents() {
+        try {
+            if (eventFile.exists()) {
+                Reader reader = new FileReader(eventFile);
+                Type type = new TypeToken<HashMap<LocalDate, List<AbstractGameEvent>>>(){}.getType();
+                scheduledEvents = gson.fromJson(reader, type);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
