@@ -1,13 +1,15 @@
 package tk.airshipcraft.commonlib.calendar;
 
+import tk.airshipcraft.commonlib.calendar.clock.CustomDate;
+
 import java.time.LocalDate;
 
 /**
  * Interface for managing the in-game calendar in Minecraft.
  *
  * @author notzune
- * @version 1.0.0
- * @since 2023-12-27
+ * @version 2.0.0
+ * @since 2024-1-4
  */
 public interface ICalendarManager {
 
@@ -21,14 +23,14 @@ public interface ICalendarManager {
      *
      * @return The current in-game date.
      */
-    LocalDate getCurrentDate();
+    CustomDate getCurrentDate();
 
     /**
      * Sets the current in-game date.
      *
      * @param newDate The new in-game date.
      */
-    void setCurrentDate(LocalDate newDate);
+    void setCurrentDate(CustomDate newDate);
 
     /**
      * Advances the calendar by a specified number of days.
@@ -43,5 +45,5 @@ public interface ICalendarManager {
      * @param date The date to calculate the number of days until.
      * @return The number of days until the specified date.
      */
-    long daysUntil(LocalDate date);
+    int daysUntil(CustomDate date);
 }
