@@ -75,7 +75,7 @@ public class CommonLib extends JavaPlugin implements Listener {
         instance = this;
 
         // set up time stuff
-        calendarManager = new CalendarManager();
+        calendarManager = new CalendarManager(1,1, 1);
         eventManager = new EventManager();
         worldClock = new WorldClock(this, calendarManager, eventManager);
         worldClock.loadState();
