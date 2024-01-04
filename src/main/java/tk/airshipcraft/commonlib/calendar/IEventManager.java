@@ -1,5 +1,6 @@
 package tk.airshipcraft.commonlib.calendar;
 
+import tk.airshipcraft.commonlib.calendar.clock.CustomDate;
 import tk.airshipcraft.commonlib.calendar.impl.EventManager;
 
 import java.time.LocalDate;
@@ -23,12 +24,12 @@ public interface IEventManager {
      * @param date  The date on which the event should occur.
      * @param event The event to be scheduled.
      */
-    void scheduleEvent(LocalDate date, EventManager.GameEvent event);
+    void scheduleEvent(CustomDate date, EventManager.GameEvent event);
 
     /**
      * Triggers all events scheduled for the current in-game date.
      *
      * @param currentDate The current in-game date.
      */
-    void triggerEvents(LocalDate currentDate);
+    void triggerEvents(CustomDate currentDate);
 }
