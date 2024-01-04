@@ -1,6 +1,5 @@
 package tk.airshipcraft.commonlib;
 
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -31,16 +30,14 @@ import java.util.logging.Level;
 public class CommonLib extends JavaPlugin implements Listener {
 
     private static CommonLib instance;
-    @ConfigOption(key = "debugEnabled", defaultValue = "false")
-    private boolean debugEnabled; // Flag to control debug logging
-    private TeamManager teamManager = new TeamManager();
-    private PreferencesManager preferencesManager = new PreferencesManager();
-
     // time stuff
     private static CalendarManager calendarManager;
     private static EventManager eventManager;
     private static WorldClock worldClock;
-
+    @ConfigOption(key = "debugEnabled", defaultValue = "false")
+    private boolean debugEnabled; // Flag to control debug logging
+    private TeamManager teamManager = new TeamManager();
+    private PreferencesManager preferencesManager = new PreferencesManager();
 
     /**
      * Returns the single instance of CommonLib.
@@ -49,6 +46,24 @@ public class CommonLib extends JavaPlugin implements Listener {
      */
     public static CommonLib getInstance() {
         return instance;
+    }
+
+    /**
+     * Returns the WorldClock instance.
+     *
+     * @return WorldClock instance
+     */
+    public static WorldClock getWorldClock() {
+        return worldClock;
+    }
+
+    /**
+     * Returns the CalendarManager instance.
+     *
+     * @return CalendarManager instance
+     */
+    public static CalendarManager getCalendarManager() {
+        return calendarManager;
     }
 
     /**
@@ -120,24 +135,6 @@ public class CommonLib extends JavaPlugin implements Listener {
      */
     public TeamManager getTeamManager() {
         return teamManager;
-    }
-
-    /**
-     * Returns the WorldClock instance.
-     *
-     * @return WorldClock instance
-     */
-    public static WorldClock getWorldClock() {
-        return worldClock;
-    }
-
-    /**
-     * Returns the CalendarManager instance.
-     *
-     * @return CalendarManager instance
-     */
-    public static CalendarManager getCalendarManager() {
-        return calendarManager;
     }
 
     /**

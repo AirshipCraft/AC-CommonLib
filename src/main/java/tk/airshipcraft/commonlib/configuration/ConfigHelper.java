@@ -3,7 +3,6 @@ package tk.airshipcraft.commonlib.configuration;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import tk.airshipcraft.commonlib.ACRPlugin;
 import tk.airshipcraft.commonlib.CommonLib;
 
 import java.io.File;

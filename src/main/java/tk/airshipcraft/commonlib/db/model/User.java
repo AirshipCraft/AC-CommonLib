@@ -26,9 +26,11 @@ public class User {
 
     /**
      * Default constructor.
+     *
      * @see #User(UUID, String, LocalDateTime, LocalDateTime, LocalDateTime, long, int, int, int, int)
      */
-    public User() {}
+    public User() {
+    }
 
     /**
      * Constructs a new User with specified details.
@@ -154,7 +156,6 @@ public class User {
      *
      * @param lastSeen
      * @see #getLastSeen()
-     *
      */
     public void setLastSeen(LocalDateTime lastSeen) {
         this.lastSeen = lastSeen;

@@ -1,29 +1,44 @@
 # [1.5.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.12...v1.5.0) (2023-12-28)
 
-
 ### Bug Fixes
 
-* GameEvent subclass ([9adc6a8](https://github.com/AirshipCraft/AC-CommonLib/commit/9adc6a88bb4be60a2219e55bbbe05cc441803d76))
-* remove redundant season enum ([bd8e34e](https://github.com/AirshipCraft/AC-CommonLib/commit/bd8e34e6b3dfa018a4e67ed80e0565c76e550e36))
-* update SQL connection manager class ([805878b](https://github.com/AirshipCraft/AC-CommonLib/commit/805878bf114956a7595f95c3719a49c6272923ee))
-
+* GameEvent
+  subclass ([9adc6a8](https://github.com/AirshipCraft/AC-CommonLib/commit/9adc6a88bb4be60a2219e55bbbe05cc441803d76))
+* remove redundant season
+  enum ([bd8e34e](https://github.com/AirshipCraft/AC-CommonLib/commit/bd8e34e6b3dfa018a4e67ed80e0565c76e550e36))
+* update SQL connection manager
+  class ([805878b](https://github.com/AirshipCraft/AC-CommonLib/commit/805878bf114956a7595f95c3719a49c6272923ee))
 
 ### Features
 
-* add newDay method ([04910ee](https://github.com/AirshipCraft/AC-CommonLib/commit/04910ee71c5f1d7828ccb28149307dc1bfca194a))
-* create calendar interface ([44de22a](https://github.com/AirshipCraft/AC-CommonLib/commit/44de22a24f4e0ed6fe3b36e16b9af60979181ec5))
-* create calendar package ([099bf92](https://github.com/AirshipCraft/AC-CommonLib/commit/099bf92ce26df95fde90d765e3338a70e795e887))
-* create calendarmanager class ([07cc6d3](https://github.com/AirshipCraft/AC-CommonLib/commit/07cc6d3b6d5fd77267f6130e83c6027ded9bb54a))
-* create database config class ([526c8b5](https://github.com/AirshipCraft/AC-CommonLib/commit/526c8b5b67719b6ec44073e6553e1911ea2802fe))
-* create event manager ([56261fc](https://github.com/AirshipCraft/AC-CommonLib/commit/56261fc590831eca1cdafecc9ce967265d9d2fa6))
-* create event manager interface ([65af17a](https://github.com/AirshipCraft/AC-CommonLib/commit/65af17aacf69e67db1792c80bf2aa13fa6ebb466))
-* create generic DAO interface ([9ff49b7](https://github.com/AirshipCraft/AC-CommonLib/commit/9ff49b791c0e8111e64be401a431ce92a1f3fdb6))
-* create season manager ([41a230c](https://github.com/AirshipCraft/AC-CommonLib/commit/41a230c9401aba760ab6483f9fcb807157debfd6))
-* create SQL connection manager class ([9855a18](https://github.com/AirshipCraft/AC-CommonLib/commit/9855a184a1f404c2e19787e38f36abd20c18ec98))
-* create user dao interface ([0d1876e](https://github.com/AirshipCraft/AC-CommonLib/commit/0d1876ef5354b7a60c75e7bfd8bd00a78856e976))
-* create user model for storage container ([a1f6582](https://github.com/AirshipCraft/AC-CommonLib/commit/a1f658239f757e39b401cfab0f2882c31a301512))
-* ICalendarManager interface ([35f3892](https://github.com/AirshipCraft/AC-CommonLib/commit/35f38929277b09e26c6473316557bd58ed5e9354))
-* new season manager interface ([09407df](https://github.com/AirshipCraft/AC-CommonLib/commit/09407df22ea20d30ee16f2782d315825d65c7b4f))
+* add newDay
+  method ([04910ee](https://github.com/AirshipCraft/AC-CommonLib/commit/04910ee71c5f1d7828ccb28149307dc1bfca194a))
+* create calendar
+  interface ([44de22a](https://github.com/AirshipCraft/AC-CommonLib/commit/44de22a24f4e0ed6fe3b36e16b9af60979181ec5))
+* create calendar
+  package ([099bf92](https://github.com/AirshipCraft/AC-CommonLib/commit/099bf92ce26df95fde90d765e3338a70e795e887))
+* create calendarmanager
+  class ([07cc6d3](https://github.com/AirshipCraft/AC-CommonLib/commit/07cc6d3b6d5fd77267f6130e83c6027ded9bb54a))
+* create database config
+  class ([526c8b5](https://github.com/AirshipCraft/AC-CommonLib/commit/526c8b5b67719b6ec44073e6553e1911ea2802fe))
+* create event
+  manager ([56261fc](https://github.com/AirshipCraft/AC-CommonLib/commit/56261fc590831eca1cdafecc9ce967265d9d2fa6))
+* create event manager
+  interface ([65af17a](https://github.com/AirshipCraft/AC-CommonLib/commit/65af17aacf69e67db1792c80bf2aa13fa6ebb466))
+* create generic DAO
+  interface ([9ff49b7](https://github.com/AirshipCraft/AC-CommonLib/commit/9ff49b791c0e8111e64be401a431ce92a1f3fdb6))
+* create season
+  manager ([41a230c](https://github.com/AirshipCraft/AC-CommonLib/commit/41a230c9401aba760ab6483f9fcb807157debfd6))
+* create SQL connection manager
+  class ([9855a18](https://github.com/AirshipCraft/AC-CommonLib/commit/9855a184a1f404c2e19787e38f36abd20c18ec98))
+* create user dao
+  interface ([0d1876e](https://github.com/AirshipCraft/AC-CommonLib/commit/0d1876ef5354b7a60c75e7bfd8bd00a78856e976))
+* create user model for storage
+  container ([a1f6582](https://github.com/AirshipCraft/AC-CommonLib/commit/a1f658239f757e39b401cfab0f2882c31a301512))
+* ICalendarManager
+  interface ([35f3892](https://github.com/AirshipCraft/AC-CommonLib/commit/35f38929277b09e26c6473316557bd58ed5e9354))
+* new season manager
+  interface ([09407df](https://github.com/AirshipCraft/AC-CommonLib/commit/09407df22ea20d30ee16f2782d315825d65c7b4f))
 * SQL user DAO ([bf338b1](https://github.com/AirshipCraft/AC-CommonLib/commit/bf338b11bd70941a7e5f888d5bd0dd8625d14d67))
 
 ## [1.4.12](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.4.11...v1.4.12) (2023-12-25)

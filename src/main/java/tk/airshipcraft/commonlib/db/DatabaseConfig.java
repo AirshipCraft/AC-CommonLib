@@ -119,21 +119,21 @@ public class DatabaseConfig {
     }
 
     /**
-     * Sets the maximum pool size in the properties.
-     *
-     * @param maximumPoolSize The maximum pool size to set.
-     */
-    public void setMaximumPoolSize(String maximumPoolSize) {
-        setProperty("maximumPoolSize", maximumPoolSize);
-    }
-
-    /**
      * Gets the maximum pool size from the properties.
      *
      * @return The maximum pool size.
      */
     public String getMaximumPoolSize() {
         return getProperty("maximumPoolSize");
+    }
+
+    /**
+     * Sets the maximum pool size in the properties.
+     *
+     * @param maximumPoolSize The maximum pool size to set.
+     */
+    public void setMaximumPoolSize(String maximumPoolSize) {
+        setProperty("maximumPoolSize", maximumPoolSize);
     }
 
     // Example for Redis Configuration

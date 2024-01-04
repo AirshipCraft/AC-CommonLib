@@ -1,7 +1,7 @@
 package tk.airshipcraft.commonlib.db.dao.impl;
 
-import tk.airshipcraft.commonlib.db.dao.UserDao;
 import tk.airshipcraft.commonlib.db.SqlConnectionManager;
+import tk.airshipcraft.commonlib.db.dao.UserDao;
 import tk.airshipcraft.commonlib.db.model.User;
 
 import java.util.List;
