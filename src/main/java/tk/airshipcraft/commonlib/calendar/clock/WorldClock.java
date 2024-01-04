@@ -21,7 +21,7 @@ import java.io.IOException;
  *
  * @author notzune
  * @version 1.5.0
- * @since 2024-1-4
+ * @since 2024-01-04
  */
 public class WorldClock {
 

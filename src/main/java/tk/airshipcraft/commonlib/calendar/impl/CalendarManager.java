@@ -11,7 +11,7 @@ import tk.airshipcraft.commonlib.calendar.clock.CustomDate;
  *
  * @author notzune
  * @version 2.0.0
- * @since 2024-1-4
+ * @since 2024-01-04
  */
 public class CalendarManager implements ICalendarManager {
 
