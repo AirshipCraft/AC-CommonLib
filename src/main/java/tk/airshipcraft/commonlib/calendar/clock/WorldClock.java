@@ -7,6 +7,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 import tk.airshipcraft.commonlib.ACRPlugin;
 import tk.airshipcraft.commonlib.calendar.impl.CalendarManager;
+import tk.airshipcraft.commonlib.calendar.impl.EventManager;
 import tk.airshipcraft.commonlib.configuration.ConfigHelper;
 import tk.airshipcraft.commonlib.configuration.ConfigOption;
 
@@ -20,14 +21,16 @@ public class WorldClock {
     private long lastUpdateTick; // Internal state for tracking time
     private double tickRateModifier; // Modifier to adjust the in-game tick rate
     private CalendarManager calendarManager;
+    private EventManager eventManager;
     private ACRPlugin plugin; // Reference to your plugin
     private ConfigHelper configHelper;
     private File clockStateFile;
     private FileConfiguration clockStateConfig;
 
-    public WorldClock(ACRPlugin plugin, CalendarManager calendarManager) {
+    public WorldClock(ACRPlugin plugin, CalendarManager calendarManager, EventManager eventManager) {
         this.plugin = plugin;
         this.calendarManager = calendarManager;
+        this.eventManager = eventManager;
 
         // Initialize the ConfigHelper for the configurable options
         configHelper = new ConfigHelper(plugin, this.getClass());
@@ -59,6 +62,7 @@ public class WorldClock {
                     // Check if a Minecraft day has passed
                     if (time - lastUpdateTick >= 24000) {
                         calendarManager.newMinecraftDay(); // Advance the calendar by one day
+                        eventManager.triggerEvents(calendarManager.getCurrentDate());
                         lastUpdateTick = time;
                         saveState(); // Save the internal state whenever a new day starts
                     }
