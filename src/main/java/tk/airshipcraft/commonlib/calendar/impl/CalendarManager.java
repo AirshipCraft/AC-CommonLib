@@ -1,9 +1,7 @@
 package tk.airshipcraft.commonlib.calendar.impl;
 
 import tk.airshipcraft.commonlib.calendar.ICalendarManager;
-
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import tk.airshipcraft.commonlib.calendar.clock.CustomDate;
 
 /**
  * The CalendarManager class is responsible for managing the in-game calendar in Minecraft.
@@ -12,21 +10,18 @@ import java.time.temporal.ChronoUnit;
  * as a core component for date and time management.
  *
  * @author notzune
- * @version 1.0.0
- * @since 2023-12-27
+ * @version 2.0.0
+ * @since 2024-1-4
  */
 public class CalendarManager implements ICalendarManager {
 
-    /**
-     * The current in-game date. It is represented as a {@link LocalDate} object.
-     */
-    private LocalDate currentDate;
+    private CustomDate currentDate;
 
     /**
-     * Initializes a new CalendarManager with the current real-world date.
+     * Initializes a new CalendarManager with a specified starting date or default date.
      */
-    public CalendarManager() {
-        this.currentDate = LocalDate.now(); // You can change this to a specific starting date
+    public CalendarManager(int startYear, int startMonth, int startDay) {
+        this.currentDate = new CustomDate(startYear, startMonth, startDay);
     }
 
     /**
@@ -38,7 +33,7 @@ public class CalendarManager implements ICalendarManager {
         if (days < 0) {
             throw new IllegalArgumentException("Days to advance must be non-negative.");
         }
-        currentDate = currentDate.plusDays(days);
+        currentDate.addDays(days);
     }
 
     /**
@@ -49,11 +44,11 @@ public class CalendarManager implements ICalendarManager {
     }
 
     /**
-     * Gets the current in-game date.
+     * Gets the current in-game date in the custom calendar format.
      *
-     * @return The current in-game date as a {@link LocalDate}.
+     * @return The current in-game date as a CustomDate.
      */
-    public LocalDate getCurrentDate() {
+    public CustomDate getCurrentDate() {
         return currentDate;
     }
 
@@ -61,22 +56,19 @@ public class CalendarManager implements ICalendarManager {
      * Sets the in-game date to a specific date.
      *
      * @param newDate The new date to set as the current in-game date.
-     * @throws IllegalArgumentException if the newDate is before the current in-game date.
      */
-    public void setCurrentDate(LocalDate newDate) {
-        if (newDate.isBefore(currentDate)) {
-            throw new IllegalArgumentException("New date must be after the current in-game date.");
-        }
-        currentDate = newDate;
+    public void setCurrentDate(CustomDate newDate) {
+        // Add logic to ensure the new date is not before the current date
+        this.currentDate = newDate;
     }
 
     /**
-     * Calculates the number of days between the current in-game date and a specified date.
+     * Calculates the number of days until a specified date.
      *
-     * @param date The date to compare with the current in-game date.
-     * @return The number of days between the current in-game date and the specified date.
+     * @param targetDate The date to calculate the days until.
+     * @return The number of days until the target date.
      */
-    public long daysUntil(LocalDate date) {
-        return ChronoUnit.DAYS.between(currentDate, date);
+    public int daysUntil(CustomDate targetDate) {
+        return currentDate.daysUntil(targetDate);
     }
 }
