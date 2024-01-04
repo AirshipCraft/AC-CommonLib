@@ -14,6 +14,15 @@ import tk.airshipcraft.commonlib.configuration.ConfigOption;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * This class handles converting real-world time to in-game time and vice versa.
+ * It also handles the progression of in-game time and modifies the passage of in-game time to be slower
+ * so that one hour of real-world time is equivalent to one Minecraft day.
+ *
+ * @author notzune
+ * @version 1.5.0
+ * @since 2024-1-4
+ */
 public class WorldClock {
 
     @ConfigOption(key = "realSecondsPerMinecraftDay", defaultValue = "3600")
@@ -27,6 +36,13 @@ public class WorldClock {
     private File clockStateFile;
     private FileConfiguration clockStateConfig;
 
+    /**
+     * Initializes a new WorldClock.
+     *
+     * @param plugin            The plugin instance.
+     * @param calendarManager   The CalendarManager instance.
+     * @param eventManager      The EventManager instance.
+     */
     public WorldClock(CommonLib plugin, CalendarManager calendarManager, EventManager eventManager) {
         this.plugin = plugin;
         this.calendarManager = calendarManager;
@@ -50,6 +66,9 @@ public class WorldClock {
         tickRateModifier = 24000.0 / (20 * 60) / (realSecondsPerMinecraftDay / 20.0);
     }
 
+    /**
+     * Starts the clock.
+     */
     public void start() {
         new BukkitRunnable() {
             @Override
@@ -72,6 +91,9 @@ public class WorldClock {
         }.runTaskTimer(plugin, 0L, 1L);
     }
 
+    /**
+     * Saves the state to the file.
+     */
     public void saveState() {
         clockStateConfig.set("lastUpdateTick", lastUpdateTick);
         try {
@@ -81,6 +103,9 @@ public class WorldClock {
         }
     }
 
+    /**
+     * Loads the state from the file.
+     */
     public void loadState() {
         if (clockStateFile.exists()) {
             lastUpdateTick = clockStateConfig.getLong("lastUpdateTick", 0);
