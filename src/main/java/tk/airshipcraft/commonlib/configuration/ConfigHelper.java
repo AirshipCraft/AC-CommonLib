@@ -1,14 +1,17 @@
 package tk.airshipcraft.commonlib.configuration;
 
+import org.bukkit.Color;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 import tk.airshipcraft.commonlib.CommonLib;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,8 +21,8 @@ import java.util.Map;
  * Additionally, it maintains a default configuration file to ensure robustness in configuration management.
  *
  * @author notzune
- * @version 1.0.0
- * @since 2023-12-13
+ * @version 2.0.0
+ * @since 2024-1-4
  */
 public class ConfigHelper {
 
@@ -27,6 +30,7 @@ public class ConfigHelper {
     private final Class<?> configClass;
     private final FileConfiguration defaultConfig;
     private final File configFile;
+    private final FileConfiguration config;
     private final Map<String, Field> configFields;
 
     /**
@@ -41,6 +45,7 @@ public class ConfigHelper {
         this.configClass = configClass;
         this.defaultConfig = createOrLoadDefaultConfig();
         this.configFile = new File(plugin.getDataFolder(), "config.yml");
+        this.config = YamlConfiguration.loadConfiguration(configFile);
         this.configFields = new HashMap<>();
         cacheConfigFields();
     }
@@ -88,7 +93,6 @@ public class ConfigHelper {
      * and saves the corresponding values to the config.yml file.
      */
     public void saveConfig() {
-        FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
         configFields.forEach((key, field) -> {
             try {
                 field.setAccessible(true);
@@ -110,14 +114,12 @@ public class ConfigHelper {
      * and loads the corresponding values from the config.yml file.
      */
     public void loadConfig() {
-        FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
         configFields.forEach((key, field) -> {
             try {
                 if (config.contains(key)) {
                     field.setAccessible(true);
                     field.set(null, config.get(key));
                 } else {
-                    // Fallback to default if key not found or is malformed
                     field.set(null, defaultConfig.get(key));
                 }
             } catch (IllegalAccessException e) {
@@ -188,5 +190,73 @@ public class ConfigHelper {
         Object defaultValue = defaultConfig.get(key);
 
         return currentValue == null || !currentValue.getClass().equals(defaultValue.getClass());
+    }
+
+    public String getString(String key) {
+        return config.contains(key) ? config.getString(key) : defaultConfig.getString(key);
+    }
+
+    public int getInt(String key) {
+        return config. contains(key) ? config.getInt(key) : defaultConfig.getInt(key);
+    }
+
+    public boolean getBoolean(String key) {
+        return config.contains(key) ? config.getBoolean(key) : defaultConfig.getBoolean(key);
+    }
+
+    public long getLong(String key) {
+        return config.contains(key) ? config.getLong(key) : defaultConfig.getLong(key);
+    }
+
+    public double getDouble(String key) {
+        return config.contains(key) ? config.getDouble(key) : defaultConfig.getDouble(key);
+    }
+
+    public List<Float> getFloatList(String key) {
+        return config.contains(key) ? config.getFloatList(key) : defaultConfig.getFloatList(key);
+    }
+
+    public List<Double> getDoubleList(String key) {
+        return config.contains(key) ? config.getDoubleList(key) : defaultConfig.getDoubleList(key);
+    }
+
+    public List<String> getStringList(String key) {
+        return config.contains(key) ? config.getStringList(key) : defaultConfig.getStringList(key);
+    }
+
+    public List<Integer> getIntegerList(String key) {
+        return config.contains(key) ? config.getIntegerList(key) : defaultConfig.getIntegerList(key);
+    }
+
+    public List<Long> getLongList(String key) {
+        return config.contains(key) ? config.getLongList(key) : defaultConfig.getLongList(key);
+    }
+
+    public List<Byte> getByteList(String key) {
+        return config.contains(key) ? config.getByteList(key) : defaultConfig.getByteList(key);
+    }
+
+    public List<Character> getCharacterList(String key) {
+        return config.contains(key) ? config.getCharacterList(key) : defaultConfig.getCharacterList(key);
+    }
+
+    public List<Boolean> getBooleanList(String key) {
+        return config.contains(key) ? config.getBooleanList(key) : defaultConfig.getBooleanList(key);
+    }
+
+    public List<Short> getShortList(String key) {
+        return config.contains(key) ? config.getShortList(key) : defaultConfig.getShortList(key);
+    }
+
+    public List<Map<?, ?>> getMapList(String key) {
+        return config.contains(key) ? config.getMapList(key) : defaultConfig.getMapList(key);
+    }
+
+    public ItemStack getItemStack(String key) {
+        return config.contains(key) ? config.getItemStack(key) : defaultConfig.getItemStack(key);
+    }
+
+    public Color getColor(String key) {
+        return config.contains(key) ? config.getColor(key) : defaultConfig.getColor(key);
     }
 }
