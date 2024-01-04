@@ -1,5 +1,6 @@
 package tk.airshipcraft.commonlib;
 
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -8,6 +9,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import tk.airshipcraft.commonlib.calendar.clock.WorldClock;
 import tk.airshipcraft.commonlib.calendar.impl.CalendarManager;
+import tk.airshipcraft.commonlib.calendar.impl.EventManager;
+import tk.airshipcraft.commonlib.configuration.ConfigOption;
 import tk.airshipcraft.commonlib.configuration.impl.PreferencesManager;
 import tk.airshipcraft.commonlib.gui.events.HologramClickListener;
 import tk.airshipcraft.commonlib.gui.events.InventoryClickListener;
@@ -28,11 +31,16 @@ import java.util.logging.Level;
 public class CommonLib extends JavaPlugin implements Listener {
 
     private static CommonLib instance;
-    private boolean debugEnabled = false; // Flag to control debug logging
+    @ConfigOption(key = "debugEnabled", defaultValue = "false")
+    private boolean debugEnabled; // Flag to control debug logging
     private TeamManager teamManager = new TeamManager();
     private PreferencesManager preferencesManager = new PreferencesManager();
-    private WorldClock worldClock;
-    private CalendarManager calendarManager;
+
+    // time stuff
+    private static CalendarManager calendarManager;
+    private static EventManager eventManager;
+    private static WorldClock worldClock;
+
 
     /**
      * Returns the single instance of CommonLib.
@@ -50,13 +58,18 @@ public class CommonLib extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         instance = this;
+
+        // set up time stuff
         calendarManager = new CalendarManager();
-        worldClock = new WorldClock(this, calendarManager);
+        eventManager = new EventManager();
+        worldClock = new WorldClock(this, calendarManager, eventManager);
         worldClock.loadState();
         worldClock.start();
+
         setupLogging(); // Set up logging
         registerEvents();
-        ACRPlugin.enableSubclasses();
+
+        ACRPlugin.enableSubclasses(); // Enable plugins that extend CommonLib
     }
 
     /**
