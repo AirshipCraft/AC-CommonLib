@@ -192,70 +192,190 @@ public class ConfigHelper {
         return currentValue == null || !currentValue.getClass().equals(defaultValue.getClass());
     }
 
+    /**
+     * Gets the value of a configuration option as a String.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a String.
+     */
     public String getString(String key) {
         return config.contains(key) ? config.getString(key) : defaultConfig.getString(key);
     }
 
+    /**
+     * Gets the value of a configuration option as an int.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as an int.
+     */
     public int getInt(String key) {
         return config. contains(key) ? config.getInt(key) : defaultConfig.getInt(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a short.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a short.
+     */
     public boolean getBoolean(String key) {
         return config.contains(key) ? config.getBoolean(key) : defaultConfig.getBoolean(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a byte.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a byte.
+     */
     public long getLong(String key) {
         return config.contains(key) ? config.getLong(key) : defaultConfig.getLong(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a double.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a double.
+     */
     public double getDouble(String key) {
         return config.contains(key) ? config.getDouble(key) : defaultConfig.getDouble(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Floats.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Floats.
+     */
     public List<Float> getFloatList(String key) {
         return config.contains(key) ? config.getFloatList(key) : defaultConfig.getFloatList(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Doubles.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Doubles.
+     */
     public List<Double> getDoubleList(String key) {
         return config.contains(key) ? config.getDoubleList(key) : defaultConfig.getDoubleList(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Strings.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Strings.
+     */
     public List<String> getStringList(String key) {
         return config.contains(key) ? config.getStringList(key) : defaultConfig.getStringList(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Integers.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Integers.
+     */
     public List<Integer> getIntegerList(String key) {
         return config.contains(key) ? config.getIntegerList(key) : defaultConfig.getIntegerList(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Longs.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Longs.
+     */
     public List<Long> getLongList(String key) {
         return config.contains(key) ? config.getLongList(key) : defaultConfig.getLongList(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Bytes.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Bytes.
+     */
     public List<Byte> getByteList(String key) {
         return config.contains(key) ? config.getByteList(key) : defaultConfig.getByteList(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Characters.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Characters.
+     */
     public List<Character> getCharacterList(String key) {
         return config.contains(key) ? config.getCharacterList(key) : defaultConfig.getCharacterList(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Booleans.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Booleans.
+     */
     public List<Boolean> getBooleanList(String key) {
         return config.contains(key) ? config.getBooleanList(key) : defaultConfig.getBooleanList(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Shorts.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Shorts.
+     */
     public List<Short> getShortList(String key) {
         return config.contains(key) ? config.getShortList(key) : defaultConfig.getShortList(key);
     }
 
+    /**
+     * Gets the value of a configuration option as a List of Maps.
+     * If the option is not present in the config.yml file, the default value is returned.
+     * Each map in the list represents a section of the configuration file.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a List of Maps.
+     */
     public List<Map<?, ?>> getMapList(String key) {
         return config.contains(key) ? config.getMapList(key) : defaultConfig.getMapList(key);
     }
 
+    /**
+     * Gets the value of an ItemStack configuration option.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as an ItemStack.
+     */
     public ItemStack getItemStack(String key) {
         return config.contains(key) ? config.getItemStack(key) : defaultConfig.getItemStack(key);
     }
 
+    /**
+     * Gets the value of a Color configuration option.
+     * If the option is not present in the config.yml file, the default value is returned.
+     *
+     * @param key The key of the configuration option.
+     * @return The value of the configuration option as a Color.
+     */
     public Color getColor(String key) {
         return config.contains(key) ? config.getColor(key) : defaultConfig.getColor(key);
     }
