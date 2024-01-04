@@ -2,8 +2,6 @@ package tk.airshipcraft.commonlib.calendar;
 
 import tk.airshipcraft.commonlib.calendar.clock.CustomDate;
 
-import java.time.LocalDate;
-
 /**
  * Interface for managing the in-game calendar in Minecraft.
  *

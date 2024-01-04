@@ -227,7 +227,7 @@ public class ConfigHelper {
      * @return The value of the configuration option as an int.
      */
     public int getInt(String key) {
-        return config. contains(key) ? config.getInt(key) : defaultConfig.getInt(key);
+        return config.contains(key) ? config.getInt(key) : defaultConfig.getInt(key);
     }
 
     /**

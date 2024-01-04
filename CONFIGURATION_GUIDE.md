@@ -2,22 +2,30 @@
 
 ## Overview
 
-The CommonLib plugin framework introduces a streamlined and efficient way to manage configurations for Minecraft plugins extending `ACRPlugin`. This guide provides detailed instructions and best practices for using the `ConfigHelper` class and the `@ConfigOption` annotation system.
-The `ConfigHelper` and `@ConfigOption` system in CommonLib provides a powerful yet simple way to manage configurations for Minecraft plugins. By following the guidelines outlined in this document, developers can ensure efficient and error-free configuration management within their plugins.
+The CommonLib plugin framework introduces a streamlined and efficient way to manage configurations for Minecraft plugins
+extending `ACRPlugin`. This guide provides detailed instructions and best practices for using the `ConfigHelper` class
+and the `@ConfigOption` annotation system.
+The `ConfigHelper` and `@ConfigOption` system in CommonLib provides a powerful yet simple way to manage configurations
+for Minecraft plugins. By following the guidelines outlined in this document, developers can ensure efficient and
+error-free configuration management within their plugins.
 
 ## ConfigHelper Class
 
-The `ConfigHelper` class serves as the central manager for loading, saving, and handling configuration settings. It utilizes reflection to automatically initialize configuration values based on annotated fields within a given class.
+The `ConfigHelper` class serves as the central manager for loading, saving, and handling configuration settings. It
+utilizes reflection to automatically initialize configuration values based on annotated fields within a given class.
 
 ### Key Features
 
 - **Automatic Loading and Saving:** Automatically loads and saves configuration settings from a `config.yml` file.
-- **Reflection-based Initialization:** Reflectively identifies fields annotated with `@ConfigOption` and manages their values.
-- **Default Value Management:** Maintains default values for configuration settings, ensuring robustness and fallback options.
+- **Reflection-based Initialization:** Reflectively identifies fields annotated with `@ConfigOption` and manages their
+  values.
+- **Default Value Management:** Maintains default values for configuration settings, ensuring robustness and fallback
+  options.
 
 ## @ConfigOption Annotation
 
-The `@ConfigOption` annotation is used to mark fields within a class as configuration options. It allows specifying a unique configuration key and a default value for that key.
+The `@ConfigOption` annotation is used to mark fields within a class as configuration options. It allows specifying a
+unique configuration key and a default value for that key.
 
 ### Usage
 
@@ -35,7 +43,8 @@ public class SomeClass {
 
 ### Initialization
 
-When creating a class that requires configuration management (e.g., `WorldClock`), instantiate `ConfigHelper` within the constructor:
+When creating a class that requires configuration management (e.g., `WorldClock`), instantiate `ConfigHelper` within the
+constructor:
 
 ```java
 public class WorldClock {
@@ -72,7 +81,7 @@ configHelper.saveConfig();
 Access configuration values directly from the fields annotated with `@ConfigOption`:
 
 ```java
-long settingValue = realSecondsPerMinecraftDay;
+long settingValue=realSecondsPerMinecraftDay;
 ```
 
 ### Example: Using ConfigHelper in WorldClock
@@ -93,6 +102,7 @@ public class WorldClock {
 ## Best Practices
 
 - **Consistency:** Consistently use `@ConfigOption` for all configuration fields across your plugin classes.
-- **Documentation:** Clearly document each configuration option within your code for ease of understanding and maintenance.
+- **Documentation:** Clearly document each configuration option within your code for ease of understanding and
+  maintenance.
 - **Validation:** Implement validation logic for configuration values to ensure they meet your plugin's requirements.
 - **Default Values:** Always provide default values for configuration options to ensure robustness and fallback options.

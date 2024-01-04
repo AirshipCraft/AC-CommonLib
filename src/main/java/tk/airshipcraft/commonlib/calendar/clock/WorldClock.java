@@ -39,9 +39,9 @@ public class WorldClock {
     /**
      * Initializes a new WorldClock.
      *
-     * @param plugin            The plugin instance.
-     * @param calendarManager   The CalendarManager instance.
-     * @param eventManager      The EventManager instance.
+     * @param plugin          The plugin instance.
+     * @param calendarManager The CalendarManager instance.
+     * @param eventManager    The EventManager instance.
      */
     public WorldClock(CommonLib plugin, CalendarManager calendarManager, EventManager eventManager) {
         this.plugin = plugin;
@@ -52,7 +52,7 @@ public class WorldClock {
         configHelper = new ConfigHelper(plugin, this.getClass());
         configHelper.loadConfig();
 
-        this.realSecondsPerMinecraftDay  = configHelper.getLong("realSecondsPerMinecraftDay");
+        this.realSecondsPerMinecraftDay = configHelper.getLong("realSecondsPerMinecraftDay");
 
         // Calculate the modifier based on the loaded config
         updateTickRateModifier();

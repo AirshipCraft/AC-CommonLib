@@ -34,10 +34,6 @@ import java.util.Objects;
  */
 public class CustomDate {
 
-    private int day;
-    private int month;
-    private int year;
-
     // currently these variables are hard-coded and not configurable, will add logic to them at a later date
     @ConfigOption(key = "daysPerMonth", defaultValue = "24")
     private static final int DAYS_PER_MONTH = 24;
@@ -45,6 +41,9 @@ public class CustomDate {
     private static final int MONTHS_PER_YEAR = 12; // Adjust if you have a different number of months
     @ConfigOption(key = "epochStart", defaultValue = "2024-01-01")
     private static final LocalDate EPOCH_START = LocalDate.of(2024, 1, 1);
+    private int day;
+    private int month;
+    private int year;
 
     /**
      * Initializes a new CustomDate.
@@ -57,23 +56,6 @@ public class CustomDate {
         this.year = year;
         this.month = month;
         this.day = day;
-    }
-
-    /**
-     * Adds the specified number of days to the current date.
-     *
-     * @param days The number of days to add.
-     */
-    public void addDays(int days) {
-        day += days;
-        while (day > DAYS_PER_MONTH) {
-            day -= DAYS_PER_MONTH;
-            month++;
-            if (month > MONTHS_PER_YEAR) {
-                month = 1;
-                year++;
-            }
-        }
     }
 
     /**
@@ -93,6 +75,43 @@ public class CustomDate {
 
         // Adding 1 because CustomDate months and days start from 1, not 0
         return new CustomDate(years + 1, months + 1, days + 1);
+    }
+
+    /**
+     * Converts a LocalDate to a CustomDate.
+     * The conversion is based on the custom calendar system starting at EPOCH_START.
+     *
+     * @param localDate The LocalDate to convert.
+     * @return The equivalent CustomDate.
+     */
+    public static CustomDate fromLocalDate(LocalDate localDate) {
+        // Calculate the total number of days in the real-world calendar since the epoch start
+        int totalRealDaysSinceEpoch = (int) EPOCH_START.until(localDate).toDays();
+
+        // Convert the total days in the real-world calendar to custom days
+        // Since 1 day in the custom calendar is equivalent to 1 hour in real life,
+        // and there are 24 hours in a day, we multiply the totalRealDaysSinceEpoch by 24.
+        int totalCustomDaysSinceEpoch = totalRealDaysSinceEpoch * 24;
+
+        // Convert the total number of days in the custom calendar to a CustomDate
+        return fromMinecraftDays(totalCustomDaysSinceEpoch);
+    }
+
+    /**
+     * Adds the specified number of days to the current date.
+     *
+     * @param days The number of days to add.
+     */
+    public void addDays(int days) {
+        day += days;
+        while (day > DAYS_PER_MONTH) {
+            day -= DAYS_PER_MONTH;
+            month++;
+            if (month > MONTHS_PER_YEAR) {
+                month = 1;
+                year++;
+            }
+        }
     }
 
     /**
@@ -127,26 +146,6 @@ public class CustomDate {
 
         // Add the days to the epoch start date to get the equivalent LocalDate
         return EPOCH_START.plusDays(totalRealDaysSinceEpoch);
-    }
-
-    /**
-     * Converts a LocalDate to a CustomDate.
-     * The conversion is based on the custom calendar system starting at EPOCH_START.
-     *
-     * @param localDate The LocalDate to convert.
-     * @return The equivalent CustomDate.
-     */
-    public static CustomDate fromLocalDate(LocalDate localDate) {
-        // Calculate the total number of days in the real-world calendar since the epoch start
-        int totalRealDaysSinceEpoch = (int) EPOCH_START.until(localDate).toDays();
-
-        // Convert the total days in the real-world calendar to custom days
-        // Since 1 day in the custom calendar is equivalent to 1 hour in real life,
-        // and there are 24 hours in a day, we multiply the totalRealDaysSinceEpoch by 24.
-        int totalCustomDaysSinceEpoch = totalRealDaysSinceEpoch * 24;
-
-        // Convert the total number of days in the custom calendar to a CustomDate
-        return fromMinecraftDays(totalCustomDaysSinceEpoch);
     }
 
     /**
