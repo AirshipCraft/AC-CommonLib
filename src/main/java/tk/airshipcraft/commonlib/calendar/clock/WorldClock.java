@@ -26,7 +26,7 @@ import java.io.IOException;
 public class WorldClock {
 
     @ConfigOption(key = "realSecondsPerMinecraftDay", defaultValue = "3600")
-    private long realSecondsPerMinecraftDay; // Configurable via annotation
+    private static long realSecondsPerMinecraftDay; // Configurable via annotation
     private long lastUpdateTick; // Internal state for tracking time
     private double tickRateModifier; // Modifier to adjust the in-game tick rate
     private CalendarManager calendarManager;
@@ -51,6 +51,8 @@ public class WorldClock {
         // Initialize the ConfigHelper for the configurable options
         configHelper = new ConfigHelper(plugin, this.getClass());
         configHelper.loadConfig();
+
+        this.realSecondsPerMinecraftDay  = configHelper.getLong("realSecondsPerMinecraftDay");
 
         // Calculate the modifier based on the loaded config
         updateTickRateModifier();
