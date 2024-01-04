@@ -24,12 +24,19 @@ public interface IEventManager {
      * @param date  The date on which the event should occur.
      * @param event The event to be scheduled.
      */
-    void scheduleEvent(CustomDate date, EventManager.GameEvent event);
+    void scheduleEvent(LocalDate date, EventManager.GameEvent event);
 
     /**
      * Triggers all events scheduled for the current in-game date.
      *
      * @param currentDate The current in-game date.
      */
-    void triggerEvents(CustomDate currentDate);
+    void triggerCustomEvents(CustomDate currentDate);
+
+    /**
+     * Triggers all events scheduled for the current real life date.
+     *
+     * @param currentDate The current LocalDate.
+     */
+    void triggerEvents(LocalDate currentDate);
 }

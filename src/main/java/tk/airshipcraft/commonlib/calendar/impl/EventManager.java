@@ -1,6 +1,7 @@
 package tk.airshipcraft.commonlib.calendar.impl;
 
 import tk.airshipcraft.commonlib.calendar.IEventManager;
+import tk.airshipcraft.commonlib.calendar.clock.CustomDate;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -46,6 +47,19 @@ public class EventManager implements IEventManager {
     @Override
     public void scheduleEvent(LocalDate date, GameEvent event) {
         scheduledEvents.computeIfAbsent(date, k -> new ArrayList<>()).add(event);
+    }
+
+    /**
+     * Triggers all events scheduled for the current in-game date.
+     *
+     * @param currentDate The current in-game date.
+     */
+    @Override
+    public void triggerCustomEvents(CustomDate currentDate) {
+        List<GameEvent> eventsToday = scheduledEvents.getOrDefault(currentDate, new ArrayList<>());
+        for (GameEvent event : eventsToday) {
+            event.trigger();
+        }
     }
 
     /**

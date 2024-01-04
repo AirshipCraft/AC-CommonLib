@@ -2,6 +2,7 @@ package tk.airshipcraft.commonlib.calendar.clock;
 
 import tk.airshipcraft.commonlib.configuration.ConfigOption;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class CustomDate {
@@ -14,6 +15,8 @@ public class CustomDate {
     private static final int DAYS_PER_MONTH = 24;
     @ConfigOption(key = "monthsPerYear", defaultValue = "12")
     private static final int MONTHS_PER_YEAR = 12; // Adjust if you have a different number of months
+    @ConfigOption(key = "epochStart", defaultValue = "2024-01-01")
+    private static final LocalDate EPOCH_START = LocalDate.of(2020, 1, 1);
 
     public CustomDate(int year, int month, int day) {
         this.year = year;
@@ -53,6 +56,26 @@ public class CustomDate {
         int totalDaysOther = other.year * DAYS_PER_MONTH * MONTHS_PER_YEAR + other.month * DAYS_PER_MONTH + other.day;
 
         return totalDaysOther - totalDaysThis;
+    }
+
+    /**
+     * Converts this CustomDate to a LocalDate.
+     * The conversion is based on the custom calendar system starting at EPOCH_START.
+     * @return The equivalent LocalDate.
+     */
+    public LocalDate toLocalDate() {
+        // Calculate the total number of days in the custom calendar since the epoch start
+        int totalCustomDaysSinceEpoch = (this.year - 1) * MONTHS_PER_YEAR * DAYS_PER_MONTH
+                + (this.month - 1) * DAYS_PER_MONTH
+                + (this.day - 1);
+
+        // Convert the total days in the custom calendar to real-world days
+        // Since 1 day in the custom calendar is equivalent to 1 hour in real life,
+        // and there are 24 hours in a day, we divide the totalCustomDaysSinceEpoch by 24.
+        int totalRealDaysSinceEpoch = totalCustomDaysSinceEpoch / 24;
+
+        // Add the days to the epoch start date to get the equivalent LocalDate
+        return EPOCH_START.plusDays(totalRealDaysSinceEpoch);
     }
 
     @Override
