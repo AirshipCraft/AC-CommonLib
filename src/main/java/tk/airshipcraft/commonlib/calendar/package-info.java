@@ -7,6 +7,14 @@
  * extensibility to enhance server features like agriculture, economy, and AI-driven NPCs.
  * </p>
  *
+ * <h2>Core Classes:</h2>
+ * <ul>
+ *   <li><b>CustomDate:</b> Represents a custom in-game date format with configurable days per month and months per year.
+ *       It supports adding days, comparing dates, and converting between real-world and in-game time.</li>
+ *   <li><b>WorldClock:</b> Manages the progression of in-game time and synchronizes it with real-world time. It also
+ *       integrates with {@code CalendarManager} and {@code EventManager} to trigger events based on the in-game date.</li>
+ * </ul>
+ *
  * <h2>Interfaces:</h2>
  * <ul>
  *   <li><b>ICalendarManager:</b> Defines the contract for managing in-game time and date information.</li>
@@ -26,6 +34,15 @@
  *
  * <h2>Core Classes Usage Examples:</h2>
  * <pre>{@code
+ * // Example for CustomDate
+ * CustomDate customDate = new CustomDate(1, 1, 1); // Start of Year 1
+ * customDate.addDays(30); // Adds 30 days, potentially changing month/year
+ * LocalDate equivalentDate = customDate.toLocalDate(); // Converts to LocalDate
+ *
+ * // Example for WorldClock
+ * WorldClock worldClock = new WorldClock(plugin, calendarManager, eventManager);
+ * worldClock.start(); // Starts the clock to sync in-game time with real-time
+ *
  * // Example for CalendarManager
  * ICalendarManager calendar = new CalendarManager();
  * LocalDate today = calendar.getCurrentDate();
