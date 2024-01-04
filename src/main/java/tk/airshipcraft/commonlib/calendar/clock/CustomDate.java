@@ -15,7 +15,6 @@ public class CustomDate {
         this.day = day;
     }
 
-    // Method to add days and automatically adjust the month and year
     public void addDays(int days) {
         day += days;
         while (day > DAYS_PER_MONTH) {
@@ -35,6 +34,19 @@ public class CustomDate {
         int days = (int) (minecraftDays % DAYS_PER_MONTH);
 
         return new CustomDate(years + 1, months + 1, days + 1); // +1 because you might want to start counting from 1, not 0
+    }
+
+    /**
+     * Calculates the number of days from this date to another date.
+     *
+     * @param other The date to calculate the days to.
+     * @return The number of days until the other date.
+     */
+    public int daysUntil(CustomDate other) {
+        int totalDaysThis = this.year * DAYS_PER_MONTH * MONTHS_PER_YEAR + this.month * DAYS_PER_MONTH + this.day;
+        int totalDaysOther = other.year * DAYS_PER_MONTH * MONTHS_PER_YEAR + other.month * DAYS_PER_MONTH + other.day;
+
+        return totalDaysOther - totalDaysThis;
     }
 
     // Convert CustomDate to a human-readable string
