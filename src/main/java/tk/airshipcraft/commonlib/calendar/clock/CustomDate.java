@@ -1,12 +1,18 @@
 package tk.airshipcraft.commonlib.calendar.clock;
 
+import tk.airshipcraft.commonlib.configuration.ConfigOption;
+
+import java.util.Objects;
+
 public class CustomDate {
 
     private int day;
     private int month;
     private int year;
 
+    @ConfigOption(key = "daysPerMonth", defaultValue = "24")
     private static final int DAYS_PER_MONTH = 24;
+    @ConfigOption(key = "monthsPerYear", defaultValue = "12")
     private static final int MONTHS_PER_YEAR = 12; // Adjust if you have a different number of months
 
     public CustomDate(int year, int month, int day) {
@@ -47,6 +53,19 @@ public class CustomDate {
         int totalDaysOther = other.year * DAYS_PER_MONTH * MONTHS_PER_YEAR + other.month * DAYS_PER_MONTH + other.day;
 
         return totalDaysOther - totalDaysThis;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CustomDate that = (CustomDate) obj;
+        return day == that.day && month == that.month && year == that.year;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(day, month, year);
     }
 
     // Convert CustomDate to a human-readable string
