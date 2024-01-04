@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 import tk.airshipcraft.commonlib.ACRPlugin;
+import tk.airshipcraft.commonlib.CommonLib;
 import tk.airshipcraft.commonlib.calendar.impl.CalendarManager;
 import tk.airshipcraft.commonlib.calendar.impl.EventManager;
 import tk.airshipcraft.commonlib.configuration.ConfigHelper;
@@ -22,12 +23,12 @@ public class WorldClock {
     private double tickRateModifier; // Modifier to adjust the in-game tick rate
     private CalendarManager calendarManager;
     private EventManager eventManager;
-    private ACRPlugin plugin; // Reference to your plugin
+    private CommonLib plugin; // Reference to your plugin
     private ConfigHelper configHelper;
     private File clockStateFile;
     private FileConfiguration clockStateConfig;
 
-    public WorldClock(ACRPlugin plugin, CalendarManager calendarManager, EventManager eventManager) {
+    public WorldClock(CommonLib plugin, CalendarManager calendarManager, EventManager eventManager) {
         this.plugin = plugin;
         this.calendarManager = calendarManager;
         this.eventManager = eventManager;

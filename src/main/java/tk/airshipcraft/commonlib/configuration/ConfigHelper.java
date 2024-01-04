@@ -24,7 +24,7 @@ import java.util.Map;
  */
 public class ConfigHelper {
 
-    private final ACRPlugin plugin;
+    private final CommonLib plugin;
     private final Class<?> configClass;
     private final FileConfiguration defaultConfig;
     private final File configFile;
@@ -37,7 +37,7 @@ public class ConfigHelper {
      * @param plugin      The plugin instance. This is used to access plugin-specific configuration and data.
      * @param configClass The class containing configuration fields. Fields in this class should be annotated with {@link ConfigOption}.
      */
-    public ConfigHelper(ACRPlugin plugin, Class<?> configClass) {
+    public ConfigHelper(CommonLib plugin, Class<?> configClass) {
         this.plugin = plugin;
         this.configClass = configClass;
         this.defaultConfig = createOrLoadDefaultConfig();
