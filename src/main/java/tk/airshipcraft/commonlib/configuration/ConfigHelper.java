@@ -93,18 +93,15 @@ public class ConfigHelper {
      * and saves the corresponding values to the config.yml file.
      */
     public void saveConfig() {
-        configFields.forEach((key, field) -> {
-            try {
-                field.setAccessible(true);
-                config.set(key, field.get(null));
-            } catch (IllegalAccessException e) {
-                plugin.getLogger().severe("Error getting field value: " + e.getMessage());
-            }
-        });
         try {
+            for (Map.Entry<String, Field> entry : configFields.entrySet()) {
+                Field field = entry.getValue();
+                field.setAccessible(true);
+                config.set(entry.getKey(), field.get(null));
+            }
             config.save(configFile);
-        } catch (IOException e) {
-            plugin.getLogger().severe("Could not save configuration: " + e.getMessage());
+        } catch (IllegalAccessException | IOException e) {
+            plugin.getLogger().severe("Error saving configuration: " + e.getMessage());
         }
     }
 
@@ -114,18 +111,24 @@ public class ConfigHelper {
      * and loads the corresponding values from the config.yml file.
      */
     public void loadConfig() {
-        configFields.forEach((key, field) -> {
-            try {
-                if (config.contains(key)) {
-                    field.setAccessible(true);
-                    field.set(null, config.get(key));
-                } else {
-                    field.set(null, defaultConfig.get(key));
+        try {
+            if (!configFile.exists()) {
+                configFile.getParentFile().mkdirs(); // Ensure the directory exists
+                configFile.createNewFile();
+                // Apply default values
+                applyDefaultValues();
+            } else {
+                for (Map.Entry<String, Field> entry : configFields.entrySet()) {
+                    Field field = entry.getValue();
+                    if (config.contains(entry.getKey())) {
+                        field.setAccessible(true);
+                        field.set(null, config.get(entry.getKey()));
+                    }
                 }
-            } catch (IllegalAccessException e) {
-                plugin.getLogger().severe("Error setting field value: " + e.getMessage());
             }
-        });
+        } catch (IllegalAccessException | IOException e) {
+            plugin.getLogger().severe("Error loading configuration: " + e.getMessage());
+        }
     }
 
     /**
@@ -174,6 +177,19 @@ public class ConfigHelper {
         } else {
             CommonLib.getInstance().logInfo("No repair needed for configuration.");
         }
+    }
+
+    /**
+     * Applies default values to the configuration file.
+     * This method iterates through all fields in the provided configClass
+     * and sets default values in the provided FileConfiguration object.
+     */
+    private void applyDefaultValues() {
+        for (Map.Entry<String, Field> entry : configFields.entrySet()) {
+            ConfigOption option = entry.getValue().getAnnotation(ConfigOption.class);
+            config.set(entry.getKey(), option.defaultValue());
+        }
+        saveConfig();
     }
 
     /**
