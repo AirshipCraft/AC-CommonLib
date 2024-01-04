@@ -14,6 +14,8 @@ The library encapsulates a wide range of functionalities including, but not limi
 - **Custom Enchantments**: Framework for adding and handling custom enchantments.
 - **NMS Operations**: Utilities for interacting with Minecraft's native code (NMS) to extend beyond Bukkit's API.
 - **Command Framework**: Simplified command creation with annotated methods and automatic registration.
+- **GUI Management**: Framework for creating and managing GUIs.
+- **Configuration Management**: Simplified configuration management (see [configuration guide](CONFIGURATION_GUIDE.md)).
 
 ## Getting Started
 
