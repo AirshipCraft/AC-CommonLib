@@ -44,7 +44,7 @@ public class CommonLib extends JavaPlugin implements Listener {
     }
 
     /**
-     * Initializes the library, sets up logging, and registers event listeners.
+     * Initializes the CommonLib library.
      * This method is called by the Bukkit framework when the plugin is enabled.
      */
     @Override
@@ -59,6 +59,9 @@ public class CommonLib extends JavaPlugin implements Listener {
         ACRPlugin.enableSubclasses();
     }
 
+    /**
+     * Registers event listeners.
+     */
     private void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new InventoryClickListener(), this);
@@ -104,6 +107,24 @@ public class CommonLib extends JavaPlugin implements Listener {
      */
     public TeamManager getTeamManager() {
         return teamManager;
+    }
+
+    /**
+     * Returns the WorldClock instance.
+     *
+     * @return WorldClock instance
+     */
+    public static WorldClock getWorldClock() {
+        return worldClock;
+    }
+
+    /**
+     * Returns the CalendarManager instance.
+     *
+     * @return CalendarManager instance
+     */
+    public static CalendarManager getCalendarManager() {
+        return calendarManager;
     }
 
     /**
