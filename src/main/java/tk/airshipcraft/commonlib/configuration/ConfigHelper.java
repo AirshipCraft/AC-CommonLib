@@ -9,6 +9,8 @@ import tk.airshipcraft.commonlib.CommonLib;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Manages the configuration for plugins that extend CommonLib.
@@ -24,7 +26,9 @@ public class ConfigHelper {
 
     private final ACRPlugin plugin;
     private final Class<?> configClass;
-    private final FileConfiguration defaultConfig; // Cached default configuration
+    private final FileConfiguration defaultConfig;
+    private final File configFile;
+    private final Map<String, Field> configFields;
 
     /**
      * Constructs a ConfigHelper for the given plugin and configuration class.
@@ -37,6 +41,18 @@ public class ConfigHelper {
         this.plugin = plugin;
         this.configClass = configClass;
         this.defaultConfig = createOrLoadDefaultConfig();
+        this.configFile = new File(plugin.getDataFolder(), "config.yml");
+        this.configFields = new HashMap<>();
+        cacheConfigFields();
+    }
+
+    private void cacheConfigFields() {
+        for (Field field : configClass.getDeclaredFields()) {
+            if (field.isAnnotationPresent(ConfigOption.class)) {
+                ConfigOption option = field.getAnnotation(ConfigOption.class);
+                configFields.put(option.key(), field);
+            }
+        }
     }
 
     /**
@@ -48,25 +64,67 @@ public class ConfigHelper {
      */
     private FileConfiguration createOrLoadDefaultConfig() {
         File defaultConfigFile = new File(plugin.getDataFolder(), "default-config.yml");
+        FileConfiguration defaultConfig = new YamlConfiguration();
+
         if (!defaultConfigFile.exists()) {
-            FileConfiguration defaultConfig = new YamlConfiguration();
             populateDefaultConfig(defaultConfig);
             try {
                 defaultConfig.save(defaultConfigFile);
             } catch (IOException e) {
                 plugin.getLogger().severe("Could not save default configuration: " + e.getMessage());
             }
-            return defaultConfig;
         } else {
             try {
-                FileConfiguration loadedConfig = new YamlConfiguration();
-                loadedConfig.load(defaultConfigFile);
-                return loadedConfig;
+                defaultConfig.load(defaultConfigFile);
             } catch (IOException | InvalidConfigurationException e) {
                 plugin.getLogger().severe("Could not load default configuration: " + e.getMessage());
-                return new YamlConfiguration(); // Return empty config to avoid nulls
             }
         }
+        return defaultConfig;
+    }
+
+    /**
+     * Saves the current configuration to the config.yml file.
+     * This method iterates through all fields in the provided configClass
+     * and saves the corresponding values to the config.yml file.
+     */
+    public void saveConfig() {
+        FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+        configFields.forEach((key, field) -> {
+            try {
+                field.setAccessible(true);
+                config.set(key, field.get(null));
+            } catch (IllegalAccessException e) {
+                plugin.getLogger().severe("Error getting field value: " + e.getMessage());
+            }
+        });
+        try {
+            config.save(configFile);
+        } catch (IOException e) {
+            plugin.getLogger().severe("Could not save configuration: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Loads the configuration from the config.yml file.
+     * This method iterates through all fields in the provided configClass
+     * and loads the corresponding values from the config.yml file.
+     */
+    public void loadConfig() {
+        FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+        configFields.forEach((key, field) -> {
+            try {
+                if (config.contains(key)) {
+                    field.setAccessible(true);
+                    field.set(null, config.get(key));
+                } else {
+                    // Fallback to default if key not found or is malformed
+                    field.set(null, defaultConfig.get(key));
+                }
+            } catch (IllegalAccessException e) {
+                plugin.getLogger().severe("Error setting field value: " + e.getMessage());
+            }
+        });
     }
 
     /**
@@ -132,6 +190,4 @@ public class ConfigHelper {
 
         return currentValue == null || !currentValue.getClass().equals(defaultValue.getClass());
     }
-
-    // Additional methods and logic can be implemented as needed
 }
