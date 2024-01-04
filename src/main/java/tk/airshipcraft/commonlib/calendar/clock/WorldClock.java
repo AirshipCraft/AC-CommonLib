@@ -3,32 +3,48 @@ package tk.airshipcraft.commonlib.calendar.clock;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
-import tk.airshipcraft.commonlib.CommonLib;
+import tk.airshipcraft.commonlib.ACRPlugin;
 import tk.airshipcraft.commonlib.calendar.impl.CalendarManager;
+import tk.airshipcraft.commonlib.configuration.ConfigHelper;
+import tk.airshipcraft.commonlib.configuration.ConfigOption;
 
-/**
- * This class handles converting real-world time to in-game time and vice versa.
- * It also handles the progression of in-game time and modifies the passage of in-game time to be slower
- * so that one hour of real-world time is equivalent to one Minecraft day.
- */
+import java.io.File;
+import java.io.IOException;
+
 public class WorldClock {
 
-    private long realSecondsPerMinecraftDay; // Configurable via file
-    private final double tickRateModifier; // Modifier to adjust the in-game tick rate
+    @ConfigOption(key = "realSecondsPerMinecraftDay", defaultValue = "3600")
+    private long realSecondsPerMinecraftDay; // Configurable via annotation
+    private long lastUpdateTick; // Internal state for tracking time
+    private double tickRateModifier; // Modifier to adjust the in-game tick rate
     private CalendarManager calendarManager;
-    private CommonLib plugin; // Reference to your plugin
-    private long lastUpdateTick; // Tracks the last tick when the calendar was updated
+    private ACRPlugin plugin; // Reference to your plugin
+    private ConfigHelper configHelper;
+    private File clockStateFile;
+    private FileConfiguration clockStateConfig;
 
-    public WorldClock(CommonLib plugin, CalendarManager calendarManager) {
+    public WorldClock(ACRPlugin plugin, CalendarManager calendarManager) {
         this.plugin = plugin;
         this.calendarManager = calendarManager;
-        loadConfig();
+
+        // Initialize the ConfigHelper for the configurable options
+        configHelper = new ConfigHelper(plugin, this.getClass());
+        configHelper.loadConfig();
 
         // Calculate the modifier based on the loaded config
+        updateTickRateModifier();
+
+        // Initialize the file and configuration for saving the state
+        clockStateFile = new File(plugin.getDataFolder(), "worldclock.yml");
+        clockStateConfig = YamlConfiguration.loadConfiguration(clockStateFile);
+
+        loadState(); // Load the state from the file
+    }
+
+    private void updateTickRateModifier() {
         tickRateModifier = 24000.0 / (20 * 60) / (realSecondsPerMinecraftDay / 20.0);
-        lastUpdateTick = 0;
     }
 
     public void start() {
@@ -44,24 +60,27 @@ public class WorldClock {
                     if (time - lastUpdateTick >= 24000) {
                         calendarManager.newMinecraftDay(); // Advance the calendar by one day
                         lastUpdateTick = time;
+                        saveState(); // Save the internal state whenever a new day starts
                     }
                 }
             }
         }.runTaskTimer(plugin, 0L, 1L);
     }
 
-    private void loadConfig() {
-        plugin.reloadConfig();
-        FileConfiguration config = plugin.getConfig();
-        // Default to 1 hour if not specified in the config
-        realSecondsPerMinecraftDay = config.getLong("realSecondsPerMinecraftDay", 3600);
-    }
-
     public void saveState() {
-        // Logic to save the current state for persistence
+        clockStateConfig.set("lastUpdateTick", lastUpdateTick);
+        try {
+            clockStateConfig.save(clockStateFile);
+        } catch (IOException e) {
+            plugin.getLogger().severe("Could not save WorldClock state: " + e.getMessage());
+        }
     }
 
     public void loadState() {
-        // Logic to load the state
+        if (clockStateFile.exists()) {
+            lastUpdateTick = clockStateConfig.getLong("lastUpdateTick", 0);
+        } else {
+            lastUpdateTick = 0;
+        }
     }
 }
