@@ -1,8 +1,7 @@
 package tk.airshipcraft.commonlib.calendar.impl;
 
 import tk.airshipcraft.commonlib.calendar.ISeasonManager;
-
-import java.time.LocalDate;
+import tk.airshipcraft.commonlib.calendar.clock.CustomDate;
 
 /**
  * The SeasonManager class is responsible for managing seasonal changes in the Minecraft world.
@@ -34,8 +33,8 @@ public class SeasonManager implements ISeasonManager {
      */
     @Override
     public Season getCurrentSeason() {
-        LocalDate currentDate = calendarManager.getCurrentDate();
-        int month = currentDate.getMonthValue();
+        CustomDate currentDate = calendarManager.getCurrentDate();
+        int month = currentDate.getMonth();
 
         if (month >= 3 && month <= 5) { // March to May
             return Season.SPRING;
