@@ -84,7 +84,6 @@ public class WorldClock {
                     if (time - lastUpdateTick >= 24000) {
                         calendarManager.newMinecraftDay(); // Advance the calendar by one day
                         eventManager.triggerEvents(calendarManager.getCurrentDate().toLocalDate());
-                        eventManager.triggerCustomEvents(calendarManager.getCurrentDate());
                         lastUpdateTick = time;
                         saveState(); // Save the internal state whenever a new day starts
                     }
