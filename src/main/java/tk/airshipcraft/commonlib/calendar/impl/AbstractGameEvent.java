@@ -29,12 +29,18 @@ public abstract class AbstractGameEvent implements IGameEvent {
         this.message = message;
     }
 
+    /**
+     * Creates a new AbstractGameEvent with the specified command.
+     */
     protected void executeCommand() {
         if (command.isPresent()) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), String.valueOf(command));
         }
     }
 
+    /**
+     * Creates a new AbstractGameEvent with the specified message.
+     */
     protected void broadcastMessage() {
         if (message.isPresent()) {
             Bukkit.getServer().broadcastMessage(String.valueOf(message));
