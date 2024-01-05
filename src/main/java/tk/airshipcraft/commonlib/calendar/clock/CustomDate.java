@@ -39,8 +39,8 @@ public class CustomDate {
     private static final int DAYS_PER_MONTH = 24;
     @ConfigOption(key = "monthsPerYear", defaultValue = "12")
     private static final int MONTHS_PER_YEAR = 12; // Adjust if you have a different number of months
-    @ConfigOption(key = "epochStart", defaultValue = "2024-01-01")
-    private static final LocalDate EPOCH_START = LocalDate.of(2024, 1, 1);
+//    @ConfigOption(key = "epochStart", defaultValue = "2024-01-01")
+//    private static final LocalDate EPOCH_START = LocalDate.of(2024, 1, 1);
     private int day;
     private int month;
     private int year;
@@ -77,25 +77,27 @@ public class CustomDate {
         return new CustomDate(years + 1, months + 1, days + 1);
     }
 
-    /**
-     * Converts a LocalDate to a CustomDate.
-     * The conversion is based on the custom calendar system starting at EPOCH_START.
-     *
-     * @param localDate The LocalDate to convert.
-     * @return The equivalent CustomDate.
-     */
-    public static CustomDate fromLocalDate(LocalDate localDate) {
-        // Calculate the total number of days in the real-world calendar since the epoch start
-        int totalRealDaysSinceEpoch = (int) EPOCH_START.until(localDate).toDays();
+    // won't really need this method since we are not using the gregorian calendar so im just commenting it out for now
 
-        // Convert the total days in the real-world calendar to custom days
-        // Since 1 day in the custom calendar is equivalent to 1 hour in real life,
-        // and there are 24 hours in a day, we multiply the totalRealDaysSinceEpoch by 24.
-        int totalCustomDaysSinceEpoch = totalRealDaysSinceEpoch * 24;
-
-        // Convert the total number of days in the custom calendar to a CustomDate
-        return fromMinecraftDays(totalCustomDaysSinceEpoch);
-    }
+//    /**
+//     * Converts a LocalDate to a CustomDate.
+//     * The conversion is based on the custom calendar system starting at EPOCH_START.
+//     *
+//     * @param localDate The LocalDate to convert.
+//     * @return The equivalent CustomDate.
+//     */
+//    public static CustomDate fromLocalDate(LocalDate localDate) {
+//        // Calculate the total number of days in the real-world calendar since the epoch start
+//        int totalRealDaysSinceEpoch = (int) EPOCH_START.until(localDate).toDays();
+//
+//        // Convert the total days in the real-world calendar to custom days
+//        // Since 1 day in the custom calendar is equivalent to 1 hour in real life,
+//        // and there are 24 hours in a day, we multiply the totalRealDaysSinceEpoch by 24.
+//        int totalCustomDaysSinceEpoch = totalRealDaysSinceEpoch * 24;
+//
+//        // Convert the total number of days in the custom calendar to a CustomDate
+//        return fromMinecraftDays(totalCustomDaysSinceEpoch);
+//    }
 
     /**
      * Adds the specified number of days to the current date.
@@ -127,26 +129,26 @@ public class CustomDate {
         return totalDaysOther - totalDaysThis;
     }
 
-    /**
-     * Converts this CustomDate to a LocalDate.
-     * The conversion is based on the custom calendar system starting at EPOCH_START.
-     *
-     * @return The equivalent LocalDate.
-     */
-    public LocalDate toLocalDate() {
-        // Calculate the total number of days in the custom calendar since the epoch start
-        int totalCustomDaysSinceEpoch = (this.year - 1) * MONTHS_PER_YEAR * DAYS_PER_MONTH
-                + (this.month - 1) * DAYS_PER_MONTH
-                + (this.day - 1);
-
-        // Convert the total days in the custom calendar to real-world days
-        // Since 1 day in the custom calendar is equivalent to 1 hour in real life,
-        // and there are 24 hours in a day, we divide the totalCustomDaysSinceEpoch by 24.
-        int totalRealDaysSinceEpoch = totalCustomDaysSinceEpoch / 24;
-
-        // Add the days to the epoch start date to get the equivalent LocalDate
-        return EPOCH_START.plusDays(totalRealDaysSinceEpoch);
-    }
+//    /**
+//     * Converts this CustomDate to a LocalDate.
+//     * The conversion is based on the custom calendar system starting at EPOCH_START.
+//     *
+//     * @return The equivalent LocalDate.
+//     */
+//    public LocalDate toLocalDate() {
+//        // Calculate the total number of days in the custom calendar since the epoch start
+//        int totalCustomDaysSinceEpoch = (this.year - 1) * MONTHS_PER_YEAR * DAYS_PER_MONTH
+//                + (this.month - 1) * DAYS_PER_MONTH
+//                + (this.day - 1);
+//
+//        // Convert the total days in the custom calendar to real-world days
+//        // Since 1 day in the custom calendar is equivalent to 1 hour in real life,
+//        // and there are 24 hours in a day, we divide the totalCustomDaysSinceEpoch by 24.
+//        int totalRealDaysSinceEpoch = totalCustomDaysSinceEpoch / 24;
+//
+//        // Add the days to the epoch start date to get the equivalent LocalDate
+//        return EPOCH_START.plusDays(totalRealDaysSinceEpoch);
+//    }
 
     /**
      * Compares this CustomDate to another CustomDate.
