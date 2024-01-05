@@ -32,12 +32,5 @@ public interface IEventManager {
      *
      * @param currentDate The current in-game date.
      */
-    void triggerCustomEvents(CustomDate currentDate);
-
-    /**
-     * Triggers all events scheduled for the current real life date.
-     *
-     * @param currentDate The current LocalDate.
-     */
-    void triggerEvents(LocalDate currentDate);
+    void triggerEvents(CustomDate currentDate);
 }

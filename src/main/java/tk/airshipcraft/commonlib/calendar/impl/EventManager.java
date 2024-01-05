@@ -73,19 +73,7 @@ public class EventManager implements IEventManager {
      * @param currentDate The current in-game date.
      */
     @Override
-    public void triggerCustomEvents(CustomDate currentDate) {
-        // Convert CustomDate to LocalDate if needed
-        LocalDate date = currentDate.toLocalDate();
-        triggerEvents(date);
-    }
-
-    /**
-     * Triggers all events scheduled for the current in-game date.
-     *
-     * @param currentDate The current in-game date.
-     */
-    @Override
-    public void triggerEvents(LocalDate currentDate) {
+    public void triggerEvents(CustomDate currentDate) {
         List<AbstractGameEvent> eventsToday = scheduledEvents.getOrDefault(currentDate, new ArrayList<>());
         for (AbstractGameEvent event : eventsToday) {
             event.trigger();
