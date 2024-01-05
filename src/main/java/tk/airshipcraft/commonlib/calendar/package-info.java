@@ -1,81 +1,82 @@
 /**
  * <h1>AirshipCraft Calendar and Event System Package</h1>
  * <p>
- * This package, part of AirshipCraft's <code>CommonLib</code> core library, provides a comprehensive calendar and event system
- * for Minecraft servers. It is designed to serve as an API, facilitating the integration of time-based functionalities such as
- * seasonal changes, event scheduling, and dynamic in-game news. The system emphasizes ease of use, interoperability, and
- * extensibility to enhance server features like agriculture, economy, and AI-driven NPCs.
+ * This package, a part of AirshipCraft's {@link tk.airshipcraft.commonlib.CommonLib} core library, provides a comprehensive calendar and event system
+ * for Minecraft servers. Designed to offer functionalities like seasonal changes, event scheduling, and dynamic in-game news,
+ * this system emphasizes ease of use, interoperability, and extensibility. It is particularly useful for enhancing server
+ * features such as agriculture, economy, and AI-driven NPCs.
  * </p>
  *
  * <h2>Core Classes:</h2>
  * <ul>
- *   <li><b>CustomDate:</b> Represents a custom in-game date format with configurable days per month and months per year.
- *       It supports adding days, comparing dates, and converting between real-world and in-game time.</li>
- *   <li><b>WorldClock:</b> Manages the progression of in-game time and synchronizes it with real-world time. It also
- *       integrates with {@code CalendarManager} and {@code EventManager} to trigger events based on the in-game date.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.clock.CustomDate}<b>CustomDate:</b> Represents a custom in-game date format with configurable days per month and months per year.
+ *       Supports operations like adding days, comparing dates, and converting between real-world and in-game time.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.clock.WorldClock}<b>WorldClock:</b> Manages in-game time progression, synchronizing it with real-world time, and interacts with
+ *       {@link tk.airshipcraft.commonlib.calendar.impl.CalendarManager} and {@link tk.airshipcraft.commonlib.calendar.impl.EventManager} for event triggers based on in-game dates.</li>
  * </ul>
  *
  * <h2>Interfaces:</h2>
  * <ul>
- *   <li><b>ICalendarManager:</b> Defines the contract for managing in-game time and date information.</li>
- *   <li><b>IEventManager:</b> Outlines methods for scheduling and triggering in-game events.</li>
- *   <li><b>ISeasonManager:</b> Provides functionality for determining in-game seasonal changes.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.ICalendarManager}<b>ICalendarManager:</b> Manages in-game time and date information.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.IEventManager}<b>IEventManager:</b> Handles scheduling and triggering of in-game events.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.IGameEvent}<b>IGameEvent:</b> Defines the contract for custom game events.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.ISeasonManager}<b>ISeasonManager:</b> Manages in-game seasonal changes.</li>
+ * </ul>
+ *
+ * <h2>Abstract Classes:</h2>
+ * <ul>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.impl.AbstractGameEvent}<b>AbstractGameEvent:</b> Provides a template for creating various types of in-game events, including execution
+ *       of commands and broadcasting messages.</li>
  * </ul>
  *
  * <h2>Implementation Classes:</h2>
  * <ul>
- *   <li><b>CalendarManager:</b> Implements <code>ICalendarManager</code>, handling the conversion between real-world and in-game time.
- *       It maintains the current date and allows for time progression.</li>
- *   <li><b>SeasonManager:</b> Implements <code>ISeasonManager</code>, calculating the current season based on the in-game date
- *       provided by <code>CalendarManager</code>.</li>
- *   <li><b>EventManager:</b> Implements <code>IEventManager</code>, managing the lifecycle of scheduled events and providing
- *       mechanisms to trigger them on specific dates.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.impl.CalendarManager}<b>CalendarManager:</b> Manages conversion between real-world and in-game time, maintaining the current date
+ *       and allowing for time progression.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.impl.SeasonManager}<b>SeasonManager:</b> Calculates current seasons based on in-game dates from {@link tk.airshipcraft.commonlib.calendar.impl.CalendarManager}.</li>
+ *   <li>{@link tk.airshipcraft.commonlib.calendar.impl.EventManager}<b>EventManager:</b> Manages event lifecycle, including scheduling and triggering events on specific dates.</li>
  * </ul>
  *
  * <h2>Core Classes Usage Examples:</h2>
  * <pre>{@code
- * // Example for CustomDate
- * CustomDate customDate = new CustomDate(1, 1, 1); // Start of Year 1
- * customDate.addDays(30); // Adds 30 days, potentially changing month/year
- * LocalDate equivalentDate = customDate.toLocalDate(); // Converts to LocalDate
+ * // CustomDate Example
+ * CustomDate customDate = new CustomDate(1, 1, 1);
+ * customDate.addDays(30);
+ * LocalDate equivalentDate = customDate.toLocalDate();
  *
- * // Example for WorldClock
+ * // WorldClock Example
  * WorldClock worldClock = new WorldClock(plugin, calendarManager, eventManager);
- * worldClock.start(); // Starts the clock to sync in-game time with real-time
+ * worldClock.start();
  *
- * // Example for CalendarManager
+ * // CalendarManager Example
  * ICalendarManager calendar = new CalendarManager();
  * LocalDate today = calendar.getCurrentDate();
- * calendar.advanceTime(1); // Advances the in-game calendar by one day.
+ * calendar.advanceTime(1);
  *
- * // Example for SeasonManager
+ * // SeasonManager Example
  * ISeasonManager seasonManager = new SeasonManager(calendar);
- * ISeasonManager.Season currentSeason = seasonManager.getCurrentSeason();
+ * Season currentSeason = seasonManager.getCurrentSeason();
  *
- * // Example for EventManager
+ * // EventManager Example
  * IEventManager eventManager = new EventManager();
- * eventManager.scheduleEvent(today.plusDays(10), new GameEvent() {
+ * eventManager.scheduleEvent(today.plusDays(10), new AbstractGameEvent(...) {
  *     @Override
  *     public void trigger() {
- *         // Event logic goes here.
+ *         // Event logic here.
  *     }
  * });
- * eventManager.triggerEvents(today); // Triggers all events scheduled for today.
+ * eventManager.triggerEvents(today);
  * }</pre>
  *
  * <h2>Example Use Cases:</h2>
  * <ul>
- *   <li><b>Agriculture Plugin:</b> Uses <code>SeasonManager</code> to adjust crop growth rates and harvesting schedules
- *       dynamically based on the current season, enhancing realism and gameplay depth.</li>
- *   <li><b>Economy Plugin:</b> Integrates with <code>EventManager</code> to create and manage market events or sales
- *       tied to in-game holidays, seasons, or other calendar events, impacting the server's economy dynamically.</li>
- *   <li><b>NPC Interaction Plugin:</b> Leverages <code>CalendarManager</code> to alter NPC behaviors or available quests
- *       depending on the time of year, special events, or seasonal changes, contributing to a dynamic game environment.</li>
+ *   <li><b>Agriculture Plugin:</b> Uses {@link tk.airshipcraft.commonlib.calendar.impl.SeasonManager} for dynamic crop growth and harvest schedules.</li>
+ *   <li><b>Economy Plugin:</b> Integrates with {@link tk.airshipcraft.commonlib.calendar.impl.EventManager} for market events and sales linked to calendar events.</li>
+ *   <li><b>NPC Interaction Plugin:</b> Uses {@link tk.airshipcraft.commonlib.calendar.impl.CalendarManager} for varying NPC behaviors and quests based on time of year.</li>
  * </ul>
  *
  * <p>
- * The design of this package allows for a decoupled and layered approach to handling time-related functionalities,
- * promoting maintainable and scalable server architecture.
+ * This package promotes a decoupled, layered approach to time-related functionalities for maintainable and scalable server architecture.
  * </p>
  *
  * @author notzune
