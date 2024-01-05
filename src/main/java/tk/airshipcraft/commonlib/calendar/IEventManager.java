@@ -19,13 +19,21 @@ import java.time.LocalDate;
  */
 public interface IEventManager {
 
+//    /**
+//     * Schedules an event to occur on a specific in-game date.
+//     *
+//     * @param date  The date on which the event should occur.
+//     * @param event The event to be scheduled.
+//     */
+//    void scheduleEvent(LocalDate date, AbstractGameEvent event);
+
     /**
      * Schedules an event to occur on a specific in-game date.
      *
      * @param date  The date on which the event should occur.
      * @param event The event to be scheduled.
      */
-    void scheduleEvent(LocalDate date, AbstractGameEvent event);
+    void scheduleEvent(CustomDate date, AbstractGameEvent event);
 
     /**
      * Triggers all events scheduled for the current in-game date.

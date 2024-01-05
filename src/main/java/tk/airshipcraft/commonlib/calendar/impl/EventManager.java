@@ -39,7 +39,9 @@ public class EventManager implements IEventManager {
     /**
      * A map to hold scheduled events, keyed by the date on which they occur.
      */
-    private Map<LocalDate, List<AbstractGameEvent>> scheduledEvents;
+//    private Map<LocalDate, List<AbstractGameEvent>> scheduledEvents;
+    private Map<CustomDate, List<AbstractGameEvent>> scheduledEvents;
+
     /**
      * The file in which the scheduled events are stored.
      */
@@ -56,6 +58,17 @@ public class EventManager implements IEventManager {
         loadEvents();
     }
 
+//    /**
+//     * Schedules an event to occur on a specific in-game date.
+//     *
+//     * @param date  The LocalDate on which the event should occur.
+//     * @param event The event to be scheduled.
+//     */
+//    @Override
+//    public void scheduleEvent(LocalDate date, AbstractGameEvent event) {
+//        scheduledEvents.computeIfAbsent(date, k -> new ArrayList<>()).add(event);
+//    }
+
     /**
      * Schedules an event to occur on a specific in-game date.
      *
@@ -63,7 +76,7 @@ public class EventManager implements IEventManager {
      * @param event The event to be scheduled.
      */
     @Override
-    public void scheduleEvent(LocalDate date, AbstractGameEvent event) {
+    public void scheduleEvent(CustomDate date, AbstractGameEvent event) {
         scheduledEvents.computeIfAbsent(date, k -> new ArrayList<>()).add(event);
     }
 
