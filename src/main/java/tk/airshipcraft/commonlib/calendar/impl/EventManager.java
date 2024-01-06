@@ -37,16 +37,15 @@ import java.util.Map;
 public class EventManager implements IEventManager {
 
     /**
-     * A map to hold scheduled events, keyed by the date on which they occur.
-     */
-//    private Map<LocalDate, List<AbstractGameEvent>> scheduledEvents;
-    private Map<CustomDate, List<AbstractGameEvent>> scheduledEvents;
-
-    /**
      * The file in which the scheduled events are stored.
      */
     private final File eventFile;
     private final Gson gson = new Gson();
+    /**
+     * A map to hold scheduled events, keyed by the date on which they occur.
+     */
+//    private Map<LocalDate, List<AbstractGameEvent>> scheduledEvents;
+    private Map<CustomDate, List<AbstractGameEvent>> scheduledEvents;
 
     /**
      * Initializes a new EventManager. Creates a new empty map to hold scheduled events.
@@ -111,7 +110,8 @@ public class EventManager implements IEventManager {
         try {
             if (eventFile.exists()) {
                 Reader reader = new FileReader(eventFile);
-                Type type = new TypeToken<HashMap<LocalDate, List<AbstractGameEvent>>>(){}.getType();
+                Type type = new TypeToken<HashMap<LocalDate, List<AbstractGameEvent>>>() {
+                }.getType();
                 scheduledEvents = gson.fromJson(reader, type);
             }
         } catch (FileNotFoundException e) {

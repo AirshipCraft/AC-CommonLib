@@ -1,6 +1,7 @@
 package tk.airshipcraft.commonlib.db.dao;
 
 import tk.airshipcraft.commonlib.db.model.AuthData;
+
 import java.util.Optional;
 import java.util.UUID;
 

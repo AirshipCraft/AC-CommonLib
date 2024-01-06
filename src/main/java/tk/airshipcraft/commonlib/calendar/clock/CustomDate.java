@@ -2,7 +2,6 @@ package tk.airshipcraft.commonlib.calendar.clock;
 
 import tk.airshipcraft.commonlib.configuration.ConfigOption;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -39,7 +38,7 @@ public class CustomDate {
     private static final int DAYS_PER_MONTH = 24;
     @ConfigOption(key = "monthsPerYear", defaultValue = "12")
     private static final int MONTHS_PER_YEAR = 12; // Adjust if you have a different number of months
-//    @ConfigOption(key = "epochStart", defaultValue = "2024-01-01")
+    //    @ConfigOption(key = "epochStart", defaultValue = "2024-01-01")
 //    private static final LocalDate EPOCH_START = LocalDate.of(2024, 1, 1);
     private int day;
     private int month;

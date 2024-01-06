@@ -45,48 +45,21 @@ public class AuthData {
     }
 
     /**
-     * Returns the in-game name of the player.
-     *
-     * @return A String representing the player's in-game name.
-     */
-    public String getIGN() {
-        return IGN;
-    }
-
-    /**
-     * Returns the username associated with the player's Discord account.
-     *
-     * @return A String representing the Discord username.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Returns the authentication token associated with the player.
-     *
-     * @return A UUID token used for authentication purposes.
-     */
-    public UUID getToken() {
-        return token;
-    }
-
-    /**
-     * Checks if the player's account is verified.
-     *
-     * @return A boolean indicating the verification status.
-     */
-    public boolean isVerified() {
-        return verified;
-    }
-
-    /**
      * Sets the UUID of the player.
      *
      * @param id The UUID to set.
      */
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    /**
+     * Returns the in-game name of the player.
+     *
+     * @return A String representing the player's in-game name.
+     */
+    public String getIGN() {
+        return IGN;
     }
 
     /**
@@ -99,6 +72,15 @@ public class AuthData {
     }
 
     /**
+     * Returns the username associated with the player's Discord account.
+     *
+     * @return A String representing the Discord username.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
      * Sets the username associated with the player's Discord account.
      *
      * @param username The Discord username to set.
@@ -108,12 +90,30 @@ public class AuthData {
     }
 
     /**
+     * Returns the authentication token associated with the player.
+     *
+     * @return A UUID token used for authentication purposes.
+     */
+    public UUID getToken() {
+        return token;
+    }
+
+    /**
      * Sets the authentication token for the player.
      *
      * @param token The UUID token to set.
      */
     public void setToken(UUID token) {
         this.token = token;
+    }
+
+    /**
+     * Checks if the player's account is verified.
+     *
+     * @return A boolean indicating the verification status.
+     */
+    public boolean isVerified() {
+        return verified;
     }
 
     /**
