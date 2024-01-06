@@ -40,18 +40,4 @@ public interface WarningDao extends GenericDao<Warning, UUID> {
      * @return A List of Warning objects.
      */
     List<Warning> findByUser(UUID minecraftId, String discordId);
-
-    /**
-     * Saves a new warning to the database.
-     *
-     * @param warning The Warning object to save.
-     */
-    void save(Warning warning);
-
-    /**
-     * Deletes a warning from the database.
-     *
-     * @param id The UUID of the warning to delete.
-     */
-    void delete(UUID id);
 }

@@ -16,6 +16,10 @@ import java.util.UUID;
 /**
  * Provides SQL-specific data access operations for Warning objects.
  * Implements the WarningDao interface using a SQL database.
+ *
+ * @author notzune
+ * @version 1.0.0
+ * @since 2024-01-06
  */
 public class SqlWarningDao implements WarningDao {
 
@@ -167,16 +171,6 @@ public class SqlWarningDao implements WarningDao {
             // Log and handle exception
         }
         return warnings;
-    }
-
-    @Override
-    public void save(Warning warning) {
-
-    }
-
-    @Override
-    public void delete(UUID id) {
-
     }
 
     /**
