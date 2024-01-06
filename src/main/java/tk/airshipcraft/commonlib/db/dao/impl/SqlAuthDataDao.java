@@ -8,12 +8,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 /**
- * Implementation of the AuthDataDao interface using SQL.
- * This class handles CRUD operations related to AuthData objects in the SQL database.
+ * SQL implementation of the AuthDataDao interface.
+ * This class is responsible for performing CRUD operations on AuthData entities in the database.
  *
  * @author notzune
  * @version 1.0.0
@@ -24,122 +26,126 @@ public class SqlAuthDataDao implements AuthDataDao {
     private final SqlConnectionManager connectionManager;
 
     /**
-     * Constructs an SqlAuthDataDao with a given SqlConnectionManager.
+     * Constructs an instance of SqlAuthDataDao with a given SqlConnectionManager.
      *
-     * @param connectionManager The manager responsible for providing database connections.
+     * @param connectionManager The connection manager responsible for managing database connections.
      */
     public SqlAuthDataDao(SqlConnectionManager connectionManager) {
         this.connectionManager = connectionManager;
     }
 
-    /**
-     * Finds an AuthData object by its UUID.
-     *
-     * @param id The UUID of the AuthData object.
-     * @return An Optional containing the AuthData if found, or an empty Optional if not.
-     */
     @Override
     public Optional<AuthData> findById(UUID id) {
+        // SQL query to find AuthData by ID
         String sql = "SELECT * FROM auth_data WHERE id = ?";
         try (Connection conn = connectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, id.toString());
+            stmt.setObject(1, id);
             ResultSet rs = stmt.executeQuery();
-
             if (rs.next()) {
                 return Optional.of(mapResultSetToAuthData(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Replace with proper error handling
+            e.printStackTrace();  // Replace with proper error handling
         }
         return Optional.empty();
     }
 
-    /**
-     * Inserts a new AuthData object into the database.
-     *
-     * @param authData The AuthData object to insert.
-     */
     @Override
-    public void insert(AuthData authData) {
+    public List<AuthData> findAll() {
+        // SQL query to find all AuthData records
+        List<AuthData> authDataList = new ArrayList<>();
+        String sql = "SELECT * FROM auth_data";
+        try (Connection conn = connectionManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                authDataList.add(mapResultSetToAuthData(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();  // Replace with proper error handling
+        }
+        return authDataList;
+    }
+
+    @Override
+    public AuthData create(AuthData authData) {
+        // SQL query to create new AuthData record
         String sql = "INSERT INTO auth_data (id, ign, username, token, verified) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = connectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             prepareStatementForAuthData(stmt, authData);
             stmt.executeUpdate();
+            return authData;
         } catch (SQLException e) {
-            e.printStackTrace(); // Replace with proper error handling
+            e.printStackTrace();  // Replace with proper error handling
         }
+        return null;
     }
 
-    /**
-     * Updates an existing AuthData object in the database.
-     *
-     * @param authData The AuthData object to update.
-     */
     @Override
-    public void update(AuthData authData) {
+    public AuthData update(AuthData authData) {
+        // SQL query to update AuthData record
         String sql = "UPDATE auth_data SET ign = ?, username = ?, token = ?, verified = ? WHERE id = ?";
         try (Connection conn = connectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             prepareStatementForAuthData(stmt, authData);
-            stmt.setString(5, authData.getId().toString());
+            stmt.setObject(5, authData.getId());
             stmt.executeUpdate();
+            return authData;
         } catch (SQLException e) {
-            e.printStackTrace(); // Replace with proper error handling
+            e.printStackTrace();  // Replace with proper error handling
         }
+        return null;
     }
 
-    /**
-     * Deletes an AuthData object from the database by its UUID.
-     *
-     * @param id The UUID of the AuthData object to delete.
-     */
     @Override
-    public void delete(UUID id) {
+    public void deleteById(UUID id) {
+        // SQL query to delete AuthData record by ID
         String sql = "DELETE FROM auth_data WHERE id = ?";
         try (Connection conn = connectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, id.toString());
+            stmt.setObject(1, id);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace(); // Replace with proper error handling
+            e.printStackTrace();  // Replace with proper error handling
         }
     }
 
     /**
      * Maps a ResultSet to an AuthData object.
      *
-     * @param rs The ResultSet to map.
-     * @return The AuthData object created from the ResultSet.
+     * @param rs The ResultSet from which to map.
+     * @return An AuthData object.
      * @throws SQLException If a database access error occurs.
      */
     private AuthData mapResultSetToAuthData(ResultSet rs) throws SQLException {
-        UUID id = UUID.fromString(rs.getString("id"));
-        String ign = rs.getString("ign");
-        String username = rs.getString("username");
-        UUID token = UUID.fromString(rs.getString("token"));
-        boolean verified = rs.getBoolean("verified");
-
-        return new AuthData(id, ign, username, token, verified);
+        return new AuthData(
+                UUID.fromString(rs.getString("id")),
+                rs.getString("ign"),
+                rs.getString("username"),
+                UUID.fromString(rs.getString("token")),
+                rs.getBoolean("verified")
+        );
     }
 
     /**
-     * Prepares a PreparedStatement with an AuthData object's data.
+     * Prepares a PreparedStatement with AuthData fields.
      *
      * @param stmt     The PreparedStatement to prepare.
-     * @param authData The AuthData object to use for setting statement values.
+     * @param authData The AuthData object from which to take the data.
      * @throws SQLException If a database access error occurs.
      */
     private void prepareStatementForAuthData(PreparedStatement stmt, AuthData authData) throws SQLException {
-        stmt.setString(1, authData.getId().toString());
+        stmt.setObject(1, authData.getId());
         stmt.setString(2, authData.getIGN());
         stmt.setString(3, authData.getUsername());
-        stmt.setString(4, authData.getToken().toString());
+        stmt.setObject(4, authData.getToken());
         stmt.setBoolean(5, authData.isVerified());
     }
 }
