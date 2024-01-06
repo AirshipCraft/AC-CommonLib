@@ -4,9 +4,40 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
- * Represents a player on the Minecraft server.
- * It holds attributes specific to the player's interaction within the server.
+ * <p>Represents a player on the Minecraft server.It holds attributes specific to the player's interaction within the server.</p>
  *
+ * <p>Users are stored in a database table with the following schema: </p>
+ * <pre>
+ *     CREATE TABLE IF NOT EXISTS users (
+ *     id UUID PRIMARY KEY,
+ *     username VARCHAR(255) NOT NULL,
+ *     join_date BIGINT NOT NULL,
+ *     last_join BIGINT NOT NULL,
+ *     last_seen BIGINT NOT NULL,
+ *     total_playtime BIGINT NOT NULL,
+ *     total_deaths INT NOT NULL,
+ *     total_kills INT NOT NULL,
+ *     total_blocks_broken INT NOT NULL,
+ *     fish_caught INT NOT NULL
+ *     );
+ *     CREATE INDEX IF NOT EXISTS username_index ON users (username);
+ *     CREATE INDEX IF NOT EXISTS join_date_index ON users (join_date);
+ *     CREATE INDEX IF NOT EXISTS last_join_index ON users (last_join);
+ *     CREATE INDEX IF NOT EXISTS last_seen_index ON users (last_seen);
+ *     CREATE INDEX IF NOT EXISTS total_playtime_index ON users (total_playtime);
+ *     CREATE INDEX IF NOT EXISTS total_deaths_index ON users (total_deaths);
+ *     CREATE INDEX IF NOT EXISTS total_kills_index ON users (total_kills);
+ *     CREATE INDEX IF NOT EXISTS total_blocks_broken_index ON users (total_blocks_broken);
+ *     CREATE INDEX IF NOT EXISTS fish_caught_index ON users (fish_caught);
+ *     CREATE INDEX IF NOT EXISTS username_join_date_index ON users (username, join_date);
+ *     CREATE INDEX IF NOT EXISTS username_last_join_index ON users (username, last_join);
+ *     CREATE INDEX IF NOT EXISTS username_last_seen_index ON users (username, last_seen);
+ *     CREATE INDEX IF NOT EXISTS username_total_playtime_index ON users (username, total_playtime);
+ *     CREATE INDEX IF NOT EXISTS username_total_deaths_index ON users (username, total_deaths);
+ *     CREATE INDEX IF NOT EXISTS username_total_kills_index ON users (username, total_kills);
+ *     CREATE INDEX IF NOT EXISTS username_total_blocks_broken_index ON users (username, total_blocks_broken);
+ *     CREATE INDEX IF NOT EXISTS username_fish_caught_index ON users (username, fish_caught);
+ *</pre>
  * @author notzune
  * @version 1.0.0
  * @since 2023-12-27
@@ -280,5 +311,30 @@ public class User {
                 ", totalBlocksBroken=" + totalBlocksBroken +
                 ", fishCaught=" + fishCaught +
                 '}';
+    }
+
+    /**
+     * Compares the User object with another object.
+     *
+     * @param obj The object to compare with.
+     * @return true if the objects are equal, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof User) {
+            User user = (User) obj;
+            return user.getId().equals(this.getId());
+        }
+        return false;
+    }
+
+    /**
+     * Returns the hash code of the User object.
+     *
+     * @return The hash code of the User object.
+     */
+    @Override
+    public int hashCode() {
+        return this.getId().hashCode();
     }
 }
