@@ -5,6 +5,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 
 /**
  * Manages SQL database connections using HikariCP for connection pooling.
@@ -65,5 +66,71 @@ public class SqlConnectionManager {
         }
     }
 
-    // Additional methods for transaction management can be added as needed.
+    /**
+     * Begins a new database transaction.
+     *
+     * @param conn The database connection.
+     * @throws SQLException If an error occurs during setting auto-commit to false.
+     */
+    public void beginTransaction(Connection conn) throws SQLException {
+        conn.setAutoCommit(false);
+    }
+
+    /**
+     * Commits the current transaction.
+     *
+     * @param conn The database connection.
+     * @throws SQLException If an error occurs during the transaction commit.
+     */
+    public void commitTransaction(Connection conn) throws SQLException {
+        conn.commit();
+    }
+
+    /**
+     * Rolls back the current transaction.
+     *
+     * @param conn The database connection.
+     */
+    public void rollbackTransaction(Connection conn) {
+        try {
+            if (conn != null) {
+                conn.rollback();
+            }
+        } catch (SQLException ex) {
+            // Log the exception
+        }
+    }
+
+    /**
+     * Sets a savepoint in the current transaction.
+     *
+     * @param conn The database connection.
+     * @param name The name of the savepoint.
+     * @return A Savepoint object.
+     * @throws SQLException If an error occurs during setting the savepoint.
+     */
+    public Savepoint setSavepoint(Connection conn, String name) throws SQLException {
+        return conn.setSavepoint(name);
+    }
+
+    /**
+     * Releases a previously set savepoint.
+     *
+     * @param conn The database connection.
+     * @param savepoint The savepoint to release.
+     * @throws SQLException If an error occurs during releasing the savepoint.
+     */
+    public void releaseSavepoint(Connection conn, Savepoint savepoint) throws SQLException {
+        conn.releaseSavepoint(savepoint);
+    }
+
+    /**
+     * Resets the connection to its default auto-commit state.
+     *
+     * @param conn The database connection.
+     * @throws SQLException If an error occurs during setting auto-commit to true.
+     */
+    public void resetConnection(Connection conn) throws SQLException {
+        conn.setAutoCommit(true);
+    }
 }
