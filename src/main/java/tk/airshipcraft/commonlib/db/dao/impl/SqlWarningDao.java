@@ -52,7 +52,7 @@ public class SqlWarningDao implements WarningDao {
                 return Optional.of(mapRowToWarning(resultSet));
             }
         } catch (SQLException e) {
-            // Log and handle exception
+            e.printStackTrace();
         }
         return Optional.empty();
     }
@@ -74,7 +74,7 @@ public class SqlWarningDao implements WarningDao {
                 warnings.add(mapRowToWarning(resultSet));
             }
         } catch (SQLException e) {
-            // Log and handle exception
+            e.printStackTrace();
         }
         return warnings;
     }
@@ -100,6 +100,7 @@ public class SqlWarningDao implements WarningDao {
             statement.executeUpdate();
         } catch (SQLException e) {
             // Log and handle exception
+            e.printStackTrace();
         }
         return entity;
     }
@@ -125,6 +126,7 @@ public class SqlWarningDao implements WarningDao {
             statement.executeUpdate();
         } catch (SQLException e) {
             // Log and handle exception
+            e.printStackTrace();
         }
         return entity;
     }
@@ -144,6 +146,7 @@ public class SqlWarningDao implements WarningDao {
             statement.executeUpdate();
         } catch (SQLException e) {
             // Log and handle exception
+            e.printStackTrace();
         }
     }
 
@@ -151,7 +154,7 @@ public class SqlWarningDao implements WarningDao {
      * Retrieves all Warnings issued to a specific Minecraft or Discord user.
      *
      * @param minecraftId The UUID of the Minecraft user.
-     * @param discordId The Discord ID of the user.
+     * @param discordId   The Discord ID of the user.
      * @return A List of Warnings associated with the given user.
      */
     @Override
@@ -169,6 +172,7 @@ public class SqlWarningDao implements WarningDao {
             }
         } catch (SQLException e) {
             // Log and handle exception
+            e.printStackTrace();
         }
         return warnings;
     }

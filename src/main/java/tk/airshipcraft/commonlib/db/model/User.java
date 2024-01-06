@@ -37,7 +37,8 @@ import java.util.UUID;
  *     CREATE INDEX IF NOT EXISTS username_total_kills_index ON users (username, total_kills);
  *     CREATE INDEX IF NOT EXISTS username_total_blocks_broken_index ON users (username, total_blocks_broken);
  *     CREATE INDEX IF NOT EXISTS username_fish_caught_index ON users (username, fish_caught);
- *</pre>
+ * </pre>
+ *
  * @author notzune
  * @version 1.0.0
  * @since 2023-12-27

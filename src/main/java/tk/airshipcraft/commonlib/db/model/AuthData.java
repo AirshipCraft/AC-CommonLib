@@ -25,6 +25,7 @@ import java.util.UUID;
  *     CREATE UNIQUE INDEX IF NOT EXISTS auth_data_username_token_index ON auth_data (username, token);
  *     CREATE UNIQUE INDEX IF NOT EXISTS auth_data_username_verified_index ON auth_data (username, verified);
  * </pre>
+ *
  * @author notzune
  * @version 1.0.0
  * @since 2024-01-05

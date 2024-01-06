@@ -36,7 +36,7 @@ public interface WarningDao extends GenericDao<Warning, UUID> {
      * Retrieves all warnings issued to a specific Minecraft or Discord user.
      *
      * @param minecraftId The UUID of the Minecraft user.
-     * @param discordId The Discord ID of the user.
+     * @param discordId   The Discord ID of the user.
      * @return A List of Warning objects.
      */
     List<Warning> findByUser(UUID minecraftId, String discordId);

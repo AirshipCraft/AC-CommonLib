@@ -36,12 +36,12 @@ public class Warning {
     /**
      * Constructs a new Warning instance.
      *
-     * @param id                The unique identifier for the warning.
-     * @param issuer            The UUID of the issuer.
+     * @param id                 The unique identifier for the warning.
+     * @param issuer             The UUID of the issuer.
      * @param minecraftRecipient The UUID of the Minecraft player being warned. Can be null if the warning is for a Discord user.
-     * @param discordRecipient  The Discord ID of the user being warned. Can be null if the warning is for a Minecraft player.
-     * @param reason            The reason for issuing the warning.
-     * @param timestamp         The timestamp when the warning was issued.
+     * @param discordRecipient   The Discord ID of the user being warned. Can be null if the warning is for a Minecraft player.
+     * @param reason             The reason for issuing the warning.
+     * @param timestamp          The timestamp when the warning was issued.
      */
     public Warning(UUID id, UUID issuer, UUID minecraftRecipient, String discordRecipient, String reason, long timestamp) {
         this.id = id;
