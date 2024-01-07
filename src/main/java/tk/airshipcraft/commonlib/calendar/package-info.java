@@ -1,5 +1,4 @@
 /**
- * <h1>AirshipCraft Calendar and Event System Package</h1>
  * <p>
  * This package, a part of AirshipCraft's {@link tk.airshipcraft.commonlib.CommonLib} core library, provides a comprehensive calendar and event system
  * for Minecraft servers. Designed to offer functionalities like seasonal changes, event scheduling, and dynamic in-game news,
