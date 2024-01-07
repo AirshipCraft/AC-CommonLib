@@ -32,7 +32,18 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface ConfigOption {
+
+    /**
+     * The configuration key for this option.
+     *
+     * @return The configuration key.
+     */
     String key();
 
+    /**
+     * The default value for this option.
+     *
+     * @return The default value.
+     */
     String defaultValue() default "";
 }
