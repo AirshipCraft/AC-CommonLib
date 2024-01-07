@@ -3,11 +3,10 @@ package tk.airshipcraft.commonlib.calendar;
 import tk.airshipcraft.commonlib.calendar.impl.SeasonManager;
 
 /**
- * Interface for managing seasonal changes in the Minecraft world.
- * Provides methods to determine and query the current season based on the in-game date.
- * <p>
- * This interface is implemented by {@link SeasonManager}
- * <p>
+ * <p>Interface for managing seasonal changes in the Minecraft world.
+ * Provides methods to determine and query the current season based on the in-game date.</p>
+ *
+ * <p>This interface is implemented by {@link SeasonManager}</p>
  *
  * @author notzune
  * @version 1.0.0
@@ -26,9 +25,22 @@ public interface ISeasonManager {
      * Enumeration of seasons.
      */
     enum Season {
+
+        /**
+         * Spring season.
+         */
         SPRING,
+        /**
+         * Summer season.
+         */
         SUMMER,
+        /**
+         * Autumn season.
+         */
         AUTUMN,
+        /**
+         * Winter season.
+         */
         WINTER
     }
 }
