@@ -18,6 +18,9 @@ import tk.airshipcraft.commonlib.gui.events.GuiClickEvent;
  */
 public abstract class Gui {
 
+    /**
+     * The Inventory object associated with this GUI, representing the interface layout and contents.
+     */
     protected Inventory inventory;
 
     /**
