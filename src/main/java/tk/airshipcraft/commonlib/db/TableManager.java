@@ -66,6 +66,7 @@ public class TableManager {
                 }
             } catch (SQLException e) {
                 // Log and handle exception
+                e.printStackTrace();
             }
         }
     }
