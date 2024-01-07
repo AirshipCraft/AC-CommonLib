@@ -34,6 +34,12 @@ public class SqlAuthDataDao implements AuthDataDao {
         this.connectionManager = connectionManager;
     }
 
+    /**
+     * Finds an AuthData record by its ID.
+     *
+     * @param id the entity's identifier.
+     * @return An {@code Optional<AuthData>} containing the AuthData if found, otherwise empty.
+     */
     @Override
     public Optional<AuthData> findById(UUID id) {
         // SQL query to find AuthData by ID
@@ -52,6 +58,11 @@ public class SqlAuthDataDao implements AuthDataDao {
         return Optional.empty();
     }
 
+    /**
+     * Finds all AuthData records.
+     *
+     * @return A list of all AuthData records.
+     */
     @Override
     public List<AuthData> findAll() {
         // SQL query to find all AuthData records
@@ -70,6 +81,12 @@ public class SqlAuthDataDao implements AuthDataDao {
         return authDataList;
     }
 
+    /**
+     * Creates a new AuthData record.
+     *
+     * @param authData The AuthData object to create.
+     * @return The created AuthData object.
+     */
     @Override
     public AuthData create(AuthData authData) {
         // SQL query to create new AuthData record
@@ -86,6 +103,12 @@ public class SqlAuthDataDao implements AuthDataDao {
         return null;
     }
 
+    /**
+     * Updates an existing AuthData record.
+     *
+     * @param authData The AuthData object to update.
+     * @return The updated AuthData object.
+     */
     @Override
     public AuthData update(AuthData authData) {
         // SQL query to update AuthData record
@@ -103,6 +126,11 @@ public class SqlAuthDataDao implements AuthDataDao {
         return null;
     }
 
+    /**
+     * Deletes an existing AuthData record by its ID.
+     *
+     * @param id The ID of the AuthData record to delete.
+     */
     @Override
     public void deleteById(UUID id) {
         // SQL query to delete AuthData record by ID
