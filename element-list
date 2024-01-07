@@ -1,7 +1,14 @@
 tk.airshipcraft.commonlib
+tk.airshipcraft.commonlib.calendar
+tk.airshipcraft.commonlib.calendar.clock
+tk.airshipcraft.commonlib.calendar.impl
 tk.airshipcraft.commonlib.commands
 tk.airshipcraft.commonlib.configuration
 tk.airshipcraft.commonlib.configuration.impl
+tk.airshipcraft.commonlib.db
+tk.airshipcraft.commonlib.db.dao
+tk.airshipcraft.commonlib.db.dao.impl
+tk.airshipcraft.commonlib.db.model
 tk.airshipcraft.commonlib.gui
 tk.airshipcraft.commonlib.gui.events
 tk.airshipcraft.commonlib.gui.objects
