@@ -1,6 +1,6 @@
 package tk.airshipcraft.commonlib.db.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
@@ -11,9 +11,9 @@ import java.util.UUID;
  *     CREATE TABLE IF NOT EXISTS users (
  *     id UUID PRIMARY KEY,
  *     username VARCHAR(255) NOT NULL,
- *     join_date BIGINT NOT NULL,
- *     last_join BIGINT NOT NULL,
- *     last_seen BIGINT NOT NULL,
+ *     join_date TIMESTAMP NOT NULL,
+ *     last_join TIMESTAMP NOT NULL,
+ *     last_seen TIMESTAMP NOT NULL,
  *     total_playtime BIGINT NOT NULL,
  *     total_deaths INT NOT NULL,
  *     total_kills INT NOT NULL,
@@ -47,9 +47,9 @@ public class User {
 
     private UUID id;
     private String username;
-    private LocalDateTime joinDate;
-    private LocalDateTime lastJoin;
-    private LocalDateTime lastSeen;
+    private Timestamp joinDate;
+    private Timestamp lastJoin;
+    private Timestamp lastSeen;
     private long totalPlaytime;
     private int totalDeaths;
     private int totalKills;
@@ -59,7 +59,7 @@ public class User {
     /**
      * Default constructor.
      *
-     * @see #User(UUID, String, LocalDateTime, LocalDateTime, LocalDateTime, long, int, int, int, int)
+     * @see #User(UUID, String, Timestamp, Timestamp, Timestamp, long, int, int, int, int)
      */
     public User() {
     }
@@ -78,8 +78,8 @@ public class User {
      * @param totalBlocksBroken The total number of blocks broken by the user.
      * @param fishCaught        The total number of fish caught by the user.
      */
-    public User(UUID id, String username, LocalDateTime joinDate, LocalDateTime lastJoin,
-                LocalDateTime lastSeen, long totalPlaytime, int totalDeaths, int totalKills,
+    public User(UUID id, String username, Timestamp joinDate, Timestamp lastJoin,
+                Timestamp lastSeen, long totalPlaytime, int totalDeaths, int totalKills,
                 int totalBlocksBroken, int fishCaught) {
         this.id = id;
         this.username = username;
@@ -137,9 +137,9 @@ public class User {
      * Returns the date when the user joined the server.
      *
      * @return The join date of the user.
-     * @see #setJoinDate(LocalDateTime)
+     * @see #setJoinDate(Timestamp)
      */
-    public LocalDateTime getJoinDate() {
+    public Timestamp getJoinDate() {
         return joinDate;
     }
 
@@ -149,47 +149,47 @@ public class User {
      * @param joinDate The join date to be set for the user.
      * @see #getJoinDate()
      */
-    public void setJoinDate(LocalDateTime joinDate) {
+    public void setJoinDate(Timestamp joinDate) {
         this.joinDate = joinDate;
     }
 
     /**
      * Returns the last time the user joined the server.
      *
-     * @return LocalDateTime
-     * @see #setLastJoin(LocalDateTime)
+     * @return The last join time of the user.
+     * @see #setLastJoin(Timestamp)
      */
-    public LocalDateTime getLastJoin() {
+    public Timestamp getLastJoin() {
         return lastJoin;
     }
 
     /**
      * Sets the last time the user joined the server.
      *
-     * @param lastJoin
+     * @param lastJoin The last join time to be set for the user.
      * @see #getLastJoin()
      */
-    public void setLastJoin(LocalDateTime lastJoin) {
+    public void setLastJoin(Timestamp lastJoin) {
         this.lastJoin = lastJoin;
     }
 
     /**
      * Returns the last time the user was seen on the server.
      *
-     * @return LocalDateTime
-     * @see #setLastSeen(LocalDateTime)
+     * @return The last seen time of the user.
+     * @see #setLastSeen(Timestamp)
      */
-    public LocalDateTime getLastSeen() {
+    public Timestamp getLastSeen() {
         return lastSeen;
     }
 
     /**
      * Sets the last time the user was seen on the server.
      *
-     * @param lastSeen
+     * @param lastSeen The last seen time to be set for the user.
      * @see #getLastSeen()
      */
-    public void setLastSeen(LocalDateTime lastSeen) {
+    public void setLastSeen(Timestamp lastSeen) {
         this.lastSeen = lastSeen;
     }
 
