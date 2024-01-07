@@ -1,3 +1,11 @@
+## [1.6.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.6.0...v1.6.1) (2024-01-07)
+
+
+### Bug Fixes
+
+* change fields to accept Timestamps ([9545165](https://github.com/AirshipCraft/AC-CommonLib/commit/9545165486c35835ee8916f7d6ac12d3b563fb62))
+* flesh out methods + add comments ([bab3f55](https://github.com/AirshipCraft/AC-CommonLib/commit/bab3f553c34daba477fc4af87ffd5b38b6f893d7))
+
 # [1.6.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.5.0...v1.6.0) (2024-01-07)
 
 
