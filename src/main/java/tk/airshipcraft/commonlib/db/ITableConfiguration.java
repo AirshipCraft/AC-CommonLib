@@ -20,9 +20,9 @@ import java.util.List;
  * <p>Works in conjunction with {@link TableManager} which calls these methods
  * to actually apply the SQL commands to the database.</p>
  *
- * @see TableManager
  * @author notzune
  * @version 1.0.0
+ * @see TableManager
  * @since 2023-12-27
  */
 public interface ITableConfiguration {

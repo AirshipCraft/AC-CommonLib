@@ -116,7 +116,7 @@ public class SqlConnectionManager {
     /**
      * Releases a previously set savepoint.
      *
-     * @param conn The database connection.
+     * @param conn      The database connection.
      * @param savepoint The savepoint to release.
      * @throws SQLException If an error occurs during releasing the savepoint.
      */
