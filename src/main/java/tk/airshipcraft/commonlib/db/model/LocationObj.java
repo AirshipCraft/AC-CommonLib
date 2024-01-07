@@ -1,5 +1,9 @@
 package tk.airshipcraft.commonlib.db.model;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
+
 import java.util.UUID;
 
 /**
@@ -276,5 +280,18 @@ public class LocationObj {
                 ", pitch=" + pitch +
                 ", yaw=" + yaw +
                 "}";
+    }
+
+    /**
+     * Converts this LocationObj to a Bukkit Location.
+     *
+     * @return The Bukkit Location representation of this LocationObj.
+     */
+    public Location toBukkitLocation() {
+        World world = Bukkit.getWorld(worldName);
+        if (world == null) {
+            throw new IllegalStateException("World '" + worldName + "' not found");
+        }
+        return new Location(world, x, y, z, yaw, pitch);
     }
 }
