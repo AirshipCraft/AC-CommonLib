@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.6.1...v1.7.0) (2024-01-07)
+
+
+### Features
+
+* add a method for converting to bukkit loc ([86a7258](https://github.com/AirshipCraft/AC-CommonLib/commit/86a72580e05b52c17f11ab949d21bed6e6a692e8))
+* add abstract methods for registering events + commands ([64b058c](https://github.com/AirshipCraft/AC-CommonLib/commit/64b058c245c00143a9484568be32e20fc166630f))
+* create location model for DAO ([445a274](https://github.com/AirshipCraft/AC-CommonLib/commit/445a274d3e0614fcc1d624d79038a0c94375b162))
+
 ## [1.6.1](https://github.com/AirshipCraft/AC-CommonLib/compare/v1.6.0...v1.6.1) (2024-01-07)
 
 
