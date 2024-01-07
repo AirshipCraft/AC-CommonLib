@@ -153,6 +153,13 @@ public final class NullCoalescing {
      */
     @FunctionalInterface
     public interface NullChecker<T> {
+
+        /**
+         * Executes the operation and returns its result.
+         *
+         * @return The result of the operation.
+         * @throws Exception If an error occurs during the operation.
+         */
         T get() throws Exception;
     }
 }
