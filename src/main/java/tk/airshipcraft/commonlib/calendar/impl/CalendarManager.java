@@ -19,6 +19,10 @@ public class CalendarManager implements ICalendarManager {
 
     /**
      * Initializes a new CalendarManager with a specified starting date or default date.
+     *
+     * @param startYear     The starting year. Must be a positive integer.
+     * @param startMonth    The starting month. Must be a positive integer.
+     * @param startDay      The starting day. Must be a positive integer.
      */
     public CalendarManager(int startYear, int startMonth, int startDay) {
         this.currentDate = new CustomDate(startYear, startMonth, startDay);
